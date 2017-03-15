@@ -67,7 +67,7 @@ ga('send', 'pageview');
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -100,59 +100,16 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>##Git Base</p>
-<p>🌵<strong>Git的三种状态</strong><br>已提交(committed)：表示数据已经安全保存在本地数据库中<br>已修改(modified)：表示已经修改了文件还没保存到数据库中<br>已暂存(staged)：表示对一个已修改的当前版本做了标记，使之包含在下次提交的快照中</p>
-<p>##SSH key<br>将本机生成的ssh key加到GitHub上就能实现提交代码时候不再需要身份认证。</p>
-<p>🌵<strong>检查本机是否已经有SSH key</strong></p>
-<p><code>$cd ~/.ssh</code></p>
-<p>🌵<strong>目录下一般存在三个文件 id_rsa、id_rsa.pub、 known_hosts文件</strong><br>id_rsa.pub就是存放ssh key的文件</p>
-<p>🌵<strong>生成SSH key</strong><br><code>$ ssh-keygen -t rsa -C &quot;youremail@yy.com&quot;</code></p>
-<p>##Git基本配置<br>🌵<strong>git配置文件</strong><br>配置文件存在全局配置文件和每个项目的配置文件的区别，项目的配置文件会优先于全局配置文件。在git config –global命令都是设置全局的配置。每个项目的配置文件存放在.git/config</p>
-<p>🌵<strong>git仓库初始化</strong><br><code>$ git init</code></p>
-<p>🌵<strong>设置全局用户信息（取消–global可以设置每个项目的配置信息）</strong><br><code>$ git config --global user.name &quot;John Doe&quot;</code><br><code>$ git config --global user.email johndoe@example.com</code></p>
-<p>🌵<strong>查看配置信息</strong><br><code>$ git config --list</code></p>
-<p>🌵<strong>查看单独一项的配置信息</strong><br><code>$ git config user.name</code> 查看用户名<br><code>$ git config user.email</code> 查看用户的邮箱</p>
-<p>##获取Git仓库</p>
-<p>🌵<strong>克隆现有的仓库</strong><br>克隆远程仓库，默认以仓库名为本地文件夹的名词<br><code>git clone address</code><br>克隆远程仓库，自定义本地仓库的名词<br><code>git clone address caohr</code></p>
-<p>🌵<strong>记录更新到仓库</strong></p>
-<ul>
-<li><p>文件的几种状态</p>
-<ul>
-<li>已跟踪</li>
-<li>未跟踪</li>
-<li>跟踪文件已修改</li>
-<li>跟踪文件已提交到缓存区</li>
-</ul>
-</li>
-</ul>
-<p>🌵<strong>检查文件状态</strong></p>
-<p><code>git status</code><br>作用：1.显示当前目录有没有未被跟踪的新文件。2.显示当前分支。3.该分支与服务器的分支有没有偏离。4.当前跟踪文件是否被修改。5.已经缓存的已修改的文件。</p>
-<p><code>git status -s</code><br>用紧凑的方式查看文件修改的状态。</p>
-<p><code>git add</code><br>作用：1.开始跟踪新文件。2.把已经跟踪的被修改的文件放入缓存区。3.合并时把有冲突的文件标记为已解决的状态。</p>
-<p>🌵<strong>忽略文件</strong><br>.gitignore文件记录了所有要忽略文件的信息</p>
-<p>github针对各个文件的igitignore文件列表<br><a href="https://github.com/github/gitignore" target="_blank" rel="external">https://github.com/github/gitignore</a></p>
-<p>🌵<strong>查看已暂存和未暂存的修改</strong><br><code>git diff</code> 查看工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容。<br><code>git diff --cached</code>查看已经暂存的，将要提交到下次提交里的内容。</p>
-<p>🌵<strong>提交更新</strong><br><code>git commit</code></p>
-<p>跳过暂存区直接提交更新<br><code>git commit</code>  会启动文本编辑器输入本次提交的说明<br><code>git commit -v</code> 可以在提交内容中看到详细修改的内容<br><code>git commit -m &quot;content&quot;</code> 直接把提交介绍卸载命令行中<br><code>git commit -a -m &quot;content&quot;</code> 跳过暂存区直接提交代码</p>
-<p>🌵<strong>移除文件</strong><br><code>git rm file</code> 将该文件移除跟踪清单<br><code>git rm -f file</code>强制删除已经提交到缓存区的文件<br><code>git rm --cached file</code>保留在工作区，但是又不想让git继续跟踪该文件。（用于忘记添加.gitignore的情况下）</p>
-<p>🌵<strong>移动文件</strong></p>
-<p>🌵<strong>查看提交历史</strong><br><code>git log</code> 查看提交历史<br><code>git log -p -2</code> 显示最近两条并显示每次提交的内容差异<br><code>git log --stat</code> 列出每次修改过的文件中那些被修改了<br><code>git log --pretty==type</code> type=short、full、fuller.</p>
-<p>🌵<strong>撤销操作</strong><br><code>git commit --amend</code> 重新提交</p>
-<pre><code>$ git commit -m &quot;initial commit&quot;
-$ git add forgotten_file
-$ git commit --amend
-</code></pre><p>最终只会有一个提交，第二次提交将会代替第一次提交的结果</p>
-<p>🌵<strong>取消暂存的文件</strong><br><code>git reset HEAD &lt;file&gt;</code> 撤销已经放到暂存区的文件<br><code>git checkout -- &lt;file&gt;</code>恢复工作区文件的修改</p>
-<p>##远程仓库的使用<br>🌵<strong>查看远程仓库</strong><br><code>git remote</code> 查看远程服务器的简写<br><code>git remote -v</code> 显示远程仓库名称和URL</p>
-<p>🌵<strong>查看分支</strong><br><code>git branch -a</code>查看所有的分支<br><code>git branch -r</code> 查看远程所有分支</p>
-<p>🌵<strong>添加远程仓库</strong><br><code>git remote add &lt;shortname &gt;</code><br><code>git remote add &lt;name&gt; &lt;website&gt;</code> 添加远程仓库地址</p>
-<p>##本地库关联远程库<br>在本地的文件夹中关联远程库<br><strong>文件夹初始化</strong><br><code>git init</code><br><strong>关联远端服务器</strong><br><code>git remote add origin website</code><br><strong>关联分支</strong><br>`git branch –set-upstream master origin/master master</p>
-
+        <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-git.jpg" alt="git"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/15/Git/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/15/Git/" data-id="cj0b4u74h0000i3s6x76pmfi9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/15/Git/" data-id="cj0b4u74h0000i3s6x76pmfi9" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -193,7 +150,7 @@ $ git commit --amend
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/15/Navigation Bars/" data-id="cj0b3c36b0000ous61yc8eh93" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/15/Navigation Bars/" data-id="cj0b3c36b0000ous61yc8eh93" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -225,8 +182,7 @@ $ git commit --amend
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001.jpg" alt="001"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;Hi, I&apos;m here!&quot;);</div></pre></td></tr></table></figure>
+        <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-banner.jpg" alt="banne"></p>
         
           <p class="article-more-link">
             <a href="/2017/03/15/hello-world/#more">Read More</a>
@@ -235,7 +191,7 @@ $ git commit --amend
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/15/hello-world/" data-id="cj0b2psql0000dis6iobqf26i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/15/hello-world/" data-id="cj0b2psql0000dis6iobqf26i" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -260,7 +216,7 @@ $ git commit --amend
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
@@ -270,7 +226,7 @@ $ git commit --amend
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
