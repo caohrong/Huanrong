@@ -4,23 +4,27 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>TextText | Huanrong</title>
+    <title>Navigation Bars | Huanrong</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="John Doe">
     
 
     
-    <meta name="description" content="Text Information">
+    <meta name="description" content="导航栏可以让您有组织且直观的方式展示应用的内容，navigation bar被显示在屏幕的顶部，并且包含用于浏览屏幕层次的按钮。一个navigation bar 一般包含一个返回按钮，一个标题，和一个右按钮。经常与navigation controller一起使用，当然你可以在你的app里面单独使用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TextText">
-<meta property="og:url" content="http://yoursite.com/2017/03/15/2017-03-15/index.html">
+<meta property="og:title" content="Navigation Bars">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/Navigation Bars/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="Text Information">
-<meta property="og:updated_time" content="2017-03-15T10:20:34.000Z">
+<meta property="og:description" content="导航栏可以让您有组织且直观的方式展示应用的内容，navigation bar被显示在屏幕的顶部，并且包含用于浏览屏幕层次的按钮。一个navigation bar 一般包含一个返回按钮，一个标题，和一个右按钮。经常与navigation controller一起使用，当然你可以在你的app里面单独使用。">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879362527.jpg">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879851077.jpg">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879951230.jpg">
+<meta property="og:updated_time" content="2017-03-15T14:31:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TextText">
-<meta name="twitter:description" content="Text Information">
+<meta name="twitter:title" content="Navigation Bars">
+<meta name="twitter:description" content="导航栏可以让您有组织且直观的方式展示应用的内容，navigation bar被显示在屏幕的顶部，并且包含用于浏览屏幕层次的按钮。一个navigation bar 一般包含一个返回按钮，一个标题，和一个右按钮。经常与navigation controller一起使用，当然你可以在你的app里面单独使用。">
+<meta name="twitter:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879362527.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="Huanrong" type="application/atom+xml">
@@ -80,14 +84,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/03/15/2017-03-15/" title="TextText" itemprop="url">TextText</a>
+      <a href="/2017/03/15/Navigation Bars/" title="Navigation Bars" itemprop="url">Navigation Bars</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-15T09:57:07.000Z" itemprop="datePublished"> Published 2017-03-15</time>
+    <time datetime="2017-03-15T14:22:57.000Z" itemprop="datePublished"> Published 2017-03-15</time>
     
   </p>
 </header>
@@ -100,7 +104,30 @@
 		
 		</div>
 		
-		<p>Text Information</p>
+		<p>导航栏可以让您有组织且直观的方式展示应用的内容，navigation bar被显示在屏幕的顶部，并且包含用于浏览屏幕层次的按钮。一个navigation bar 一般包含一个返回按钮，一个标题，和一个右按钮。经常与navigation controller一起使用，当然你可以在你的app里面单独使用。</p>
+<a id="more"></a>
+<p>###作用：</p>
+<ul>
+<li>返回到之前的视图</li>
+<li>切换到新的视图</li>
+</ul>
+<p>###Appearance of Navigation Bars<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879362527.jpg" alt=""></p>
+<p>##Navigation Bars的相关属性</p>
+<p>Bar Style<br>Navigation bars 有两种样式，<br>UIBarStyleDefault：白色透明背景<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879851077.jpg" alt=""></p>
+<p>UIBarStyleBlack<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879951230.jpg" alt=""><br>其中UIBarStyleBlackOpaque 和 UIBarStyleBlackTranslucent已经作废。</p>
+<p>##Tint Color<br>你可以指定自定义的tint color 作为navigation bar的背景颜色，默认的背景颜色是白色。</p>
+<p>另外，你可以设置自定义的tint color，设定的Tint color 将会影响到导航栏的按钮图片和标题的颜色，如果没有设定自定义的tint color那么navigation bar会继承父视图的tint color，如果父视图也没有设置tint color那么默认会使用蓝色。</p>
+<p>##Images<br>你可以为navigation bar自定义背景图片，你可以使用setBackgroundImage:forBarMetrics:.方法，一定要指定metrics的参数，因为在不同的设备上和不同的设备方向上（横屏以及竖屏），navigation bar有不同的尺寸。</p>
+<p>可以通过shadowImage设置navigation bar的自定义阴影图片，一旦你设置了自定义的阴影图片你必须同时也设定背景图片。</p>
+<p>##Translucency<br>iOS7中导航栏默认都是透明的，另外，所有的navigation bars上都有系统模糊效果。他允许你的内容透过navigation bar模糊显示。</p>
+<p>不管是设置了barStyle样式，还是设置了barTintColor的自定义颜色，Translucency默认都是打开的。但是你可以通过将transluency参数设置为no而达到将navigation bar设置为不透明的背景。在这种情况下，无论是UIBarStyleBlack还是UIBarStyleDefault或者是设置了barTintColor都会是不透明的背景。</p>
+<ul>
+<li>如果navigation bar有一个自定义的背景图片，透明度将会从图片的alpha的平均值推算出来。如果平均的alpha值不超过1.0，那么navigation bar默认就会是透明的，如果平均值是1.0那么naivgation bar 默认就是不透明的。</li>
+<li>如果你在背景图片不透明的的navigation bar上把translucency设置为true，那么navigation bar会使这背景图片变得透明。</li>
+<li>如果你在背景图片透明的navigation bar上把translucency设置为false，于此同时你的Bar style样式为UIBarStyleBlack那么将会为透明图片提供黑色的背景从而达到不透明的效果。</li>
+<li>如果你的Bar style样式为UIBarStyleDefault，那么会提供白色的背景颜色。<br>*如果你设置了barTintColor那么就会提供你设置的barTintColor为背景颜色。</li>
+</ul>
+<p>##Title Attributes<br>可以通过titleTextAttributes参数指定bar’s title文本的字体，颜色，文字阴影颜色，阴影的偏移值。<br>setTitleVerticalPositionAdjustment:forBarMetrics: 你可以通过该方法指定不同场景的bar’s title的颜色，同样也要指定metrics参数，一定要指定metrics的参数，因为在不同的设备上和不同的设备方向上（横屏以及竖屏），navigation bar有不同的尺寸。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -113,7 +140,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/03/15/2017-03-15/" data-title="TextText | Huanrong" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/03/15/Navigation Bars/" data-title="Navigation Bars | Huanrong" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -126,19 +153,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/03/15/Navigation Bars/" title="Navigation Bars">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Navigation Bars</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/03/15/hello-world/"  title="Hello World">
+<a href="/2017/03/15/2017-03-15/"  title="TextText">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>TextText
 </span>
 </a>
 </div>
