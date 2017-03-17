@@ -65,9 +65,9 @@ ga('send', 'pageview');
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -102,20 +102,15 @@ ga('send', 'pageview');
       
         <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg" alt="001"></p>
 <p>##关于文件路径NSString分类</p>
-<ul>
-<li><p>获取字符串路径中的文件类型名称：“/tmp/scratch.tiff”得到的是“tiff”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (readonly, copy) NSString *pathExtension;</div></pre></td></tr></table></figure>
-</li>
-<li><p>获取去除文件类型名称后的路径：“/tmp/scratch.tiff”得到的是“/tmp/scratch”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (readonly, copy) NSString *stringByDeletingPathExtension;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@interface NSString (NSStringPathExtensions)</div><div class="line"></div><div class="line">+ (NSString *)pathWithComponents:(NSArray&lt;NSString *&gt; *)components;</div><div class="line">@property (readonly, copy) NSArray&lt;NSString *&gt; *pathComponents;</div><div class="line"></div><div class="line">@property (getter=isAbsolutePath, readonly) BOOL absolutePath;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *lastPathComponent;</div><div class="line">@property (readonly, copy) NSString *stringByDeletingLastPathComponent;</div><div class="line">- (NSString *)stringByAppendingPathComponent:(NSString *)str;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">- (nullable NSString *)stringByAppendingPathExtension:(NSString *)str;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *stringByAbbreviatingWithTildeInPath;</div><div class="line">@property (readonly, copy) NSString *stringByExpandingTildeInPath;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *stringByStandardizingPath;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *stringByResolvingSymlinksInPath;</div><div class="line"></div><div class="line">- (NSArray&lt;NSString *&gt; *)stringsByAppendingPaths:(NSArray&lt;NSString *&gt; *)paths;</div><div class="line"></div><div class="line">#if FOUNDATION_SWIFT_SDK_EPOCH_AT_LEAST(6)</div><div class="line">- (NSUInteger)completePathIntoString:(NSString * _Nullable * _Nullable)outputName caseSensitive:(BOOL)flag matchesIntoArray:(NSArray&lt;NSString *&gt; * _Nullable * _Nullable)outputArray filterTypes:(nullable NSArray&lt;NSString *&gt; *)filterTypes;</div><div class="line">#endif</div><div class="line">@property (readonly) const char *fileSystemRepresentation NS_RETURNS_INNER_POINTER;</div><div class="line">- (BOOL)getFileSystemRepresentation:(char *)cname maxLength:(NSUInteger)max;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/03/17/NSString/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/17/NSString/" data-id="cj0dgcxjm0000tun2fbmm5hfd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/17/NSString/" data-id="cj0dgcxjm0000tun2fbmm5hfd" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -148,11 +143,7 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg" alt="001"></p>
-<blockquote>
-<blockquote>
 <p>UIImage对象在App中管理图片数据，使用image对象表示各种类型的图片数据，并且UIImage类能够管理由底层平台支持的所有图像格式的数据。 图像对象是不可变的数据类型。所以你只能创建UIImage对象只能用已经存在的图片数据，例如存在硬盘中的图片或者是通过编码创建的图片数据。一个image对象可能只包含单个image数据也可能会包含很多的图片数据当你打算用来创建动画的时候。</p>
-</blockquote>
-</blockquote>
         
           <p class="article-more-link">
             <a href="/2017/03/17/UIImage/#more">Read More</a>
@@ -161,7 +152,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/17/UIImage/" data-id="cj0dgcxjx0001tun2llcaat8h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/17/UIImage/" data-id="cj0dgcxjx0001tun2llcaat8h" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -202,7 +193,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/15/Git/" data-id="cj0b4u74h0000i3s6x76pmfi9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/15/Git/" data-id="cj0b4u74h0000i3s6x76pmfi9" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -243,7 +234,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/15/Navigation Bars/" data-id="cj0b3c36b0000ous61yc8eh93" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/15/Navigation Bars/" data-id="cj0b3c36b0000ous61yc8eh93" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -284,7 +275,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/15/hello-world/" data-id="cj0b2psql0000dis6iobqf26i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/15/hello-world/" data-id="cj0b2psql0000dis6iobqf26i" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -319,7 +310,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -356,7 +347,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Huanrong Cao<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
