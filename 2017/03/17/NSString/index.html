@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Huanrong">
 <meta property="og:description" content="##关于文件路径NSString分类">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg">
-<meta property="og:updated_time" content="2017-03-17T06:39:18.000Z">
+<meta property="og:updated_time" content="2017-03-17T07:13:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSString">
 <meta name="twitter:description" content="##关于文件路径NSString分类">
@@ -71,9 +71,9 @@ ga('send', 'pageview');
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -108,19 +108,19 @@ ga('send', 'pageview');
 <p>##关于文件路径NSString分类</p>
 <a id="more"></a>
 <ul>
-<li><p>获取字符串路径中的文件类型名称：“/tmp/scratch.tiff”得到的是“tiff”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (readonly, copy) NSString *pathExtension;</div></pre></td></tr></table></figure>
-</li>
-<li><p>获取去除文件类型名称后的路径：“/tmp/scratch.tiff”得到的是“/tmp/scratch”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (readonly, copy) NSString *stringByDeletingPathExtension;</div></pre></td></tr></table></figure>
-</li>
+<li>获取字符串路径中的文件类型名称：“/tmp/scratch.tiff”得到的是“tiff”</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (readonly, copy) NSString *pathExtension;</div></pre></td></tr></table></figure>
+<ul>
+<li>获取去除文件类型名称后的路径：“/tmp/scratch.tiff”得到的是“/tmp/scratch”</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (readonly, copy) NSString *stringByDeletingPathExtension;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@interface NSString (NSStringPathExtensions)</div><div class="line"></div><div class="line">+ (NSString *)pathWithComponents:(NSArray&lt;NSString *&gt; *)components;</div><div class="line">@property (readonly, copy) NSArray&lt;NSString *&gt; *pathComponents;</div><div class="line"></div><div class="line">@property (getter=isAbsolutePath, readonly) BOOL absolutePath;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *lastPathComponent;</div><div class="line">@property (readonly, copy) NSString *stringByDeletingLastPathComponent;</div><div class="line">- (NSString *)stringByAppendingPathComponent:(NSString *)str;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">- (nullable NSString *)stringByAppendingPathExtension:(NSString *)str;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *stringByAbbreviatingWithTildeInPath;</div><div class="line">@property (readonly, copy) NSString *stringByExpandingTildeInPath;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *stringByStandardizingPath;</div><div class="line"></div><div class="line">@property (readonly, copy) NSString *stringByResolvingSymlinksInPath;</div><div class="line"></div><div class="line">- (NSArray&lt;NSString *&gt; *)stringsByAppendingPaths:(NSArray&lt;NSString *&gt; *)paths;</div><div class="line"></div><div class="line">#if FOUNDATION_SWIFT_SDK_EPOCH_AT_LEAST(6)</div><div class="line">- (NSUInteger)completePathIntoString:(NSString * _Nullable * _Nullable)outputName caseSensitive:(BOOL)flag matchesIntoArray:(NSArray&lt;NSString *&gt; * _Nullable * _Nullable)outputArray filterTypes:(nullable NSArray&lt;NSString *&gt; *)filterTypes;</div><div class="line">#endif</div><div class="line">@property (readonly) const char *fileSystemRepresentation NS_RETURNS_INNER_POINTER;</div><div class="line">- (BOOL)getFileSystemRepresentation:(char *)cname maxLength:(NSUInteger)max;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/17/NSString/" data-id="cj0dgcxjm0000tun2fbmm5hfd" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/17/NSString/" data-id="cj0dgcxjm0000tun2fbmm5hfd" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -131,7 +131,7 @@ ga('send', 'pageview');
   
   
     <a href="/2017/03/17/UIImage/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">UIImage</div>
     </a>
   
@@ -154,7 +154,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
@@ -164,7 +164,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
@@ -201,7 +201,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Huanrong Cao<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
