@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Huanrong">
 <meta property="og:description" content="UIVisualEffectView对象可以让你用简单的方法实现相对复杂的视觉效果。你实现的效果，根据所需的效果，效果可能会影响叠加在视图后面的内容或添加视觉效果视图的contentView的内容。用UIBlurEffect或UIVibrancyEffect对象来实现blur或者vibrancy效果在已经存在的view上，当你创建了带有视图效果的view后，子视图添加在contentView属性">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg">
-<meta property="og:updated_time" content="2017-03-20T07:05:29.000Z">
+<meta property="og:updated_time" content="2017-03-20T07:48:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIVisualEffectView">
 <meta name="twitter:description" content="UIVisualEffectView对象可以让你用简单的方法实现相对复杂的视觉效果。你实现的效果，根据所需的效果，效果可能会影响叠加在视图后面的内容或添加视觉效果视图的contentView的内容。用UIBlurEffect或UIVibrancyEffect对象来实现blur或者vibrancy效果在已经存在的view上，当你创建了带有视图效果的view后，子视图添加在contentView属性">
@@ -71,9 +71,9 @@ ga('send', 'pageview');
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -111,11 +111,18 @@ ga('send', 'pageview');
 <p><strong>在UIVisualEffectView中使用遮罩</strong><br>应用到UIVisualEffectView上的遮罩会转发到内部的view上并显示出来。包括contenview本身，你当然也可以直接在contentView上使用遮罩。不要将遮罩应用到UIVisualEffectView的父视图上。</p>
 <p>任何应用到UIVisualView上的遮罩都不是view实际显示的效果，UKit将视图拷贝一份并在他们的子视图上应用遮罩效果。如果要改变遮罩的尺寸，您必须更改原始的遮罩尺寸，并在UIVisualView上重置。</p>
 <p><strong>捕获UIVisualEffectView的快照</strong><br>许多效果需要包含UIVisualEffectView寄主窗口的支持。尝试截取UIVisualEffectView的快照会导致效果并不包含在快照中，截取包含UIVisualEffectView的视图层次结构的快照，你必须截取整个UIWindow或者UIScreen。</p>
+<p><strong>属性</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, strong, readonly) UIView *contentView</div></pre></td></tr></table></figure>
+<p>效果最终作用的视图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, copy) UIVisualEffect *effect</div></pre></td></tr></table></figure>
+<p>视图效果，UIBlurEffect或者UIVibrancyEffect。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (instancetype)initWithEffect:(UIVisualEffect *)effect</div></pre></td></tr></table></figure>
+<p>用指定的视图效果创建view。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/20/UIVisualEffectView/" data-id="cj0hrpic70000fan2n9t6mlym" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/03/20/UIVisualEffectView/" data-id="cj0hrpic70000fan2n9t6mlym" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -124,9 +131,18 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
+    <a href="/2017/03/20/TintColor/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Tint Color
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/03/17/位运算符中枚举中应用/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">iOS运算符中枚举中应用</div>
     </a>
   
@@ -149,7 +165,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
@@ -159,9 +175,13 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/20/TintColor/">Tint Color</a>
+          </li>
         
           <li>
             <a href="/2017/03/20/UIVisualEffectView/">UIVisualEffectView</a>
@@ -179,10 +199,6 @@ ga('send', 'pageview');
             <a href="/2017/03/17/UIImage/">UIImage</a>
           </li>
         
-          <li>
-            <a href="/2017/03/15/Git/">Git</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -196,7 +212,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Huanrong Cao<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
