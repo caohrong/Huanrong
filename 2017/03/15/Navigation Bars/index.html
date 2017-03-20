@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879362527.jpg">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879851077.jpg">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879951230.jpg">
-<meta property="og:updated_time" content="2017-03-19T10:17:28.000Z">
+<meta property="og:updated_time" content="2017-03-20T08:11:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Navigation Bars">
 <meta name="twitter:description" content="导航栏可以让您有组织且直观的方式展示应用的内容，navigation bar被显示在屏幕的顶部，并且包含用于浏览屏幕层次的按钮。一个navigation bar 一般包含一个返回按钮，一个标题，和一个右按钮。经常与navigation controller一起使用，当然你可以在你的app里面单独使用。">
@@ -120,12 +120,12 @@ ga('send', 'pageview');
 <p>##Navigation Bars的相关属性</p>
 <p>Bar Style<br>Navigation bars 有两种样式，<br>UIBarStyleDefault：白色透明背景<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879851077.jpg" alt=""></p>
 <p>UIBarStyleBlack<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-14895879951230.jpg" alt=""><br>其中UIBarStyleBlackOpaque 和 UIBarStyleBlackTranslucent已经作废。</p>
-<p>##Tint Color<br>你可以指定自定义的tint color 作为navigation bar的背景颜色，默认的背景颜色是白色。</p>
-<p>另外，你可以设置自定义的tint color，设定的Tint color 将会影响到导航栏的按钮图片和标题的颜色，如果没有设定自定义的tint color那么navigation bar会继承父视图的tint color，如果父视图也没有设置tint color那么默认会使用蓝色。</p>
+<p>##Tint Color<br>你可以指定自定义的<a href="http://www.caohr.com/2017/03/20/TintColor/" target="_blank" rel="external">Tint Color</a> 作为navigation bar的背景颜色，默认的背景颜色是白色。</p>
+<p>另外，你可以设置自定义的<a href="http://www.caohr.com/2017/03/20/TintColor/" target="_blank" rel="external">Tint Color</a> ，设定的<a href="http://www.caohr.com/2017/03/20/TintColor/" target="_blank" rel="external">Tint Color</a>  将会影响到导航栏的按钮图片和标题的颜色，如果没有设定自定义的<a href="http://www.caohr.com/2017/03/20/TintColor/" target="_blank" rel="external">Tint Color</a>  那么navigation bar会继承父视图的<a href="http://www.caohr.com/2017/03/20/TintColor/" target="_blank" rel="external">Tint Color</a>  ，如果父视图也没有设置<a href="http://www.caohr.com/2017/03/20/TintColor/" target="_blank" rel="external">Tint Color</a>  那么默认会使用蓝色。</p>
 <p>##Images<br>你可以为navigation bar自定义背景图片，你可以使用setBackgroundImage:forBarMetrics:.方法，一定要指定metrics的参数，因为在不同的设备上和不同的设备方向上（横屏以及竖屏），navigation bar有不同的尺寸。</p>
 <p>可以通过shadowImage设置navigation bar的自定义阴影图片，一旦你设置了自定义的阴影图片你必须同时也设定背景图片。</p>
 <p>##Translucency<br>iOS7中导航栏默认都是透明的，另外，所有的navigation bars上都有系统模糊效果。他允许你的内容透过navigation bar模糊显示。</p>
-<p>不管是设置了barStyle样式，还是设置了barTintColor的自定义颜色，Translucency默认都是打开的。但是你可以通过将transluency参数设置为no而达到将navigation bar设置为不透明的背景。在这种情况下，无论是UIBarStyleBlack还是UIBarStyleDefault或者是设置了barTintColor都会是不透明的背景。</p>
+<p>不管是设置了barStyle样式，还是设置了bar TintColor的自定义颜色，Translucency默认都是打开的。但是你可以通过将transluency参数设置为no而达到将navigation bar设置为不透明的背景。在这种情况下，无论是UIBarStyleBlack还是UIBarStyleDefault或者是设置了barTintColor都会是不透明的背景。</p>
 <ul>
 <li>如果navigation bar有一个自定义的背景图片，透明度将会从图片的alpha的平均值推算出来。如果平均的alpha值不超过1.0，那么navigation bar默认就会是透明的，如果平均值是1.0那么naivgation bar 默认就是不透明的。</li>
 <li>如果你在背景图片不透明的的navigation bar上把translucency设置为true，那么navigation bar会使这背景图片变得透明。</li>

@@ -100,7 +100,14 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg" alt="001"></p>
+        <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg" alt=""></p>
+<p>苹果在iOS中添加了Tint Color属性，看似不起眼的tintColor属性其实相当的强大，本章介绍怎样在controls里面使用tintColor以及怎么样让他来渲染图片。</p>
+<p><strong>现有iOS控件的Tint Color</strong><br>在iOS7中UIView添加了新的TintColor属性，由改变UIView子类的用来更改应用程序的外观。tintColor默认是没有值，但是他会从继承父视图的tintColor参数值，如果所有的父视图都没有tintColor属性，那么他会被默认设置为蓝色。所以你可以设置root view controller的TintColor属性，从而影响到整个应用的外观。</p>
+<p><strong>tintAdjustmentMode</strong><br>除了能够设置tint Color，UIView还有另外一个属性允许你调暗tint color的颜色。因此他也会调整整个视图结构，这个属性有三种值：UIViewTintAdjustmentModeNormal, UIViewTintAdjustmentModeDimmed，UIViewTintAdjustmentModeAuto. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- tintColorDidChange</div></pre></td></tr></table></figure>
+<p>当tinColor被改变的时候，被系统调用。系统将会调用所有子视图中的tintColorDidChange的方法。所以需要在实现改方法中重绘视图。</p>
+<p>参考资料：<br><a href="https://www.shinobicontrols.com/blog/ios7-day-by-day-day-6-tint-color" target="_blank" rel="external">iOS7 Day-by-Day :: Day 6 :: Tint Color</a></p>
+<p><a href="https://developer.apple.com/reference/uikit/uiview/1622467-tintcolor" target="_blank" rel="external">Apple Doc: Tint Color</a></p>
 
       
     </div>
