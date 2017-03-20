@@ -13,7 +13,13 @@
 <meta property="og:description" content="UIImage对象在App中管理图片数据，使用image对象表示各种类型的图片数据，并且UIImage类能够管理由底层平台支持的所有图像格式的数据。 图像对象是不可变的数据类型。所以你只能创建UIImage对象只能用已经存在的图片数据，例如存在硬盘中的图片或者是通过编码创建的图片数据。一个image对象可能只包含单个image数据也可能会包含很多的图片数据当你打算用来创建动画的时候。">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png">
-<meta property="og:updated_time" content="2017-03-17T07:12:41.000Z">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-19-14899328631619.png">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-19-14899329090353.png">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png">
+<meta property="og:updated_time" content="2017-03-19T14:25:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIImage">
 <meta name="twitter:description" content="UIImage对象在App中管理图片数据，使用image对象表示各种类型的图片数据，并且UIImage类能够管理由底层平台支持的所有图像格式的数据。 图像对象是不可变的数据类型。所以你只能创建UIImage对象只能用已经存在的图片数据，例如存在硬盘中的图片或者是通过编码创建的图片数据。一个image对象可能只包含单个image数据也可能会包含很多的图片数据当你打算用来创建动画的时候。">
@@ -74,7 +80,7 @@ ga('send', 'pageview');
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -116,7 +122,7 @@ ga('send', 'pageview');
 <li>传输图片对象给需要image数据的API。</li>
 </ul>
 <p>虽然图片对象支持平台原生的图片格式，但是还是推荐你使用PNG或者JPEG格式再你的应用中，Image对象对这两种格式的读取和显示都有做相应的优化处理，他们比起其他的格式有更好的表现。因为PNG是无损的图片格式，所以特别推荐你使用在应用的界面中。</p>
-<p><strong>创建图片对象</strong><br>当你创建图片对象的时候，图片的数据是必须是已经存在文件中或者有数据结构中。你不能先创建一个空的图片对象然后再往上面填充内容。这里有很多创建图片对象的方法，根据情况而进行选择。</p>
+<p><strong>创建图片对象</strong><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png" alt="yellowLine-01"><br>当你创建图片对象的时候，图片的数据是必须是已经存在文件中或者有数据结构中。你不能先创建一个空的图片对象然后再往上面填充内容。这里有很多创建图片对象的方法，根据情况而进行选择。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+ (nullable UIImage *)imageNamed:(NSString *)name inBundle:(nullable NSBundle *)bundle compatibleWithTraitCollection:(nullable UITraitCollection *)traitCollection；</div><div class="line">+ (nullable UIImage *)imageNamed:(NSString *)name;</div></pre></td></tr></table></figure>
 <p>使用<code>imageNamed:inBundle:compatibleWithTraitCollection:</code>方法或者<code>imageNamed:</code>从image asset或者你app的main bundle(或者其他的已知的bundle中)中创建图片对象。该方法自动会对图片进行缓存，所以推荐在频繁使用的图片上使用该方法创建图片对象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+ (nullable UIImage *)imageWithContentsOfFile:(NSString *)path;</div><div class="line">- (nullable instancetype)initWithContentsOfFile:(NSString *)path;</div></pre></td></tr></table></figure>
@@ -125,13 +131,18 @@ ga('send', 'pageview');
 <p>这两种方法创建创建由单一图片组成的图片序列，创建的图片对象可以用在UIImageView中来创建动画。</p>
 <p>其他的方法可以让你创建动画通过特俗的数据，例如Core Graphics 图片或者你自己创建的图片数据，UKit同时提供了UIGraphicsGetImageFormCurrentImageContext功能从你的content中绘画的内容中创建图片对象。</p>
 <p>注意:<br>因为图片对象是不可变的数据结构，你不能在创建后更改他们的属性，大部分的图片属性都是自动根据图片数据的metadata信息创建的。可能变的数据结构同事也以为着他的线程是安全的。</p>
-<p><strong>定义可拉伸的图片</strong><br>可拉伸的图片使用在背景可能会被拉伸的情况。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">NS_CLASS_AVAILABLE_IOS(2_0) @interface UIImage : NSObject &lt;NSSecureCoding&gt; </div><div class="line"></div><div class="line">// load from main bundle</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">+ (nullable UIImage *)imageWithData:(NSData *)data;</div><div class="line">+ (nullable UIImage *)imageWithData:(NSData *)data scale:(CGFloat)scale NS_AVAILABLE_IOS(6_0);</div><div class="line">+ (UIImage *)imageWithCGImage:(CGImageRef)cgImage;</div><div class="line">+ (UIImage *)imageWithCGImage:(CGImageRef)cgImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(4_0);</div><div class="line">#if __has_include(&lt;CoreImage/CoreImage.h&gt;)</div><div class="line">+ (UIImage *)imageWithCIImage:(CIImage *)ciImage NS_AVAILABLE_IOS(5_0);</div><div class="line">+ (UIImage *)imageWithCIImage:(CIImage *)ciImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(6_0);</div><div class="line">#endif</div><div class="line"></div><div class="line">- (nullable instancetype)initWithData:(NSData *)data;</div><div class="line">- (nullable instancetype)initWithData:(NSData *)data scale:(CGFloat)scale NS_AVAILABLE_IOS(6_0);</div><div class="line">- (instancetype)initWithCGImage:(CGImageRef)cgImage;</div><div class="line">- (instancetype)initWithCGImage:(CGImageRef)cgImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(4_0);</div><div class="line">#if __has_include(&lt;CoreImage/CoreImage.h&gt;)</div><div class="line">- (instancetype)initWithCIImage:(CIImage *)ciImage NS_AVAILABLE_IOS(5_0);</div><div class="line">- (instancetype)initWithCIImage:(CIImage *)ciImage scale:(CGFloat)scale orientation:(UIImageOrientation)orientation NS_AVAILABLE_IOS(6_0);</div><div class="line">#endif</div><div class="line"></div><div class="line">@property(nonatomic,readonly) CGSize size; // reflects orientation setting. In iOS 4.0 and later, this is measured in points. In 3.x and earlier, measured in pixels</div><div class="line">@property(nullable, nonatomic,readonly) CGImageRef CGImage; // returns underlying CGImageRef or nil if CIImage based</div><div class="line">- (nullable CGImageRef)CGImage NS_RETURNS_INNER_POINTER CF_RETURNS_NOT_RETAINED;</div><div class="line">#if __has_include(&lt;CoreImage/CoreImage.h&gt;)</div><div class="line">@property(nullable,nonatomic,readonly) CIImage *CIImage NS_AVAILABLE_IOS(5_0); // returns underlying CIImage or nil if CGImageRef based</div><div class="line">#endif</div><div class="line">@property(nonatomic,readonly) UIImageOrientation imageOrientation; // this will affect how the image is composited</div><div class="line">@property(nonatomic,readonly) CGFloat scale NS_AVAILABLE_IOS(4_0);</div><div class="line"></div><div class="line">// animated images. When set as UIImageView.image, animation will play in an infinite loop until removed. Drawing will render the first image</div><div class="line"></div><div class="line"></div><div class="line">+ (nullable UIImage *)animatedResizableImageNamed:(NSString *)name capInsets:(UIEdgeInsets)capInsets duration:(NSTimeInterval)duration NS_AVAILABLE_IOS(5_0); // sequence of files</div><div class="line">+ (nullable UIImage *)animatedResizableImageNamed:(NSString *)name capInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode duration:(NSTimeInterval)duration NS_AVAILABLE_IOS(6_0);</div><div class="line"></div><div class="line"></div><div class="line">@property(nullable, nonatomic,readonly) NSArray&lt;UIImage *&gt; *images   NS_AVAILABLE_IOS(5_0); // default is nil for non-animated images</div><div class="line">@property(nonatomic,readonly) NSTimeInterval duration NS_AVAILABLE_IOS(5_0); // total duration for all frames. default is 0 for non-animated images</div><div class="line"></div><div class="line">// the these draw the image &apos;right side up&apos; in the usual coordinate system with &apos;point&apos; being the top-left.</div><div class="line"></div><div class="line">- (void)drawAtPoint:(CGPoint)point;                                                        // mode = kCGBlendModeNormal, alpha = 1.0</div><div class="line">- (void)drawAtPoint:(CGPoint)point blendMode:(CGBlendMode)blendMode alpha:(CGFloat)alpha;</div><div class="line">- (void)drawInRect:(CGRect)rect;                                                           // mode = kCGBlendModeNormal, alpha = 1.0</div><div class="line">- (void)drawInRect:(CGRect)rect blendMode:(CGBlendMode)blendMode alpha:(CGFloat)alpha;</div><div class="line"></div><div class="line">- (void)drawAsPatternInRect:(CGRect)rect; // draws the image as a CGPattern</div><div class="line"></div><div class="line">- (UIImage *)resizableImageWithCapInsets:(UIEdgeInsets)capInsets NS_AVAILABLE_IOS(5_0); // create a resizable version of this image. the interior is tiled when drawn.</div><div class="line">- (UIImage *)resizableImageWithCapInsets:(UIEdgeInsets)capInsets resizingMode:(UIImageResizingMode)resizingMode NS_AVAILABLE_IOS(6_0); // the interior is resized according to the resizingMode</div><div class="line"></div><div class="line">@property(nonatomic,readonly) UIEdgeInsets capInsets               NS_AVAILABLE_IOS(5_0);   // default is UIEdgeInsetsZero for non resizable images</div><div class="line">@property(nonatomic,readonly) UIImageResizingMode resizingMode NS_AVAILABLE_IOS(6_0); // default is UIImageResizingModeTile</div><div class="line"></div><div class="line">// Support for constraint-based layout (auto layout)</div><div class="line">// The alignmentRectInsets of a UIImage are used by UIImageView and other UIView and UIControl</div><div class="line">//  subclasses that take custom images to determine the view&apos;s alignment rect insets for</div><div class="line">//  constraint-based layout.</div><div class="line">// The default alignmentRectInsets are UIEdgeInsetsZero.</div><div class="line">- (UIImage *)imageWithAlignmentRectInsets:(UIEdgeInsets)alignmentInsets NS_AVAILABLE_IOS(6_0);</div><div class="line">@property(nonatomic,readonly) UIEdgeInsets alignmentRectInsets NS_AVAILABLE_IOS(6_0);</div><div class="line"></div><div class="line">// Create a version of this image with the specified rendering mode. By default, images have a rendering mode of UIImageRenderingModeAutomatic.</div><div class="line">- (UIImage *)imageWithRenderingMode:(UIImageRenderingMode)renderingMode NS_AVAILABLE_IOS(7_0);</div><div class="line">@property(nonatomic, readonly) UIImageRenderingMode renderingMode NS_AVAILABLE_IOS(7_0);</div><div class="line"></div><div class="line">#if __has_include(&lt;UIKit/UIGraphicsImageRenderer.h&gt;)</div><div class="line">// Returns an optimal UIGraphicsImageRendererFormat instance for this image, maintaining pixel format and color space.</div><div class="line">@property (nonatomic, readonly) UIGraphicsImageRendererFormat *imageRendererFormat NS_AVAILABLE_IOS(10_0);</div><div class="line">#endif</div><div class="line"></div><div class="line">#if __has_include(&lt;UIKit/UITraitCollection.h&gt;)</div><div class="line">@property (nonatomic, readonly, copy) UITraitCollection *traitCollection NS_AVAILABLE_IOS(8_0); // describes the image in terms of its traits</div><div class="line">@property (nullable, nonatomic, readonly) UIImageAsset *imageAsset NS_AVAILABLE_IOS(8_0); // The asset is not encoded along with the image. Returns nil if the image is not CGImage based.</div><div class="line">#endif</div><div class="line"></div><div class="line">// Creates a version of this image that, when assigned to a UIImageView’s image property, draws its underlying image contents horizontally mirrored when running under a right-to-left language. Affects the flipsForRightToLeftLayoutDirection property; does not affect the imageOrientation property.</div><div class="line">// This method cannot be used to create a left-to-right version of a right-to-left source image, and will be deprecated in a future release. New code should instead use -imageWithHorizontallyFlippedOrientation to construct a UIImageAsset.</div><div class="line">- (UIImage *)imageFlippedForRightToLeftLayoutDirection NS_AVAILABLE_IOS(9_0);</div><div class="line">@property (nonatomic, readonly) BOOL flipsForRightToLeftLayoutDirection NS_AVAILABLE_IOS(9_0);</div><div class="line"></div><div class="line">// Creates a version of this image with an imageOrientation property that is horizontally mirrored from this image’s. Does not affect the flipsForRightToLeftLayoutDirection property.</div><div class="line">- (UIImage *)imageWithHorizontallyFlippedOrientation NS_AVAILABLE_IOS(10_0);</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-
+<p><strong>定义可拉伸的图片</strong><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png" alt="yellowLine-01"><br>可拉伸的图片常用语聊天功能中给信息添加背景，因为文字内容的不一致，所以使用到的背景图片也会不一样。通过定义拉伸的区域，来实现不同大小的背景图片。<br>通过 <code>resizableImageWithCapInsets:</code> or <code>resizableImageWithCapInsets:resizingMode</code> 两种方法来定义可拉伸的图片。<br>使用insets参数来定义拉伸的区域：<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-19-14899328631619.png" alt=""></p>
+<p>9个区域总图片会被拉伸的部分：<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-19-14899329090353.png" alt=""></p>
+<p><strong>比较图片</strong><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png" alt="yellowLine-01"><br><code>isEqual</code>是唯一一个能比较图片内容是否一致的方法，直接使用==是不能判断两个图片的对象的内容是否一致。</p>
+<p><strong>相关属性</strong><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-17-yellowLine-01.png" alt="yellowLine-01"><br><strong>renderingMode</strong>: 申明图片怎样被渲染。枚举包含三种渲染模式。</p>
+<pre><code>*  UIImageRenderingModeAutomatic：使用图片默认的渲染模式。
+*  UIImageRenderingModeAlwaysOriginal,：使用图片原始的渲染模式。
+*  UIImageRenderingModeAlwaysTemplate,：忽略图片自身的颜色信息，使用模板提供的颜色信息。（导航栏设设置的左按钮会默认变蓝色就是因为使用了模板的颜色）
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/17/UIImage/" data-id="cj0dgcxjx0001tun2llcaat8h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/17/UIImage/" data-id="cj0dgcxjx0001tun2llcaat8h" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -141,7 +152,7 @@ ga('send', 'pageview');
 <nav id="article-nav">
   
     <a href="/2017/03/17/NSString/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           NSString
@@ -151,7 +162,7 @@ ga('send', 'pageview');
   
   
     <a href="/2017/03/15/Git/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">Git</div>
     </a>
   
@@ -174,7 +185,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
@@ -184,9 +195,13 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/20/UIVisualEffectView/">UIVisualEffectView</a>
+          </li>
         
           <li>
             <a href="/2017/03/17/位运算符中枚举中应用/">iOS运算符中枚举中应用</a>
@@ -202,10 +217,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2017/03/15/Git/">Git</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/15/Navigation Bars/">Navigation Bars</a>
           </li>
         
       </ul>
