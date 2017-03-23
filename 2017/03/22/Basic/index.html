@@ -6,23 +6,20 @@
   <title>Basic | Huanrong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="IBInspectable
-在变量类型前加IBInspectable，那么可以在xib中直接通过UserDefined Runtime Attributes给该变量设置属性。
-123@interface HRView : UIView@property (nonatomic, strong) IBInspectable UIColor *hrColor;@end">
+在变量类型前加IBInspectable，那么可以在xib中直接通过UserDefined Runtime Attributes给该变量设置属性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Basic">
 <meta property="og:url" content="http://yoursite.com/2017/03/22/Basic/index.html">
 <meta property="og:site_name" content="Huanrong">
 <meta property="og:description" content="IBInspectable
-在变量类型前加IBInspectable，那么可以在xib中直接通过UserDefined Runtime Attributes给该变量设置属性。
-123@interface HRView : UIView@property (nonatomic, strong) IBInspectable UIColor *hrColor;@end">
+在变量类型前加IBInspectable，那么可以在xib中直接通过UserDefined Runtime Attributes给该变量设置属性。">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-22-14901718495327.jpg">
-<meta property="og:updated_time" content="2017-03-22T08:39:53.000Z">
+<meta property="og:updated_time" content="2017-03-23T09:40:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Basic">
 <meta name="twitter:description" content="IBInspectable
-在变量类型前加IBInspectable，那么可以在xib中直接通过UserDefined Runtime Attributes给该变量设置属性。
-123@interface HRView : UIView@property (nonatomic, strong) IBInspectable UIColor *hrColor;@end">
+在变量类型前加IBInspectable，那么可以在xib中直接通过UserDefined Runtime Attributes给该变量设置属性。">
 <meta name="twitter:image" content="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Huanrong" type="application/atom+xml">
@@ -78,9 +75,9 @@ ga('send', 'pageview');
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -114,13 +111,16 @@ ga('send', 'pageview');
         <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-15-001-1.jpg" alt=""></p>
 <p><strong>IBInspectable</strong></p>
 <p>在变量类型前加<em>IBInspectable</em>，那么可以在xib中直接通过UserDefined Runtime Attributes给该变量设置属性。</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface HRView : UIView</div><div class="line">@property (nonatomic, strong) IBInspectable UIColor *hrColor;</div><div class="line">@end</div></pre></td></tr></table></figure>
 <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-03-22-14901718495327.jpg" alt=""></p>
+<p><strong>IB_DESIGNABLE</strong><br>在自定义的类前面加上IB_DESIGNABLE并配合IBInspectable可以实现在xib中修改的参数直接得到显示结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">IB_DESIGNABLE</div><div class="line">@interface HRView : UIView</div><div class="line">@property (nonatomic, strong) IBInspectable UIColor *hrColor;</div><div class="line">@end</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/22/Basic/" data-id="cj0kpy0fc0001v0n21js01tpj" class="article-share-link">Поделиться</a>
+      <a data-url="http://yoursite.com/2017/03/22/Basic/" data-id="cj0kpy0fc0001v0n21js01tpj" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -131,7 +131,7 @@ ga('send', 'pageview');
   
   
     <a href="/2017/03/20/UIControl/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Предыдущий</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">UIControl</div>
     </a>
   
@@ -154,7 +154,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Архив</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
@@ -164,7 +164,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Недавние записи</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
@@ -201,7 +201,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Huanrong Cao<br>
-      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
