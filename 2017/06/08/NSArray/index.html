@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Caohr">
 <meta property="og:description" content="关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证对象是否存在 * 获取集合中单个对象 可以修改的集合共同的特性： * 添加对象到集合中 * 删除集合中的对象  Arr">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-06-08-14969098766853.png">
-<meta property="og:updated_time" content="2017-06-08T08:27:29.000Z">
+<meta property="og:updated_time" content="2017-06-08T08:32:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Collections Programming Topics">
 <meta name="twitter:description" content="关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证对象是否存在 * 获取集合中单个对象 可以修改的集合共同的特性： * 添加对象到集合中 * 删除集合中的对象  Arr">
@@ -349,7 +349,7 @@
 <li>允许通过索引访问元素</li>
 </ol>
 </li>
-<li><p><strong>Dictionary</strong></p>
+<li><p><strong>Dictionaries</strong></p>
 <ol>
 <li>无序结合</li>
 <li>允许通过键值访问元素</li>
@@ -357,7 +357,12 @@
 <li>通过键值排序的时候非常有用</li>
 </ol>
 </li>
+<li><p><strong>Sets</strong></p>
+</li>
 </ul>
+<p>##Array</p>
+<p>###范围</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *dateArray1 = @[<span class="string">@"cao"</span>, <span class="string">@"huan"</span>, <span class="string">@"rong"</span>];</div><div class="line"><span class="built_in">NSArray</span> *dateArray2 = @[<span class="string">@"cao"</span>, <span class="string">@"caoo"</span>, <span class="string">@"rong"</span>];</div><div class="line"></div><div class="line"><span class="comment">//根据范围截取数组</span></div><div class="line"><span class="built_in">NSArray</span> *newArray = [dateArray1 subarrayWithRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">1</span>)];</div><div class="line"></div><div class="line"><span class="built_in">NSString</span> *newStr = [dateArray1 componentsJoinedByString:<span class="string">@"@"</span>];</div><div class="line"><span class="comment">//cao@huan@rong将数组中的字符拼接到一起然后添加自定义的字符</span></div></pre></td></tr></table></figure>
 <p><strong>参考链接</strong><br><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Collections.html" target="_blank" rel="external">Collections Programming Topics</a></p>
 
       
