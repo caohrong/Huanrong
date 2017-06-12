@@ -526,7 +526,7 @@ I would as soon do it by myself．
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/NSArray/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/Objective-C/Collections Programming Topics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HuanrongCao">
@@ -545,7 +545,7 @@ I would as soon do it by myself．
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/08/NSArray/" itemprop="url">Collections Programming Topics</a></h1>
+                <a class="post-title-link" href="/2017/06/08/Objective-C/Collections Programming Topics/" itemprop="url">Collections Programming Topics</a></h1>
         
 
         <div class="post-meta">
@@ -598,9 +598,9 @@ I would as soon do it by myself．
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/08/NSArray/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/08/Objective-C/Collections Programming Topics/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/08/NSArray/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/08/Objective-C/Collections Programming Topics/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -666,7 +666,16 @@ I would as soon do it by myself．
 <li><p><strong>Index Paths</strong><br>  <img src="http://o95nbyrid.bkt.clouddn.com/2017-06-08-14969119359259.png" alt=""></p>
 </li>
 </ul>
-<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *dateArray1= @[<span class="string">@"one"</span>, <span class="string">@"two"</span>, <span class="string">@"three"</span>];</div><div class="line"></div><div class="line"><span class="comment">//根据范围截取数组</span></div><div class="line"><span class="built_in">NSArray</span> *newArray = [dateArray subarrayWithRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">1</span>)];</div><div class="line"><span class="built_in">NSString</span> *newStr = [dateArray componentsJoinedByString:<span class="string">@"@"</span>];</div><div class="line"><span class="comment">//one@two@three将数组中的字符拼接到一起然后添加自定义的字符</span></div></pre></td></tr></table></figure>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>Array中包含的对象可以是不同类型的对象</p>
+<p>###Array基础<br>NSArray对象是不可修改的对象，也就是说array一旦被创建以后你不能添加、删除、或者替换对象，但是你可以单独修改里面对象，如果改对象是可以修改的话。</p>
+<p>NSMutableArray是可以被修改的array，允许添加或者删除，当你需要的时候分配新的内存。如果数组产生了渐变或者非常大的变化，那么应该使用可变数组，因为大结合需要更多的时间进行初始化。</p>
+<p>###初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">//语法糖</div><div class="line">NSArray *dateArray1 = @[@&quot;i&quot;, @&quot;o&quot;, @&quot;s&quot;];</div><div class="line"></div><div class="line">//通过一个已经存在的Array创建新的Array</div><div class="line">NSArray *date1 = [NSArray arrayWithArray:dateArray1];</div><div class="line">NSArray *date2 = [[NSArray alloc] initWithArray:dateArray1];</div><div class="line"></div><div class="line">NSMutableArray *date3 = [NSMutableArray arrayWithArray:dateArray1];</div><div class="line">NSMutableArray *date4 = [[NSMutableArray alloc] initWithArray:dateArray1];</div><div class="line"></div><div class="line">//将NSArray转变成可以编辑的NSMutableArray</div><div class="line">NSMutableArray *date5 = [NSMutableArray arrayWithArray:dateArray1];</div><div class="line"></div><div class="line">//从array中创建新的array并且拷贝其中的对象。</div><div class="line">NSMutableArray *date6 = [[NSMutableArray alloc] initWithArray:dateArray1 copyItems:true];</div><div class="line">NSArray *date7 = [[NSArray alloc] initWithArray:dateArray1 copyItems:true];</div><div class="line"></div><div class="line"> //获取array中所有元素的个数</div><div class="line">NSUInteger count = dateArray1.count;</div><div class="line">//获取相应索引位对应的对象</div><div class="line">NSString *object1 = [dateArray1 objectAtIndex:0];</div><div class="line">NSString *object2 = dateArray1[0];</div></pre></td></tr></table></figure>
+<p>注意：Most operations on an array take constant time: accessing an element, adding or removing an element at either end, and replacing an element. Inserting an element into the middle of an array takes linear time.</p>
+<p>###MutableArrays<br>在MutableArray中，主要的方法提供了基本的添加、替换和删除元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">addObject:</div><div class="line">insertObject:atIndex: </div><div class="line">removeLastObject </div><div class="line">removeObjectAtIndex: </div><div class="line">replaceObjectAtIndex:withObject:</div></pre></td></tr></table></figure>
+<p>操作特殊位置的元素比通过<code>addObject:</code>和<code>removeLastObject</code>方法操作最后一个元素要更耗时间。</p>
+<h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *dateArray1= @[<span class="string">@"one"</span>, <span class="string">@"two"</span>, <span class="string">@"three"</span>];</div><div class="line"></div><div class="line"><span class="comment">//根据范围截取数组</span></div><div class="line"><span class="built_in">NSArray</span> *newArray = [dateArray subarrayWithRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">1</span>)];</div><div class="line"><span class="built_in">NSString</span> *newStr = [dateArray componentsJoinedByString:<span class="string">@"@"</span>];</div><div class="line"><span class="comment">//one@two@three将数组中的字符拼接到一起然后添加自定义的字符</span></div></pre></td></tr></table></figure>
 <p><strong>参考链接</strong><br><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Collections.html" target="_blank" rel="external">Collections Programming Topics</a></p>
 
           
