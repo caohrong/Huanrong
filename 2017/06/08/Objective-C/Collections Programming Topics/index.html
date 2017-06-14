@@ -93,19 +93,19 @@
 
 
 
-<meta name="description" content="关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证对象是否存在 * 获取集合中单个对象 可以修改的集合共同的特性： * 添加对象到集合中 * 删除集合中的对象    集">
+<meta name="description" content="本篇文章翻译至苹果Collections Programming Topics官方文档，如果错误请在评论中指正谢谢。 关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证">
 <meta name="keywords" content="Objective-C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Collections Programming Topics">
 <meta property="og:url" content="http://yoursite.com/2017/06/08/Objective-C/Collections Programming Topics/index.html">
 <meta property="og:site_name" content="Caohr">
-<meta property="og:description" content="关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证对象是否存在 * 获取集合中单个对象 可以修改的集合共同的特性： * 添加对象到集合中 * 删除集合中的对象    集">
+<meta property="og:description" content="本篇文章翻译至苹果Collections Programming Topics官方文档，如果错误请在评论中指正谢谢。 关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-06-08-14969098766853.png">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-06-08-14969119359259.png">
-<meta property="og:updated_time" content="2017-06-14T02:05:57.000Z">
+<meta property="og:updated_time" content="2017-06-14T02:08:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Collections Programming Topics">
-<meta name="twitter:description" content="关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证对象是否存在 * 获取集合中单个对象 可以修改的集合共同的特性： * 添加对象到集合中 * 删除集合中的对象    集">
+<meta name="twitter:description" content="本篇文章翻译至苹果Collections Programming Topics官方文档，如果错误请在评论中指正谢谢。 关于集合Cocoa Touch中有array、dictionary和set集合类型  所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray） 共同的特性： * 枚举集合中的对象 * 验证">
 <meta name="twitter:image" content="http://o95nbyrid.bkt.clouddn.com/2017-06-08-14969098766853.png">
 
 
@@ -406,7 +406,8 @@
       
 
       
-        <h1 id="关于集合"><a href="#关于集合" class="headerlink" title="关于集合"></a>关于集合</h1><p>Cocoa Touch中有array、dictionary和set集合类型</p>
+        <p>本篇文章翻译至苹果<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Collections.html" target="_blank" rel="external">Collections Programming Topics</a>官方文档，如果错误请在评论中指正谢谢。</p>
+<h1 id="关于集合"><a href="#关于集合" class="headerlink" title="关于集合"></a>关于集合</h1><p>Cocoa Touch中有array、dictionary和set集合类型</p>
 <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-06-08-14969098766853.png" alt=""></p>
 <p>所有的集合都有几下共同的特性，多数集合都只允许存放object对象并且都有可修改和不可修改两种类型(NSArray 和 NSMutableArray）</p>
 <p><strong>共同的特性：</strong></p>
@@ -463,7 +464,7 @@
 <p><code>NSArray</code>中的<code>objectEnumerator</code>和<code>reverseObjectEnumerator</code>获取访问序列数组，</p>
 <h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">NSArray *dateArray1 = @[@&quot;red&quot;, @&quot;blue&quot;, @&quot;yellow&quot;];</div><div class="line">NSArray *dateArray2 = @[@&quot;red&quot;, @&quot;redd&quot;, @&quot;yellow&quot;];</div><div class="line"></div><div class="line">//比较两个数组是否相等</div><div class="line">BOOL result = [dateArray1 isEqualToArray:dateArray2];</div><div class="line"></div><div class="line">//遍历dateArray1的元素，然后与dateArray2中的每个元素匹配，找到相同的则返回该对象。</div><div class="line">NSString *str = [dateArray1 firstObjectCommonWithArray:dateArray2];</div><div class="line"></div><div class="line">NSString *str1 = @&quot;blue&quot;;</div><div class="line">NSString *str2 = @&quot;red&quot;;</div><div class="line">NSString *str3 = [NSString stringWithFormat:@&quot;%@&quot;, str2];</div><div class="line"></div><div class="line">NSArray *array1 = @[str1, str3, str2];</div><div class="line">NSUInteger index1 = [array1 indexOfObject:str2];  //判断内容是否相同</div><div class="line">NSUInteger index2 = [array1 indexOfObjectIdenticalTo:str2]; //判断是否为同一对象</div><div class="line">结果index1为1，index2的结果为2。</div></pre></td></tr></table></figure>
 <h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *dateArray1= @[<span class="string">@"one"</span>, <span class="string">@"two"</span>, <span class="string">@"three"</span>];</div><div class="line"></div><div class="line"><span class="comment">//根据范围截取数组</span></div><div class="line"><span class="built_in">NSArray</span> *newArray = [dateArray subarrayWithRange:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, <span class="number">1</span>)];</div><div class="line"><span class="built_in">NSString</span> *newStr = [dateArray componentsJoinedByString:<span class="string">@"@"</span>];</div><div class="line"><span class="comment">//one@two@three将数组中的字符拼接到一起然后添加自定义的字符</span></div></pre></td></tr></table></figure>
-<p><strong>参考链接</strong><br><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Collections/Collections.html" target="_blank" rel="external">Collections Programming Topics</a></p>
+<p><strong>参考链接</strong></p>
 
       
     </div>
