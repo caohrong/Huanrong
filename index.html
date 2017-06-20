@@ -552,7 +552,8 @@
       
         
           
-            <p><code>Shell</code>脚本（英语：Shell script）是一种电脑程序与文本文件，内容由一连串的shell命令组成，经由Unix Shell直译其内容后运作。被当成是一种脚本语言来设计，其运作方式与直译语言相当，由Unix shell扮演命令行解释器的角色，在读取shell script之后，依序运行其中的shell命令，之后输出结果。利用Shell script可以进行系统管理，文件操作等。</p>
+            <a id="more"></a>
+<p><code>Shell</code>脚本（英语：Shell script）是一种电脑程序与文本文件，内容由一连串的shell命令组成，经由Unix Shell直译其内容后运作。被当成是一种脚本语言来设计，其运作方式与直译语言相当，由Unix shell扮演命令行解释器的角色，在读取shell script之后，依序运行其中的shell命令，之后输出结果。利用Shell script可以进行系统管理，文件操作等。</p>
 <p>通过Shee制作自动生成hexo网站和提交到GihHub中</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">CMD_PATH</span>=`dirname $<span class="number">0</span>`</div><div class="line">cd hexo public loaction</div><div class="line">hexo g</div><div class="line"></div><div class="line">git add .</div><div class="line">git status</div><div class="line">git commit -m <span class="string">"ok"</span></div><div class="line">git push</div><div class="line">exit <span class="number">0</span></div></pre></td></tr></table></figure>
 <p><a href="http://tldp.org/LDP/abs/html/" target="_blank" rel="external">Advanced Bash-Scripting Guide</a></p>
