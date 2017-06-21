@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="引言Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为公共Pod库和私有Pod库公共Pod库: 由Cocoapod提供 地址为:https://github.com/CocoaPods/Specs.git 添加到该仓库中的第三方库都需要Cocoapod审核。私有">
+<meta name="description" content="引言Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为公共Pod库和私有Pod库公共Pod库: 由Cocoapod提供 地址为:https://github.com/CocoaPods/Specs.git 添加到该仓库中的第三方库都需要Cocoapod审核。私有P">
 <meta name="keywords" content="工具,git,Cocoapod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="创建自己私有的Cocoapod">
 <meta property="og:url" content="http://yoursite.com/2017/06/19/利器/Git/Cocoapod/index.html">
 <meta property="og:site_name" content="Caohr">
-<meta property="og:description" content="引言Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为公共Pod库和私有Pod库公共Pod库: 由Cocoapod提供 地址为:https://github.com/CocoaPods/Specs.git 添加到该仓库中的第三方库都需要Cocoapod审核。私有">
-<meta property="og:updated_time" content="2017-06-20T08:45:37.000Z">
+<meta property="og:description" content="引言Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为公共Pod库和私有Pod库公共Pod库: 由Cocoapod提供 地址为:https://github.com/CocoaPods/Specs.git 添加到该仓库中的第三方库都需要Cocoapod审核。私有P">
+<meta property="og:updated_time" content="2017-06-21T00:34:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建自己私有的Cocoapod">
-<meta name="twitter:description" content="引言Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为公共Pod库和私有Pod库公共Pod库: 由Cocoapod提供 地址为:https://github.com/CocoaPods/Specs.git 添加到该仓库中的第三方库都需要Cocoapod审核。私有">
+<meta name="twitter:description" content="引言Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为公共Pod库和私有Pod库公共Pod库: 由Cocoapod提供 地址为:https://github.com/CocoaPods/Specs.git 添加到该仓库中的第三方库都需要Cocoapod审核。私有P">
 
 
 
@@ -403,10 +403,9 @@
       
 
       
-        <a id="more"></a>
-<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为<code>公共Pod库</code>和<code>私有Pod库</code><br><strong>公共Pod库</strong>: 由Cocoapod提供 地址为:<code>https://github.com/CocoaPods/Specs.git</code> 添加到该仓库中的第三方库都需要Cocoapod审核。<br><strong>私有Pod库</strong>: 通过申请Github提供自定义的仓库地址。</p>
-<p>##创建私有库</p>
-<h3 id="创建Git仓库来做内部私有库的Spec-Repo"><a href="#创建Git仓库来做内部私有库的Spec-Repo" class="headerlink" title="创建Git仓库来做内部私有库的Spec Repo"></a>创建Git仓库来做内部私有库的Spec Repo</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo add nameSpecs gitAdress</div></pre></td></tr></table></figure>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为<code>公共Pod库</code>和<code>私有Pod库</code><br><strong>公共Pod库</strong>: 由Cocoapod提供 地址为:<code>https://github.com/CocoaPods/Specs.git</code> 添加到该仓库中的第三方库都需要Cocoapod审核。<br><strong>私有Pod库</strong>: 通过申请Github提供自定义的仓库地址。</p>
+<a id="more"></a>
+<h2 id="创建私有库"><a href="#创建私有库" class="headerlink" title="创建私有库"></a>创建私有库</h2><h3 id="创建Git仓库来做内部私有库的Spec-Repo"><a href="#创建Git仓库来做内部私有库的Spec-Repo" class="headerlink" title="创建Git仓库来做内部私有库的Spec Repo"></a>创建Git仓库来做内部私有库的Spec Repo</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo add nameSpecs gitAdress</div></pre></td></tr></table></figure>
 <p><strong>nameSpecs</strong>: 仓库名称<br><strong>gitAddress</strong>：用于创建私有Pod库管理项目地址</p>
 <p>将nameSpecs提交到本地repo，添加成功后在<code>/.cocoapods/repos/</code>目录下可以看到官方的<code>master</code>和新加的名字为<code>nameSpecs</code></p>
 <h3 id="创建私有Pod组件库"><a href="#创建私有Pod组件库" class="headerlink" title="创建私有Pod组件库"></a>创建私有Pod组件库</h3><p>通过Cocoapod模板创建</p>
@@ -627,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Git仓库来做内部私有库的Spec-Repo"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建Git仓库来做内部私有库的Spec Repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建私有Pod组件库"><span class="nav-number">1.0.2.</span> <span class="nav-text">创建私有Pod组件库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建私有Pod组件库Tag"><span class="nav-number">1.0.3.</span> <span class="nav-text">创建私有Pod组件库Tag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传前检查私有Pod组件库"><span class="nav-number">1.0.4.</span> <span class="nav-text">上传前检查私有Pod组件库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交版本"><span class="nav-number">1.0.5.</span> <span class="nav-text">提交版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加私有库到项目中"><span class="nav-number">1.0.6.</span> <span class="nav-text">添加私有库到项目中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建公开库"><span class="nav-number">1.1.</span> <span class="nav-text">创建公开库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">1.2.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cocoapod文件配置"><span class="nav-number">1.2.1.</span> <span class="nav-text">cocoapod文件配置</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建私有库"><span class="nav-number">1.1.</span> <span class="nav-text">创建私有库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Git仓库来做内部私有库的Spec-Repo"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建Git仓库来做内部私有库的Spec Repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建私有Pod组件库"><span class="nav-number">1.1.2.</span> <span class="nav-text">创建私有Pod组件库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建私有Pod组件库Tag"><span class="nav-number">1.1.3.</span> <span class="nav-text">创建私有Pod组件库Tag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传前检查私有Pod组件库"><span class="nav-number">1.1.4.</span> <span class="nav-text">上传前检查私有Pod组件库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交版本"><span class="nav-number">1.1.5.</span> <span class="nav-text">提交版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加私有库到项目中"><span class="nav-number">1.1.6.</span> <span class="nav-text">添加私有库到项目中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建公开库"><span class="nav-number">1.2.</span> <span class="nav-text">创建公开库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">1.3.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cocoapod文件配置"><span class="nav-number">1.3.1.</span> <span class="nav-text">cocoapod文件配置</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
