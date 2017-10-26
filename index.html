@@ -87,8 +87,56 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090008222889.jpg" alt=""><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090015197941.jpg" alt=""><br><code>AVCaptureDevice</code>:实例代表输入设备例如摄像头和麦克风<br><code>AVCaptureInput</code>:实例代表用户配置输入设备的端口<br><code>AVCaptureOutput</code>:实例代表管理输出为一个视频文件或者一张静态图<br><code>AVCaptureSession</code>:实例代表定位输入和输出之间的数据流</p>
-<p><a href="https://developer.apple.com/library/content/samplecode/AVCam/Introduction/Intro.html#//apple_ref/doc/uid/DTS40010112" target="_blank" rel="external">官方示例项目</a><br><a href="http://www.jianshu.com/p/f110bf6e0471" target="_blank" rel="external">CMTime介绍</a></p>
+        <h2 id="静态图片和视频的捕捉"><a href="#静态图片和视频的捕捉" class="headerlink" title="静态图片和视频的捕捉"></a>静态图片和视频的捕捉</h2><p><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090008222889.jpg" alt=""><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090015197941.jpg" alt=""><br><code>AVCaptureDevice</code>:实例代表输入设备例如摄像头和麦克风<br><code>AVCaptureInput</code>:实例代表用户配置输入设备的端口<br><code>AVCaptureOutput</code>:实例代表管理输出为一个视频文件或者一张静态图<br><code>AVCaptureSession</code>:实例代表定位输入和输出之间的数据流</p>
+<h3 id="使用Session定位数据流"><a href="#使用Session定位数据流" class="headerlink" title="使用Session定位数据流"></a>使用Session定位数据流</h3><h4 id="配置Session"><a href="#配置Session" class="headerlink" title="配置Session"></a>配置Session</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVCaptureSession</span> *session = [[<span class="built_in">AVCaptureSession</span> alloc] init];</div><div class="line"><span class="comment">//添加输入和输出</span></div><div class="line">[session startRunning];</div></pre></td></tr></table></figure>
+<p>使用session参数的<code>sessionPreset</code>来指定你想要的图片质量。</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>分辨率</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AVCaptureSessionPresetHight</td>
+<td>High</td>
+<td>高录制质量</td>
+</tr>
+<tr>
+<td>AVCaptureSessionPresetMedium</td>
+<td>Medium</td>
+<td>适合Wi-Fi共享</td>
+</tr>
+<tr>
+<td>AVCaptureSessionPresetLow</td>
+<td>Low</td>
+<td>适合3G共享</td>
+</tr>
+<tr>
+<td>AVCaptureSessionPreset640x480</td>
+<td>640x480</td>
+<td>VGA.</td>
+</tr>
+<tr>
+<td>AVCaptureSessionPreset1280x720</td>
+<td>1280x720</td>
+<td>720p HD.</td>
+</tr>
+<tr>
+<td>AVCaptureSessionPresetPhoto</td>
+<td>Photo</td>
+<td>完全图片分辨率,不支持视频输出</td>
+</tr>
+</tbody>
+</table>
+<p>在设置媒体帧之前检查是否支持</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ([<span class="keyword">self</span>.captureSession canSetSessionPreset:<span class="built_in">AVCaptureSessionPreset1280x720</span>]) &#123;</div><div class="line">    <span class="keyword">self</span>.captureSession.sessionPreset = <span class="built_in">AVCaptureSessionPreset1280x720</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<code>[session beginConfiguration]</code>和<code>[session commitConfiguration]</code>中间修改session参数。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.captureSession beginConfiguration];</div><div class="line"><span class="comment">//修改配置</span></div><div class="line">[<span class="keyword">self</span>.captureSession commitConfiguration];</div></pre></td></tr></table></figure>
+<p>监控Session的状态<br>可以通过在主线程上监听<code>AVCaptureSessionRuntimeErrorNotification</code>来捕获session的开始和停止以及被打断的状态。如果发生了错误你也可以KVO来监听session的running和interrupted属性。</p>
+<h2 id="AVCaptureDevice代表输入设备"><a href="#AVCaptureDevice代表输入设备" class="headerlink" title="AVCaptureDevice代表输入设备"></a>AVCaptureDevice代表输入设备</h2><p><a href="https://developer.apple.com/library/content/samplecode/AVCam/Introduction/Intro.html#//apple_ref/doc/uid/DTS40010112" target="_blank" rel="external">官方示例项目</a><br><a href="http://www.jianshu.com/p/f110bf6e0471" target="_blank" rel="external">CMTime介绍</a></p>
 
       
     </div>
