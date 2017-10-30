@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,7 @@
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
 
 
@@ -36,36 +37,11 @@
 
 
 
+
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,7 +50,22 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -82,11 +73,6 @@
 
 
 
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="//Users/Caohr/Library/Mobile Documents/iCloud~com~coderforart~iOS~MWeb/Documents/Blog/caohr.png?v=5.1.1" />
 
 
 
@@ -107,12 +93,14 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: 'Autore'
     },
     algolia: {
       applicationID: '',
@@ -133,34 +121,18 @@
 
 
   <title>Huanrong</title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
-
   
 
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-61905451-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
 
 
+</head>
 
-
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
 
   
   
@@ -168,8 +140,7 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -185,7 +156,7 @@
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">You pile up enough tormorrows and you'll be left with nothing but a lot of empty yesterdays.</h1>
+        <p class="site-subtitle">You pile up enough tormorrows and you'll be left with nothing but a lot of empty yesterdays.</p>
       
   </div>
 
@@ -215,62 +186,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-english">
-          <a href="/categories/English/index.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            menu.english
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-objective-c">
-          <a href="/categories/Objective-C/index.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
-            
-            menu.objective-C
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
+            Archivi
           </a>
         </li>
       
@@ -302,13 +223,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/Objective-C/编程/MVVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -320,9 +245,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/20/Objective-C/编程/MVVM/" itemprop="url">MVVM</a></h2>
+                <a class="post-title-link" href="/2017/06/20/Objective-C/编程/MVVM/" itemprop="url">MVVM</a></h1>
         
 
         <div class="post-meta">
@@ -332,9 +257,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T14:46:21+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-20T14:46:21+08:00">
                 2017-06-20
               </time>
             
@@ -370,17 +295,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/20/Objective-C/编程/MVVM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/20/Objective-C/编程/MVVM/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -396,6 +310,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -410,18 +327,15 @@
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -435,6 +349,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -447,13 +365,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/利器/Mac Shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -465,9 +387,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/20/利器/Mac Shell/" itemprop="url">Shell</a></h2>
+                <a class="post-title-link" href="/2017/06/20/利器/Mac Shell/" itemprop="url">Shell</a></h1>
         
 
         <div class="post-meta">
@@ -477,9 +399,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:19:54+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-20T11:19:54+08:00">
                 2017-06-20
               </time>
             
@@ -515,17 +437,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/20/利器/Mac Shell/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/20/利器/Mac Shell/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -541,6 +452,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -551,26 +465,23 @@
           <p><code>Shell</code>脚本（英语：Shell script）是一种电脑程序与文本文件，内容由一连串的shell命令组成，经由Unix Shell直译其内容后运作。被当成是一种脚本语言来设计，其运作方式与直译语言相当，由Unix shell扮演命令行解释器的角色，在读取shell script之后，依序运行其中的shell命令，之后输出结果。利用Shell script可以进行系统管理，文件操作等。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/20/利器/Mac Shell/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/20/利器/Mac Shell/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -584,6 +495,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -596,13 +511,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/Objective-C/Github/ReactiveCocoa/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -614,9 +533,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/20/Objective-C/Github/ReactiveCocoa/" itemprop="url">ReactiveCocoa</a></h2>
+                <a class="post-title-link" href="/2017/06/20/Objective-C/Github/ReactiveCocoa/" itemprop="url">ReactiveCocoa</a></h1>
         
 
         <div class="post-meta">
@@ -626,9 +545,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:12:49+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-20T11:12:49+08:00">
                 2017-06-20
               </time>
             
@@ -664,17 +583,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/20/Objective-C/Github/ReactiveCocoa/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/20/Objective-C/Github/ReactiveCocoa/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -690,6 +598,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -700,26 +611,23 @@
           <p><img src="https://raw.githubusercontent.com/ReactiveCocoa/ReactiveCocoa/master/Logo/PNG/logo.png" alt="Logo"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/20/Objective-C/Github/ReactiveCocoa/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/20/Objective-C/Github/ReactiveCocoa/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -733,6 +641,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -745,13 +657,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/19/利器/Git/Cocoapod/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -763,9 +679,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/19/利器/Git/Cocoapod/" itemprop="url">创建自己私有的Cocoapod</a></h2>
+                <a class="post-title-link" href="/2017/06/19/利器/Git/Cocoapod/" itemprop="url">创建自己私有的Cocoapod</a></h1>
         
 
         <div class="post-meta">
@@ -775,9 +691,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T10:15:05+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-19T10:15:05+08:00">
                 2017-06-19
               </time>
             
@@ -813,17 +729,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/19/利器/Git/Cocoapod/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/19/利器/Git/Cocoapod/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -839,6 +744,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -849,26 +757,23 @@
           <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Cocoapod除了可以用来下载使用第三方库也可以用来解决公司内部的模块化文件。也就是将模块化的组件打包成各个私有的库然后通过Cocoapod的方法引入到项目中。所有Cocoapod分为<code>公共Pod库</code>和<code>私有Pod库</code><br><strong>公共Pod库</strong>: 由Cocoapod提供 地址为:<code>https://github.com/CocoaPods/Specs.git</code> 添加到该仓库中的第三方库都需要Cocoapod审核。<br><strong>私有Pod库</strong>: 通过申请Github提供自定义的仓库地址。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/19/利器/Git/Cocoapod/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/19/利器/Git/Cocoapod/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -882,6 +787,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -894,13 +803,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/Word/Pass/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -912,9 +825,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/18/Word/Pass/" itemprop="url">pass</a></h2>
+                <a class="post-title-link" href="/2017/06/18/Word/Pass/" itemprop="url">pass</a></h1>
         
 
         <div class="post-meta">
@@ -924,9 +837,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T13:22:28+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-18T13:22:28+08:00">
                 2017-06-18
               </time>
             
@@ -962,17 +875,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/18/Word/Pass/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/18/Word/Pass/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -988,6 +890,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -998,26 +903,23 @@
           <h3 id="pass-up"><a href="#pass-up" class="headerlink" title="pass up"></a>pass up</h3><p><strong>to not make use of a chance to do something</strong><br>pass up a chance/opportunity/offer<br>I don’t think you should pass up the opportunity to go to university.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/18/Word/Pass/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/18/Word/Pass/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -1031,6 +933,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1043,13 +949,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/Word/way/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1061,9 +971,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/17/Word/way/" itemprop="url">way</a></h2>
+                <a class="post-title-link" href="/2017/06/17/Word/way/" itemprop="url">way</a></h1>
         
 
         <div class="post-meta">
@@ -1073,9 +983,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-17T18:57:04+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-17T18:57:04+08:00">
                 2017-06-17
               </time>
             
@@ -1111,17 +1021,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/17/Word/way/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/17/Word/way/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1137,6 +1036,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1147,26 +1049,23 @@
           <h3 id="a-two-way-street"><a href="#a-two-way-street" class="headerlink" title="a two-way street"></a>a two-way street</h3><p><em>if a situation between two people is a two-way street, both people must make an equal effort in order to achieve good results</em><br> Talks with the nurses have to be a two-way street - if they want to discuss salaries, we want to discuss their performance.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/17/Word/way/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/17/Word/way/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -1180,6 +1079,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1192,13 +1095,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/利器/Latex/Latex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1210,9 +1117,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/14/利器/Latex/Latex/" itemprop="url">Latex</a></h2>
+                <a class="post-title-link" href="/2017/06/14/利器/Latex/Latex/" itemprop="url">Latex</a></h1>
         
 
         <div class="post-meta">
@@ -1222,9 +1129,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-14T09:42:55+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-14T09:42:55+08:00">
                 2017-06-14
               </time>
             
@@ -1260,17 +1167,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/14/利器/Latex/Latex/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/14/利器/Latex/Latex/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1286,6 +1182,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1296,26 +1195,23 @@
           <p><img src="http://o95nbyrid.bkt.clouddn.com/2017-06-14-Screen Shot 2017-06-14 at 9.47.56 AM.png" alt="Screen Shot 2017-06-14 at 9.47.56 A"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/14/利器/Latex/Latex/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/14/利器/Latex/Latex/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -1329,6 +1225,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1341,13 +1241,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/13/English/句子类型/疑问句/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1359,9 +1263,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/13/English/句子类型/疑问句/" itemprop="url">疑问句</a></h2>
+                <a class="post-title-link" href="/2017/06/13/English/句子类型/疑问句/" itemprop="url">疑问句</a></h1>
         
 
         <div class="post-meta">
@@ -1371,9 +1275,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-13T08:40:48+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-13T08:40:48+08:00">
                 2017-06-13
               </time>
             
@@ -1409,17 +1313,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/13/English/句子类型/疑问句/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/13/English/句子类型/疑问句/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1435,6 +1328,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1445,26 +1341,23 @@
           <p>疑问句分为两类：<strong>一般疑问句</strong>和<strong>特殊疑问句</strong></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/13/English/句子类型/疑问句/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/13/English/句子类型/疑问句/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -1478,6 +1371,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1490,13 +1387,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/13/English/句子类型/祈使句/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1508,9 +1409,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/13/English/句子类型/祈使句/" itemprop="url">祈使句</a></h2>
+                <a class="post-title-link" href="/2017/06/13/English/句子类型/祈使句/" itemprop="url">祈使句</a></h1>
         
 
         <div class="post-meta">
@@ -1520,9 +1421,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-13T08:40:43+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-13T08:40:43+08:00">
                 2017-06-13
               </time>
             
@@ -1558,17 +1459,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/13/English/句子类型/祈使句/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/13/English/句子类型/祈使句/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1584,6 +1474,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1594,26 +1487,23 @@
           <p>祈使句就是把主语You 以及助动词 should 或 must 省略的句子。词类句型一开始即为原型动词。句尾可视语气强弱置感叹号或句号。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/13/English/句子类型/祈使句/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/13/English/句子类型/祈使句/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -1627,6 +1517,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1639,13 +1533,17 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/13/English/句子类型/直述句/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1657,9 +1555,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/13/English/句子类型/直述句/" itemprop="url">直述句_五大句型</a></h2>
+                <a class="post-title-link" href="/2017/06/13/English/句子类型/直述句/" itemprop="url">直述句_五大句型</a></h1>
         
 
         <div class="post-meta">
@@ -1669,9 +1567,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Scritto il</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-13T08:39:37+08:00">
+              <time title="Post creato" itemprop="dateCreated datePublished" datetime="2017-06-13T08:39:37+08:00">
                 2017-06-13
               </time>
             
@@ -1707,17 +1605,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/13/English/句子类型/直述句/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/13/English/句子类型/直述句/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1733,6 +1620,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1743,26 +1633,23 @@
           <h1 id="英语中的五种基本句型结构"><a href="#英语中的五种基本句型结构" class="headerlink" title="英语中的五种基本句型结构"></a>英语中的五种基本句型结构</h1><p>在讲解英语的句型中，通常将英语分为五大句型，但是在赖世雄的语法书中把动词分为五种类型来讲解五种不同的动词后面应该接什么成分。<br>动词的种类：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/13/English/句子类型/直述句/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/13/English/句子类型/直述句/#espandi" rel="contents">
+              Leggi di più &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -1776,6 +1663,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1808,72 +1699,73 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Huanrong Cao" />
-          <p class="site-author-name" itemprop="name">Huanrong Cao</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Huanrong Cao</p>
               <p class="site-description motion-element" itemprop="description"></p>
-           
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categorie</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">51</span>
-                <span class="site-state-item-name">posts</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">categories</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">30</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -1890,30 +1782,36 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Huanrong Cao</span>
+
+  
 </div>
 
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Tema &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -1924,6 +1822,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -1958,59 +1858,59 @@
 
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
-
-
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
 
   
 
-    
-      <script id="dsq-count-scr" src="https://caohr.disqus.com/count.js" async></script>
-    
 
-    
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
 
   
 
@@ -2038,6 +1938,10 @@
 
 
 
+
+
+
+
   
 
 
@@ -2048,6 +1952,7 @@
 
   
 
+  
   
 
   
@@ -2058,8 +1963,3 @@
 
 </body>
 </html>
-
-<!--这是一段注释。注释不会在浏览器中显示。
-<script type="text/javascript" src="/js/src/particle.js"></script>
-<script type="text/javascript" src="/js/src/particles.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script>
--->
