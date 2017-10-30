@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -98,7 +98,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/27/English/idioms/2017-10-27-1/" data-id="cj99ccgwf0000ke3gx3u3ryz9" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/10/27/English/idioms/2017-10-27-1/" data-id="cj99ccgwf0000ke3gx3u3ryz9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/27/English/idioms/2017-10-27/" data-id="cj99c31a30005bh3gb5pgoqz8" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/10/27/English/idioms/2017-10-27/" data-id="cj99c31a30005bh3gb5pgoqz8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/27/English/2017-10-27/" data-id="cj99c31940000bh3gthv8s42e" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/10/27/English/2017-10-27/" data-id="cj99c31940000bh3gthv8s42e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/27/English/45 Ways to avoid using the work ‘very’/" data-id="cj99c31990001bh3gd4a2h3nb" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/10/27/English/45 Ways to avoid using the work ‘very’/" data-id="cj99c31990001bh3gd4a2h3nb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iidiom/">iidiom</a></li></ul>
@@ -272,7 +272,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 .介绍"></a>1 .介绍</h1><h2 id="1-1-关于AVFoundation"><a href="#1-1-关于AVFoundation" class="headerlink" title="1.1 关于AVFoundation"></a>1.1 关于AVFoundation</h2><p>AVFoundation几个播放和创建基于试听的框架之一，它提供了Objective-C接口来管理视听数据。你可以使用它来检查，创建，编辑或者reencode媒体文件。</p>
+        <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 .介绍"></a>1 .介绍</h1><h2 id="1-1-关于AVFoundation"><a href="#1-1-关于AVFoundation" class="headerlink" title="1.1 关于AVFoundation"></a>1.1 关于AVFoundation</h2><p>AVFoundation是几个播放和创建基于试听的框架之一，它提供了Objective-C接口来管理视听数据。你可以使用它来检查，创建，编辑或者重新编码媒体文件。</p>
+<p><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093269839249.png" alt=""><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093269911031.png" alt=""></p>
 <p>一般你使用最高级别的抽象接口来执行任务。</p>
 <ul>
 <li>如果你只是简单的想播放电影，那么用AVKit framework.</li>
@@ -285,7 +286,7 @@
 <li>录音使用AVAudioPlayer<br>你可以用AVAudioSeesion配置音频行为，在Audio Session Programming Guide中有介绍。</li>
 </ul>
 <h4 id="在AVFoundation中Representing-和使用多媒体"><a href="#在AVFoundation中Representing-和使用多媒体" class="headerlink" title="在AVFoundation中Representing 和使用多媒体"></a>在AVFoundation中Representing 和使用多媒体</h4><p>AV Foundation框架中主要用来表示资源的类是AVAsset. The design of the framework is largely guided by this representation.<br>理解的框架的设计能够帮助你了解框架是怎么工作的。AVAsset实例是一个和多个多媒体数据的总称（音频或视频），它将集合视为一个整体并提供了诸如标题，时长，natural presentation size自然演示大小等等。AVAsset不受特定数据格式的限制。AVAsset是其他通过URL创建的asset或者是新建compositions的父类。<br>在asset中每块媒体数据都是相同的类型我们称之为track。在一般情况下，一个track代表音频一个代表视频。在复杂的构成中，然而存在多个重叠的音频和视频tracks。Assets可能也存在元数据。<br>在AV Foundation中一个必不可少的概念就是加载一个asset或者一个track但是并不意味着一定会使用。这可能需要时间计算项目的时长。（例如一个MP3文件，可能不包含时长信息在原信息中），为了不在计算这些值的时候阻塞当前的线程。当你请求文件的时长时，你会在异步的block中得到结果。</p>
-<h5 id="Play-back"><a href="#Play-back" class="headerlink" title="Play back"></a>Play back</h5><p>AVFoundation允许你以复杂的方式管理你的资源回放。为了支持这种方式，他将asset呈现的状态和asset本身分开来。这就允许你播放同一资源的不同片段在不同的分辨率下。player item管理着这种代表着asset的track👌</p>
+<h5 id="Play-back"><a href="#Play-back" class="headerlink" title="Play back"></a>Play back</h5><p>AVFoundation允许你以复杂的方式管理你的资源回放。为了支持这种方式，他将asset呈现的状态和asset本身分开来。这就允许你播放同一资源的不同片段在不同的分辨率下。player item管理着这种代表着asset的track</p>
 <h5 id="读、写和重新编码资源"><a href="#读、写和重新编码资源" class="headerlink" title="读、写和重新编码资源"></a>读、写和重新编码资源</h5><h5 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h5><h5 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h5><h5 id="图片和视频捕捉"><a href="#图片和视频捕捉" class="headerlink" title="图片和视频捕捉"></a>图片和视频捕捉</h5><h4 id="AVFoundation并行开发"><a href="#AVFoundation并行开发" class="headerlink" title="AVFoundation并行开发"></a>AVFoundation并行开发</h4><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h3><h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><h1 id="2-使用资源"><a href="#2-使用资源" class="headerlink" title="2. 使用资源"></a>2. 使用资源</h1><h1 id="3-播放"><a href="#3-播放" class="headerlink" title="3. 播放"></a>3. 播放</h1><h1 id="4-编辑"><a href="#4-编辑" class="headerlink" title="4. 编辑"></a>4. 编辑</h1><h1 id="5-图片和视频的捕捉"><a href="#5-图片和视频的捕捉" class="headerlink" title="5. 图片和视频的捕捉"></a>5. 图片和视频的捕捉</h1><p><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090008222889.jpg" alt=""><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090015197941.jpg" alt=""><br><code>AVCaptureDevice</code>:实例代表输入设备例如摄像头和麦克风<br><code>AVCaptureInput</code>:实例代表用户配置输入设备的端口<br><code>AVCaptureOutput</code>:实例代表管理输出例如一个视频文件或者一张静态图<br><code>AVCaptureSession</code>:实例代表定位输入和输出之间的数据流</p>
 <h2 id="5-1-使用Session定位数据流"><a href="#5-1-使用Session定位数据流" class="headerlink" title="5.1 使用Session定位数据流"></a>5.1 使用Session定位数据流</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVCaptureSession</span> *session = </div><div class="line">[[<span class="built_in">AVCaptureSession</span> alloc] init];</div><div class="line"><span class="comment">//添加输入和输出</span></div><div class="line">[session startRunning];</div></pre></td></tr></table></figure>
 <h3 id="5-1-1-配置Session"><a href="#5-1-1-配置Session" class="headerlink" title="5.1.1 配置Session"></a>5.1.1 配置Session</h3><p> 使用session参数的<code>sessionPreset</code>来指定你想要的图片质量。</p>
@@ -347,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/Objective-C/AVFoundation Programming Guide/" data-id="cj9844yqf0000ul3gtn525n4l" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/10/26/Objective-C/AVFoundation Programming Guide/" data-id="cj9844yqf0000ul3gtn525n4l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apple-Manual/">Apple Manual</a></li></ul>
@@ -394,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/hello-world/" data-id="cj983147k0000zv3gjxut4ihb" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/10/26/hello-world/" data-id="cj983147k0000zv3gjxut4ihb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/English/雅思/2017-09-14/" data-id="cj983stf9003skf3guo2kfhpn" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/09/14/English/雅思/2017-09-14/" data-id="cj983stf9003skf3guo2kfhpn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -478,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/27/利器/Swagger/" data-id="cj983stcw000fkf3gx26nq71r" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/06/27/利器/Swagger/" data-id="cj983stcw000fkf3gx26nq71r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/利器/">利器</a></li></ul>
@@ -626,7 +627,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/21/English/语法总结/" data-id="cj983stc50003kf3gh8zrcdw1" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/06/21/English/语法总结/" data-id="cj983stc50003kf3gh8zrcdw1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Grammar/">Grammar</a></li></ul>
@@ -669,7 +670,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/21/Objective-C/应该怎样重写Init方法？/" data-id="cj983stcg0007kf3g71brhp27" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/06/21/Objective-C/应该怎样重写Init方法？/" data-id="cj983stcg0007kf3g71brhp27" class="article-share-link">Share</a>
       
       
     </footer>
@@ -690,7 +691,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorieën</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Idioms/">Idioms</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器/">利器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a></li></ul>
     </div>
@@ -700,7 +701,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Labels</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-Manual/">Apple Manual</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Idioms/">Idioms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Words/">Words</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iidiom/">iidiom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/利器/">利器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单词/">单词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/红楼梦/">红楼梦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/考试/">考试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗词/">诗词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雅思/">雅思</a></li></ul>
     </div>
@@ -719,7 +720,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
     </div>
@@ -729,7 +730,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
