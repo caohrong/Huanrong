@@ -14,9 +14,10 @@
 <meta property="og:description" content="1 .介绍1.1 关于AVFoundationAVFoundation是几个播放和创建基于试听的框架之一，它提供了Objective-C接口来管理视听数据。你可以使用它来检查，创建，编辑或者重新编码媒体文件。  一般你使用最高级别的抽象接口来执行任务。  如果你只是简单的想播放电影，那么用AVKit framework. 在iOS上，只是简单的录制视频，直接使用UIKit框架中的UIImagePi">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093269839249.png">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093269911031.png">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093764356260.png">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090008222889.jpg">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090015197941.jpg">
-<meta property="og:updated_time" content="2017-10-30T15:10:14.584Z">
+<meta property="og:updated_time" content="2017-10-30T15:30:38.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AVFoundation Programming Guide">
 <meta name="twitter:description" content="1 .介绍1.1 关于AVFoundationAVFoundation是几个播放和创建基于试听的框架之一，它提供了Objective-C接口来管理视听数据。你可以使用它来检查，创建，编辑或者重新编码媒体文件。  一般你使用最高级别的抽象接口来执行任务。  如果你只是简单的想播放电影，那么用AVKit framework. 在iOS上，只是简单的录制视频，直接使用UIKit框架中的UIImagePi">
@@ -62,9 +63,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -149,7 +150,17 @@
 <p>在你<code>black</code>回调中，检查返回结果中具体是哪张图片被生成了。另外，确保在完成图片生成之前你对图片生成器都有强引用。</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVAsset</span> *myAsset = &lt;<span class="meta">#An asset#&gt;];</span></div><div class="line"><span class="comment">// Assume: @property (strong) AVAssetImageGenerator *imageGenerator;</span></div><div class="line"><span class="keyword">self</span>.imageGenerator = [<span class="built_in">AVAssetImageGenerator</span> assetImageGeneratorWithAsset:myAsset];</div><div class="line"> </div><div class="line">Float64 durationSeconds = <span class="built_in">CMTimeGetSeconds</span>([myAsset duration]);</div><div class="line"><span class="built_in">CMTime</span> firstThird = <span class="built_in">CMTimeMakeWithSeconds</span>(durationSeconds/<span class="number">3.0</span>, <span class="number">600</span>);</div><div class="line"><span class="built_in">CMTime</span> secondThird = <span class="built_in">CMTimeMakeWithSeconds</span>(durationSeconds*<span class="number">2.0</span>/<span class="number">3.0</span>, <span class="number">600</span>);</div><div class="line"><span class="built_in">CMTime</span> end = <span class="built_in">CMTimeMakeWithSeconds</span>(durationSeconds, <span class="number">600</span>);</div><div class="line"><span class="built_in">NSArray</span> *times = @[<span class="built_in">NSValue</span> valueWithCMTime:kCMTimeZero],</div><div class="line">                  [<span class="built_in">NSValue</span> valueWithCMTime:firstThird], [<span class="built_in">NSValue</span> valueWithCMTime:secondThird],</div><div class="line">                  [<span class="built_in">NSValue</span> valueWithCMTime:end]];</div><div class="line"> </div><div class="line">[imageGenerator generateCGImagesAsynchronouslyForTimes:times</div><div class="line">                completionHandler:^(<span class="built_in">CMTime</span> requestedTime, <span class="built_in">CGImageRef</span> image, <span class="built_in">CMTime</span> actualTime,</div><div class="line">                                    <span class="built_in">AVAssetImageGeneratorResult</span> result, <span class="built_in">NSError</span> *error) &#123;</div><div class="line"> </div><div class="line">                <span class="built_in">NSString</span> *requestedTimeString = (<span class="built_in">NSString</span> *)</div><div class="line">                    <span class="built_in">CFBridgingRelease</span>(<span class="built_in">CMTimeCopyDescription</span>(<span class="literal">NULL</span>, requestedTime));</div><div class="line">                <span class="built_in">NSString</span> *actualTimeString = (<span class="built_in">NSString</span> *)</div><div class="line">                    <span class="built_in">CFBridgingRelease</span>(<span class="built_in">CMTimeCopyDescription</span>(<span class="literal">NULL</span>, actualTime));</div><div class="line">                <span class="built_in">NSLog</span>(<span class="string">@"Requested: %@; actual %@"</span>, requestedTimeString, actualTimeString);</div><div class="line"> </div><div class="line">                <span class="keyword">if</span> (result == <span class="built_in">AVAssetImageGeneratorSucceeded</span>) &#123;</div><div class="line">                    <span class="comment">// Do something interesting with the image.</span></div><div class="line">                &#125;</div><div class="line"> </div><div class="line">                <span class="keyword">if</span> (result == <span class="built_in">AVAssetImageGeneratorFailed</span>) &#123;</div><div class="line">                    <span class="built_in">NSLog</span>(<span class="string">@"Failed with error: %@"</span>, [error localizedDescription]);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (result == <span class="built_in">AVAssetImageGeneratorCancelled</span>) &#123;</div><div class="line">                    <span class="built_in">NSLog</span>(<span class="string">@"Canceled"</span>);</div><div class="line">                &#125;</div><div class="line">  &#125;];</div></pre></td></tr></table></figure>
 <p>你可以通过调用<code>cancelAllCGImageGeneration</code>来取消图片生成器的任务队列。</p>
-<h2 id="Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频"><a href="#Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频" class="headerlink" title="Trimming and Transcoding a Movie  裁剪和重新编码视频"></a>Trimming and Transcoding a Movie  裁剪和重新编码视频</h2><p>使用<code>AVAssetExportSession</code>可以将视频装格式转格式和裁剪视频，流程如下图所示，一个输出流（export session）是一个控制器对象，管理所有的异步asset输出，初始化这个session使用你想要输出的asset和你要导出的配置信息（查看<a href="https://developer.apple.com/documentation/avfoundation/avassetexportsession/1387150-allexportpresets" target="_blank" rel="external">allExportPresets</a>）</p>
+<h2 id="Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频"><a href="#Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频" class="headerlink" title="Trimming and Transcoding a Movie  裁剪和重新编码视频"></a>Trimming and Transcoding a Movie  裁剪和重新编码视频</h2><p>使用<code>AVAssetExportSession</code>可以将视频装格式转格式和裁剪视频，流程如下图所示，一个输出对话（export session）是一个控制器对象，管理所有的异步asset输出，初始化这个对话使用你想要输出的asset和你要导出的配置信息（查看<a href="https://developer.apple.com/documentation/avfoundation/avassetexportsession/1387150-allexportpresets" target="_blank" rel="external">allExportPresets</a>）.然后，你可以配置导出会话以及输出的地址和文件类型，以及可选的其他设置（例元数据）以及是否针对网络进行最优化设置。<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093764356260.png" alt=""></p>
+<p>你可以使用<code>exportPresetsCompatibleWithAsset:</code>检查你设置是否可以导出成功；</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVAsset</span> *anAsset = &lt;<span class="meta">#Get an asset#&gt;;</span></div><div class="line"><span class="built_in">NSArray</span> *compatiblePresets = [<span class="built_in">AVAssetExportSession</span> exportPresetsCompatibleWithAsset:anAsset];</div><div class="line"><span class="keyword">if</span> ([compatiblePresets containsObject:<span class="built_in">AVAssetExportPresetLowQuality</span>]) &#123;</div><div class="line">    <span class="built_in">AVAssetExportSession</span> *exportSession = [[<span class="built_in">AVAssetExportSession</span> alloc]</div><div class="line">        initWithAsset:anAsset presetName:<span class="built_in">AVAssetExportPresetLowQuality</span>];</div><div class="line">    <span class="comment">// Implementation continues.</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以通过提供一个URL(URL必须是文件的URL)来完成会话的配置。<code>AVAssetExportSession</code>能够通过URL地址推理出输出文件的类型。一般是直接设置<code>outputFileType</code>. 你也可以指定其他额外的属性例如时间范围，文件限制长度，文件是否需要用在网络上而压缩，and a video composition. 下面例子是如何裁剪视频<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">exportSession.outputURL = &lt;<span class="meta">#A file URL#&gt;;</span></div><div class="line">    exportSession.outputFileType = <span class="built_in">AVFileTypeQuickTimeMovie</span>;</div><div class="line"> </div><div class="line">    <span class="built_in">CMTime</span> start = <span class="built_in">CMTimeMakeWithSeconds</span>(<span class="number">1.0</span>, <span class="number">600</span>);</div><div class="line">    <span class="built_in">CMTime</span> duration = <span class="built_in">CMTimeMakeWithSeconds</span>(<span class="number">3.0</span>, <span class="number">600</span>);</div><div class="line">    <span class="built_in">CMTimeRange</span> range = <span class="built_in">CMTimeRangeMake</span>(start, duration);</div><div class="line">    exportSession.timeRange = range;</div></pre></td></tr></table></figure></p>
+<p>调用<code>exportAsynchronouslyWithCompletionHandler:</code>导出为一个新的文件，当创建完成时会调用<code>block</code>，在你的block中你需要检测会话的状态，成功，失败或者是被取消了。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[exportSession exportAsynchronouslyWithCompletionHandler:^&#123;</div><div class="line"> </div><div class="line">    <span class="keyword">switch</span> ([exportSession status]) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="built_in">AVAssetExportSessionStatusFailed</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"Export failed: %@"</span>, [[exportSession error] localizedDescription]);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="built_in">AVAssetExportSessionStatusCancelled</span>:</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"Export canceled"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>你可以调用<code>cancelExport</code>函数来取消导出任务。<br>如果你想覆盖一个已经存在的文件或者把文件存到沙盒外这都会导致失败，一下几点也会导致失败：</p>
+<ul>
+<li>突然有电话打进来。</li>
+<li>你的程序退出屏幕在后台中或者其他的程序开始播放视频。<br>这这些情景中，你需要通知用户导出失败，并且允许用处重新导出。</li>
+</ul>
 <h1 id="3-播放"><a href="#3-播放" class="headerlink" title="3. 播放"></a>3. 播放</h1><h1 id="4-编辑"><a href="#4-编辑" class="headerlink" title="4. 编辑"></a>4. 编辑</h1><h1 id="5-图片和视频的捕捉"><a href="#5-图片和视频的捕捉" class="headerlink" title="5. 图片和视频的捕捉"></a>5. 图片和视频的捕捉</h1><p><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090008222889.jpg" alt=""><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090015197941.jpg" alt=""><br><code>AVCaptureDevice</code>:实例代表输入设备例如摄像头和麦克风<br><code>AVCaptureInput</code>:实例代表用户配置输入设备的端口<br><code>AVCaptureOutput</code>:实例代表管理输出例如一个视频文件或者一张静态图<br><code>AVCaptureSession</code>:实例代表定位输入和输出之间的数据流</p>
 <h2 id="5-1-使用Session定位数据流"><a href="#5-1-使用Session定位数据流" class="headerlink" title="5.1 使用Session定位数据流"></a>5.1 使用Session定位数据流</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVCaptureSession</span> *session = </div><div class="line">[[<span class="built_in">AVCaptureSession</span> alloc] init];</div><div class="line"><span class="comment">//添加输入和输出</span></div><div class="line">[session startRunning];</div></pre></td></tr></table></figure>
 <h3 id="5-1-1-配置Session"><a href="#5-1-1-配置Session" class="headerlink" title="5.1.1 配置Session"></a>5.1.1 配置Session</h3><p> 使用session参数的<code>sessionPreset</code>来指定你想要的图片质量。</p>
@@ -211,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/30/Objective-C/2017-10-30/" data-id="cj9e7zeeh0000ots6uo27mwm8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/30/Objective-C/2017-10-30/" data-id="cj9e7zeeh0000ots6uo27mwm8" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apple-Manual/">Apple Manual</a></li></ul>
@@ -223,7 +234,7 @@
 <nav id="article-nav">
   
     <a href="/2017/10/27/English/idioms/2017-10-27-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           语气词
@@ -243,7 +254,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Idioms/">Idioms</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Objective-C/">Objective-C</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/利器/">利器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文学/">文学</a></li></ul>
     </div>
@@ -253,7 +264,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-Manual/">Apple Manual</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Grammar/">Grammar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Idioms/">Idioms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Words/">Words</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iidiom/">iidiom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/利器/">利器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单词/">单词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/红楼梦/">红楼梦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/考试/">考试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗词/">诗词</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法/">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/雅思/">雅思</a></li></ul>
     </div>
@@ -263,7 +274,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/Apple-Manual/" style="font-size: 13.33px;">Apple Manual</a> <a href="/tags/Grammar/" style="font-size: 10px;">Grammar</a> <a href="/tags/Idioms/" style="font-size: 10px;">Idioms</a> <a href="/tags/Words/" style="font-size: 13.33px;">Words</a> <a href="/tags/iidiom/" style="font-size: 10px;">iidiom</a> <a href="/tags/利器/" style="font-size: 10px;">利器</a> <a href="/tags/单词/" style="font-size: 13.33px;">单词</a> <a href="/tags/红楼梦/" style="font-size: 16.67px;">红楼梦</a> <a href="/tags/考试/" style="font-size: 10px;">考试</a> <a href="/tags/诗词/" style="font-size: 13.33px;">诗词</a> <a href="/tags/语法/" style="font-size: 20px;">语法</a> <a href="/tags/雅思/" style="font-size: 10px;">雅思</a>
     </div>
@@ -282,7 +293,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -319,7 +330,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
