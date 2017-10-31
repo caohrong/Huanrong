@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/Objective-C/AVFoundation Programming Guide/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/30/Objective-C/Apple/AVFoundation Programming Guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
@@ -247,7 +247,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/30/Objective-C/AVFoundation Programming Guide/" itemprop="url">AVFoundation Programming Guide</a></h1>
+                <a class="post-title-link" href="/2017/10/30/Objective-C/Apple/AVFoundation Programming Guide/" itemprop="url">AVFoundation Programming Guide</a></h1>
         
 
         <div class="post-meta">
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T21:27:40+08:00">
                 2017-10-30
@@ -278,7 +278,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -329,40 +329,40 @@
 <li>在iOS上，只是简单的录制视频，直接使用UIKit框架中的UIImagePickerController。</li>
 </ul>
 <p>注意：然而一些在AV Foundation原始的数据结构，其中包含基于时间的数据结构和不透明数据对象的传递以及描述媒体数据是在Core Media框架中定义的。</p>
-<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>AV Foundation包含俩方面的框架，一种是基于视频的API另外是包含音频的API，旧一点的音频相关的类提供了简单的方式来处理音频，该文档没有做介绍他们在Multimedia Programming Guide文档中！</p>
+<h3 id="1-1-1-摘要"><a href="#1-1-1-摘要" class="headerlink" title="1.1.1 摘要"></a>1.1.1 摘要</h3><p>AV Foundation包含俩方面的框架，一种是基于视频的API另外是包含音频的API，旧一点的音频相关的类提供了简单的方式来处理音频，该文档没有做介绍他们在Multimedia Programming Guide文档中！</p>
 <ul>
 <li>播放音频文件使用AVAudioPlayer</li>
 <li>录音使用AVAudioPlayer<br>你可以用AVAudioSeesion配置音频行为，在Audio Session Programming Guide中有介绍。</li>
 </ul>
-<h4 id="在AVFoundation中Representing-和使用多媒体"><a href="#在AVFoundation中Representing-和使用多媒体" class="headerlink" title="在AVFoundation中Representing 和使用多媒体"></a>在AVFoundation中Representing 和使用多媒体</h4><p>AV Foundation框架中主要用来表示资源的类是AVAsset. The design of the framework is largely guided by this representation.<br>理解的框架的设计能够帮助你了解框架是怎么工作的。AVAsset实例是一个和多个多媒体数据的总称（音频或视频），它将集合视为一个整体并提供了诸如标题，时长，natural presentation size自然演示大小等等。AVAsset不受特定数据格式的限制。AVAsset是其他通过URL创建的asset或者是新建compositions的父类。<br>在asset中每块媒体数据都是相同的类型我们称之为track。在一般情况下，一个track代表音频一个代表视频。在复杂的构成中，然而存在多个重叠的音频和视频tracks。Assets可能也存在元数据。<br>在AV Foundation中一个必不可少的概念就是加载一个asset或者一个track但是并不意味着一定会使用。这可能需要时间计算项目的时长。（例如一个MP3文件，可能不包含时长信息在原信息中），为了不在计算这些值的时候阻塞当前的线程。当你请求文件的时长时，你会在异步的block中得到结果。</p>
+<h4 id="1-1-1-1-在AVFoundation中Representing-和使用多媒体"><a href="#1-1-1-1-在AVFoundation中Representing-和使用多媒体" class="headerlink" title="1.1.1.1 在AVFoundation中Representing 和使用多媒体"></a>1.1.1.1 在AVFoundation中Representing 和使用多媒体</h4><p>AV Foundation框架中主要用来表示资源的类是AVAsset. The design of the framework is largely guided by this representation.<br>理解的框架的设计能够帮助你了解框架是怎么工作的。AVAsset实例是一个和多个多媒体数据的总称（音频或视频），它将集合视为一个整体并提供了诸如标题，时长，natural presentation size自然演示大小等等。AVAsset不受特定数据格式的限制。AVAsset是其他通过URL创建的asset或者是新建compositions的父类。<br>在asset中每块媒体数据都是相同的类型我们称之为track。在一般情况下，一个track代表音频一个代表视频。在复杂的构成中，然而存在多个重叠的音频和视频tracks。Assets可能也存在元数据。<br>在AV Foundation中一个必不可少的概念就是加载一个asset或者一个track但是并不意味着一定会使用。这可能需要时间计算项目的时长。（例如一个MP3文件，可能不包含时长信息在原信息中），为了不在计算这些值的时候阻塞当前的线程。当你请求文件的时长时，你会在异步的block中得到结果。</p>
 <h5 id="Play-back"><a href="#Play-back" class="headerlink" title="Play back"></a>Play back</h5><p>AVFoundation允许你以复杂的方式管理你的资源回放。为了支持这种方式，他将asset呈现的状态和asset本身分开来。这就允许你播放同一资源的不同片段在不同的分辨率下。player item管理着这种代表着asset的track</p>
-<h5 id="读、写和重新编码资源"><a href="#读、写和重新编码资源" class="headerlink" title="读、写和重新编码资源"></a>读、写和重新编码资源</h5><h5 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h5><h5 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h5><h5 id="图片和视频捕捉"><a href="#图片和视频捕捉" class="headerlink" title="图片和视频捕捉"></a>图片和视频捕捉</h5><h4 id="AVFoundation并行开发"><a href="#AVFoundation并行开发" class="headerlink" title="AVFoundation并行开发"></a>AVFoundation并行开发</h4><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h3><h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><h1 id="2-使用Assets"><a href="#2-使用Assets" class="headerlink" title="2. 使用Assets"></a>2. 使用Assets</h1><p>Assets可以是来至于一个文件或者来至于用户iPod library或者是Photo library。当你创建了一个asset对象，你想获取到关于这个asset的信息可能不是立刻就可以获得的。当你有一个电影的asset你可以获取他的静态的视频截图或者把他转换成其他的格式，或者裁剪他。</p>
-<h2 id="Creating-an-Asset-Object"><a href="#Creating-an-Asset-Object" class="headerlink" title="Creating an Asset Object"></a>Creating an Asset Object</h2><p>通过URL创建AVURLAsset对象</p>
+<h5 id="读、写和重新编码资源"><a href="#读、写和重新编码资源" class="headerlink" title="读、写和重新编码资源"></a>读、写和重新编码资源</h5><h5 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h5><h5 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h5><h5 id="图片和视频捕捉"><a href="#图片和视频捕捉" class="headerlink" title="图片和视频捕捉"></a>图片和视频捕捉</h5><h4 id="1-1-1-2-AVFoundation并行开发"><a href="#1-1-1-2-AVFoundation并行开发" class="headerlink" title="1.1.1.2 AVFoundation并行开发"></a>1.1.1.2 AVFoundation并行开发</h4><h3 id="1-1-2-先决条件"><a href="#1-1-2-先决条件" class="headerlink" title="1.1.2 先决条件"></a>1.1.2 先决条件</h3><h3 id="1-1-3-其它"><a href="#1-1-3-其它" class="headerlink" title="1.1.3 其它"></a>1.1.3 其它</h3><h1 id="2-使用Assets"><a href="#2-使用Assets" class="headerlink" title="2. 使用Assets"></a>2. 使用Assets</h1><p>Assets可以是来至于一个文件或者来至于用户iPod library或者是Photo library。当你创建了一个asset对象，你想获取到关于这个asset的信息可能不是立刻就可以获得的。当你有一个电影的asset你可以获取他的静态的视频截图或者把他转换成其他的格式，或者裁剪他。</p>
+<h2 id="2-1-Creating-an-Asset-Object"><a href="#2-1-Creating-an-Asset-Object" class="headerlink" title="2.1 Creating an Asset Object"></a>2.1 Creating an Asset Object</h2><p>通过URL创建AVURLAsset对象</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSURL</span> *url = &lt;<span class="meta">#A URL that identifies an audiovisual asset such as a movie file#&gt;;</span></div><div class="line"><span class="built_in">AVURLAsset</span> *anAsset = [[<span class="built_in">AVURLAsset</span> alloc] initWithURL:url options:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
-<h3 id="Options-for-Initializing-an-Asset"><a href="#Options-for-Initializing-an-Asset" class="headerlink" title="Options for Initializing an Asset"></a>Options for Initializing an Asset</h3><p><code>AVURLAsset</code>初始化方法的第二参数是一个可以选择的字典。这个字典唯一可用的键值是<code>AVURLAssetPreferPreciseDurationAndTimingKey.</code>，相关的值是一个布尔类型（包含在NSValue对象中），这个参数表示该asset应该准备指示精确的持续时间，并按照时间提供精确地随机访问。</p>
+<h3 id="2-1-1-Options-for-Initializing-an-Asset"><a href="#2-1-1-Options-for-Initializing-an-Asset" class="headerlink" title="2.1.1 Options for Initializing an Asset"></a>2.1.1 Options for Initializing an Asset</h3><p><code>AVURLAsset</code>初始化方法的第二参数是一个可以选择的字典。这个字典唯一可用的键值是<code>AVURLAssetPreferPreciseDurationAndTimingKey.</code>，相关的值是一个布尔类型（包含在NSValue对象中），这个参数表示该asset应该准备指示精确的持续时间，并按照时间提供精确地随机访问。</p>
 <p>获得asset的确切持续的时间可能需要大量的开销处理，使用近似的时间通常可以节省资源但是又足以应对播放。</p>
 <ul>
 <li>如果你的目的只是为了播放asset. 传入<code>nil</code>值或者传入<code>AVURLAssetPreferPreciseDurationAndTimingKey</code>键值为NO的字典。（包含在NSValue对象中).</li>
 <li>如果你先添加asset到<a href="https://developer.apple.com/documentation/avfoundation/avmutablecomposition" target="_blank" rel="external">AVMutableComposition</a>中，一般来说你需要按照时间提供精确的随机访问。那么你就要将传入<code>AVURLAssetPreferPreciseDurationAndTimingKey</code>键值为yes的字典。</li>
 </ul>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSURL</span> *url = &lt;<span class="meta">#A URL that identifies an audiovisual asset such as a movie file#&gt;;</span></div><div class="line"><span class="built_in">NSDictionary</span> *options = @&#123; <span class="built_in">AVURLAssetPreferPreciseDurationAndTimingKey</span> : @YES &#125;;</div><div class="line"><span class="built_in">AVURLAsset</span> *anAssetToUseInAComposition = [[<span class="built_in">AVURLAsset</span> alloc] initWithURL:url options:options];</div></pre></td></tr></table></figure>
-<h3 id="Accessing-the-User’s-Assets"><a href="#Accessing-the-User’s-Assets" class="headerlink" title="Accessing the User’s Assets"></a>Accessing the User’s Assets</h3><p>访问iPod library或者Photos程序管理的资源，需要先得到所需要的URL。</p>
+<h3 id="2-1-2-Accessing-the-User’s-Assets"><a href="#2-1-2-Accessing-the-User’s-Assets" class="headerlink" title="2.1.2 Accessing the User’s Assets"></a>2.1.2 Accessing the User’s Assets</h3><p>访问iPod library或者Photos程序管理的资源，需要先得到所需要的URL。</p>
 <ul>
 <li>访问iPod library，需要创建<code>MPMediaQuery</code>实例来找到你所需要的条目，然后通过使用<a href="https://developer.apple.com/documentation/mediaplayer/mpmediaitempropertyasseturl" target="_blank" rel="external">MPMediaItemPropertyAssetURL</a>来获取URL。想要了解更多关于媒体库的信息，查阅<code>Multimedia Programming Guide.</code></li>
 <li>访问照片程序管理的asset，需要使用<a href="https://developer.apple.com/documentation/assetslibrary/alassetslibrary" target="_blank" rel="external">ALAssetsLibrary</a></li>
 </ul>
 <p>下面的例子告诉你怎么获取你保存到照片软件中的第一个视频</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];</div><div class="line"> </div><div class="line"><span class="comment">//使用ALAssetsGroupSavedPhotos来枚举照片和视频组</span></div><div class="line">[library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, <span class="built_in">BOOL</span> *stop) &#123;</div><div class="line"></div><div class="line"><span class="comment">//在组枚举block中，筛选出视频</span></div><div class="line">[group setAssetsFilter:[ALAssetsFilter allVideos]];</div><div class="line"></div><div class="line"><span class="comment">//例如我们只想要第一个</span></div><div class="line">[group enumerateAssetsAtIndexes:[<span class="built_in">NSIndexSet</span> indexSetWithIndex:<span class="number">0</span>]</div><div class="line">                        options:<span class="number">0</span></div><div class="line">                     usingBlock:^(ALAsset *alAsset, <span class="built_in">NSUInteger</span> index, <span class="built_in">BOOL</span> *innerStop) &#123;</div><div class="line">                        <span class="comment">//枚举结束的信息就是asset==nil</span></div><div class="line">                         <span class="keyword">if</span> (alAsset) &#123;</div><div class="line">                             ALAssetRepresentation *representation = [alAsset defaultRepresentation];</div><div class="line">                             <span class="built_in">NSURL</span> *url = [representation url];</div><div class="line">                             <span class="built_in">AVAsset</span> *avAsset = [<span class="built_in">AVURLAsset</span> URLAssetWithURL:url options:<span class="literal">nil</span>];</div><div class="line">                             <span class="comment">//自定义</span></div><div class="line">                         &#125;</div><div class="line">                     &#125;];</div><div class="line">                 &#125;</div><div class="line">                 failureBlock: ^(<span class="built_in">NSError</span> *error) &#123;</div><div class="line">                     <span class="comment">//错误处理</span></div><div class="line">                     <span class="built_in">NSLog</span>(<span class="string">@"No groups"</span>);</div><div class="line">                 &#125;];</div></pre></td></tr></table></figure>
-<h2 id="Preparing-an-Asset-for-Use"><a href="#Preparing-an-Asset-for-Use" class="headerlink" title="Preparing an Asset for Use"></a>Preparing an Asset for Use</h2><p>加载一个asset后，你所需要的信息可能不会马上就能获取得到，他可能需要时间去计算例如这个项目的时长（例如MP3文件，可能不包含摘要信息）。在计算时长的时候为了不阻塞当前的线程，你应该使用<a href="https://developer.apple.com/documentation/avfoundation/avasynchronouskeyvalueloading" target="_blank" rel="external">AVAsynchronousKeyValueLoading</a> 协议来请求并稍后通过block获取你想要的值。(<code>AVAsset</code>和<code>AVAssetTrack</code>都遵守<code>AVAsynchronousKeyValueLoading</code>协议)。</p>
+<h2 id="2-2-Preparing-an-Asset-for-Use"><a href="#2-2-Preparing-an-Asset-for-Use" class="headerlink" title="2.2 Preparing an Asset for Use"></a>2.2 Preparing an Asset for Use</h2><p>加载一个asset后，你所需要的信息可能不会马上就能获取得到，他可能需要时间去计算例如这个项目的时长（例如MP3文件，可能不包含摘要信息）。在计算时长的时候为了不阻塞当前的线程，你应该使用<a href="https://developer.apple.com/documentation/avfoundation/avasynchronouskeyvalueloading" target="_blank" rel="external">AVAsynchronousKeyValueLoading</a> 协议来请求并稍后通过block获取你想要的值。(<code>AVAsset</code>和<code>AVAssetTrack</code>都遵守<code>AVAsynchronousKeyValueLoading</code>协议)。</p>
 <p>想要测试一个值是否已经被加载使用<code>statusOfValueForKey:error:.</code>方法，当一个asset第一次被加载的时候，大部分的值都是<code>AVKeyValueStatusUnknown.</code>的状态。加载一个或者多个属性，调用<code>loadValuesAsynchronouslyForKeys:completionHandler:</code>方法，在block回调中，你可以根据属性的状态做相应的处理。你应该处理加载不成功的情况，例如基于网络的URL资源不可达，或者加载被取消了。</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSURL</span> *url = &lt;<span class="meta">#A URL that identifies an audiovisual asset such as a movie file#&gt;;</span></div><div class="line"><span class="built_in">AVURLAsset</span> *anAsset = [[<span class="built_in">AVURLAsset</span> alloc] initWithURL:url options:<span class="literal">nil</span>];</div><div class="line"></div><div class="line"><span class="built_in">NSArray</span> *keys = @[<span class="string">@"duration"</span>];</div><div class="line">[asset loadValuesAsynchronouslyForKeys:keys completionHandler:^() &#123;</div><div class="line">    <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</div><div class="line">    <span class="built_in">AVKeyValueStatus</span> tracksStatus = [asset statusOfValueForKey:<span class="string">@"duration"</span> error:&amp;error];</div><div class="line">    <span class="keyword">switch</span> (tracksStatus) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="built_in">AVKeyValueStatusLoaded</span>:</div><div class="line">            [<span class="keyword">self</span> updateUserInterfaceForDuration];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="built_in">AVKeyValueStatusFailed</span>:</div><div class="line">            [<span class="keyword">self</span> reportError:error forAsset:asset];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="built_in">AVKeyValueStatusCancelled</span>:</div><div class="line">            <span class="comment">// Do whatever is appropriate for cancelation.</span></div><div class="line">            <span class="keyword">break</span>;</div><div class="line">   &#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 <p>如果你准备播放asset，你需要加载<code>tracks</code>属性,了解更多关于播放assets的内容，查看Playback章节。</p>
-<h2 id="Getting-Still-Images-From-a-Video-获取视频缩略图"><a href="#Getting-Still-Images-From-a-Video-获取视频缩略图" class="headerlink" title="Getting Still Images From a Video 获取视频缩略图"></a>Getting Still Images From a Video 获取视频缩略图</h2><p>获取asset的静态图片例如缩略图，你需要使用<code>AVAssetImageGenerator</code>对象。和你的asset一起初始化一个图片生成器，即使是没有视频轨道加载也会成功，所以如果有必要应该<code>tracksWithMediaCharacteristic:</code>先测试asset是否有视频轨道。</p>
+<h2 id="2-3-Getting-Still-Images-From-a-Video-获取视频缩略图"><a href="#2-3-Getting-Still-Images-From-a-Video-获取视频缩略图" class="headerlink" title="2.3 Getting Still Images From a Video 获取视频缩略图"></a>2.3 Getting Still Images From a Video 获取视频缩略图</h2><p>获取asset的静态图片例如缩略图，你需要使用<code>AVAssetImageGenerator</code>对象。和你的asset一起初始化一个图片生成器，即使是没有视频轨道加载也会成功，所以如果有必要应该<code>tracksWithMediaCharacteristic:</code>先测试asset是否有视频轨道。</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVAsset</span> anAsset = &lt;<span class="meta">#Get an asset#&gt;;</span></div><div class="line"><span class="keyword">if</span> ([[anAsset tracksWithMediaType:<span class="built_in">AVMediaTypeVideo</span>] count] &gt; <span class="number">0</span>) &#123;</div><div class="line">    <span class="built_in">AVAssetImageGenerator</span> *imageGenerator =</div><div class="line">        [<span class="built_in">AVAssetImageGenerator</span> assetImageGeneratorWithAsset:anAsset];</div><div class="line">    <span class="comment">// Implementation continues...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>你可以配置图像生成器的一些属性，例如：你可以使用<a href="https://developer.apple.com/documentation/avfoundation/avassetimagegenerator/1387560-maximumsize" target="_blank" rel="external">maximumSize</a>和<a href="https://developer.apple.com/documentation/avfoundation/avassetimagegenerator/1389314-aperturemode" target="_blank" rel="external">apertureMode</a>指定生成的图片的图片的尺寸，也可以生成特定时间的图片或者一系列图片，你必须强引用图片生成器知道他生成玩所有的图片。</p>
-<h3 id="Generating-a-Single-Image-生成单张的图片"><a href="#Generating-a-Single-Image-生成单张的图片" class="headerlink" title="Generating a Single Image 生成单张的图片"></a>Generating a Single Image 生成单张的图片</h3><p>你可以通过<code>copyCGImageAtTime:actualTime:error:</code>来指定生成特定时间的单张图片，AVFoundation可以生成你所需要详细时间的图片，所以你需要在第二参数中传递一个CMTime类型的时间指针，那么回调就会生成一张该时间的图片。</p>
+<h3 id="2-3-1-Generating-a-Single-Image-生成单张的图片"><a href="#2-3-1-Generating-a-Single-Image-生成单张的图片" class="headerlink" title="2.3.1 Generating a Single Image 生成单张的图片"></a>2.3.1 Generating a Single Image 生成单张的图片</h3><p>你可以通过<code>copyCGImageAtTime:actualTime:error:</code>来指定生成特定时间的单张图片，AVFoundation可以生成你所需要详细时间的图片，所以你需要在第二参数中传递一个CMTime类型的时间指针，那么回调就会生成一张该时间的图片。</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVAsset</span> *myAsset = &lt;<span class="meta">#An asset#&gt;];</span></div><div class="line"><span class="built_in">AVAssetImageGenerator</span> *imageGenerator = [[<span class="built_in">AVAssetImageGenerator</span> alloc] initWithAsset:myAsset];</div><div class="line"> </div><div class="line">Float64 durationSeconds = <span class="built_in">CMTimeGetSeconds</span>([myAsset duration]);</div><div class="line"><span class="built_in">CMTime</span> midpoint = <span class="built_in">CMTimeMakeWithSeconds</span>(durationSeconds/<span class="number">2.0</span>, <span class="number">600</span>);</div><div class="line"><span class="built_in">NSError</span> *error;</div><div class="line"><span class="built_in">CMTime</span> actualTime;</div><div class="line"> </div><div class="line"><span class="built_in">CGImageRef</span> halfWayImage = [imageGenerator copyCGImageAtTime:midpoint actualTime:&amp;actualTime error:&amp;error];</div><div class="line"> </div><div class="line"><span class="keyword">if</span> (halfWayImage != <span class="literal">NULL</span>) &#123;</div><div class="line">    <span class="built_in">NSString</span> *actualTimeString = (<span class="built_in">NSString</span> *)<span class="built_in">CMTimeCopyDescription</span>(<span class="literal">NULL</span>, actualTime);</div><div class="line">    <span class="built_in">NSString</span> *requestedTimeString = (<span class="built_in">NSString</span> *)<span class="built_in">CMTimeCopyDescription</span>(<span class="literal">NULL</span>, midpoint);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Got halfWayImage: Asked for %@, got %@"</span>, requestedTimeString, actualTimeString);</div><div class="line">    <span class="comment">// Do something interesting with the image.</span></div><div class="line">    <span class="built_in">CGImageRelease</span>(halfWayImage);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Generating-a-Sequence-of-Images-获取多张图片"><a href="#Generating-a-Sequence-of-Images-获取多张图片" class="headerlink" title="Generating a Sequence of Images 获取多张图片"></a>Generating a Sequence of Images 获取多张图片</h3><p>获取多张图片，你可以调用图片生成器的<code>generateCGImagesAsynchronouslyForTimes:completionHandler:</code>函数，第一个参数是包含NSValue对象的数组，每个对象都包含<code>CMTime</code>结构体，指定每个你需要生成图片的时间点。第二个参数是一个<code>block</code>类型，当每个图片被生成的时候都会被调用。<code>block</code>的参数告诉你那个图片被成功的创建或者操作被中途取消了。as appropriate:</p>
+<h3 id="2-3-2-Generating-a-Sequence-of-Images-获取多张图片"><a href="#2-3-2-Generating-a-Sequence-of-Images-获取多张图片" class="headerlink" title="2.3.2 Generating a Sequence of Images 获取多张图片"></a>2.3.2 Generating a Sequence of Images 获取多张图片</h3><p>获取多张图片，你可以调用图片生成器的<code>generateCGImagesAsynchronouslyForTimes:completionHandler:</code>函数，第一个参数是包含NSValue对象的数组，每个对象都包含<code>CMTime</code>结构体，指定每个你需要生成图片的时间点。第二个参数是一个<code>block</code>类型，当每个图片被生成的时候都会被调用。<code>block</code>的参数告诉你那个图片被成功的创建或者操作被中途取消了。as appropriate:</p>
 <ul>
 <li>图片</li>
 <li>你所请求生成图片的时间未知和实际生成图片的时间位置</li>
@@ -371,7 +371,7 @@
 <p>在你<code>black</code>回调中，检查返回结果中具体是哪张图片被生成了。另外，确保在完成图片生成之前你对图片生成器都有强引用。</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVAsset</span> *myAsset = &lt;<span class="meta">#An asset#&gt;];</span></div><div class="line"><span class="comment">// Assume: @property (strong) AVAssetImageGenerator *imageGenerator;</span></div><div class="line"><span class="keyword">self</span>.imageGenerator = [<span class="built_in">AVAssetImageGenerator</span> assetImageGeneratorWithAsset:myAsset];</div><div class="line"> </div><div class="line">Float64 durationSeconds = <span class="built_in">CMTimeGetSeconds</span>([myAsset duration]);</div><div class="line"><span class="built_in">CMTime</span> firstThird = <span class="built_in">CMTimeMakeWithSeconds</span>(durationSeconds/<span class="number">3.0</span>, <span class="number">600</span>);</div><div class="line"><span class="built_in">CMTime</span> secondThird = <span class="built_in">CMTimeMakeWithSeconds</span>(durationSeconds*<span class="number">2.0</span>/<span class="number">3.0</span>, <span class="number">600</span>);</div><div class="line"><span class="built_in">CMTime</span> end = <span class="built_in">CMTimeMakeWithSeconds</span>(durationSeconds, <span class="number">600</span>);</div><div class="line"><span class="built_in">NSArray</span> *times = @[<span class="built_in">NSValue</span> valueWithCMTime:kCMTimeZero],</div><div class="line">                  [<span class="built_in">NSValue</span> valueWithCMTime:firstThird], [<span class="built_in">NSValue</span> valueWithCMTime:secondThird],</div><div class="line">                  [<span class="built_in">NSValue</span> valueWithCMTime:end]];</div><div class="line"> </div><div class="line">[imageGenerator generateCGImagesAsynchronouslyForTimes:times</div><div class="line">                completionHandler:^(<span class="built_in">CMTime</span> requestedTime, <span class="built_in">CGImageRef</span> image, <span class="built_in">CMTime</span> actualTime,</div><div class="line">                                    <span class="built_in">AVAssetImageGeneratorResult</span> result, <span class="built_in">NSError</span> *error) &#123;</div><div class="line"> </div><div class="line">                <span class="built_in">NSString</span> *requestedTimeString = (<span class="built_in">NSString</span> *)</div><div class="line">                    <span class="built_in">CFBridgingRelease</span>(<span class="built_in">CMTimeCopyDescription</span>(<span class="literal">NULL</span>, requestedTime));</div><div class="line">                <span class="built_in">NSString</span> *actualTimeString = (<span class="built_in">NSString</span> *)</div><div class="line">                    <span class="built_in">CFBridgingRelease</span>(<span class="built_in">CMTimeCopyDescription</span>(<span class="literal">NULL</span>, actualTime));</div><div class="line">                <span class="built_in">NSLog</span>(<span class="string">@"Requested: %@; actual %@"</span>, requestedTimeString, actualTimeString);</div><div class="line"> </div><div class="line">                <span class="keyword">if</span> (result == <span class="built_in">AVAssetImageGeneratorSucceeded</span>) &#123;</div><div class="line">                    <span class="comment">// Do something interesting with the image.</span></div><div class="line">                &#125;</div><div class="line"> </div><div class="line">                <span class="keyword">if</span> (result == <span class="built_in">AVAssetImageGeneratorFailed</span>) &#123;</div><div class="line">                    <span class="built_in">NSLog</span>(<span class="string">@"Failed with error: %@"</span>, [error localizedDescription]);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (result == <span class="built_in">AVAssetImageGeneratorCancelled</span>) &#123;</div><div class="line">                    <span class="built_in">NSLog</span>(<span class="string">@"Canceled"</span>);</div><div class="line">                &#125;</div><div class="line">  &#125;];</div></pre></td></tr></table></figure>
 <p>你可以通过调用<code>cancelAllCGImageGeneration</code>来取消图片生成器的任务队列。</p>
-<h2 id="Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频"><a href="#Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频" class="headerlink" title="Trimming and Transcoding a Movie  裁剪和重新编码视频"></a>Trimming and Transcoding a Movie  裁剪和重新编码视频</h2><p>使用<code>AVAssetExportSession</code>可以将视频装格式转格式和裁剪视频，流程如下图所示，一个输出对话（export session）是一个控制器对象，管理所有的异步asset输出，初始化这个对话使用你想要输出的asset和你要导出的配置信息（查看<a href="https://developer.apple.com/documentation/avfoundation/avassetexportsession/1387150-allexportpresets" target="_blank" rel="external">allExportPresets</a>）.然后，你可以配置导出会话以及输出的地址和文件类型，以及可选的其他设置（例元数据）以及是否针对网络进行最优化设置。<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093764356260.png" alt=""></p>
+<h2 id="2-4-Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频"><a href="#2-4-Trimming-and-Transcoding-a-Movie-裁剪和重新编码视频" class="headerlink" title="2.4 Trimming and Transcoding a Movie  裁剪和重新编码视频"></a>2.4 Trimming and Transcoding a Movie  裁剪和重新编码视频</h2><p>使用<code>AVAssetExportSession</code>可以将视频装格式转格式和裁剪视频，流程如下图所示，一个输出对话（export session）是一个控制器对象，管理所有的异步asset输出，初始化这个对话使用你想要输出的asset和你要导出的配置信息（查看<a href="https://developer.apple.com/documentation/avfoundation/avassetexportsession/1387150-allexportpresets" target="_blank" rel="external">allExportPresets</a>）.然后，你可以配置导出会话以及输出的地址和文件类型，以及可选的其他设置（例元数据）以及是否针对网络进行最优化设置。<br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-30-15093764356260.png" alt=""></p>
 <p>你可以使用<code>exportPresetsCompatibleWithAsset:</code>检查你设置是否可以导出成功；</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVAsset</span> *anAsset = &lt;<span class="meta">#Get an asset#&gt;;</span></div><div class="line"><span class="built_in">NSArray</span> *compatiblePresets = [<span class="built_in">AVAssetExportSession</span> exportPresetsCompatibleWithAsset:anAsset];</div><div class="line"><span class="keyword">if</span> ([compatiblePresets containsObject:<span class="built_in">AVAssetExportPresetLowQuality</span>]) &#123;</div><div class="line">    <span class="built_in">AVAssetExportSession</span> *exportSession = [[<span class="built_in">AVAssetExportSession</span> alloc]</div><div class="line">        initWithAsset:anAsset presetName:<span class="built_in">AVAssetExportPresetLowQuality</span>];</div><div class="line">    <span class="comment">// Implementation continues.</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>你可以通过提供一个URL(URL必须是文件的URL)来完成会话的配置。<code>AVAssetExportSession</code>能够通过URL地址推理出输出文件的类型。一般是直接设置<code>outputFileType</code>. 你也可以指定其他额外的属性例如时间范围，文件限制长度，文件是否需要用在网络上而压缩，and a video composition. 下面例子是如何裁剪视频<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">exportSession.outputURL = &lt;<span class="meta">#A file URL#&gt;;</span></div><div class="line">    exportSession.outputFileType = <span class="built_in">AVFileTypeQuickTimeMovie</span>;</div><div class="line"> </div><div class="line">    <span class="built_in">CMTime</span> start = <span class="built_in">CMTimeMakeWithSeconds</span>(<span class="number">1.0</span>, <span class="number">600</span>);</div><div class="line">    <span class="built_in">CMTime</span> duration = <span class="built_in">CMTimeMakeWithSeconds</span>(<span class="number">3.0</span>, <span class="number">600</span>);</div><div class="line">    <span class="built_in">CMTimeRange</span> range = <span class="built_in">CMTimeRangeMake</span>(start, duration);</div><div class="line">    exportSession.timeRange = range;</div></pre></td></tr></table></figure></p>
@@ -487,7 +487,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/27/English/idioms/2017-10-27-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/27/English/idioms/语气词/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
@@ -506,7 +506,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/27/English/idioms/2017-10-27-1/" itemprop="url">语气词</a></h1>
+                <a class="post-title-link" href="/2017/10/27/English/idioms/语气词/" itemprop="url">语气词</a></h1>
         
 
         <div class="post-meta">
@@ -516,7 +516,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T11:25:53+08:00">
                 2017-10-27
@@ -537,7 +537,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -581,8 +581,7 @@
         
           
             <a id="more"></a>
-<p>～ Oops.. （错了 的意思）<br>～ Wow! （惊讶）<br>～ Eh.. （和 Er 意思一样）<br>～ O.. (OH 的意思）<br>～ Rawr.. （生气的意思）<br>～ Awww （觉得可爱或可惜的意思）<br>～ Uh.. （和 Er/Eh 意思差不多）<br>～ Uh-oh. （表示 有什么不好的事情 要发生）<br>～ Mm..<br>～ Meh. （和 Er/Eh/uh 意思差不多）<br>～ Mhm. （恩/是 的意思）<br>～ Nah. （不是/不好 的意思）<br>Ho 哦 </p>
-<p>英语拟声词和惊叹词 表达的感情或感觉或当时的情景<br>Ah! 羡慕，满意<br>Aha! 满意，愉快，胜利<br>Ahem! 唤起注意<br>Alas! 遗憾，悲痛，不幸<br>Bah! 轻蔑，厌恶<br>Brrr! 寒冷<br>Darn!(Darn it!) 愤怒，失望<br>Eeeek! 害怕<br>For goodness sake! 惊奇，害怕<br>Gad! 惊奇，不赞同<br>Gee! 惊奇，赞美<br>God!(Good god! Great God! 惊奇，恐惧<br>My God! Oh, God!)<br>Good gracious! 惊奇，恼怒<br>Goodness! 惊奇，害怕，恼怒<br>Gosh! 惊奇<br>Heaven forbid! 惊奇，害怕<br>Heaven help me! 惊奇，害怕<br>(Good) Heavens! 惊奇，害怕<br>Help! 求助<br>Hey! 惊奇，喜悦，疑问，或唤起注意<br>Hmmm! 思考<br>Ho(a)! 惊奇，满足，喜悦或唤起注意<br>I’ll be darned! 惊奇<br>Jesus(Christ)! 不满意，失望，痛苦，惊恐<br>Look out! 警告<br>Mmmm! 品尝满意<br>Mercy! 惊奇<br>Mercy me! 惊奇<br>My! 惊奇，羡慕<br>My,my! 惊奇<br>My goodness! 惊奇，害怕<br>My word! 惊奇<br>Oh! 惊奇，诧异，害怕，疼痛<br>Oh, boy! 激动，惊奇，惊喜（男女都可说）<br>Oh, dear! 惊奇<br>Oh,my! 惊奇，羡慕<br>Oh, no! 害怕，惊奇，失望<br>Oho! 惊奇<br>Oh-oh! 遇到不顺心的事<br>Ouch 疼痛<br>Ow! 疼痛<br>Oh, well! 无可奈何<br>Psst! 唤起注意<br>Say! 唤起注意，或想起什么<br>Shit! 愤怒，厌恶，沮丧<br>Thank God! 宽慰，感谢<br>Thank goodness! 感谢<br>Tsk-tsk! 不赞同<br>Tut-tut! 不满，不耐烦<br>Ugh! 厌恶<br>Unbelievable! 惊讶<br>Watch it! 警告<br>Watch out! 警告<br>Well! 惊奇，宽慰<br>Well, I never! 惊奇，愤怒<br>Well,well! 惊奇<br>Whew! 如释重负<br>Whoopee! 高兴<br>Whoop! 欣喜，兴奋，或因手脚笨拙而感到尴尬<br>Wow! 诧异，惊讶，羡慕，快乐<br>Yuck 厌恶 </p>
+<p>Oops.. （错了 的意思）<br>Wow! （惊讶）<br>Eh.. （和 Er 意思一样）<br>O.. (OH 的意思）<br>Rawr.. （生气的意思）<br>Awww （觉得可爱或可惜的意思）<br>Uh.. （和 Er/Eh 意思差不多）<br>Uh-oh. （表示 有什么不好的事情 要发生）<br>Mm..<br>Meh. （和 Er/Eh/uh 意思差不多）<br>Mhm. （恩/是 的意思）<br>Nah. （不是/不好 的意思）<br>Ho 哦<br>Ah! 羡慕，满意<br>Aha! 满意，愉快，胜利<br>Ahem! 唤起注意<br>Alas! 遗憾，悲痛，不幸<br>Bah! 轻蔑，厌恶<br>Brrr! 寒冷<br>Darn!(Darn it!) 愤怒，失望<br>Eeeek! 害怕<br>For goodness sake! 惊奇，害怕<br>Gad! 惊奇，不赞同<br>Gee! 惊奇，赞美<br>God!(Good god! Great God! 惊奇，恐惧<br>My God! Oh, God!)<br>Good gracious! 惊奇，恼怒<br>Goodness! 惊奇，害怕，恼怒<br>Gosh! 惊奇<br>Heaven forbid! 惊奇，害怕<br>Heaven help me! 惊奇，害怕<br>(Good) Heavens! 惊奇，害怕<br>Help! 求助<br>Hey! 惊奇，喜悦，疑问，或唤起注意<br>Hmmm! 思考<br>Ho(a)! 惊奇，满足，喜悦或唤起注意<br>I’ll be darned! 惊奇<br>Jesus(Christ)! 不满意，失望，痛苦，惊恐<br>Look out! 警告<br>Mmmm! 品尝满意<br>Mercy! 惊奇<br>Mercy me! 惊奇<br>My! 惊奇，羡慕<br>My,my! 惊奇<br>My goodness! 惊奇，害怕<br>My word! 惊奇<br>Oh! 惊奇，诧异，害怕，疼痛<br>Oh, boy! 激动，惊奇，惊喜（男女都可说）<br>Oh, dear! 惊奇<br>Oh,my! 惊奇，羡慕<br>Oh, no! 害怕，惊奇，失望<br>Oho! 惊奇<br>Oh-oh! 遇到不顺心的事<br>Ouch 疼痛<br>Ow! 疼痛<br>Oh, well! 无可奈何<br>Psst! 唤起注意<br>Say! 唤起注意，或想起什么<br>Shit! 愤怒，厌恶，沮丧<br>Thank God! 宽慰，感谢<br>Thank goodness! 感谢<br>Tsk-tsk! 不赞同<br>Tut-tut! 不满，不耐烦<br>Ugh! 厌恶<br>Unbelievable! 惊讶<br>Watch it! 警告<br>Watch out! 警告<br>Well! 惊奇，宽慰<br>Well, I never! 惊奇，愤怒<br>Well,well! 惊奇<br>Whew! 如释重负<br>Whoopee! 高兴<br>Whoop! 欣喜，兴奋，或因手脚笨拙而感到尴尬<br>Wow! 诧异，惊讶，羡慕，快乐<br>Yuck 厌恶 </p>
 
           
         
@@ -631,7 +630,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/27/English/idioms/2017-10-27/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/27/English/idioms/You're welcome & I'm sorry/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
@@ -650,7 +649,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/27/English/idioms/2017-10-27/" itemprop="url">You're welcome & I'm sorry</a></h1>
+                <a class="post-title-link" href="/2017/10/27/English/idioms/You're welcome & I'm sorry/" itemprop="url">You're welcome & I'm sorry</a></h1>
         
 
         <div class="post-meta">
@@ -660,7 +659,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T11:18:52+08:00">
                 2017-10-27
@@ -681,7 +680,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -829,7 +828,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T11:13:39+08:00">
                 2017-10-27
@@ -850,7 +849,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -971,7 +970,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T14:22:28+08:00">
                 2017-10-26
@@ -1099,7 +1098,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-27T10:02:38+08:00">
                 2017-06-27
@@ -1120,7 +1119,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1244,7 +1243,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-21T18:45:51+08:00">
                 2017-06-21
@@ -1265,7 +1264,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1491,7 +1490,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-21T09:45:37+08:00">
                 2017-06-21
@@ -1512,7 +1511,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1604,7 +1603,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/Objective-C/编程/MVVM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/利器/Mac Shell/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
@@ -1623,7 +1622,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/20/Objective-C/编程/MVVM/" itemprop="url">MVVM</a></h1>
+                <a class="post-title-link" href="/2017/06/20/利器/Mac Shell/" itemprop="url">Shell</a></h1>
         
 
         <div class="post-meta">
@@ -1633,9 +1632,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T14:46:21+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:19:54+08:00">
                 2017-06-20
               </time>
             
@@ -1654,12 +1653,12 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
+                  <a href="/categories/利器/" itemprop="url" rel="index">
+                    <span itemprop="name">利器</span>
                   </a>
                 </span>
 
@@ -1696,10 +1695,14 @@
 
       
         
-          
-            <a id="more"></a>
-
-          
+          <p><code>Shell</code>脚本（英语：Shell script）是一种电脑程序与文本文件，内容由一连串的shell命令组成，经由Unix Shell直译其内容后运作。被当成是一种脚本语言来设计，其运作方式与直译语言相当，由Unix shell扮演命令行解释器的角色，在读取shell script之后，依序运行其中的shell命令，之后输出结果。利用Shell script可以进行系统管理，文件操作等。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/20/利器/Mac Shell/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1746,7 +1749,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/利器/Mac Shell/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/Objective-C/Github/ReactiveCocoa/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong Cao">
@@ -1765,7 +1768,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/20/利器/Mac Shell/" itemprop="url">Shell</a></h1>
+                <a class="post-title-link" href="/2017/06/20/Objective-C/Github/ReactiveCocoa/" itemprop="url">ReactiveCocoa</a></h1>
         
 
         <div class="post-meta">
@@ -1775,9 +1778,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:19:54+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:12:49+08:00">
                 2017-06-20
               </time>
             
@@ -1796,12 +1799,12 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/利器/" itemprop="url" rel="index">
-                    <span itemprop="name">利器</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -1838,11 +1841,11 @@
 
       
         
-          <p><code>Shell</code>脚本（英语：Shell script）是一种电脑程序与文本文件，内容由一连串的shell命令组成，经由Unix Shell直译其内容后运作。被当成是一种脚本语言来设计，其运作方式与直译语言相当，由Unix shell扮演命令行解释器的角色，在读取shell script之后，依序运行其中的shell命令，之后输出结果。利用Shell script可以进行系统管理，文件操作等。</p>
+          <p><img src="https://raw.githubusercontent.com/ReactiveCocoa/ReactiveCocoa/master/Logo/PNG/logo.png" alt="Logo"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/20/利器/Mac Shell/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/06/20/Objective-C/Github/ReactiveCocoa/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1929,8 +1932,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">49</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1941,7 +1944,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
@@ -1952,7 +1955,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">30</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
             
@@ -2000,7 +2003,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
