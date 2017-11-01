@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T21:27:40+08:00">
                 2017-10-30
@@ -278,7 +278,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -413,7 +413,45 @@
 <p>如果你指向想播放一个直播流，你可以直接通过一些的代码快速创建一个播放器</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.player = [<span class="built_in">AVPlayer</span> playerWithURL:&lt;<span class="meta">#Live stream URL#&gt;];</span></div><div class="line">[player addObserver:<span class="keyword">self</span> forKeyPath:<span class="string">@"status"</span> options:<span class="number">0</span> context:&amp;PlayerStatusContext];</div></pre></td></tr></table></figure>
 <p>和<code>assets</code>和<code>itmes</code>一样，初始化一个播放器并不意味着已经准备好了可以播放，你需要观察<code>player</code>的<code>status</code>属性，当值为<code>AVPlayerStatusReadyToPlay</code>就已经准备好可以播放了，你可以观察<code>currentItem</code>属性来访问为流创建的<code>palyer item</code>。</p>
-<h2 id="Playing-an-Item"><a href="#Playing-an-Item" class="headerlink" title="Playing an Item"></a>Playing an Item</h2><h3 id="Changing-the-Playback-Rate"><a href="#Changing-the-Playback-Rate" class="headerlink" title="Changing the Playback Rate"></a>Changing the Playback Rate</h3><h3 id="Seeking—Repositioning-the-Playhead"><a href="#Seeking—Repositioning-the-Playhead" class="headerlink" title="Seeking—Repositioning the Playhead"></a>Seeking—Repositioning the Playhead</h3><h2 id="Playing-Multiple-Items"><a href="#Playing-Multiple-Items" class="headerlink" title="Playing Multiple Items"></a>Playing Multiple Items</h2><h2 id="Monitoring-Playback"><a href="#Monitoring-Playback" class="headerlink" title="Monitoring Playback"></a>Monitoring Playback</h2><h3 id="Responding-to-a-Change-in-Status"><a href="#Responding-to-a-Change-in-Status" class="headerlink" title="Responding to a Change in Status"></a>Responding to a Change in Status</h3><h3 id="Tracking-Readiness-for-Visual-Display"><a href="#Tracking-Readiness-for-Visual-Display" class="headerlink" title="Tracking Readiness for Visual Display"></a>Tracking Readiness for Visual Display</h3><h3 id="Tracking-Time"><a href="#Tracking-Time" class="headerlink" title="Tracking Time"></a>Tracking Time</h3><h3 id="Reaching-the-End-of-an-Item"><a href="#Reaching-the-End-of-an-Item" class="headerlink" title="Reaching the End of an Item"></a>Reaching the End of an Item</h3><h2 id="Putting-It-All-Together-Playing-a-Video-File-Using-AVPlayerLayer"><a href="#Putting-It-All-Together-Playing-a-Video-File-Using-AVPlayerLayer" class="headerlink" title="Putting It All Together: Playing a Video File Using AVPlayerLayer"></a>Putting It All Together: Playing a Video File Using AVPlayerLayer</h2><h3 id="The-Player-View"><a href="#The-Player-View" class="headerlink" title="The Player View"></a>The Player View</h3><h3 id="A-Simple-View-Controller"><a href="#A-Simple-View-Controller" class="headerlink" title="A Simple View Controller"></a>A Simple View Controller</h3><h3 id="Creating-the-Asset"><a href="#Creating-the-Asset" class="headerlink" title="Creating the Asset"></a>Creating the Asset</h3><h3 id="Responding-to-the-Player-Item’s-Status-Change"><a href="#Responding-to-the-Player-Item’s-Status-Change" class="headerlink" title="Responding to the Player Item’s Status Change"></a>Responding to the Player Item’s Status Change</h3><h3 id="Playing-the-Item"><a href="#Playing-the-Item" class="headerlink" title="Playing the Item"></a>Playing the Item</h3><h1 id="4-编辑"><a href="#4-编辑" class="headerlink" title="4. 编辑"></a>4. 编辑</h1><h2 id="Creating-a-Composition"><a href="#Creating-a-Composition" class="headerlink" title="Creating a Composition"></a>Creating a Composition</h2><h3 id="Options-for-Initializing-a-Composition-Track"><a href="#Options-for-Initializing-a-Composition-Track" class="headerlink" title="Options for Initializing a Composition Track"></a>Options for Initializing a Composition Track</h3><h2 id="Adding-Audiovisual-Data-to-a-Composition"><a href="#Adding-Audiovisual-Data-to-a-Composition" class="headerlink" title="Adding Audiovisual Data to a Composition"></a>Adding Audiovisual Data to a Composition</h2><h3 id="Retrieving-Compatible-Composition-Tracks"><a href="#Retrieving-Compatible-Composition-Tracks" class="headerlink" title="Retrieving Compatible Composition Tracks"></a>Retrieving Compatible Composition Tracks</h3><h2 id="Generating-a-Volume-Ramp"><a href="#Generating-a-Volume-Ramp" class="headerlink" title="Generating a Volume Ramp"></a>Generating a Volume Ramp</h2><h2 id="Performing-Custom-Video-Processing"><a href="#Performing-Custom-Video-Processing" class="headerlink" title="Performing Custom Video Processing"></a>Performing Custom Video Processing</h2><h3 id="Changing-the-Composition’s-Background-Color"><a href="#Changing-the-Composition’s-Background-Color" class="headerlink" title="Changing the Composition’s Background Color"></a>Changing the Composition’s Background Color</h3><h3 id="Applying-Opacity-Ramps"><a href="#Applying-Opacity-Ramps" class="headerlink" title="Applying Opacity Ramps"></a>Applying Opacity Ramps</h3><h3 id="Incorporating-Core-Animation-Effects"><a href="#Incorporating-Core-Animation-Effects" class="headerlink" title="Incorporating Core Animation Effects"></a>Incorporating Core Animation Effects</h3><h2 id="Putting-It-All-Together-Combining-Multiple-Assets-and-Saving-the-Result-to-the-Camera-Roll"><a href="#Putting-It-All-Together-Combining-Multiple-Assets-and-Saving-the-Result-to-the-Camera-Roll" class="headerlink" title="Putting It All Together: Combining Multiple Assets and Saving the Result to the Camera Roll"></a>Putting It All Together: Combining Multiple Assets and Saving the Result to the Camera Roll</h2><h3 id="Creating-the-Composition"><a href="#Creating-the-Composition" class="headerlink" title="Creating the Composition"></a>Creating the Composition</h3><h3 id="Adding-the-Assets"><a href="#Adding-the-Assets" class="headerlink" title="Adding the Assets"></a>Adding the Assets</h3><h3 id="Checking-the-Video-Orientations"><a href="#Checking-the-Video-Orientations" class="headerlink" title="Checking the Video Orientations"></a>Checking the Video Orientations</h3><h3 id="Applying-the-Video-Composition-Layer-Instructions"><a href="#Applying-the-Video-Composition-Layer-Instructions" class="headerlink" title="Applying the Video Composition Layer Instructions"></a>Applying the Video Composition Layer Instructions</h3><h3 id="Setting-the-Render-Size-and-Frame-Duration"><a href="#Setting-the-Render-Size-and-Frame-Duration" class="headerlink" title="Setting the Render Size and Frame Duration"></a>Setting the Render Size and Frame Duration</h3><h3 id="Exporting-the-Composition-and-Saving-it-to-the-Camera-Roll"><a href="#Exporting-the-Composition-and-Saving-it-to-the-Camera-Roll" class="headerlink" title="Exporting the Composition and Saving it to the Camera Roll"></a>Exporting the Composition and Saving it to the Camera Roll</h3><h1 id="5-图片和视频的捕捉"><a href="#5-图片和视频的捕捉" class="headerlink" title="5. 图片和视频的捕捉"></a>5. 图片和视频的捕捉</h1><p><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090008222889.jpg" alt=""><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090015197941.jpg" alt=""><br><code>AVCaptureDevice</code>:实例代表输入设备例如摄像头和麦克风<br><code>AVCaptureInput</code>:实例代表用户配置输入设备的端口<br><code>AVCaptureOutput</code>:实例代表管理输出例如一个视频文件或者一张静态图<br><code>AVCaptureSession</code>:实例代表定位输入和输出之间的数据流</p>
+<p><em>你如果你不知道自己是那种类型的ULR，以下是解决办法</em>：</p>
+<ol>
+<li>尝试使用URL加载<code>AVURLAsset</code>，然后加载他的<code>tracks</code>键。<br> 如果<code>tracks</code>加载成功的话，然后给这个<code>asset</code>创建一个<code>palyer item</code></li>
+<li>如果失败的话，直接用URL创建<code>AVPlayerItem</code>，观察<code>player</code>的<code>status</code>属性，查明<code>assets</code>是否可用。</li>
+</ol>
+<p>如果以上任何一种情况成功的，你可以直接用这个<code>palyer item</code>与<code>palyer</code>关联。</p>
+<h2 id="Playing-an-Item"><a href="#Playing-an-Item" class="headerlink" title="Playing an Item"></a>Playing an Item</h2><p>调用<code>palyer</code>的<code>paly</code>函数开始播放</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">IBAction</span>)play:sender &#123;</div><div class="line">    [player play];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外简单的播放，你可以管理播放的许多参数，例如播放头（palyhead）的速率和位置。你可以监视<code>palyer</code>的状态；这很有用，同步用户的界面的进度条和asset的进度，了解更多查看<a href="https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/02_Playback.html#//apple_ref/doc/uid/TP40010188-CH3-SW8" target="_blank" rel="external">Monitoring Playback</a>。</p>
+<h3 id="Changing-the-Playback-Rate"><a href="#Changing-the-Playback-Rate" class="headerlink" title="Changing the Playback Rate"></a>Changing the Playback Rate</h3><p>通过改变<code>palyer</code>的<code>rate</code>属性来改变播放的速率。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">aPlayer.rate = <span class="number">0.5</span>;</div><div class="line">aPlayer.rate = <span class="number">2.0</span>;</div></pre></td></tr></table></figure>
+<p>1.0代表以默认的速度播放当前<code>item</code>。把速率设置成0.0等同于暂停播放，你也可以使用<code>pause</code>来停止播放。<br><code>items</code>也支持倒序播放，通过将<code>items</code>的速率设置成一个负数的速率。通过使用<code>palyeritem</code>的<code>canPalyReverse</code>参数可以看判断是否支持倒序播放（支持速率值-1.0），<code>canPalySlowReverse</code>（支持速率在0.0和-1.0之间），<code>canPlayFastReverse</code>（支持速率小于-1.0）.</p>
+<h3 id="Seeking—Repositioning-the-Playhead-寻求重新定位视频播放点（Playhead）"><a href="#Seeking—Repositioning-the-Playhead-寻求重新定位视频播放点（Playhead）" class="headerlink" title="Seeking—Repositioning the Playhead 寻求重新定位视频播放点（Playhead）"></a>Seeking—Repositioning the Playhead 寻求重新定位视频播放点（Playhead）</h3><p>使用<code>seekToTime</code>移动播放点到特定的时间，如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CMTime</span> fiveSecondsIn = <span class="built_in">CMTimeMake</span>(<span class="number">5</span>, <span class="number">1</span>);</div><div class="line">[player seekToTime:fiveSecondsIn];</div></pre></td></tr></table></figure>
+<p><code>seekToTime</code>方法是针对不是特别精确的调整，如果你需要精确的移动视频播放头你需要调用<code>seekToTime:toleranceBefore:toleranceAfter:</code>方法。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">CMTime</span> fiveSecondsIn = <span class="built_in">CMTimeMake</span>(<span class="number">5</span>, <span class="number">1</span>);</div><div class="line">[player seekToTime:fiveSecondsIn toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];</div></pre></td></tr></table></figure>
+<p>使用容差度为0可能需要解码大量的数据，你应该在你真正需要的时候才传0值，例如：精密的媒体编辑的时候需要申请精确的控制。<br>播放完以后，<code>palyer</code>的播放头到了item的末尾，这时候调用<code>paly</code>是没有效果的，想要把播放头重置到起始位置，你需要注册接收<code>AVPlayerItemDidPlayToEndTimeNotification</code>的通知，在通知的回调方法中，调用<code>seekToTime</code>并传入<code>kCMTimeZero</code>参数。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Register with the notification center after creating the player item.</span></div><div class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter]</div><div class="line">        addObserver:<span class="keyword">self</span></div><div class="line">        selector:<span class="keyword">@selector</span>(playerItemDidReachEnd:)</div><div class="line">        name:<span class="built_in">AVPlayerItemDidPlayToEndTimeNotification</span></div><div class="line">        object:&lt;<span class="meta">#The player item#&gt;];</span></div><div class="line"> </div><div class="line">- (<span class="keyword">void</span>)playerItemDidReachEnd:(<span class="built_in">NSNotification</span> *)notification &#123;</div><div class="line">    [player seekToTime:kCMTimeZero];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Playing-Multiple-Items-播放多个项目"><a href="#Playing-Multiple-Items-播放多个项目" class="headerlink" title="Playing Multiple Items 播放多个项目"></a>Playing Multiple Items 播放多个项目</h2><p>使用<code>AVQueuePlayer</code>对象在按照一定顺序播放多个项目，<code>AVQueuePlayer</code>是<code>AVPlayer</code>的子类。通过一组<code>items</code>值来初始化<code>queue palyer</code>。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSArray</span> *items = &lt;<span class="meta">#An array of player items#&gt;;</span></div><div class="line"><span class="built_in">AVQueuePlayer</span> *queuePlayer = [[<span class="built_in">AVQueuePlayer</span> alloc] initWithItems:items];</div></pre></td></tr></table></figure>
+<p>你可以调用<code>paly</code>函数来播放列队，就像你使用<code>AVPalyer</code>对象一样，<code>queue palyer</code>会轮流播放每个项目，如果你需要跳到下一个，调用<code>queue palyer</code>的<code>advanceToNextItem</code>函数。</p>
+<p>你也可以修改列队<code>insertItem:afterItem:</code>,<code>removeItem:</code>,和<code>removeAllItems</code>. 当添加一个新的项目，一般你应该先检查是不是可以插到队列中，使用<code>canInsertItem:afterItem:</code>方法，你可以将第二个参数传空来检查是不是新的item允许被插入到队列中。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVPlayerItem</span> *anItem = &lt;<span class="meta">#Get a player item#&gt;;</span></div><div class="line"><span class="keyword">if</span> ([queuePlayer canInsertItem:anItem afterItem:<span class="literal">nil</span>]) &#123;</div><div class="line">    [queuePlayer insertItem:anItem afterItem:<span class="literal">nil</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Monitoring-Playback"><a href="#Monitoring-Playback" class="headerlink" title="Monitoring Playback"></a>Monitoring Playback</h2><p>通过<code>palyer</code>或者<code>player item</code>的显示状态你可以监视视频已经播放的部分。这是专门用来展示状态改变，但是不可以直接控制。例如：</p>
+<ul>
+<li>如果用户切换到其他的应用，<code>palyer</code>的速率属性将会降至0.0。</li>
+<li>如果你播放远程的媒体，<code>palyer item</code>的<code>loadedTimeRanges</code>和<code>seekableTimeRanges</code>属性在缓存到更多的数据的时候会发生改变。这些属性告诉你那一部分的<code>palyer item</code>的时间轴是可用的。</li>
+<li><code>palyer</code>的<code>currentItem</code>属性随着<code>palyer item</code>被HTTP直播流创建而发生改变。</li>
+<li><code>palyer item</code>的<code>tracks</code>属性会随着HTTP直播流可能发生改变。当流为内容提供不同的编码。track会随着<code>palyer</code>切换到不同的编码方式而发生改变。</li>
+<li>如果播放失败或者其他的原因，<code>palyer</code>和<code>payer item</code>的状态可能会发生改变。<br>你都可以使用KVO来监视这些属性的改变。</li>
+</ul>
+<blockquote>
+<p>注意： 你需要在主线程中注册KOV通知和取消KOV通知，这可以避免可能收到其他线程的通知，当你在其他线程上进行更改时。AV Foundation在主线程上调用<code>observeValueForKeyPath:ofObject:change:context:</code>，即使改变是在另外的线程发生的。</p>
+</blockquote>
+<h3 id="Responding-to-a-Change-in-Status-在状态里相应改变"><a href="#Responding-to-a-Change-in-Status-在状态里相应改变" class="headerlink" title="Responding to a Change in Status 在状态里相应改变"></a>Responding to a Change in Status 在状态里相应改变</h3><p>当<code>palyer</code>和<code>payer item</code>的状态发生改变，会发布KVO改变通知，如果一个对象因为一些原因无法播放（例如，媒体服务被调整了），状态会根据需要更改成<code>AVPlayerStatusFailed</code>和<code>AVPlayerItemStatusFailed</code>。在这种情况下，对象的<code>error</code>属性将会变成包含错误描述信息的<code>error</code>对象。</p>
+<p>AV Foundation没有具体指明通知会在哪条线程是发生，如果你需要更新用户界面，你需要确保任何相关的代码都要在主线程上调用。下面使用<code>dispatch_async</code>确保在主线程上执行代码。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object</div><div class="line">                        change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context &#123;</div><div class="line"> </div><div class="line">    <span class="keyword">if</span> (context == &lt;<span class="meta">#Player status context#&gt;) &#123;</span></div><div class="line">        <span class="built_in">AVPlayer</span> *thePlayer = (<span class="built_in">AVPlayer</span> *)object;</div><div class="line">        <span class="keyword">if</span> ([thePlayer status] == <span class="built_in">AVPlayerStatusFailed</span>) &#123;</div><div class="line">            <span class="built_in">NSError</span> *error = [&lt;<span class="meta">#The AVPlayer object#&gt; error];</span></div><div class="line">            <span class="comment">// Respond to error: for example, display an alert sheet.</span></div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Deal with other status change if appropriate.</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">// Deal with other change notifications if appropriate.</span></div><div class="line">    [<span class="keyword">super</span> observeValueForKeyPath:keyPath ofObject:object</div><div class="line">           change:change context:context];</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Tracking-Readiness-for-Visual-Display-跟踪准备视觉显示"><a href="#Tracking-Readiness-for-Visual-Display-跟踪准备视觉显示" class="headerlink" title="Tracking Readiness for Visual Display  跟踪准备视觉显示"></a>Tracking Readiness for Visual Display  跟踪准备视觉显示</h3><p>你可以观察<code>AVAplayerLay</code>对象的<code>readyForDisplay</code>参数来通知你，当层已经具有用户可视内容的时候。特别是当用户需要查看到内容并执行转化才可能将<code>palyer</code> 层插入到层树中。</p>
+<h3 id="Tracking-Time"><a href="#Tracking-Time" class="headerlink" title="Tracking Time"></a>Tracking Time</h3><h3 id="Reaching-the-End-of-an-Item"><a href="#Reaching-the-End-of-an-Item" class="headerlink" title="Reaching the End of an Item"></a>Reaching the End of an Item</h3><h2 id="Putting-It-All-Together-Playing-a-Video-File-Using-AVPlayerLayer"><a href="#Putting-It-All-Together-Playing-a-Video-File-Using-AVPlayerLayer" class="headerlink" title="Putting It All Together: Playing a Video File Using AVPlayerLayer"></a>Putting It All Together: Playing a Video File Using AVPlayerLayer</h2><h3 id="The-Player-View"><a href="#The-Player-View" class="headerlink" title="The Player View"></a>The Player View</h3><h3 id="A-Simple-View-Controller"><a href="#A-Simple-View-Controller" class="headerlink" title="A Simple View Controller"></a>A Simple View Controller</h3><h3 id="Creating-the-Asset"><a href="#Creating-the-Asset" class="headerlink" title="Creating the Asset"></a>Creating the Asset</h3><h3 id="Responding-to-the-Player-Item’s-Status-Change"><a href="#Responding-to-the-Player-Item’s-Status-Change" class="headerlink" title="Responding to the Player Item’s Status Change"></a>Responding to the Player Item’s Status Change</h3><h3 id="Playing-the-Item"><a href="#Playing-the-Item" class="headerlink" title="Playing the Item"></a>Playing the Item</h3><h1 id="4-编辑"><a href="#4-编辑" class="headerlink" title="4. 编辑"></a>4. 编辑</h1><h2 id="Creating-a-Composition"><a href="#Creating-a-Composition" class="headerlink" title="Creating a Composition"></a>Creating a Composition</h2><h3 id="Options-for-Initializing-a-Composition-Track"><a href="#Options-for-Initializing-a-Composition-Track" class="headerlink" title="Options for Initializing a Composition Track"></a>Options for Initializing a Composition Track</h3><h2 id="Adding-Audiovisual-Data-to-a-Composition"><a href="#Adding-Audiovisual-Data-to-a-Composition" class="headerlink" title="Adding Audiovisual Data to a Composition"></a>Adding Audiovisual Data to a Composition</h2><h3 id="Retrieving-Compatible-Composition-Tracks"><a href="#Retrieving-Compatible-Composition-Tracks" class="headerlink" title="Retrieving Compatible Composition Tracks"></a>Retrieving Compatible Composition Tracks</h3><h2 id="Generating-a-Volume-Ramp"><a href="#Generating-a-Volume-Ramp" class="headerlink" title="Generating a Volume Ramp"></a>Generating a Volume Ramp</h2><h2 id="Performing-Custom-Video-Processing"><a href="#Performing-Custom-Video-Processing" class="headerlink" title="Performing Custom Video Processing"></a>Performing Custom Video Processing</h2><h3 id="Changing-the-Composition’s-Background-Color"><a href="#Changing-the-Composition’s-Background-Color" class="headerlink" title="Changing the Composition’s Background Color"></a>Changing the Composition’s Background Color</h3><h3 id="Applying-Opacity-Ramps"><a href="#Applying-Opacity-Ramps" class="headerlink" title="Applying Opacity Ramps"></a>Applying Opacity Ramps</h3><h3 id="Incorporating-Core-Animation-Effects"><a href="#Incorporating-Core-Animation-Effects" class="headerlink" title="Incorporating Core Animation Effects"></a>Incorporating Core Animation Effects</h3><h2 id="Putting-It-All-Together-Combining-Multiple-Assets-and-Saving-the-Result-to-the-Camera-Roll"><a href="#Putting-It-All-Together-Combining-Multiple-Assets-and-Saving-the-Result-to-the-Camera-Roll" class="headerlink" title="Putting It All Together: Combining Multiple Assets and Saving the Result to the Camera Roll"></a>Putting It All Together: Combining Multiple Assets and Saving the Result to the Camera Roll</h2><h3 id="Creating-the-Composition"><a href="#Creating-the-Composition" class="headerlink" title="Creating the Composition"></a>Creating the Composition</h3><h3 id="Adding-the-Assets"><a href="#Adding-the-Assets" class="headerlink" title="Adding the Assets"></a>Adding the Assets</h3><h3 id="Checking-the-Video-Orientations"><a href="#Checking-the-Video-Orientations" class="headerlink" title="Checking the Video Orientations"></a>Checking the Video Orientations</h3><h3 id="Applying-the-Video-Composition-Layer-Instructions"><a href="#Applying-the-Video-Composition-Layer-Instructions" class="headerlink" title="Applying the Video Composition Layer Instructions"></a>Applying the Video Composition Layer Instructions</h3><h3 id="Setting-the-Render-Size-and-Frame-Duration"><a href="#Setting-the-Render-Size-and-Frame-Duration" class="headerlink" title="Setting the Render Size and Frame Duration"></a>Setting the Render Size and Frame Duration</h3><h3 id="Exporting-the-Composition-and-Saving-it-to-the-Camera-Roll"><a href="#Exporting-the-Composition-and-Saving-it-to-the-Camera-Roll" class="headerlink" title="Exporting the Composition and Saving it to the Camera Roll"></a>Exporting the Composition and Saving it to the Camera Roll</h3><h1 id="5-图片和视频的捕捉"><a href="#5-图片和视频的捕捉" class="headerlink" title="5. 图片和视频的捕捉"></a>5. 图片和视频的捕捉</h1><p><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090008222889.jpg" alt=""><br><img src="http://o95nbyrid.bkt.clouddn.com/2017-10-26-15090015197941.jpg" alt=""><br><code>AVCaptureDevice</code>:实例代表输入设备例如摄像头和麦克风<br><code>AVCaptureInput</code>:实例代表用户配置输入设备的端口<br><code>AVCaptureOutput</code>:实例代表管理输出例如一个视频文件或者一张静态图<br><code>AVCaptureSession</code>:实例代表定位输入和输出之间的数据流</p>
 <h2 id="5-1-使用Session定位数据流"><a href="#5-1-使用Session定位数据流" class="headerlink" title="5.1 使用Session定位数据流"></a>5.1 使用Session定位数据流</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">AVCaptureSession</span> *session = </div><div class="line">[[<span class="built_in">AVCaptureSession</span> alloc] init];</div><div class="line"><span class="comment">//添加输入和输出</span></div><div class="line">[session startRunning];</div></pre></td></tr></table></figure>
 <h3 id="5-1-1-配置Session"><a href="#5-1-1-配置Session" class="headerlink" title="5.1.1 配置Session"></a>5.1.1 配置Session</h3><p> 使用session参数的<code>sessionPreset</code>来指定你想要的图片质量。</p>
 <table>
@@ -547,7 +585,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T11:25:53+08:00">
                 2017-10-27
@@ -568,7 +606,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -690,7 +728,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T11:18:52+08:00">
                 2017-10-27
@@ -711,7 +749,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -859,7 +897,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T11:13:39+08:00">
                 2017-10-27
@@ -880,7 +918,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1001,7 +1039,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T14:22:28+08:00">
                 2017-10-26
@@ -1129,7 +1167,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-27T10:02:38+08:00">
                 2017-06-27
@@ -1150,7 +1188,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1274,7 +1312,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-21T18:45:51+08:00">
                 2017-06-21
@@ -1295,7 +1333,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1521,7 +1559,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-21T09:45:37+08:00">
                 2017-06-21
@@ -1542,7 +1580,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1663,7 +1701,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:19:54+08:00">
                 2017-06-20
@@ -1684,7 +1722,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1730,7 +1768,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/20/利器/Mac Shell/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1809,7 +1847,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:12:49+08:00">
                 2017-06-20
@@ -1830,7 +1868,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1876,7 +1914,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/20/Objective-C/Github/ReactiveCocoa/#more" rel="contents">
-              Read more &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1964,7 +2002,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1975,7 +2013,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
@@ -1986,7 +2024,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">30</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
             
@@ -2034,7 +2072,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
