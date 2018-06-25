@@ -94,13 +94,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Huanrong">
-<meta property="og:url" content="http://caohr.com/archives/2017/06/index.html">
+<meta name="description" content="UTF-8UTF-8可以与之前的ASCII码兼容，但是遇到比7bits更大的编码UTF-8是怎么处理的？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UTF-8">
+<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/UTF8/index.html">
 <meta property="og:site_name" content="Huanrong">
+<meta property="og:description" content="UTF-8UTF-8可以与之前的ASCII码兼容，但是遇到比7bits更大的编码UTF-8是怎么处理的？">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/15299036859157.jpg">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/15299036976088.jpg">
+<meta property="og:updated_time" content="2018-06-25T05:15:20.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Huanrong">
+<meta name="twitter:title" content="UTF-8">
+<meta name="twitter:description" content="UTF-8UTF-8可以与之前的ASCII码兼容，但是遇到比7bits更大的编码UTF-8是怎么处理的？">
+<meta name="twitter:image" content="http://o95nbyrid.bkt.clouddn.com/15299036859157.jpg">
 
 
 
@@ -129,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/archives/2017/06/"/>
+  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/UTF8/"/>
 
 
 
 
 
-  <title>Archive | Huanrong</title>
+  <title>UTF-8 | Huanrong</title>
   
 
 
@@ -160,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,74 +251,170 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 12 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/UTF8/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/06/21/Objective-C/应该怎样重写Init方法？/" itemprop="url">
-              
-                <span itemprop="name">应该怎样重写init方法</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">UTF-8</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-21T09:45:37+08:00"
-              content="2017-06-21" >
-          06-21
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T13:14:00+08:00">
+                2018-06-25
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h1><p>UTF-8可以与之前的<code>ASCII</code>码兼容，但是遇到比7bits更大的编码UTF-8是怎么处理的？</p>
+<a id="more"></a>
+<p>例如符号 ½，在UTF-8中的编码是101111101，使用了8bits这时候在UTF-8中就需要两个字节来存储。</p>
+<p><img src="http://o95nbyrid.bkt.clouddn.com/15299036859157.jpg" alt=""></p>
+<p>当需要更高位的时候，则可以用下面的表格来推算他。</p>
+<p><img src="http://o95nbyrid.bkt.clouddn.com/15299036976088.jpg" alt=""><br>也就是当需要两个字节的时候，前面为两个11加一个零。需要三位的时候则1110。而子位前面都以10开头，剩下的位用来存储数据。</p>
+<p>对于n字节的符号（n &gt; 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let char = “\u&#123;00bd&#125;”</span><br><span class="line">for in in char.utf8 &#123;</span><br><span class="line">    print(i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//194 189</span><br><span class="line">//11000010 和 101111101和上图是对应的。</span><br></pre></td></tr></table></figure>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/25/Swift/Unicode/" rel="next" title="Unicode">
+                <i class="fa fa-chevron-left"></i> Unicode
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -319,6 +422,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -339,8 +446,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -402,6 +518,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UTF-8"><span class="nav-number">1.</span> <span class="nav-text">UTF-8</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -515,11 +647,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   

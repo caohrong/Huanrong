@@ -94,19 +94,17 @@
 
 
 
-<meta name="description" content="除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于modules和source filesmodules：你可以通过import导入的一个框架或者是一个程序。source files：即Swift中单个文件。但是一个文件中通常会定义多个类。">
+<meta name="description" content="🏆Mutating因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Access Control">
-<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Access Control/index.html">
+<meta property="og:title" content="Mutating">
+<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Mutating/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于modules和source filesmodules：你可以通过import导入的一个框架或者是一个程序。source files：即Swift中单个文件。但是一个文件中通常会定义多个类。">
+<meta property="og:description" content="🏆Mutating因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Access%20Control/media/15298914182082.jpg">
-<meta property="og:updated_time" content="2018-06-25T04:52:52.044Z">
+<meta property="og:updated_time" content="2018-06-25T05:15:34.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Access Control">
-<meta name="twitter:description" content="除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于modules和source filesmodules：你可以通过import导入的一个框架或者是一个程序。source files：即Swift中单个文件。但是一个文件中通常会定义多个类。">
-<meta name="twitter:image" content="http://caohr.com/2018/06/25/Swift/Access%20Control/media/15298914182082.jpg">
+<meta name="twitter:title" content="Mutating">
+<meta name="twitter:description" content="🏆Mutating因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
 
 
 
@@ -135,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/Access Control/"/>
+  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/Mutating/"/>
 
 
 
 
 
-  <title>Access Control | Huanrong</title>
+  <title>Mutating | Huanrong</title>
   
 
 
@@ -264,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Access Control/">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Mutating/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong">
@@ -281,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Access Control</h1>
+          <h1 class="post-title" itemprop="name headline">Mutating</h1>
         
 
         <div class="post-meta">
@@ -293,7 +291,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T09:49:45+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T13:07:58+08:00">
                 2018-06-25
               </time>
             
@@ -353,16 +351,9 @@
       
 
       
-        <p>除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于<code>modules</code>和<code>source files</code><br>modules：你可以通过<code>import</code>导入的一个框架或者是一个程序。<br>source files：即Swift中单个文件。但是一个文件中通常会定义多个类。</p>
+        <h1 id="🏆Mutating"><a href="#🏆Mutating" class="headerlink" title="🏆Mutating"></a>🏆Mutating</h1><p>因为<code>Swift</code>的协议<code>protocol</code>可以被<code>class</code>，<code>struct</code>和<code>enum</code>来实现，对于<code>struct</code>和<code>enum</code>如果协议定义的方法需要修改本身的参数，则需要加上<code>mutating</code>，但是class就没有这种限制。</p>
 <a id="more"></a>
-<h2 id="open"><a href="#open" class="headerlink" title="open"></a>open</h2><p>open 修饰的 class 在 Module 内部和外部都可以被访问和继承<br>open 修饰的 func 在 Module 内部和外部都可以被访问和重载（override）</p>
-<h2 id="Public"><a href="#Public" class="headerlink" title="Public"></a>Public</h2><p>public 修饰的 class 在 Module 内部可以访问和继承，在外部只能访问<br>public 修饰的 func 在 Module 内部可以被访问和重载（override）,在外部只能访问</p>
-<h2 id="internal"><a href="#internal" class="headerlink" title="internal"></a>internal</h2><p>默认属性不需要设置，该框架或者app内可以访问</p>
-<h2 id="fileprivate"><a href="#fileprivate" class="headerlink" title="fileprivate"></a>fileprivate</h2><p>文件内部可以访问</p>
-<h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><p>该类中使用</p>
-<p>权限范围排列<br>open-&gt;public-&gt;internal-&gt;fileprivate-&gt;private。</p>
-<p>参考资料<br><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html" target="_blank" rel="noopener">The Swift Programming Language-&gt; Access Control</a></p>
-<p><img src="media/15298914182082.jpg" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> numberOfWheels: <span class="type">Int</span> &#123;<span class="keyword">get</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyCar</span>: <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> numberOfWheels = <span class="number">4</span></span><br><span class="line">    <span class="keyword">var</span> color = <span class="type">UIColor</span>.blueColor()</span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        color = <span class="type">UIColor</span>.redColor()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -387,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/25/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/06/25/Swift/Defer/" rel="next" title="Defer">
+                <i class="fa fa-chevron-left"></i> Defer
               </a>
             
           </div>
@@ -397,8 +388,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/25/Swift/String/" rel="prev" title="String">
-                String <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/25/Swift/JSON/" rel="prev" title="Mutating">
+                Mutating <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -533,7 +524,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#open"><span class="nav-number">1.</span> <span class="nav-text">open</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public"><span class="nav-number">2.</span> <span class="nav-text">Public</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#internal"><span class="nav-number">3.</span> <span class="nav-text">internal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fileprivate"><span class="nav-number">4.</span> <span class="nav-text">fileprivate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#private"><span class="nav-number">5.</span> <span class="nav-text">private</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#🏆Mutating"><span class="nav-number">1.</span> <span class="nav-text">🏆Mutating</span></a></li></ol></div>
             
 
           </div>
