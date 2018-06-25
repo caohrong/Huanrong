@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Words," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,18 +94,19 @@
 
 
 
-<meta name="description" content="open fileprivate internal guard deinit open：最开发的访问级别fileprivate：当前文件可访问 private: 只能在当前类访问（extension里也可以访问当前类里访问）fileprivate：访问级别所修饰的属性或者方法在当前的swift源文件中可以访问。internal(默认访问级别，internal修饰符可写可不写)：internal访问">
-<meta name="keywords" content="Words">
+<meta name="description" content="除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于modules和source filesmodules：你可以通过import导入的一个框架或者是一个程序。source files：即Swift中单个文件。但是一个文件中通常会定义多个类。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift">
-<meta property="og:url" content="http://caohr.com/2017/11/08/Swift/Basic/index.html">
+<meta property="og:title" content="Access Control">
+<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Access Control/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="open fileprivate internal guard deinit open：最开发的访问级别fileprivate：当前文件可访问 private: 只能在当前类访问（extension里也可以访问当前类里访问）fileprivate：访问级别所修饰的属性或者方法在当前的swift源文件中可以访问。internal(默认访问级别，internal修饰符可写可不写)：internal访问">
+<meta property="og:description" content="除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于modules和source filesmodules：你可以通过import导入的一个框架或者是一个程序。source files：即Swift中单个文件。但是一个文件中通常会定义多个类。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2017-11-13T01:57:16.000Z">
+<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Access%20Control/media/15298914182082.jpg">
+<meta property="og:updated_time" content="2018-06-25T04:52:52.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift">
-<meta name="twitter:description" content="open fileprivate internal guard deinit open：最开发的访问级别fileprivate：当前文件可访问 private: 只能在当前类访问（extension里也可以访问当前类里访问）fileprivate：访问级别所修饰的属性或者方法在当前的swift源文件中可以访问。internal(默认访问级别，internal修饰符可写可不写)：internal访问">
+<meta name="twitter:title" content="Access Control">
+<meta name="twitter:description" content="除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于modules和source filesmodules：你可以通过import导入的一个框架或者是一个程序。source files：即Swift中单个文件。但是一个文件中通常会定义多个类。">
+<meta name="twitter:image" content="http://caohr.com/2018/06/25/Swift/Access%20Control/media/15298914182082.jpg">
 
 
 
@@ -134,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/2017/11/08/Swift/Basic/"/>
+  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/Access Control/"/>
 
 
 
 
 
-  <title>Swift | Huanrong</title>
+  <title>Access Control | Huanrong</title>
   
 
 
@@ -263,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2017/11/08/Swift/Basic/">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Access Control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong">
@@ -280,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Swift</h1>
+          <h1 class="post-title" itemprop="name headline">Access Control</h1>
         
 
         <div class="post-meta">
@@ -292,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-08T09:15:58+08:00">
-                2017-11-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T09:49:45+08:00">
+                2018-06-25
               </time>
             
 
@@ -315,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/English/" itemprop="url" rel="index">
-                    <span itemprop="name">English</span>
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
                   </a>
                 </span>
 
@@ -352,14 +353,16 @@
       
 
       
-        <p>open fileprivate internal guard deinit</p>
-<p>open：最开发的访问级别<br>fileprivate：当前文件可访问</p>
-<p>private: 只能在当前类访问（extension里也可以访问当前类里访问）<br>fileprivate：访问级别所修饰的属性或者方法在当前的swift源文件中可以访问。<br>internal(默认访问级别，internal修饰符可写可不写)：internal访问级别所修饰的属性和方法在源代码中所在的模块都可以访问。</p>
-<p>open</p>
-<p>open 修饰的 class 在 Module 内部和外部都可以被访问和继承<br>open 修饰的 func 在 Module 内部和外部都可以被访问和重载（override）<br>Public</p>
-<p>public 修饰的 class在Module 内部可以访问和继承，在外部只能访问<br>public 修饰的 func在Module 内部可以被访问和重载（override）,在外部只能访问</p>
-<p>Final<br>final 修饰的 class 任何地方都不能不能被继承<br>final 修饰的 func 任何地方都不能被 Override</p>
-<p>访问级别<br>open &gt; public &gt; interal &gt; fileprivate &gt; private</p>
+        <p>除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于<code>modules</code>和<code>source files</code><br>modules：你可以通过<code>import</code>导入的一个框架或者是一个程序。<br>source files：即Swift中单个文件。但是一个文件中通常会定义多个类。</p>
+<a id="more"></a>
+<h2 id="open"><a href="#open" class="headerlink" title="open"></a>open</h2><p>open 修饰的 class 在 Module 内部和外部都可以被访问和继承<br>open 修饰的 func 在 Module 内部和外部都可以被访问和重载（override）</p>
+<h2 id="Public"><a href="#Public" class="headerlink" title="Public"></a>Public</h2><p>public 修饰的 class 在 Module 内部可以访问和继承，在外部只能访问<br>public 修饰的 func 在 Module 内部可以被访问和重载（override）,在外部只能访问</p>
+<h2 id="internal"><a href="#internal" class="headerlink" title="internal"></a>internal</h2><p>默认属性不需要设置，该框架或者app内可以访问</p>
+<h2 id="fileprivate"><a href="#fileprivate" class="headerlink" title="fileprivate"></a>fileprivate</h2><p>文件内部可以访问</p>
+<h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><p>该类中使用</p>
+<p>权限范围排列<br>open-&gt;public-&gt;internal-&gt;fileprivate-&gt;private。</p>
+<p>参考资料<br><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html" target="_blank" rel="noopener">The Swift Programming Language-&gt; Access Control</a></p>
+<p><img src="media/15298914182082.jpg" alt=""></p>
 
       
     </div>
@@ -375,12 +378,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Words/" rel="tag"># Words</a>
-          
-        </div>
-      
 
       
       
@@ -390,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/21/Objective-C/应该怎样重写Init方法？/" rel="next" title="应该怎样重写init方法">
-                <i class="fa fa-chevron-left"></i> 应该怎样重写init方法
+              <a href="/2018/06/25/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -400,8 +397,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/25/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/25/Swift/2018-06-25/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -454,8 +451,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -517,6 +523,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#open"><span class="nav-number">1.</span> <span class="nav-text">open</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public"><span class="nav-number">2.</span> <span class="nav-text">Public</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#internal"><span class="nav-number">3.</span> <span class="nav-text">internal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fileprivate"><span class="nav-number">4.</span> <span class="nav-text">fileprivate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#private"><span class="nav-number">5.</span> <span class="nav-text">private</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
