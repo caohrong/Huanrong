@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next muse use-motion" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,11 +37,36 @@
 
 
 
-
   
   
   <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -50,22 +75,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -77,15 +87,20 @@
 
 
 
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
 
 
-<meta name="keywords">
+
+
+
+
 <meta property="og:type" content="article">
 <meta property="og:title" content="ReactiveCocoa">
 <meta property="og:url" content="http://yoursite.com/2017/06/20/Objective-C/Github/ReactiveCocoa/index.html">
 <meta property="og:site_name" content="Huanrong">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/ReactiveCocoa/ReactiveCocoa/master/Logo/PNG/logo.png">
-<meta property="og:updated_time" content="2017-10-27T03:11:22.030Z">
+<meta property="og:updated_time" content="2017-10-27T03:11:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/ReactiveCocoa/ReactiveCocoa/master/Logo/PNG/logo.png">
@@ -96,12 +111,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: true,
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -134,16 +148,22 @@
 
 
 
+
+
+
+
+
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -159,7 +179,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">You pile up enough tormorrows and you'll be left with nothing but a lot of empty yesterdays.</p>
+        <p class="site-subtitle"></p>
       
   </div>
 
@@ -184,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +214,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
           </a>
         </li>
       
@@ -234,7 +264,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/Objective-C/Github/ReactiveCocoa/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Huanrong Cao">
+      <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -258,7 +288,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T11:12:49+08:00">
                 2017-06-20
@@ -279,7 +309,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -335,11 +365,11 @@
 <li>一个或者多个函数作为输入。</li>
 <li>有且仅有一个函数作为输出。</li>
 </ul>
-<h4 id="高阶映射"><a href="#高阶映射" class="headerlink" title="高阶映射"></a>高阶映射</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在ReactiveCocoa中要将数值转换为流然后再做相应的处理</div><div class="line"><span class="built_in">NSMutableArray</span> *numbers = [<span class="built_in">NSMutableArray</span> arrayWithObjects:@<span class="number">1</span>, @<span class="number">2</span>, @<span class="number">3</span>, <span class="literal">nil</span>];</div><div class="line">        </div><div class="line">    <span class="built_in">NSArray</span> *Newnumbers = [[[numbers rac_sequence] map:^<span class="keyword">id</span> _Nullable(<span class="keyword">id</span>  _Nullable value) &#123;</div><div class="line">        <span class="keyword">return</span> @([value integerValue]*<span class="number">2</span>);</div><div class="line">    &#125;] array];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"o%@"</span>, Newnumbers);</div><div class="line">    </div><div class="line">    <span class="comment">//用一下方法写的打印出来的结果元素并没有改变，如知道原因的请告知我谢谢。</span></div><div class="line">    RACSequence *stream = [numbers rac_sequence];</div><div class="line">    [stream map:^<span class="keyword">id</span> _Nullable(<span class="keyword">id</span>  _Nullable value) &#123;</div><div class="line">        <span class="keyword">return</span> @([value integerValue]*<span class="number">2</span>);</div><div class="line">    &#125;];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ok%@"</span>, [stream array]);</div></pre></td></tr></table></figure>
+<h4 id="高阶映射"><a href="#高阶映射" class="headerlink" title="高阶映射"></a>高阶映射</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">在ReactiveCocoa中要将数值转换为流然后再做相应的处理</span><br><span class="line"><span class="built_in">NSMutableArray</span> *numbers = [<span class="built_in">NSMutableArray</span> arrayWithObjects:@<span class="number">1</span>, @<span class="number">2</span>, @<span class="number">3</span>, <span class="literal">nil</span>];</span><br><span class="line">        </span><br><span class="line">    <span class="built_in">NSArray</span> *Newnumbers = [[[numbers rac_sequence] map:^<span class="keyword">id</span> _Nullable(<span class="keyword">id</span>  _Nullable value) &#123;</span><br><span class="line">        <span class="keyword">return</span> @([value integerValue]*<span class="number">2</span>);</span><br><span class="line">    &#125;] array];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"o%@"</span>, Newnumbers);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用一下方法写的打印出来的结果元素并没有改变，如知道原因的请告知我谢谢。</span></span><br><span class="line">    RACSequence *stream = [numbers rac_sequence];</span><br><span class="line">    [stream map:^<span class="keyword">id</span> _Nullable(<span class="keyword">id</span>  _Nullable value) &#123;</span><br><span class="line">        <span class="keyword">return</span> @([value integerValue]*<span class="number">2</span>);</span><br><span class="line">    &#125;];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ok%@"</span>, [stream array]);</span><br></pre></td></tr></table></figure>
 <h4 id="高阶过滤"><a href="#高阶过滤" class="headerlink" title="高阶过滤"></a>高阶过滤</h4><p>通过过滤可以将已有的数组过滤成新的数组</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"n%@"</span>, [[[numbers rac_sequence] filter:^<span class="built_in">BOOL</span>(<span class="keyword">id</span>  _Nullable value) &#123;</div><div class="line">        <span class="keyword">return</span> [value integerValue]%<span class="number">2</span> == <span class="number">0</span>;</div><div class="line">    &#125;] array]);</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"n%@"</span>, [[[numbers rac_sequence] filter:^<span class="built_in">BOOL</span>(<span class="keyword">id</span>  _Nullable value) &#123;</span><br><span class="line">        <span class="keyword">return</span> [value integerValue]%<span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">    &#125;] array]);</span><br></pre></td></tr></table></figure>
 <h4 id="高阶折叠"><a href="#高阶折叠" class="headerlink" title="高阶折叠"></a>高阶折叠</h4><p>Fold是把类表中所有的元素编程一个值，一个简单的高阶折叠能够用来给数值组求和。</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"f%@"</span>,[[[numbers rac_sequence] map:^<span class="keyword">id</span> (<span class="keyword">id</span> value)&#123;</div><div class="line">        <span class="keyword">return</span> [value stringValue];</div><div class="line">    &#125;] foldLeftWithStart:<span class="string">@""</span> reduce:^<span class="keyword">id</span> (<span class="keyword">id</span> accumulator, <span class="keyword">id</span> value)&#123;</div><div class="line">        <span class="keyword">return</span> [accumulator stringByAppendingString:value];</div><div class="line">    &#125;]);</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"f%@"</span>,[[[numbers rac_sequence] map:^<span class="keyword">id</span> (<span class="keyword">id</span> value)&#123;</span><br><span class="line">        <span class="keyword">return</span> [value stringValue];</span><br><span class="line">    &#125;] foldLeftWithStart:<span class="string">@""</span> reduce:^<span class="keyword">id</span> (<span class="keyword">id</span> accumulator, <span class="keyword">id</span> value)&#123;</span><br><span class="line">        <span class="keyword">return</span> [accumulator stringByAppendingString:value];</span><br><span class="line">    &#125;]);</span><br></pre></td></tr></table></figure>
 <p><code>ReactiveCocoa</code>将Objective-C中的消息机制统一了起来，而且将消息变成可以处理的流，其中包含<code>delegate</code>、<code>blocks</code>、<code>traget-action机制</code>、<code>notifications</code>、<code>KOV</code>,而在<code>ReactiveCocoa</code>中消息是可以合并、过滤、链接等处理。</p>
 <h2 id="ReactiveCocoa"><a href="#ReactiveCocoa" class="headerlink" title="ReactiveCocoa"></a>ReactiveCocoa</h2><h3 id="流和序列"><a href="#流和序列" class="headerlink" title="流和序列"></a>流和序列</h3><p>流是值的序列化的抽象，你可以认为一个流就像一条水管，而值就是流淌在水管中的水，值从管道的一端流入从另一端流出。当值从管道的另一端流出的时候，我们可以读取过去所有的值，甚至是刚刚进入管道的值(即当前值)。</p>
 <p>前面高阶映射做了以下步骤</p>
@@ -353,26 +383,26 @@
 <p>信号的三种状态：<br><code>Next Values</code>：下一个发布到管道内的值。<br><code>Error Value</code>: signal无法完成。<br><code>Completion Values</code>：signal 成功完成。</p>
 <h3 id="订阅"><a href="#订阅" class="headerlink" title="订阅"></a>订阅</h3><p>当你随时都想知道某一个值的改变时(不管是next、error或者completion),你就会订阅流—一种最常见的signal.使用信号通常都会有副作用</p>
 <h3 id="热信号和冷信号"><a href="#热信号和冷信号" class="headerlink" title="热信号和冷信号"></a>热信号和冷信号</h3><h3 id="组播"><a href="#组播" class="headerlink" title="组播"></a>组播</h3><p>组播是多个订阅者共享一个订阅信号的术语。</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.textField.rac_textSignal subscribeNext:^(<span class="keyword">id</span> x)&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"New Value: %@"</span>,x);</div><div class="line">&#125; error:^(<span class="built_in">NSError</span> * error)&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Error : %@"</span>, error);</div><div class="line">&#125; completed:^&#123;</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Completed."</span>);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span>.textField.rac_textSignal subscribeNext:^(<span class="keyword">id</span> x)&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"New Value: %@"</span>,x);</span><br><span class="line">&#125; error:^(<span class="built_in">NSError</span> * error)&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Error : %@"</span>, error);</span><br><span class="line">&#125; completed:^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Completed."</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
 <h3 id="状态推导"><a href="#状态推导" class="headerlink" title="状态推导"></a>状态推导</h3><p>状态推导是ReactiveCocoa的另一个核心组件。这里并非指类的某个属性（设置一个新的值就代表状态发生了改变那样），这里我们指的是把属性抽象为流。</p>
-<p>通过把按钮的enabled属性抽象为流，并和我们创建的信号相绑定<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RAC(<span class="keyword">self</span>.button, enabled) = [<span class="keyword">self</span>.textField.rac_textSignal map:^<span class="keyword">id</span> (<span class="built_in">NSString</span> *value)&#123;</div><div class="line">    <span class="keyword">return</span> @([value rangeOfString:<span class="string">@"@"</span>].location != <span class="built_in">NSNotfound</span>);</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
+<p>通过把按钮的enabled属性抽象为流，并和我们创建的信号相绑定<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RAC(<span class="keyword">self</span>.button, enabled) = [<span class="keyword">self</span>.textField.rac_textSignal map:^<span class="keyword">id</span> (<span class="built_in">NSString</span> *value)&#123;</span><br><span class="line">    <span class="keyword">return</span> @([value rangeOfString:<span class="string">@"@"</span>].location != <span class="built_in">NSNotfound</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
 <h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><blockquote>
 <p>指令，RACCommand类的代表，创建并订阅动作的信号响应，可以很容易地实现一些用户与应用交互的边界效果。<br>指令（行为触发的的）通常是UI驱动的，比如按键的点击。指令就可以通过信号自动禁用，这种禁用状态呈现在UI上就是禁止该指令相关联的任何操作。</p>
 </blockquote>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.button.rac_command = [[RACCommand alloc] initWithEnabled:validEmailSignal</div><div class="line">                                                signalBlock:^RACSignal *(<span class="keyword">id</span> input)&#123;</div><div class="line">                                                    <span class="built_in">NSLog</span>(<span class="string">@"Button was pressed."</span>);</div><div class="line">                                                    <span class="keyword">return</span> [RACSignal empty];</div><div class="line">                                                &#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.button.rac_command = [[RACCommand alloc] initWithEnabled:validEmailSignal</span><br><span class="line">                                                signalBlock:^RACSignal *(<span class="keyword">id</span> input)&#123;</span><br><span class="line">                                                    <span class="built_in">NSLog</span>(<span class="string">@"Button was pressed."</span>);</span><br><span class="line">                                                    <span class="keyword">return</span> [RACSignal empty];</span><br><span class="line">                                                &#125;];</span><br></pre></td></tr></table></figure>
 <p>[RACSignal empty]这里我们需要返回一个信号让属于RACCommand的executionSignal管道(pipe)下发出去。这个信号代表button按下时一些任务需要被处理。在这个处理信号没有返回一个’complete value’(‘empty ‘会立即返回一个’complete value’)之前button将会保持不可用状态.因为这个例子中我们只是打印了一下，所以这里我们只返回一个empty信号。</p>
 <h3 id="RACSubject"><a href="#RACSubject" class="headerlink" title="RACSubject"></a>RACSubject</h3><p>RACSuject是一个有趣的信号类型，她是一个可变的状态。是一个可以主动发送信号的信号。</p>
 <h3 id="热信号和冷信号-1"><a href="#热信号和冷信号-1" class="headerlink" title="热信号和冷信号"></a>热信号和冷信号</h3><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="监听属性变化KVO"><a href="#监听属性变化KVO" class="headerlink" title="监听属性变化KVO"></a>监听属性变化KVO</h3><p>监听单个属性发生变化，并进行刷选</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[[RACObserve(<span class="keyword">self</span>, userName) filter:^<span class="built_in">BOOL</span>(<span class="keyword">id</span>  _Nullable value) &#123;</div><div class="line">    <span class="comment">//消息筛选</span></div><div class="line">    <span class="keyword">if</span> ([value hasPrefix:<span class="string">@"c"</span>]) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;] subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</div><div class="line">    <span class="comment">//消息通知</span></div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ok%@"</span>, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[[RACObserve(<span class="keyword">self</span>, userName) filter:^<span class="built_in">BOOL</span>(<span class="keyword">id</span>  _Nullable value) &#123;</span><br><span class="line">    <span class="comment">//消息筛选</span></span><br><span class="line">    <span class="keyword">if</span> ([value hasPrefix:<span class="string">@"c"</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;] subscribeNext:^(<span class="keyword">id</span>  _Nullable x) &#123;</span><br><span class="line">    <span class="comment">//消息通知</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"ok%@"</span>, x);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
 <p>监听两个属性、符合相应的条件，返回值并赋值。</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RAC(<span class="keyword">self</span>, createEnabled) = [RACSignal combineLatest:@[ RACObserve(<span class="keyword">self</span>, password), RACObserve(<span class="keyword">self</span>, passwordConfirmation)] reduce:^(<span class="built_in">NSString</span> *password, <span class="built_in">NSString</span> *passwordConfirm) &#123;</div><div class="line">                                    <span class="keyword">return</span> @([passwordConfirm isEqualToString:password]);</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RAC(<span class="keyword">self</span>, createEnabled) = [RACSignal combineLatest:@[ RACObserve(<span class="keyword">self</span>, password), RACObserve(<span class="keyword">self</span>, passwordConfirmation)] reduce:^(<span class="built_in">NSString</span> *password, <span class="built_in">NSString</span> *passwordConfirm) &#123;</span><br><span class="line">                                    <span class="keyword">return</span> @([passwordConfirm isEqualToString:password]);</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
 <h2 id="监听View事件"><a href="#监听View事件" class="headerlink" title="监听View事件"></a>监听View事件</h2><p>监听按钮的点击</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">button.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(<span class="keyword">id</span>  _Nullable input) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"按钮点击"</span>);</div><div class="line">        <span class="keyword">return</span> [RACSignal empty];</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">button.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(<span class="keyword">id</span>  _Nullable input) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"按钮点击"</span>);</span><br><span class="line">        <span class="keyword">return</span> [RACSignal empty];</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
 <p>监听TextField输入</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[textF.rac_textSignal subscribeNext:^(<span class="built_in">NSString</span> * _Nullable x) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, x);</div><div class="line">    &#125; error:^(<span class="built_in">NSError</span> * _Nullable error) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Error"</span>);</div><div class="line">    &#125; completed:^&#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"competed"</span>);</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[textF.rac_textSignal subscribeNext:^(<span class="built_in">NSString</span> * _Nullable x) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, x);</span><br><span class="line">    &#125; error:^(<span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Error"</span>);</span><br><span class="line">    &#125; completed:^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"competed"</span>);</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
 <h2 id="信息流处理"><a href="#信息流处理" class="headerlink" title="信息流处理"></a>信息流处理</h2><p>TextField输入的内容中首字母包含<code>A</code>则按钮允许点击，并且更换TextField输入字体的颜色</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">RACSignal *validEmailSignal = [textF.rac_textSignal map:^<span class="keyword">id</span> _Nullable(<span class="built_in">NSString</span> * _Nullable value) &#123;</div><div class="line">        <span class="comment">//首字母要是大写的A</span></div><div class="line">        <span class="keyword">return</span> @([value hasPrefix:<span class="string">@"A"</span>]);</div><div class="line">    &#125;];</div><div class="line">    </div><div class="line">    RAC(buttonB, enabled) = validEmailSignal;</div><div class="line">    RAC(textF, textColor) = [validEmailSignal map:^<span class="keyword">id</span> _Nullable(<span class="keyword">id</span>  _Nullable value) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>([value boolValue]) &#123;</div><div class="line">            <span class="keyword">return</span> [<span class="built_in">UIColor</span> greenColor];</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> [<span class="built_in">UIColor</span> redColor];</div><div class="line">        &#125;</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/ReactiveCocoa/ReactiveObjC" target="_blank" rel="external">ReactiveObjc 地址</a><br><a href="https://www.gitbook.com/book/kevinhm/functionalreactiveprogrammingonios/details" target="_blank" rel="external">iOS的函数相应型编程</a><br><a href="https://lpd-ios.github.io/2017/02/12/ReactiveCocoa-Macro/" target="_blank" rel="external">ReactiveCocoa中奇妙无比的“宏”魔法</a><br><a href="http://www.jianshu.com/p/38d39923ee81" target="_blank" rel="external">图解ReactiveCocoa基本函数</a></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">RACSignal *validEmailSignal = [textF.rac_textSignal map:^<span class="keyword">id</span> _Nullable(<span class="built_in">NSString</span> * _Nullable value) &#123;</span><br><span class="line">        <span class="comment">//首字母要是大写的A</span></span><br><span class="line">        <span class="keyword">return</span> @([value hasPrefix:<span class="string">@"A"</span>]);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    RAC(buttonB, enabled) = validEmailSignal;</span><br><span class="line">    RAC(textF, textColor) = [validEmailSignal map:^<span class="keyword">id</span> _Nullable(<span class="keyword">id</span>  _Nullable value) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>([value boolValue]) &#123;</span><br><span class="line">            <span class="keyword">return</span> [<span class="built_in">UIColor</span> greenColor];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/ReactiveCocoa/ReactiveObjC" target="_blank" rel="noopener">ReactiveObjc 地址</a><br><a href="https://www.gitbook.com/book/kevinhm/functionalreactiveprogrammingonios/details" target="_blank" rel="noopener">iOS的函数相应型编程</a><br><a href="https://lpd-ios.github.io/2017/02/12/ReactiveCocoa-Macro/" target="_blank" rel="noopener">ReactiveCocoa中奇妙无比的“宏”魔法</a><br><a href="http://www.jianshu.com/p/38d39923ee81" target="_blank" rel="noopener">图解ReactiveCocoa基本函数</a></p>
 
       
     </div>
@@ -397,18 +427,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/20/利器/Mac Shell/" rel="next" title="Shell">
-                <i class="fa fa-chevron-left"></i> Shell
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/19/利器/Git/Cocoapod/" rel="prev" title="创建自己私有的Cocoapod">
-                创建自己私有的Cocoapod <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/21/Objective-C/应该怎样重写Init方法？/" rel="prev" title="应该怎样重写init方法">
+                应该怎样重写init方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -437,9 +463,9 @@
 
 
           
-
-  
-
+  <div class="comments" id="comments">
+    
+  </div>
 
 
         </div>
@@ -462,75 +488,75 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Huanrong Cao</p>
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Huanrong" />
+          <p class="site-author-name" itemprop="name">Huanrong</p>
+           
               <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">49</span>
-                  <span class="site-state-item-name">Artikel</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">Kategorien</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
-                  <span class="site-state-item-name">Tags</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
           
-
-          <div class="links-of-author motion-element">
-            
-          </div>
-
-          
-          
-
-          
-          
-
-          
-
         </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
       </section>
 
       
@@ -563,36 +589,30 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Huanrong Cao</span>
-
+        <div class="copyright" >
   
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huanrong</span>
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
 
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
-
-
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
 
         
-
-
-
-
-
-
 
         
       </div>
@@ -603,8 +623,6 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
-    
-
     
 
   </div>
@@ -639,65 +657,46 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
   
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
-
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
 
 
 
@@ -728,12 +727,6 @@
 
 
 
-
-
-
-
-
-
   
 
 
@@ -744,7 +737,6 @@
 
   
 
-  
   
 
   
