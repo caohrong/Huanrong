@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="✨Magical Error Handling in Swift以下是阅读Ray Wenderlich的笔记。原文链接这个简单的例子，完美把Swift很多的知识点都说到了。Swift guard的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Huanrong">
+<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Magical Error Handling in Swift/index.html">
+<meta property="og:site_name" content="Huanrong">
+<meta property="og:description" content="✨Magical Error Handling in Swift以下是阅读Ray Wenderlich的笔记。原文链接这个简单的例子，完美把Swift很多的知识点都说到了。Swift guard的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Spell.create.png">
+<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/errorhandling-3-650x288.png">
+<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Expand-Debug-Area-1.gif">
+<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/errorhandling-4-650x248.png">
+<meta property="og:updated_time" content="2018-06-25T10:01:04.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Huanrong">
+<meta name="twitter:description" content="✨Magical Error Handling in Swift以下是阅读Ray Wenderlich的笔记。原文链接这个简单的例子，完美把Swift很多的知识点都说到了。Swift guard的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。">
+<meta name="twitter:image" content="http://caohr.com/2018/06/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Spell.create.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/Magical Error Handling in Swift/"/>
+
+
+
+
+
+  <title> | Huanrong</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-61905451-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Huanrong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">iOSDev</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Magical Error Handling in Swift/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T17:57:44+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="✨Magical-Error-Handling-in-Swift"><a href="#✨Magical-Error-Handling-in-Swift" class="headerlink" title="✨Magical Error Handling in Swift"></a>✨Magical Error Handling in Swift</h1><p>以下是阅读Ray Wenderlich的笔记。<a href="https://www.raywenderlich.com/130197/magical-error-handling-swift" target="_blank" rel="noopener">原文链接</a><br>这个简单的例子，完美把<code>Swift</code>很多的知识点都说到了。Swift <code>guard</code>的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。</p>
+<a id="more"></a>
+<p>Error handling in Swift has come a long way since the patterns in Swift 1 that were inspired by Objective-C. Major improvements in Swift 2 made the experience of handling unexpected states and conditions in your application more straightforward. These benefits continue in Swift 3, but there are no significant updates to error handling made in the latest version of the language. (Phew!)</p>
+<p>Just like other common programming languages, preferred error handling techniques in Swift can vary, depending upon the type of error encountered, and the overall architecture of your app.</p>
+<p>This tutorial will take you through a magical example involving wizards, witches, bats and toads to illustrate how best to deal with common failure scenarios. You’ll also look at how to upgrade error handling from projects written in earlier versions of the language and, finally, gaze into your crystal ball at the possible future of error handling in Swift!</p>
+<p><em>Note:</em> This tutorial assumes you’re familiar with Swift 3 syntax – particularly <a href="http://www.raywenderlich.com/112027/reference-value-types-in-swift-part-1" target="_blank" rel="noopener">enumerations</a> and <a href="https://videos.raywenderlich.com/courses/beginning-swift-3/lessons/10" target="_blank" rel="noopener">optionals</a>. If you need a refresher on these concepts, start with the <a href="http://www.raywenderlich.com/108522/whats-new-in-swift-2" target="_blank" rel="noopener">What’s New in Swift 2 post</a> by Greg Heo, and the other materials linked.</p>
+<p>Time to dive straight in (from the the cauldron into the fire!) and discover the various <em>charms</em> of error handling in Swift 3!</p>
+<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>There are two starter playgrounds for this tutorial, one for each section. Download <a href="https://koenig-media.raywenderlich.com/uploads/2016/07/Avoiding-Errors-with-nil-Starter.playground-Swift-3-Secondary-Update.zip" target="_blank" rel="noopener">Avoiding Errors with nil – Starter.playground</a> and <a href="https://koenig-media.raywenderlich.com/uploads/2016/07/Avoiding-Errors-with-Custom-Handling-Starter.playground-Swift-3-Secondary-Update.zip" target="_blank" rel="noopener">Avoiding Errors with Custom Handling – Starter.playground</a> playgrounds.</p>
+<p>Open up the <em>Avoiding Errors with nil</em> starter playground in Xcode.</p>
+<p>Read through the code and you’ll see several classes, structs and enums that hold the magic for this tutorial.<br>Take note the following parts of the code:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Avatar</span> </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> avatar: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This protocol is applied to almost all classes and structs used throughout the tutorial to provide a visual representation of each object that can be printed to the console.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">MagicWords</span>: <span class="title">String</span> </span>&#123;</span><br><span class="line">      <span class="keyword">case</span> abracadbra = <span class="string">"abracadabra"</span></span><br><span class="line">      <span class="keyword">case</span> alakazam = <span class="string">"alakazam"</span></span><br><span class="line">      <span class="keyword">case</span> hocusPocus = <span class="string">"hocus pocus"</span></span><br><span class="line">      <span class="keyword">case</span> prestoChango = <span class="string">"presto chango"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This enumeration denotes magic words that can be used to create a <code>Spell</code>.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Spell</span> </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> magicWords: <span class="type">MagicWords</span> = .abracadabra</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is the basic building block for a <code>Spell</code>. By default, you initialize its magic words to <code>.abracadabra</code>.</p>
+<p>Now that you’re acquainted with the basics of this supernatural world, you’re ready to start casting some spells.</p>
+<h2 id="Why-Should-I-Care-About-Error-Handling"><a href="#Why-Should-I-Care-About-Error-Handling" class="headerlink" title="Why Should I Care About Error Handling?"></a>Why Should I Care About Error Handling?</h2><p><em>“Error handling is the art of failing gracefully.”</em></p>
+<p>–<a href="https://www.raywenderlich.com/store/swift-apprentice" target="_blank" rel="noopener">Swift Apprentice</a>, Chapter 22 (Error Handing)</p>
+<p>Good error handling enhances the experience for end users as well as software maintainers by making it easier to identify issues, their causes and their associated severity. The more specific the error handling is throughout the code, the easier issues are to diagnose. Error handling also lets systems fail in an appropriate way so as not to frustrate or upset users.</p>
+<p>But errors don’t always need to be handled. When they don’t, language features let you avoid certain classes of errors altogether. As a general rule, if you can avoid the possibility of an error, take that design path. If you can’t avoid a potential error condition, then explicit handling is your next best option.</p>
+<h2 id="Avoiding-Swift-Errors-Using-nil"><a href="#Avoiding-Swift-Errors-Using-nil" class="headerlink" title="Avoiding Swift Errors Using nil"></a>Avoiding Swift Errors Using nil</h2><p>Since Swift has elegant(优雅的) optional-handling capabilities, you can completely avoid the error condition where you expect a value, but no value is provided. As a clever programmer, you can manipulate this feature to <em>intentionally</em> return <code>nil</code> in an error condition. This approach works best where you should take no action if you reach an error state; i.e. where you choose inaction over emergency action.</p>
+<p>Two typical examples of avoiding Swift errors using <code>nil</code> are <em>failable initializers</em> and <em>guard statements</em>.</p>
+<p>避免使用<code>nil</code></p>
+<h3 id="Failable-Initializers"><a href="#Failable-Initializers" class="headerlink" title="Failable Initializers"></a>Failable Initializers</h3><p>Failable initializers prevent the creation of an object unless sufficient information has been provided. Prior to the availability of these initializers in Swift (and in other languages!), this functionality was typically achieved via the Factory Method Pattern.</p>
+<p>An example of this pattern in Swift can be seen in <code>create:</code>:<br>当传入的参数不满足初始化的条件的时候返回<code>nil</code>以表示初始化失败。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">create</span><span class="params">(withMagicWords words: String)</span></span> -&gt; <span class="type">Spell</span>? &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> incantation = <span class="type">MagicWords</span>(rawValue: words) &#123;</span><br><span class="line">              <span class="keyword">var</span> spell = <span class="type">Spell</span>()</span><br><span class="line">              spell.magicWords = incantation</span><br><span class="line">              <span class="keyword">return</span> spell</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>The above initializer tries to create a spell using the magic words provided, but if the words are not magical you return <code>nil</code> instead.</p>
+<p>Inspect the creation of the spells at the very bottom of this tutorial to see this behavior in action:</p>
+<p><img src="media/15295924164909/Spell.create.png" alt="Spell.create"></p>
+<p>While <code>first</code> successfully creates a spell using the magic words <code>&quot;abracadabra&quot;</code>, <code>&quot;ascendio&quot;</code> doesn’t have the same effect, and the return value of <code>second</code> is <code>nil</code>. (Hey, witches can’t win <em>all</em> the time).</p>
+<p>Factory methods are an old-school programming style. There are better ways to achieve the same thing in Swift. You’ll update the <code>Spell</code> extension to use a failable initializer instead of a factory method.</p>
+<p>Delete <code>create(_words:)</code> and replace it with the following:<br><code>Swift</code>有类似的解决方案<code>failable initializer</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>?(words: <span class="type">String</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">let</span> incantation = <span class="type">MagicWords</span>(rawValue: words) &#123;</span><br><span class="line">            <span class="keyword">self</span>.magicWords = incantation</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here you’ve simplified the code by not explicitly creating and returning the <code>Spell</code> object.</p>
+<p>The lines that assign <code>first</code> and <code>second</code> now throw compiler errors:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> first = <span class="type">Spell</span>.create(withMagicWords: <span class="string">"abracadabra"</span>)</span><br><span class="line"><span class="keyword">let</span> second = <span class="type">Spell</span>.create(withMagicWords: <span class="string">"ascendio"</span>)</span><br></pre></td></tr></table></figure>
+<p>You’ll need to change these to use the new initializer. Replace the lines above with the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> first = <span class="type">Spell</span>(words: <span class="string">"abracadabra"</span>)</span><br><span class="line"><span class="keyword">let</span> second = <span class="type">Spell</span>(words: <span class="string">"ascendio"</span>)</span><br></pre></td></tr></table></figure>
+<p>After this, all errors should be fixed and the playground should compile without error. With this change your code is definitely tidier – but you can do even better! :]</p>
+<h3 id="Guard-Statements"><a href="#Guard-Statements" class="headerlink" title="Guard Statements"></a>Guard Statements</h3><p><code>guard</code> is a quick way to assert that something is true: for example, if a value is &gt; 0, or if a conditional can be unwrapped. You can then execute a block of code if the check fails.</p>
+<p><code>guard</code> was introduced in Swift 2 and is typically used to (bubble, toil and trouble) bubble-up error handling through the call stack, where the error will eventually be handled. Guard statements allow early exit from a function or method; this makes it more clear which conditions need to be present for the rest of the processing logic to run.</p>
+<p>To clean up <code>Spell</code>‘s failable initializer further, edit it as shown below to use <code>guard</code>:<br><code>guard</code>的加入改变代码的逻辑，但是让代码更容易易读和流畅，也不需要像if语句一样最终形成金字塔的形状。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>?(words: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> incantation = <span class="type">MagicWords</span>(rawValue: words) <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">self</span>.magicWords = incantation</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>With this change, there’s no need need for an <code>else</code> clause on a separate line and and the failure case is more evident as it’s now at the top of the intializer. Also, the “golden path” is the least indented. The “golden path” is the path of execution that happens when everything goes as expected, i.e. no error. Being least indented makes it easy to read.</p>
+<p>Note that the values of <code>first</code> and <code>second</code> <code>Spell</code> constants haven’t changed, but the code is more more streamlined.</p>
+<h2 id="Avoiding-Errors-with-Custom-Handling"><a href="#Avoiding-Errors-with-Custom-Handling" class="headerlink" title="Avoiding Errors with Custom Handling"></a>Avoiding Errors with Custom Handling</h2><p>Having cleaned up the <code>Spell</code> initializer and avoided some errors through the clever use of <code>nil</code>, you’re ready to tackle some more intricate(错综复杂) error handling.</p>
+<p>For the next section of this tutorial, open up <a href="https://koenig-media.raywenderlich.com/uploads/2016/07/Avoiding-Errors-with-Custom-Handling-Starter.playground-Swift-3-Secondary-Update.zip" target="_blank" rel="noopener">Avoiding Errors with Custom Handling – Starter.playground</a>.</p>
+<p>Take note of the following features of the code:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Spell</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> magicWords: <span class="type">MagicWords</span> = .abracadbra</span><br><span class="line"></span><br><span class="line">          <span class="keyword">init</span>?(words: <span class="type">String</span>) &#123;</span><br><span class="line">                <span class="keyword">guard</span> <span class="keyword">let</span> incantation = <span class="type">MagicWords</span>(rawValue: words) <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">self</span>.magicWords = incantation</span><br><span class="line">          &#125;</span><br><span class="line">          </span><br><span class="line">          <span class="keyword">init</span>?(magicWords: <span class="type">MagicWords</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.magicWords = magicWords</span><br><span class="line">          &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is the <code>Spell</code> initializer, updated to match the work you completed in the first section of this tutorial. Also note the presence of the <code>Avatar</code> protocol, and a second failable initializer, which has been added for convenience.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Familiar</span>: <span class="title">Avatar</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> noise: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">        <span class="keyword">var</span> name: <span class="type">String</span>? &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125;</span><br><span class="line">        <span class="keyword">init</span>(name: <span class="type">String</span>?)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The <code>Familiar</code> protocol will be applied to various animals (such as bats and toads) further down in the playground.</p>
+<p><em>Note:</em> For those <em>unfamiliar</em> with the term <em>familiar</em>, this is a witch’s or wizard’s magical animal sidekick, which usually has human-like qualities. Think Hedwig from Harry Potter, or the flying monkeys in the Wizard of Oz.</p>
+<p>This clearly isn’t Hedwig, but still cute nonetheless, no?</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Witch</span>: <span class="title">Magical</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> avatar = <span class="string">"*"</span></span><br><span class="line">        <span class="keyword">var</span> name: <span class="type">String</span>?</span><br><span class="line">        <span class="keyword">var</span> familiar: <span class="type">Familiar</span>?</span><br><span class="line">        <span class="keyword">var</span> spells: [<span class="type">Spell</span>] = []</span><br><span class="line">        <span class="keyword">var</span> hat: <span class="type">Hat</span>?</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">init</span>(name: <span class="type">String</span>?, familiar: <span class="type">Familiar</span>?) &#123;</span><br><span class="line">                <span class="keyword">self</span>.name = name</span><br><span class="line">                <span class="keyword">self</span>.familiar = familiar</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">let</span> s = <span class="type">Spell</span>(magicWords: .prestoChango) &#123;</span><br><span class="line">                          <span class="keyword">self</span>.spells = [s]</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">init</span>(name: <span class="type">String</span>?, familiar: <span class="type">Familiar</span>?, hat: <span class="type">Hat</span>?) &#123;</span><br><span class="line">                <span class="keyword">self</span>.<span class="keyword">init</span>(name: name, familiar: familiar)</span><br><span class="line">                <span class="keyword">self</span>.hat = hat</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//女巫需要在有帽子、帽子必须有魔法，有宠物、并且有`prestoChange`的情况下才能将不是蟾蜍的动物变成蟾蜍</span></span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">turnFamiliarIntoToad</span><span class="params">()</span></span> -&gt; <span class="type">Toad</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">let</span> hat = hat &#123;</span><br><span class="line">                        <span class="keyword">if</span> hat.isMagical &#123; <span class="comment">// When have you ever seen a Witch perform a spell without her magical hat on ? :]</span></span><br><span class="line">                            <span class="keyword">if</span> <span class="keyword">let</span> familiar = familiar &#123;   <span class="comment">// Check if witch has a familiar</span></span><br><span class="line">                                    <span class="keyword">if</span> <span class="keyword">let</span> toad = familiar <span class="keyword">as</span>? <span class="type">Toad</span> &#123;  <span class="comment">// If familiar is already a toad, no magic required</span></span><br><span class="line">                                            <span class="keyword">return</span> toad</span><br><span class="line">                                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                            <span class="keyword">if</span> hasSpell(ofType: .prestoChango) &#123;</span><br><span class="line">                                                    <span class="keyword">if</span> <span class="keyword">let</span> name = familiar.name &#123;</span><br><span class="line">                                                            <span class="keyword">return</span> <span class="type">Toad</span>(name: name)</span><br><span class="line">                                                      &#125;</span><br><span class="line">                                            &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="type">Toad</span>(name: <span class="string">"New Toad"</span>)  <span class="comment">// This is an entirely new Toad.</span></span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">//检查咒语是否存在     </span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">hasSpell</span><span class="params">(ofType type: MagicWords)</span></span> -&gt; <span class="type">Bool</span> &#123; <span class="comment">// Check if witch currently has an appropriate spell in their spellbook</span></span><br><span class="line">          <span class="keyword">let</span> change = spells.flatMap &#123; spell <span class="keyword">in</span></span><br><span class="line">                  spell.magicWords == type</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> change.<span class="built_in">count</span> &gt; <span class="number">0</span></span><br><span class="line">          &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码的问题是因为多种条件的判断，导致代码成为金字塔形状，非常不方便调试。</p>
+<p>Finally, the witch. Here you see the following:</p>
+<ul>
+<li>A <code>Witch</code> is initialized with a name and a familiar, or with a name, a familiar and a hat.</li>
+<li>A <code>Witch</code> knows a finite number of spells, stored in <code>spells</code>, which is an array of <code>Spell</code> objects.</li>
+<li>A <code>Witch</code> seems to have a penchant for turning her familiar into a toad via the use of the <code>.prestoChango</code>spell, within <code>turnFamiliarIntoToad()</code>.</li>
+</ul>
+<p>Notice the length and amount of indentation in <code>turnFamiliarIntoToad()</code>. Also, if anything goes wrong in the method, an entirely new toad will be returned. That seems like a confusing (and incorrect!) outcome for this particular spell. You’ll clean up this code significantly with custom error handling in the next section.</p>
+<h3 id="Refactoring-to-Use-Swift-Errors"><a href="#Refactoring-to-Use-Swift-Errors" class="headerlink" title="Refactoring to Use Swift Errors"></a>Refactoring to Use Swift Errors</h3><p><em>“Swift provides first-class support for throwing, catching, propagating, and manipulating<br>recoverable errors at runtime.”</em></p>
+<p>– <a href="https://itunes.apple.com/us/book/swift-programming-language/id881256329?mt=11" target="_blank" rel="noopener">The Swift Programming Language (Swift 3)</a></p>
+<p>Not to be confused with the Temple of Doom, the <em>Pyramid of Doom</em> is an anti-pattern found in Swift and other languages that can require many levels of nested statements for control flow. It can be seen in <code>turnFamiliarIntoToad()</code> above – note the <em>six</em> closing parentheses required to close out all the statements, trailing down on a diagonal. Reading code nested in this way requires excessive cognitive effort.</p>
+<p><img src="media/15295924164909/errorhandling-3-650x288.png" alt="Pyramid of Doom"></p>
+<p>Guard statements, as you’ve seen earlier, and <a href="http://nshipster.com/swift-1.2/" target="_blank" rel="noopener">multiple simultaneous optional bindings</a> can assist with the cleanup of pyramid-like code. The use of a <code>do-catch</code> mechanism, however, eliminates the problem altogether by decoupling control flow from error state handling.</p>
+<p><code>do-catch</code> mechanisms are often found near the following, related, keywords:</p>
+<ul>
+<li><code>throws</code></li>
+<li><code>do</code></li>
+<li><code>catch</code></li>
+<li><code>try</code></li>
+<li><code>defer</code></li>
+<li><code>Error</code></li>
+</ul>
+<p>To see these mechanisms in action, you are going to throw multiple custom errors. First, you’ll define the states you wish to handle by listing out everything that could possibly go wrong as an enumeration.</p>
+<p>Add the following code to your playground above the definition of <code>Witch</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">ChangoSpellError</span>: <span class="title">Error</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> hatMissingOrNotMagical</span><br><span class="line">        <span class="keyword">case</span> noFamiliar</span><br><span class="line">        <span class="keyword">case</span> familiarAlreadyAToad</span><br><span class="line">        <span class="keyword">case</span> spellFailed(reason: <span class="type">String</span>)</span><br><span class="line">        <span class="keyword">case</span> spellNotKnownToWitch</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note two things about <code>ChangoSpellError</code>:</p>
+<ul>
+<li>It conforms to the <code>Error</code> protocol, a requirement for defining errors in Swift.//继承Error</li>
+<li>In the <code>spellFailed</code> case, you can handily specify a custom reason for the spell failure with an associated value.//<code>spellFailed</code>可以传递原因</li>
+</ul>
+<p><em>Note:</em> The <code>ChangoSpellError</code> is named after the magical utterance of <em>“Presto Chango!”</em> – frequently used by a <code>Witch</code> when attempting to change a familiar into a <code>Toad</code>).</p>
+<p>OK, ready to make some magic, my pretties? Excellent. Add <code>throws</code> to the method signature, to indicate that errors may occur as a result of calling this method:</p>
+<p>将<code>trunFamiliarIntoToad</code>改写为会抛出的错误的函数。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">turnFamiliarIntoToad</span><span class="params">()</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Toad</span> &#123;</span><br></pre></td></tr></table></figure>
+<p>Update it as well on the <code>Magical</code> protocol:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Magical</span>: <span class="title">Avatar</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> name: <span class="type">String</span>? &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125;</span><br><span class="line">        <span class="keyword">var</span> spells: [<span class="type">Spell</span>] &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125;</span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">turnFamiliarIntoToad</span><span class="params">()</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Toad</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now that you have the error states listed, you will rework the <code>turnFamiliarIntoToad()</code> method, one clause at a time.</p>
+<h3 id="Handling-Hat-Errors"><a href="#Handling-Hat-Errors" class="headerlink" title="Handling Hat Errors"></a>Handling Hat Errors</h3><p>First, modify the following statement to ensure the witch is wearing her all-important hat:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> hat = hat &#123;</span><br></pre></td></tr></table></figure>
+<p>…to the following:将<code>if</code>改写为<code>guard</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> hat = hat <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.hatMissingOrNotMagical</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>Note:</em> Don’t forget to remove the associated <code>}</code> at the bottom of the method, or else the playground will compile with errors!<br>The next line contains a boolean check, also associated with the hat:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> hat.isMagical &#123;</span><br></pre></td></tr></table></figure>
+<p>You <em>could</em> choose to add a separate <code>guard</code> statement to perform this check, but it would be clearer to group the checks together on a single line. As such, change the first <code>guard</code> statement to match the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> hat = hat, hat.isMagical <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.hatMissingOrNotMagical</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now remove the <code>if hat.isMagical {</code> check altogether.</p>
+<p>In the next section, you’ll continue to unravel the conditional pyramid.</p>
+<h3 id="Handling-Familiar-Errors"><a href="#Handling-Familiar-Errors" class="headerlink" title="Handling Familiar Errors"></a>Handling Familiar Errors</h3><p>Next up, alter the statement that checks if the witch has a familiar:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> familiar = familiar &#123;</span><br></pre></td></tr></table></figure>
+<p>…to instead throw a <code>.noFamiliar</code> error from another <code>guard</code> statement:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> familiar = familiar <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.noFamiliar</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Ignore any errors that occur for the moment, as they will disappear with your next code change.</p>
+<h3 id="Handling-Toad-Errors"><a href="#Handling-Toad-Errors" class="headerlink" title="Handling Toad Errors"></a>Handling Toad Errors</h3><p>On the next line, the code returns the existing toad if the Witch tries to cast the <code>turnFamiliarIntoToad()</code>spell on her unsuspecting amphibian, but an explicit error would better inform her of the mistake. Change the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> toad = familiar <span class="keyword">as</span>? <span class="type">Toad</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> toad</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>…to the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> familiar <span class="keyword">is</span> <span class="type">Toad</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.familiarAlreadyAToad</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主意：这里的if后面用的<code>is</code>而不是<code>as</code>这个变化可以让你更简洁地检查协议的一致性，而无需要使用结果。is可以让你更简要的检查当前的值是不是某种类型。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> newType = oldType <span class="keyword">as</span> ？ <span class="type">Type</span> &#123;</span><br><span class="line">        <span class="comment">//需要使用newType的值。如果转化不成功if中的代码不会运行。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> oldType <span class="keyword">is</span> <span class="type">Type</span> &#123;</span><br><span class="line">        <span class="comment">//只是检测oldType是不是Type的类型。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note the change from <code>as?</code> to <code>is</code> lets you more succinctly check for conformance to the protocol without necessarily needing to use the result. The <code>is</code> keyword can also be used for type comparison in a more general fashion. If you’re interested in learning more about <code>is</code> and <code>as</code>, check out the type casting section of <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html" target="_blank" rel="noopener">The Swift Programming Language</a>.</p>
+<p>Move everything inside the <code>else</code> clause outside of the <code>else</code> clause, and delete the <code>else</code>. It’s no longer necessary!</p>
+<h3 id="Handling-Spell-Errors"><a href="#Handling-Spell-Errors" class="headerlink" title="Handling Spell Errors"></a>Handling Spell Errors</h3><p>Finally, the <code>hasSpell(_ type:)</code> call ensures that the Witch has the appropriate spell in her spellbook. Change the code below:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> hasSpell(ofType: .prestoChango) &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> name = familiar.name &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="type">Toad</span>(name: name)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>…to the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> hasSpell(ofType: .prestoChango) <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.spellNotKnownToWitch</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> name = familiar.name <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> reason = <span class="string">"Familiar doesn’t have a name."</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.spellFailed(reason: reason)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="type">Toad</span>(name: name)</span><br></pre></td></tr></table></figure>
+<p>And now you can remove the final line of code which was a fail-safe. Remove this line:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="type">Toad</span>(name: <span class="string">"New Toad"</span>)</span><br></pre></td></tr></table></figure>
+<p>You now have the following clean and tidy method, ready for use. I’ve provided a few additional comments to the code below, to further explain what the method is doing:<br>改写后的代码，呈流水形，更容易调试。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">turnFamiliarIntoToad</span><span class="params">()</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Toad</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When have you ever seen a Witch perform a spell without her magical hat on ? :]</span></span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> hat = hat, hat.isMagical <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.hatMissingOrNotMagical</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Check if witch has a familiar</span></span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> familiar = familiar <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.noFamiliar</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Check if familiar is already a toad - if so, why are you casting the spell?</span></span><br><span class="line">        <span class="keyword">if</span> familiar <span class="keyword">is</span> <span class="type">Toad</span> &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.familiarAlreadyAToad</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">guard</span> hasSpell(ofType: .prestoChango) <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.spellNotKnownToWitch</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Check if the familiar has a name</span></span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> name = familiar.name <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> reason = <span class="string">"Familiar doesn’t have a name."</span></span><br><span class="line">                <span class="keyword">throw</span> <span class="type">ChangoSpellError</span>.spellFailed(reason: reason)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// It all checks out! Return a toad with the same name as the witch's familiar</span></span><br><span class="line">        <span class="keyword">return</span> <span class="type">Toad</span>(name: name)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>You could have returned an optional from <code>turnFamiliarIntoToad()</code> to indicate that “something went wrong while this spell was being performed”, but using custom errors more clearly expresses the error states and lets you react to them accordingly.</p>
+<h2 id="What-Else-Are-Custom-Errors-Good-For"><a href="#What-Else-Are-Custom-Errors-Good-For" class="headerlink" title="What Else Are Custom Errors Good For?"></a>What Else Are Custom Errors Good For?</h2><p>怎么处理错误</p>
+<p>Now that you have a method to throw custom Swift errors, you need to handle them. The standard mechanism for doing this is called the <code>do-catch</code> statement, which is similar to <code>try-catch</code> mechanisms found in other languages such as Java.</p>
+<p>Add the following code to the bottom of your playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exampleOne</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">""</span>) <span class="comment">// Add an empty line in the debug area</span></span><br><span class="line">            </span><br><span class="line">        <span class="comment">// 1</span></span><br><span class="line">        <span class="keyword">let</span> salem = <span class="type">Cat</span>(name: <span class="string">"Salem Saberhagen"</span>)</span><br><span class="line">        salem.speak()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2</span></span><br><span class="line">        <span class="keyword">let</span> witchOne = <span class="type">Witch</span>(name: <span class="string">"Sabrina"</span>, familiar: salem)</span><br><span class="line">        <span class="keyword">do</span> &#123;  <span class="comment">// 3</span></span><br><span class="line">                <span class="keyword">try</span> witchOne.turnFamiliarIntoToad()</span><br><span class="line">        &#125; <span class="keyword">catch</span> <span class="keyword">let</span> error <span class="keyword">as</span> <span class="type">ChangoSpellError</span> &#123; <span class="comment">//4</span></span><br><span class="line">                handle(spellError: error)</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123; <span class="comment">// 5</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Something went wrong, are you feeling OK?"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here’s what that function does:</p>
+<ol>
+<li>Create the familiar for this witch. It’s a cat called Salem.</li>
+<li>Create the witch, called Sabrina.</li>
+<li>Attempt to turn the feline into a toad.</li>
+<li>Catch a <code>ChangoSpellError</code> error and handle the error appropriately.</li>
+<li>Finally, catch all other errors and print out a nice message.</li>
+</ol>
+<p>After you add the above, you’ll see a compiler error – time to fix that.</p>
+<p><code>handle(spellError:)</code> has not yet been defined, so add the following code above the <code>exampleOne()</code> function definition:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func handle(spellError error: ChangoSpellError) &#123;</span><br><span class="line">        let prefix = &quot;Spell Failed.&quot;</span><br><span class="line">        switch error &#123;</span><br><span class="line">        case .hatMissingOrNotMagical:</span><br><span class="line">                print(&quot;\(prefix) Did you forget your hat, or does it need its batteries charged?&quot;)</span><br><span class="line">        case .familiarAlreadyAToad:</span><br><span class="line">                print(&quot;\(prefix) Why are you trying to change a Toad into a Toad?&quot;)</span><br><span class="line">        default:</span><br><span class="line">                  print(prefix)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally, run the code by adding the following to the bottom of your playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exampleOne()</span><br></pre></td></tr></table></figure>
+<p>Reveal the Debug console by clicking the up arrow icon in the bottom left hand corner of the Xcode workspace so you can see the output from your playground:</p>
+<p><img src="media/15295924164909/Expand-Debug-Area-1.gif" alt="Expand Debug Area"></p>
+<h3 id="Catching-Errors"><a href="#Catching-Errors" class="headerlink" title="Catching Errors"></a>Catching Errors</h3><p>Below is a brief discussion of each of language feature used in the above code snippet.</p>
+<p><em>catch</em></p>
+<p>You can use pattern matching in Swift to handle specific errors or group themes of error types together.</p>
+<p>The code above demonstrates several uses of <code>catch</code>: one where you catch a specific <code>ChangoSpell</code> error, and one that handles the remaining error cases.</p>
+<p><em>try</em></p>
+<p>You use <code>try</code> in conjunction with <code>do-catch</code> statements to clearly indicate which line or section of code may throw errors.</p>
+<p>You can use <code>try</code> in several different ways:</p>
+<ul>
+<li><code>try</code>: standard usage within a clear and immediate <code>do-catch</code> statement. This is used above.</li>
+<li><code>try?</code>: handle an error by essentially ignoring it; if an error is thrown, the result of the statement will be <code>nil</code>.</li>
+<li><code>try!</code>: similar to the syntax used for force-unwrapping, this prefix creates the expectation that, in theory, a statement could throw an error – but in practice the error condition will never occur. <code>try!</code> can be used for actions such as loading files, where you are certain the required media exists. Like force-unwrap, this construct should be used carefully.</li>
+</ul>
+<p>Time to check out a <code>try?</code> statement in action. Cut and paste the following code into the bottom of your playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exampleTwo</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">""</span>) <span class="comment">// Add an empty line in the debug area</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> toad = <span class="type">Toad</span>(name: <span class="string">"Mr. Toad"</span>)</span><br><span class="line">        toad.speak()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> hat = <span class="type">Hat</span>()</span><br><span class="line">        <span class="keyword">let</span> witchTwo = <span class="type">Witch</span>(name: <span class="string">"Elphaba"</span>, familiar: toad, hat: hat)</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">""</span>) <span class="comment">// Add an empty line in the debug area</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> newToad = <span class="keyword">try</span>? witchTwo.turnFamiliarIntoToad()</span><br><span class="line">        <span class="keyword">if</span> newToad != <span class="literal">nil</span> &#123; <span class="comment">// Same logic as: if let _ = newToad</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Successfully changed familiar into toad."</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Spell failed."</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Notice the difference with <code>exampleOne</code>. Here you don’t care about the output of the particular error, but still capture the fact that one occurred. The <code>Toad</code> was not created, so the value of <code>newToad</code> is <code>nil</code>.</p>
+<h3 id="Propagating-Errors"><a href="#Propagating-Errors" class="headerlink" title="Propagating Errors"></a>Propagating Errors</h3><p><em>throws</em></p>
+<p>The <code>throws</code> keyword is required in Swift if a function or method throws an error. Thrown errors are automatically propagated up the call stack, but letting errors bubble too far from their source is considered bad practice. Significant propagation of errors throughout a codebase increases the likelihood errors will escape appropriate handling, so <code>throws</code> is a mandate to ensure propagation is documented in code – and remains evident to the coder.</p>
+<p><em>rethrows</em></p>
+<p>All examples you’ve seen so far have used <code>throws</code>, but what about its counterpart <code>rethrows</code> ?</p>
+<p><code>rethrows</code> tells the compiler that this function will only throw an error when its function parameter throws an error. A quick and magical example can be found below (no need to add this to the playground):</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doSomethingMagical</span><span class="params">(magicalOperation: <span class="params">()</span></span></span> <span class="keyword">throws</span> -&gt; <span class="type">MagicalResult</span>) <span class="keyword">rethrows</span> -&gt; <span class="type">MagicalResult</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> magicalOperation()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here <code>doSomethingMagical(_:)</code> will only throw an error if the <code>magicalOperation</code> provided to the function throws one. If it succeeds, it returns a <code>MagicalResult</code> instead.</p>
+<h3 id="Manipulating-Error-Handling-Behavior"><a href="#Manipulating-Error-Handling-Behavior" class="headerlink" title="Manipulating Error Handling Behavior"></a>Manipulating Error Handling Behavior</h3><p><em>defer</em></p>
+<p>Although auto-propagation will serve you well in most cases, there are situations where you might want to manipulate the behavior of your application as an error travels up the call stack.</p>
+<p>The <code>defer</code> statement is a mechanism that permits a ‘cleanup’ action to be performed whenever the current scope is exited, such as when a method or function returns. It’s useful for managing resources that need to be tidied up whether or not the action was successful, and so becomes especially useful in an error handling context.</p>
+<p>To see this in action, add the following method to the <code>Witch</code> structure:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">speak</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">defer</span> &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"*cackles*"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Hello my pretties."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Add the following code to the bottom of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exampleThree</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">""</span>) <span class="comment">// Add an empty line in the debug area</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> witchThree = <span class="type">Witch</span>(name: <span class="string">"Hermione"</span>, familiar: <span class="literal">nil</span>, hat: <span class="literal">nil</span>)</span><br><span class="line">        witchThree.speak()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exampleThree()</span><br></pre></td></tr></table></figure>
+<p>In the debug console, you should see the witch cackle after everything she says.</p>
+<p>Interestingly, <code>defer</code> statements are executed in the <em>opposite</em> order to which they are written.</p>
+<p>Add a second <code>defer</code> statement to <code>speak()</code> so that a Witch screeches, then cackles after everything she says:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">speak</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">defer</span> &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"*cackles*"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">defer</span> &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"*screeches*"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Hello my pretties."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Did the statements print in the order you expected? Ah, the magic of <code>defer</code>!</p>
+<h2 id="More-Fun-with-Errors"><a href="#More-Fun-with-Errors" class="headerlink" title="More Fun with Errors"></a>More Fun with Errors</h2><p>The inclusion of the above statements in Swift brings the language into line with many other popular languages and separates Swift from the <code>NSError</code>-based approach found in Objective-C. Objective-C errors are, for the most part, directly translated, and the static analyzer in the compiler is excellent for helping you with which errors you need to catch, and when.</p>
+<p>Although the <code>do-catch</code> and related features have significant overhead in other languages, in Swift they are treated like any other statement. This ensures they remain efficient – and effective.</p>
+<p>But just because you <em>can</em> create custom errors and throw them around, doesn’t necessarily mean that you <em>should</em>. You really should develop guidelines regarding when to throw and catch errors for each project you undertake. I’d recommend the following:</p>
+<ul>
+<li>Ensure error types are clearly named across your codebase.</li>
+<li>Use optionals where a single error state exists.</li>
+<li>Use custom errors where more than one error state exists.</li>
+<li>Don’t allow an error to propagate too far from its source.</li>
+</ul>
+<h3 id="The-Future-of-Error-Handling-in-Swift"><a href="#The-Future-of-Error-Handling-in-Swift" class="headerlink" title="The Future of Error Handling in Swift"></a>The Future of Error Handling in Swift</h3><p>Swift未来错误处理的发展趋势</p>
+<p>A couple of ideas for advanced error handling are floating around various Swift forums. One of the most-discussed concepts is <em>untyped propagation</em>.</p>
+<p><em>“…we believe that we can extend our current model to support untyped propagation for universal errors. Doing this well, and in particular doing it without completely sacrificing code size and performance, will take a significant amount of planning and insight.”</em></p>
+<p>– from <a href="http://apple-swift.readthedocs.org/en/latest/ErrorHandling.html" target="_blank" rel="noopener">Swift 2.x Error Handling</a></p>
+<p>Whether you enjoy the idea of a major error handling change in a future version of Swift, or are happy with where things are today, it’s nice to know that clean error handling is being actively discussed and improved as the language develops.</p>
+<p><img src="media/15295924164909/errorhandling-4-650x248.png" alt="Excellent"></p>
+<h2 id="Where-To-Go-From-Here"><a href="#Where-To-Go-From-Here" class="headerlink" title="Where To Go From Here?"></a>Where To Go From Here?</h2><p>You can download the <a href="https://koenig-media.raywenderlich.com/uploads/2016/07/Magical-Error-Handling-In-Swift-Swift-3-Secondary-Update.zip" target="_blank" rel="noopener">finished set of playgrounds here</a> for this tutorial.</p>
+<p>For further reading, I recommend the following articles, some of which have already been referenced throughout this tutorial:</p>
+<ul>
+<li><a href="https://www.raywenderlich.com/store/swift-apprentice" target="_blank" rel="noopener">Swift Apprentice, Chapter 22 – Error Handling</a></li>
+<li><a href="http://bit.ly/1RMpOY3" target="_blank" rel="noopener">Failable Initializers</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Factory_method_pattern" target="_blank" rel="noopener">Factory Method Pattern</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pyramid_of_doom_(programming" target="_blank" rel="noopener">Pyramid of Doom</a>)</li>
+</ul>
+<p>If you’re keen to see what may lie ahead in Swift, I recommend reading through the currently open proposals; see <a href="https://github.com/apple/swift/tree/master/docs/proposals" target="_blank" rel="noopener">Swift Language Proposals</a> for further details. If you’re feeling adventurous, why not submit your own? :]</p>
+<p>Hopefully by now that you’ve been truly <em>enchanted</em> by error handling in Swift. If you have any questions or comments on this tutorial, please join the forum discussion below!</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/25/Swift/UTF8/" rel="next" title="UTF-8">
+                <i class="fa fa-chevron-left"></i> UTF-8
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Huanrong" />
+          <p class="site-author-name" itemprop="name">Huanrong</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#✨Magical-Error-Handling-in-Swift"><span class="nav-number">1.</span> <span class="nav-text">✨Magical Error Handling in Swift</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Should-I-Care-About-Error-Handling"><span class="nav-number">1.2.</span> <span class="nav-text">Why Should I Care About Error Handling?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Avoiding-Swift-Errors-Using-nil"><span class="nav-number">1.3.</span> <span class="nav-text">Avoiding Swift Errors Using nil</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Failable-Initializers"><span class="nav-number">1.3.1.</span> <span class="nav-text">Failable Initializers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Guard-Statements"><span class="nav-number">1.3.2.</span> <span class="nav-text">Guard Statements</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Avoiding-Errors-with-Custom-Handling"><span class="nav-number">1.4.</span> <span class="nav-text">Avoiding Errors with Custom Handling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Refactoring-to-Use-Swift-Errors"><span class="nav-number">1.4.1.</span> <span class="nav-text">Refactoring to Use Swift Errors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Hat-Errors"><span class="nav-number">1.4.2.</span> <span class="nav-text">Handling Hat Errors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Familiar-Errors"><span class="nav-number">1.4.3.</span> <span class="nav-text">Handling Familiar Errors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Toad-Errors"><span class="nav-number">1.4.4.</span> <span class="nav-text">Handling Toad Errors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handling-Spell-Errors"><span class="nav-number">1.4.5.</span> <span class="nav-text">Handling Spell Errors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Else-Are-Custom-Errors-Good-For"><span class="nav-number">1.5.</span> <span class="nav-text">What Else Are Custom Errors Good For?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Catching-Errors"><span class="nav-number">1.5.1.</span> <span class="nav-text">Catching Errors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Propagating-Errors"><span class="nav-number">1.5.2.</span> <span class="nav-text">Propagating Errors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manipulating-Error-Handling-Behavior"><span class="nav-number">1.5.3.</span> <span class="nav-text">Manipulating Error Handling Behavior</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-Fun-with-Errors"><span class="nav-number">1.6.</span> <span class="nav-text">More Fun with Errors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Future-of-Error-Handling-in-Swift"><span class="nav-number">1.6.1.</span> <span class="nav-text">The Future of Error Handling in Swift</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where-To-Go-From-Here"><span class="nav-number">1.7.</span> <span class="nav-text">Where To Go From Here?</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
