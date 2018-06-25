@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="Introducing Protocol-Oriented Programming in Swift 3Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。Swift中Protocol基本具备了calss的特性。允许继承、扩展等。原文链接">
+<meta name="description" content="Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。Swift中Protocol基本具备了calss的特性。允许继承、扩展等。原文链接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introducing Protocol-Oriented Programming in Swift 3">
-<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/2018-06-25/index.html">
+<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Introducing Protocol-Oriented Programming in Swift 3/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="Introducing Protocol-Oriented Programming in Swift 3Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。Swift中Protocol基本具备了calss的特性。允许继承、扩展等。原文链接">
+<meta property="og:description" content="Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。Swift中Protocol基本具备了calss的特性。允许继承、扩展等。原文链接">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/2018-06-25/media/15295785730512/protocols-extend-480x280.png">
-<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/2018-06-25/media/15295785730512/secrets-480x178.png">
-<meta property="og:updated_time" content="2018-06-25T10:09:23.999Z">
+<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/protocols-extend-480x280.png">
+<meta property="og:image" content="http://caohr.com/2018/06/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/secrets-480x178.png">
+<meta property="og:updated_time" content="2018-06-25T10:25:20.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Introducing Protocol-Oriented Programming in Swift 3">
-<meta name="twitter:description" content="Introducing Protocol-Oriented Programming in Swift 3Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。Swift中Protocol基本具备了calss的特性。允许继承、扩展等。原文链接">
-<meta name="twitter:image" content="http://caohr.com/2018/06/25/Swift/2018-06-25/media/15295785730512/protocols-extend-480x280.png">
+<meta name="twitter:description" content="Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。Swift中Protocol基本具备了calss的特性。允许继承、扩展等。原文链接">
+<meta name="twitter:image" content="http://caohr.com/2018/06/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/protocols-extend-480x280.png">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/2018-06-25/"/>
+  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/Introducing Protocol-Oriented Programming in Swift 3/"/>
 
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/2018-06-25/">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Introducing Protocol-Oriented Programming in Swift 3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong">
@@ -374,7 +374,7 @@
       
 
       
-        <h1 id="Introducing-Protocol-Oriented-Programming-in-Swift-3"><a href="#Introducing-Protocol-Oriented-Programming-in-Swift-3" class="headerlink" title="Introducing Protocol-Oriented Programming in Swift 3"></a>Introducing Protocol-Oriented Programming in Swift 3</h1><p>Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。<br>Swift中<code>Protocol</code>基本具备了<code>calss</code>的特性。允许继承、扩展等。<a href="https://www.raywenderlich.com/148448/introducing-protocol-oriented-programming" target="_blank" rel="noopener">原文链接</a></p>
+        <p>Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。<br>Swift中<code>Protocol</code>基本具备了<code>calss</code>的特性。允许继承、扩展等。<a href="https://www.raywenderlich.com/148448/introducing-protocol-oriented-programming" target="_blank" rel="noopener">原文链接</a></p>
 <a id="more"></a>
 <p>Protocol-Oriented Programming will help you fly!</p>
 <p><em>Update Note:</em> This tutorial has been updated to Swift 3.0 by Niv Yahel. The original tutorial was written by <a href="https://www.raywenderlich.com/u/kerber" target="_blank" rel="noopener">Erik Kerber</a>.</p>
@@ -642,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introducing-Protocol-Oriented-Programming-in-Swift-3"><span class="nav-number">1.</span> <span class="nav-text">Introducing Protocol-Oriented Programming in Swift 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Protocol-Conforming-Types"><span class="nav-number">1.2.</span> <span class="nav-text">Defining Protocol-Conforming Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extending-Protocols-With-Default-Implementations"><span class="nav-number">1.3.</span> <span class="nav-text">Extending Protocols With Default Implementations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Not-Base-Classes"><span class="nav-number">1.4.</span> <span class="nav-text">Why Not Base Classes?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Overriding-Default-Behavior"><span class="nav-number">1.5.</span> <span class="nav-text">Overriding Default Behavior</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extending-Protocols"><span class="nav-number">1.6.</span> <span class="nav-text">Extending Protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Effects-on-the-Swift-Standard-Library"><span class="nav-number">1.7.</span> <span class="nav-text">Effects on the Swift Standard Library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Off-to-the-Races"><span class="nav-number">1.8.</span> <span class="nav-text">Off to the Races</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bringing-it-Together"><span class="nav-number">1.8.1.</span> <span class="nav-text">Bringing it Together</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Top-Speed"><span class="nav-number">1.8.2.</span> <span class="nav-text">Top Speed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Making-it-more-generic"><span class="nav-number">1.8.3.</span> <span class="nav-text">Making it more generic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Making-it-More-Swifty"><span class="nav-number">1.8.4.</span> <span class="nav-text">Making it More Swifty</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol-Comparators"><span class="nav-number">1.9.</span> <span class="nav-text">Protocol Comparators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where-To-Go-From-Here"><span class="nav-number">1.10.</span> <span class="nav-text">Where To Go From Here?</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Protocol-Conforming-Types"><span class="nav-number">2.</span> <span class="nav-text">Defining Protocol-Conforming Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extending-Protocols-With-Default-Implementations"><span class="nav-number">3.</span> <span class="nav-text">Extending Protocols With Default Implementations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Not-Base-Classes"><span class="nav-number">4.</span> <span class="nav-text">Why Not Base Classes?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Overriding-Default-Behavior"><span class="nav-number">5.</span> <span class="nav-text">Overriding Default Behavior</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extending-Protocols"><span class="nav-number">6.</span> <span class="nav-text">Extending Protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Effects-on-the-Swift-Standard-Library"><span class="nav-number">7.</span> <span class="nav-text">Effects on the Swift Standard Library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Off-to-the-Races"><span class="nav-number">8.</span> <span class="nav-text">Off to the Races</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bringing-it-Together"><span class="nav-number">8.1.</span> <span class="nav-text">Bringing it Together</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Top-Speed"><span class="nav-number">8.2.</span> <span class="nav-text">Top Speed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Making-it-more-generic"><span class="nav-number">8.3.</span> <span class="nav-text">Making it more generic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Making-it-More-Swifty"><span class="nav-number">8.4.</span> <span class="nav-text">Making it More Swifty</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol-Comparators"><span class="nav-number">9.</span> <span class="nav-text">Protocol Comparators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where-To-Go-From-Here"><span class="nav-number">10.</span> <span class="nav-text">Where To Go From Here?</span></a></li></ol></div>
             
 
           </div>

@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="🏆Mutating因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
+<meta name="description" content="因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mutating">
 <meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Mutating/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="🏆Mutating因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
+<meta property="og:description" content="因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-25T05:15:34.318Z">
+<meta property="og:updated_time" content="2018-06-25T10:25:43.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mutating">
-<meta name="twitter:description" content="🏆Mutating因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
+<meta name="twitter:description" content="因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
 
 
 
@@ -360,7 +360,7 @@
       
 
       
-        <h1 id="🏆Mutating"><a href="#🏆Mutating" class="headerlink" title="🏆Mutating"></a>🏆Mutating</h1><p>因为<code>Swift</code>的协议<code>protocol</code>可以被<code>class</code>，<code>struct</code>和<code>enum</code>来实现，对于<code>struct</code>和<code>enum</code>如果协议定义的方法需要修改本身的参数，则需要加上<code>mutating</code>，但是class就没有这种限制。</p>
+        <p>因为<code>Swift</code>的协议<code>protocol</code>可以被<code>class</code>，<code>struct</code>和<code>enum</code>来实现，对于<code>struct</code>和<code>enum</code>如果协议定义的方法需要修改本身的参数，则需要加上<code>mutating</code>，但是class就没有这种限制。</p>
 <a id="more"></a>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> numberOfWheels: <span class="type">Int</span> &#123;<span class="keyword">get</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyCar</span>: <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> numberOfWheels = <span class="number">4</span></span><br><span class="line">    <span class="keyword">var</span> color = <span class="type">UIColor</span>.blueColor()</span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        color = <span class="type">UIColor</span>.redColor()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -451,17 +451,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -523,22 +514,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#🏆Mutating"><span class="nav-number">1.</span> <span class="nav-text">🏆Mutating</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
