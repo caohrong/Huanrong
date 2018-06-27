@@ -282,6 +282,252 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/27/Swift/2018-06-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.ico">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/27/Swift/2018-06-27/" itemprop="url">Pattern Matching in Swift</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T16:11:49+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/27/Swift/2018-06-27/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/27/Swift/2018-06-27/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.raywenderlich.com/134844/pattern-matching-in-swift" target="_blank" rel="noopener">原文链接</a></p>
+<p>It’s the perfect pattern match!</p>
+<p><em>Pattern matching</em> is one of the most powerful features of any programming language, because it enables you to design rules that match values against each other. This gives you flexibility and simplifies your code.</p>
+<p>Apple makes pattern matching available in Swift, and today you’ll explore Swift’s pattern matching techniques.</p>
+<p>The tutorial covers the following patterns:</p>
+<ul>
+<li><em>Tuple pattern</em></li>
+<li><em>Type-casting patterns</em></li>
+<li><em>Wildcard pattern</em></li>
+<li><em>Optional pattern</em></li>
+<li><em>Enumeration case pattern</em></li>
+<li><em>Expression pattern</em></li>
+</ul>
+<p>To show how useful pattern matching can be, in this tutorial you’ll adopt a unique perspective: that of the editor-in-chief at <a href="https://www.raywenderlich.com/" target="_blank" rel="noopener">raywenderlich.com</a>! You’ll use pattern matching to help you schedule and publish tutorials on the site.</p>
+<p><em>Note:</em> This tutorial requires Xcode 8 and Swift 3 and assumes you already know the basics of Swift development. If you’re new to Swift, check out some of our other Swift <a href="https://www.raywenderlich.com/category/swift" target="_blank" rel="noopener">tutorials</a> first.</p>
+<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>Welcome aboard, temporary editor-in-chief! Your main duties today involve scheduling tutorials for publication on the website. Start by downloading the starter <a href="https://koenig-media.raywenderlich.com/uploads/2016/07/starter-project.playground-2.zip" target="_blank" rel="noopener">playground</a> and open <em>starter project.playground</em> in Xcode.</p>
+<p>The playground contains two things:</p>
+<ul>
+<li>The <code>random_uniform(value:)</code> function, which returns a random number between zero and a certain value. You’ll use this to generate random days for the schedule.</li>
+<li>Boilerplate(样板文件) code that parses the <em>tutorials.json</em> file and returns its contents as an array of dictionaries. You’ll use this to extract information about the tutorials you’ll be scheduling.</li>
+</ul>
+<p><em>Note:</em> To learn more about <em>JSON</em> parsing in Swift, read our <a href="https://www.raywenderlich.com/120442/swift-json-tutorial" target="_blank" rel="noopener">tutorial</a>.</p>
+<p>You don’t need to understand how all this works, but you should know the file’s structure, so go ahead and open <em>tutorials.json</em> from the playground’s <em>Resources</em> folder.</p>
+<p>Each tutorial post you’ll be scheduling has two properties: title and scheduled day. Your team lead schedules the posts for you, assigning each tutorial a day value between 1 for Monday and 5 for Friday, or <code>nil</code> if leaving the post unscheduled.</p>
+<p>You want to publish only one tutorial per day over the course of the week, but when looking over the schedule, you see that your team lead has two tutorials scheduled for the same day. You’ll need to fix the problem. Plus, you want to sort the tutorials in a particular order. How can you do all of that? 查看JSON文件可以看到有些课程安排到了同一天，你要做的是解决这个问题，然后把他们按照特定的顺序排序。</p>
+<p>If you guessed “Using patterns!” then you’re on the right track. :]</p>
+<h2 id="Pattern-Matching-Types"><a href="#Pattern-Matching-Types" class="headerlink" title="Pattern Matching Types"></a>Pattern Matching Types</h2><p>Let’s get to know the kinds of patterns you’ll be working with in this tutorial.</p>
+<ul>
+<li><em>Tuple patterns</em> are used to match values of corresponding tuple types.</li>
+<li><em>Type-casting patterns</em> allow you to cast or match types.</li>
+<li><em>Wildcard patterns</em> match and ignore any kind and type of value.</li>
+<li><em>Optional patterns</em> are used to match optional values.</li>
+<li><em>Enumeration case patterns</em> match cases of existing enumeration types.</li>
+<li><em>Expression patterns</em> allow you to compare a given value against a given expression.</li>
+</ul>
+<p>You’ll use all of these patterns in your quest to be the best editor-in-chief the site has ever seen!</p>
+<h2 id="Tuple-Pattern"><a href="#Tuple-Pattern" class="headerlink" title="Tuple Pattern"></a>Tuple Pattern</h2><p>First, you’ll create a tuple pattern to make an array of tutorials. In the playground, add this code at the end:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Day</span>: <span class="title">Int</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> monday, tuesday, wednesday, thursday, friday, saturday, sunday</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This creates an enumeration for the days of the week. The underlying raw type is <code>Int</code>, so the days are assigned raw values from 0 for Monday through 6 for Sunday.</p>
+<p>Add the following code after the enumeration’s declaration:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tutorial</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> title: <span class="type">String</span></span><br><span class="line">        <span class="keyword">var</span> day: <span class="type">Day</span>?</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">init</span>(title: <span class="type">String</span>, day: <span class="type">Day</span>? = <span class="literal">nil</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.title = title</span><br><span class="line">                <span class="keyword">self</span>.day = day</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here you define a tutorial type with two properties: the tutorial’s title and scheduled day. <code>day</code> is an optional variable because it can be <code>nil</code> for unscheduled tutorials. 当day没有值的时候意味着这个课程没有安排。</p>
+<p>Implement <code>CustomStringConvertible</code> so you can easily print tutorials:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Tutorial</span>: <span class="title">CustomStringConvertible</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">                <span class="keyword">var</span> scheduled = <span class="string">", not scheduled"</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">let</span> day = day &#123;</span><br><span class="line">                        scheduled = <span class="string">", scheduled on <span class="subst">\(day)</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> title + scheduled</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now add an array to hold the tutorials:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var tutorials: [Tutorial] = []</span><br></pre></td></tr></table></figure>
+<p>Next, convert the array of dictionaries from the starter project to an array of tutorials by adding the following code at the end of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> dictionary <span class="keyword">in</span> json &#123;</span><br><span class="line">        <span class="keyword">var</span> currentTitle = <span class="string">""</span></span><br><span class="line">        <span class="keyword">var</span> currentDay: <span class="type">Day</span>? = <span class="literal">nil</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (key, value) <span class="keyword">in</span> dictionary &#123;</span><br><span class="line">                <span class="comment">// todo: extract the information from the dictionary</span></span><br><span class="line">                <span class="comment">// 将Key赋值给currentTitle，将currentDay转换为`Day`赋值给currentDay.</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> currentTutorial = <span class="type">Tutorial</span>(title: currentTitle, day: currentDay)</span><br><span class="line">        tutorials.append(currentTutorial)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here, you iterate over the <code>json</code> array with the <code>for-in</code> statement. For every dictionary in this array, you iterate over the key and value pairs in the dictionary by using a tuple with the <code>for-in</code> statement. This is the <em>tuple pattern</em> in action.</p>
+<p>You add each tutorial to the array, but it is currently empty—you are going to set the tutorial’s properties in the next section with the type-casting pattern.</p>
+<h2 id="Type-Casting-Patterns"><a href="#Type-Casting-Patterns" class="headerlink" title="Type-Casting Patterns"></a>Type-Casting Patterns</h2><p>利用<code>type-casting patterns</code>将字典转换为<code>Tutorial</code>模型</p>
+<p>To extract the tutorial information from the dictionary, you’ll use a type-casting pattern. Add this code inside the <code>for (key, value) in dictionary</code> loop, replacing the placeholder comment:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="keyword">switch</span> (key, value) &#123;</span><br><span class="line">        <span class="keyword">case</span> (<span class="string">"title"</span>, <span class="keyword">is</span> <span class="type">String</span>):        <span class="comment">// 2</span></span><br><span class="line">                currentTitle = value <span class="keyword">as</span>! <span class="type">String</span></span><br><span class="line">        <span class="keyword">case</span> (<span class="string">"day"</span>, <span class="keyword">let</span> dayString <span class="keyword">as</span> <span class="type">String</span>):       <span class="comment">// 3</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">let</span> dayInt = <span class="type">Int</span>(dayString), <span class="keyword">let</span> day = <span class="type">Day</span>(rawValue: dayInt - <span class="number">1</span>) &#123;</span><br><span class="line">                        currentDay = day</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">default</span>:           <span class="comment">// 4</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here’s what’s going on, step by step:</p>
+<ol>
+<li>You switch on the key and value tuple—the <em>tuple pattern</em> reloaded.</li>
+<li>You test if the tutorial’s title is a string with the <em>is type-casting pattern</em> and type-cast it if the test succeeds.</li>
+<li>You test if the tutorial’s day is a string with the <em>as type-casting pattern</em>. If the test succeeds, you convert it into an <code>Int</code> first and then into a day of the week with the <code>Day</code> enumeration’s failable initializer <code>init(rawValue:)</code>. You subtract 1 from the <code>dayInt</code> variable because the enumeration’s raw values start at 0, while the days in <em>tutorials.json</em> start at 1.</li>
+<li>The <code>switch</code> statement should be exhaustive, so you add a <code>default</code> case. Here you simply exit the switch with the <code>break</code> statement.</li>
+</ol>
+<p>Add this line of code at the end of the playground to print the array’s content to the console:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(tutorials)</span><br></pre></td></tr></table></figure>
+<p>As you can see, each tutorial in the array has its corresponding name and scheduled day properly defined now. With everything set up, you’re ready to accomplish your task: schedule only one tutorial per day for the whole week.</p>
+<h2 id="Wildcard-Pattern"><a href="#Wildcard-Pattern" class="headerlink" title="Wildcard Pattern"></a>Wildcard Pattern</h2><p>You use the wildcard pattern to schedule the tutorials, but you need to unschedule them all first. Add this line of code at the end of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tutorials.forEach &#123; $<span class="number">0</span>.day = <span class="literal">nil</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>This unschedules all tutorials in the array by setting their day to <code>nil</code>. To schedule the tutorials, add this block of code at the end of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 </span></span><br><span class="line"><span class="keyword">let</span> days = (<span class="number">0</span>...<span class="number">6</span>).<span class="built_in">map</span> &#123; <span class="type">Day</span>(rawValue: $<span class="number">0</span>)! &#125;</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="keyword">let</span> randomDays = days.sorted &#123; <span class="number">_</span> <span class="keyword">in</span> random_uniform(value: <span class="number">2</span>) == <span class="number">0</span> &#125; <span class="comment">//打乱days的顺序</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line">(<span class="number">0</span>...<span class="number">6</span>).forEach &#123; tutorials[$<span class="number">0</span>].day = randomDays[$<span class="number">0</span>] &#125;</span><br></pre></td></tr></table></figure>
+<p>There’s a lot going on here, so let’s break it down:</p>
+<ol>
+<li>First you create an array of days, with every day of the week occurring exactly once.</li>
+<li>You “sort” this array. The <code>random_uniform(value:)</code> function is used to randomly determine if an element should be sorted before or after the next element in the array. In the closure, you use an <em>underscore</em> to ignore the closure parameters, since you don’t need them here. Although there are technically <a href="https://gist.github.com/natecook1000/0ac03efe07f647b46dae" target="_blank" rel="noopener">more efficient and mathematically correct ways</a> to randomly shuffle an array this shows the <em>wildcard pattern</em> in action!</li>
+<li>Finally, you assign the first seven tutorials the corresponding randomized day of the week.</li>
+</ol>
+<p>Add this line of code at the end of the playground to print the scheduled tutorials to the console:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(tutorials)</span><br></pre></td></tr></table></figure>
+<p>Success! You now have one tutorial scheduled for each day of the week, with no doubling up or gaps in the schedule. Great job!</p>
+<h2 id="Optional-Pattern"><a href="#Optional-Pattern" class="headerlink" title="Optional Pattern"></a>Optional Pattern</h2><p>The schedule has been conquered, but as editor-in-chief you also need to sort the tutorials. You’ll tackle this with optional patterns.</p>
+<p>To sort the <code>tutorials</code> array in ascending order—first the unscheduled tutorials by their title and then the scheduled ones by their day—add the following block of code at the end of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tutorials.<span class="built_in">sort</span> &#123;    <span class="comment">// 1</span></span><br><span class="line">        <span class="keyword">switch</span> ($<span class="number">0</span>.day, $<span class="number">1</span>.day) &#123;   <span class="comment">// 2</span></span><br><span class="line">                <span class="keyword">case</span> (<span class="literal">nil</span>, <span class="literal">nil</span>):   <span class="comment">// 3</span></span><br><span class="line">                        <span class="keyword">return</span> $<span class="number">0</span>.title.compare($<span class="number">1</span>.title, options: .caseInsensitive) == .orderedAscending</span><br><span class="line">                <span class="keyword">case</span> (<span class="keyword">let</span> firstDay?, <span class="keyword">let</span> secondDay?):   <span class="comment">// 4</span></span><br><span class="line">                        <span class="keyword">return</span> firstDay.rawValue <span class="comment">// 5</span></span><br><span class="line">                <span class="keyword">case</span> (<span class="literal">nil</span>, <span class="keyword">let</span> secondDay?):</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">                <span class="keyword">case</span> (<span class="keyword">let</span> firstDay?, <span class="literal">nil</span>):</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here’s what’s going on, step-by-step:</p>
+<ol>
+<li>You sort the <code>tutorials</code> array with the array’s <code>sort(_:)</code> method. The method’s argument is a trailing closure which defines the sorting order of any two given tutorials in the array. It returns <code>true</code> if you sort the tutorials in ascending order, and <code>false</code> otherwise.</li>
+<li>You switch on a tuple made of the days of the two tutorials currently being sorted. This is the <em>tuple pattern</em> in action once more.</li>
+<li>If both tutorials are unscheduled, their days are <code>nil</code>, so you sort them in ascending order by their title using the array’s <code>compare(_:options:)</code> method. 如果没有被安排时间则通过他们名字来排序</li>
+<li>To test whether both tutorials are scheduled, you use an <em>optional pattern</em>. This pattern will only match a value that can be unwrapped. If both values can be unwrapped, you sort them in ascending order by their raw value.</li>
+<li>Again using an optional pattern, you test whether only one of the tutorials is scheduled. If so, you sort the unscheduled one before the scheduled one.</li>
+</ol>
+<p>Add this line of code at the end of the playground to print the sorted tutorials:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(tutorials)</span><br></pre></td></tr></table></figure>
+<p>There—now you’ve got those tutorials ordered just how you want them. You’re doing so well at this gig that you deserve a raise! Instead, however … you get more work to do.</p>
+<h2 id="Enumeration-Case-Pattern"><a href="#Enumeration-Case-Pattern" class="headerlink" title="Enumeration Case Pattern"></a>Enumeration Case Pattern</h2><p>Now let’s use the enumeration case pattern to determine the scheduled day’s name for each tutorial.</p>
+<p>In the extension on <code>Tutorial</code>, you used the enumeration case names from type <code>Day</code> to build your custom string. Instead of remaining tied to these names, add a computed property <code>name</code> to <code>Day</code> by adding the following block of code at the end of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Day</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> name: <span class="type">String</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">                <span class="keyword">case</span> .monday:</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"Monday"</span></span><br><span class="line">                <span class="keyword">case</span> .tuesday:</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"Tuesday"</span></span><br><span class="line">                <span class="keyword">case</span> .wednesday:</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"Wednesday"</span></span><br><span class="line">                <span class="keyword">case</span> .thursday:</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"Thursday"</span></span><br><span class="line">                <span class="keyword">case</span> .friday:</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"Friday"</span></span><br><span class="line">                <span class="keyword">case</span> .saturday:</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"Saturday"</span></span><br><span class="line">                <span class="keyword">case</span> .sunday:</span><br><span class="line">                        <span class="keyword">return</span> <span class="string">"Sunday"</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">```	</span><br><span class="line"><span class="type">The</span> `<span class="keyword">switch</span>` statement <span class="keyword">in</span> this code matches the current value (`<span class="keyword">self</span>`) with the possible enumeration cases. <span class="type">This</span> <span class="keyword">is</span> the *enumeration <span class="keyword">case</span> pattern* <span class="keyword">in</span> action.</span><br><span class="line"></span><br><span class="line"><span class="type">Quite</span> impressive, <span class="keyword">right</span>? <span class="type">Numbers</span> are cool and all, but names are always more intuitive and so much easier to understand after all! :]</span><br><span class="line"></span><br><span class="line">## <span class="type">Expression</span> <span class="type">Pattern</span></span><br><span class="line"></span><br><span class="line"><span class="type">Next</span> you'll add a property to describe the tutorials' scheduling order. <span class="type">You</span> could use the enumeration <span class="keyword">case</span> pattern again, <span class="keyword">as</span> follows (*don't add this code to your playground!*):</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```swif</span><br><span class="line"><span class="keyword">var</span> order: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .monday:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"first"</span></span><br><span class="line">        <span class="keyword">case</span> .tuesday:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"second"</span></span><br><span class="line">        <span class="keyword">case</span> .wednesday:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"third"</span></span><br><span class="line">        <span class="keyword">case</span> .thursday:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"fourth"</span></span><br><span class="line">        <span class="keyword">case</span> .friday:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"fifth"</span></span><br><span class="line">        <span class="keyword">case</span> .saturday:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"sixth"</span></span><br><span class="line">        <span class="keyword">case</span> .sunday:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"seventh"</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>But doing the same thing twice is for lesser editors-in-chief, right? ;] Instead, take a different approach and use the <em>expression pattern</em>. First you need to overload the <em>pattern matching operator</em> in order to change its default functionality and make it work for days as well. Add the following code at the end of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> ~=<span class="params">(lhs: Int, rhs: Day)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> lhs == rhs.rawValue + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This code allows you to match days to integers, in this case the numbers 1 through 7. You can use this overloaded operator to write your computed property in a different way.</p>
+<p>Add the following code at the end of the playground:</p>
+<p>extension Tutorial {</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> order: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> day = day <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"not scheduled"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">switch</span> day &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"first"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"second"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"third"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"fourth"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"fifth"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"sixth"</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"seventh"</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">fatalError</span>(<span class="string">"invalid day value"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Thanks to the overloaded pattern matching operator, the <code>day</code> object can now be matched to integer expressions. This is the <em>expression pattern</em> in action.</p>
+<h2 id="Putting-It-All-Together"><a href="#Putting-It-All-Together" class="headerlink" title="Putting It All Together"></a>Putting It All Together</h2><p>Now that you’ve defined the day names and the tutorials’ order, you can print each tutorial’s status. Add the following block of code at the end of the playground:通过在数字上调用<code>enumberated</code>就可以像字典一样通过<code>index, tutorial</code>来遍历，如果是oc得需要先得到Index值然后再从数组里面取值，for in 可以省略这个步骤。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NSArray *lists = @[@(1), @(2)];</span><br><span class="line"></span><br><span class="line">for (NSNumber *item in lists) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">for (int index; index&lt;lists.count; index++) &#123;</span><br><span class="line">        NSNumber *item = lists[index];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="swift"><span class="keyword">for</span> (index, tutorial) <span class="keyword">in</span> tutorials.enumerated() {
+        <span class="keyword">guard</span> <span class="keyword">let</span> day = tutorial.day <span class="keyword">else</span> {
+                <span class="built_in">print</span>(<span class="string">"<span class="subst">\(index + <span class="number">1</span>)</span>. <span class="subst">\(tutorial.title)</span> is not scheduled this week."</span>)
+                <span class="keyword">continue</span>
+        }
+                <span class="built_in">print</span>(<span class="string">"<span class="subst">\(index + <span class="number">1</span>)</span>. <span class="subst">\(tutorial.title)</span> is scheduled on <span class="subst">\(day.name)</span>. It's the <span class="subst">\(tutorial.order)</span> tutorial of the week."</span>)   
+        }
+</code></pre>
+<p>Notice the tuple in the <code>for-in</code> statement? There’s the <em>tuple pattern</em> again!</p>
+<p>Whew! That was a lot of work for your day as editor-in-chief, but you did a fantastic job—now you can relax and kick back by the pool.</p>
+<p>Just kidding! An editor-in-chief’s job is never done. Back to work!</p>
+<h2 id="Where-to-Go-From-Here"><a href="#Where-to-Go-From-Here" class="headerlink" title="Where to Go From Here?"></a>Where to Go From Here?</h2><p>Here’s the final <a href="https://koenig-media.raywenderlich.com/uploads/2016/07/patterns.playground-1.zip" target="_blank" rel="noopener">playground</a>. For further experimentation, you can play around with the code in the <a href="http://swiftlang.ng.bluemix.net/#/repl/57b2d2a68bbb01d512f4ca2b" target="_blank" rel="noopener">IBM Swift Sandbox</a>.</p>
+<p>If you want to read more about pattern matching in Swift, check out our <a href="https://www.raywenderlich.com/store/swift-apprentice" target="_blank" rel="noopener">Swift Apprentice</a> book and <a href="https://twitter.com/gregheo" target="_blank" rel="noopener">Greg Heo’s</a> <em>Programming in a Swift Style</em> <a href="https://www.raywenderlich.com/132574/rwdevcon-2016-session-202-programming-swift-style-2" target="_blank" rel="noopener">video</a> at <a href="https://twitter.com/RWDevCon" target="_blank" rel="noopener">RWDevCon</a> 2016.</p>
+<p>I hope you find a way to use pattern matching in your own projects. If you have any questions or comments, please join the forum discussion below! :]</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Introducing Protocol-Oriented Programming in Swift 3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1483,145 +1729,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/String/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon.ico">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/25/Swift/String/" itemprop="url">String</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T12:54:23+08:00">
-                2018-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/25/Swift/String/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/25/Swift/String/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let someString = &quot;some string literal value&quot; + &quot;other string&quot;</span><br></pre></td></tr></table></figure>
-<p>多行字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let multiline = &quot;&quot;&quot;</span><br><span class="line">one line </span><br><span class="line">two line</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
-<p>如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地方加上<code>\</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let str1 = &quot;&quot;</span><br><span class="line">let str2 = &quot; &quot;</span><br><span class="line"></span><br><span class="line">let value = str1.isEmpty  //true</span><br><span class="line">let value2 = str2.isEmpty  //false</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/25/Swift/String/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1672,7 +1779,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
