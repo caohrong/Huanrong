@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="原文地址 Design Patterns — Creational Patterns — Factory Pattern in SwiftAs a budding computer scientist, you no doubt have heard of design patterns in your classes and learning paths. Design patterns are">
+<meta name="description" content="原文地址工厂模式解析">
 <meta name="keywords" content="Swift,Design Patterns">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Factory  Pattern">
-<meta property="og:url" content="http://caohr.com/2018/06/27/Swift/2018-06-27/index.html">
+<meta property="og:url" content="http://caohr.com/2018/06/27/Swift/Factory  Pattern/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="原文地址 Design Patterns — Creational Patterns — Factory Pattern in SwiftAs a budding computer scientist, you no doubt have heard of design patterns in your classes and learning paths. Design patterns are">
+<meta property="og:description" content="原文地址工厂模式解析">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://caohr.com/2018/06/27/Swift/2018-06-27/media/15300862989813/1*wJXpLuNf_xOwFayfmRzXag.png">
-<meta property="og:updated_time" content="2018-06-27T10:15:28.106Z">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/15300945892886.png">
+<meta property="og:updated_time" content="2018-06-27T10:16:49.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Factory  Pattern">
-<meta name="twitter:description" content="原文地址 Design Patterns — Creational Patterns — Factory Pattern in SwiftAs a budding computer scientist, you no doubt have heard of design patterns in your classes and learning paths. Design patterns are">
-<meta name="twitter:image" content="http://caohr.com/2018/06/27/Swift/2018-06-27/media/15300862989813/1*wJXpLuNf_xOwFayfmRzXag.png">
+<meta name="twitter:description" content="原文地址工厂模式解析">
+<meta name="twitter:image" content="http://o95nbyrid.bkt.clouddn.com/15300945892886.png">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/2018/06/27/Swift/2018-06-27/"/>
+  <link rel="canonical" href="http://caohr.com/2018/06/27/Swift/Factory  Pattern/"/>
 
 
 
@@ -284,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/27/Swift/2018-06-27/">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/27/Swift/Factory  Pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong">
@@ -332,9 +332,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/27/Swift/2018-06-27/#comments" itemprop="discussionUrl">
+                <a href="/2018/06/27/Swift/Factory  Pattern/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/27/Swift/2018-06-27/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/06/27/Swift/Factory  Pattern/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,7 +362,8 @@
       
 
       
-        <p><a href="https://medium.com/swift-programming/design-patterns-creational-patterns-factory-pattern-in-swift-d049af54235b" target="_blank" rel="noopener">原文地址</a></p>
+        <p><a href="https://medium.com/swift-programming/design-patterns-creational-patterns-factory-pattern-in-swift-d049af54235b" target="_blank" rel="noopener">原文地址</a><br>工厂模式解析</p>
+<a id="more"></a>
 <h1 id="Design-Patterns-—-Creational-Patterns-—-Factory-Pattern-in-Swift"><a href="#Design-Patterns-—-Creational-Patterns-—-Factory-Pattern-in-Swift" class="headerlink" title="Design Patterns — Creational Patterns — Factory Pattern in Swift"></a>Design Patterns — Creational Patterns — Factory Pattern in Swift</h1><p>As a budding computer scientist, you no doubt have heard of design patterns in your classes and learning paths. Design patterns are blueprints which outline the best practices that create re-usable object oriented code, solving common software problems. To avoid giving you a long history lesson, I will describe the origin of design patterns as dating back to the 1970s but gaining wide acceptance with the release of <a href="https://en.wikipedia.org/wiki/Design_Patterns" target="_blank" rel="noopener">Design Patterns: Elements of Reusable Object-Oriented Software</a>, published in 1994 and authored by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, collectively referred to as the <strong>Gang of Four </strong>(GoF). The book was wildly successful due to its description of 23 classic software design patterns. 【Design patterns are extremely useful for helping you break down complex systems into components that very often】, fit into one of the design patterns described by the <em>GoF</em>. Because I know, as developers, we love to learn and sometimes need quick references to do our jobs better, I’m dedicating time to write a series of articles, of which this is the first, to show how to use each GoF design pattern in Swift.</p>
 <p>It’s common to group the design patterns we will cover into several related categories: <a href="https://en.wikipedia.org/wiki/Software_design_pattern" target="_blank" rel="noopener">creational patterns, structural patterns, and behavioral patterns</a>. For the remainder of this article, we are going to focus on the <em>Creational patterns</em> and cover our first pattern: the <em>Factory</em> pattern.</p>
 <h4 id="Creational-Pattern-Factory-Pattern"><a href="#Creational-Pattern-Factory-Pattern" class="headerlink" title="Creational Pattern: Factory Pattern"></a>Creational Pattern: Factory Pattern</h4><p>创造型模式都是关于如何消除创建对象所涉及的复杂性的方法。 <em> factory </em>模式是封装创建对象的实现细节的一种方式，它遵循公共的基类或接口。 <em> factory </em>模式允许接收创建对象的客户端通过公共接口使用对象返回，而不关心实际创建的具体对象的类型。Creational patterns are all about ways to remove the complexities involved with creating objects. The <em>factory</em> pattern is a way to encapsulate the implementation details of creating objects, which adheres to a common base class or interface. The <em>factory</em> pattern allows the client that receives the created object to use the object return via the common interface without caring about the type of concrete object that is actually created.</p>
@@ -380,7 +381,7 @@
 <p>Our factory hides the need to know the type of object created because we will use our interface methods when we want to do anything with the created object. The added benefit of doing this is that we can add, change, or remove concrete objects from our factory without changing our client code!</p>
 <p>In our example, we can create several contacts that we want to reach out to with opportunities. We can then contact these prospects with our exposed interface and cutdown our processing time with automation!</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> contacts = [<span class="type">Contact</span>]()</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"J Rob"</span>, email: <span class="string">"jrob@example.com"</span>, job: .iOS, desiredSal: <span class="number">135000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"K Rock"</span>, email: <span class="string">"krock@example.com"</span>, job: .<span class="type">Android</span>, desiredSal: <span class="number">134000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"P Money"</span>, email: <span class="string">"pmoney@example.com"</span>, job: .<span class="type">Web</span>, desiredSal: <span class="number">110000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"S Sham"</span>, email: <span class="string">"ssham@example.com"</span>, job: .<span class="type">QA</span>, desiredSal: <span class="number">95000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"L Roger"</span>, email: <span class="string">"lroger@example.com"</span>, job: .<span class="type">Product_Owner</span>, desiredSal: <span class="number">165000</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> contact <span class="keyword">in</span> contacts&#123;</span><br><span class="line">    <span class="keyword">let</span> client = <span class="type">JobContacterFactory</span>.getJobSeeker(contact: contact)</span><br><span class="line">    <span class="built_in">print</span> (client.sendRequestResumeEmail())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="media/15300862989813/1*wJXpLuNf_xOwFayfmRzXag.png" alt=""></p>
+<p><img src="http://o95nbyrid.bkt.clouddn.com/15300945892886.png" alt=""></p>
 <p>That’s it! Our factory example is complete. We can now send customized emails to our contacts based on the type of job they are seeking. We could expand on our example as our needs change and not have to change code that our client uses as long as our interface doesn’t change. That means we could add new jobs and job seeker objects to send customized emails to new contact types with no change to the client that uses our <em>JobContactProtocol</em>. We could also change the logic for creating our template, since that would only encompass an implementation change.</p>
 <h4 id="Wrapping-Up"><a href="#Wrapping-Up" class="headerlink" title="Wrapping Up"></a>Wrapping Up</h4><p>The <em>factory</em> pattern makes it possible for us to hide the implementation details for creating objects by allowing our clients to rely solely on a common interface for interacting with our objects. This allows us to remove unnecessary complexities involved with creating objects that have similar behavioral needs. The <em>factory</em> pattern also promotes separation and abstraction which both lead to reusable code that is easier to maintain. You can find the playground file for this article <a href="https://github.com/mrkeithelliott/FactoryPattern" target="_blank" rel="noopener">here</a>.</p>
 <p>On a lighter note, I also wrote an article on why creating native apps is probably the best way to go in most of your mobile development endeavors. Read it and weigh in the discussion!</p>
@@ -706,8 +707,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://caohr.com/2018/06/27/Swift/2018-06-27/';
-          this.page.identifier = '2018/06/27/Swift/2018-06-27/';
+          this.page.url = 'http://caohr.com/2018/06/27/Swift/Factory  Pattern/';
+          this.page.identifier = '2018/06/27/Swift/Factory  Pattern/';
           this.page.title = 'Factory  Pattern';
         };
         var d = document, s = d.createElement('script');
