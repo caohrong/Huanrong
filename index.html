@@ -363,11 +363,7 @@
 
       
         
-          <p>在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。<br>本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的<code>stored properties</code>函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改初始化参数的顺序，系统默认根据你的写的顺序来创建。</p>
-<p>对于<code>optional</code>的值不需要在初始化方法中赋值，因为<code>optional</code>的方法默认会赋值为<code>nil</code>。</p>
-<p>你也可以为<code>Init</code>方法为需要传入参数设置默认值，这样你在创建的时候就可以直接调用<code>()</code>,而不是需要传入其他的值。</p>
-<p>当因为传入的值不一样而有多个<code>Init</code>方法的时候，这时候就可以用<code>delegating initializer</code>方法来解决。<code>delegating initializer</code>在网络框架<code>Alamofire</code>里面大量被使用，例如用户如果不指定请求方法默认就会使用<code>get</code>方法，不指定配置就使用默认的配置。</p>
-<p>对于传入参数不合法，<code>init</code>方法可以通过<code>Optional</code>和<code>throws</code>两种方法来告诉初始化失败。</p>
+          <p>在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。<br>本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的<code>stored properties</code>函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改初始化参数的顺序，系统默认根据你在结构体写的顺序来创建。<br>对于<code>optional</code>的值不需要在初始化方法中赋值，因为<code>optional</code>的方法默认会赋值为<code>nil</code>。<br>你也可以为<code>Init</code>方法为需要传入参数设置默认值，这样你在创建的时候就可以直接调用<code>()</code>,而不是需要传入其他的值。当因为传入的值不一样而有多个<code>Init</code>方法的时候，这时候就可以用<code>delegating initializer</code>方法来解决。<code>delegating initializer</code>在网络框架<code>Alamofire</code>里面大量被使用，例如用户如果不指定请求方法默认就会使用<code>get</code>方法，不指定配置就使用默认的配置。<br>对于传入参数不合法，<code>init</code>方法可以通过<code>Optional</code>和<code>throws</code>两种方法来告诉初始化失败。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/06/28/Swift/Swift Tutorial: Initialization In Depth Part 1/#more" rel="contents">
