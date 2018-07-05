@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift," />
+  <meta name="keywords" content="Swift,objc.io," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
-<meta name="keywords" content="Swift">
+<meta name="description" content="Swift Tip: Notifications重构键盘监听代码，通过创建KeyboardInfo结构体，来简化代码。这样也能保证整个项目中都共享一套键盘监听的数据逻辑。">
+<meta name="keywords" content="Swift,objc.io">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mutating">
-<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Mutating/index.html">
+<meta property="og:title" content="Swift Tip: Notifications">
+<meta property="og:url" content="http://caohr.com/2018/07/05/Swift/Swift Tip Notifications/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
+<meta property="og:description" content="Swift Tip: Notifications重构键盘监听代码，通过创建KeyboardInfo结构体，来简化代码。这样也能保证整个项目中都共享一套键盘监听的数据逻辑。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-26T01:05:15.626Z">
+<meta property="og:updated_time" content="2018-07-05T00:51:29.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mutating">
-<meta name="twitter:description" content="因为Swift的协议protocol可以被class，struct和enum来实现，对于struct和enum如果协议定义的方法需要修改本身的参数，则需要加上mutating，但是class就没有这种限制。">
+<meta name="twitter:title" content="Swift Tip: Notifications">
+<meta name="twitter:description" content="Swift Tip: Notifications重构键盘监听代码，通过创建KeyboardInfo结构体，来简化代码。这样也能保证整个项目中都共享一套键盘监听的数据逻辑。">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/Mutating/"/>
+  <link rel="canonical" href="http://caohr.com/2018/07/05/Swift/Swift Tip Notifications/"/>
 
 
 
 
 
-  <title>Mutating | Huanrong</title>
+  <title>Swift Tip: Notifications | Huanrong</title>
   
 
 
@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Mutating/">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/07/05/Swift/Swift Tip Notifications/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong">
@@ -299,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mutating</h1>
+          <h1 class="post-title" itemprop="name headline">Swift Tip: Notifications</h1>
         
 
         <div class="post-meta">
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T13:07:58+08:00">
-                2018-06-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T08:48:45+08:00">
+                2018-07-05
               </time>
             
 
@@ -330,9 +330,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/25/Swift/Mutating/#comments" itemprop="discussionUrl">
+                <a href="/2018/07/05/Swift/Swift Tip Notifications/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/25/Swift/Mutating/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/07/05/Swift/Swift Tip Notifications/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -360,9 +360,23 @@
       
 
       
-        <p>因为<code>Swift</code>的协议<code>protocol</code>可以被<code>class</code>，<code>struct</code>和<code>enum</code>来实现，对于<code>struct</code>和<code>enum</code>如果协议定义的方法需要修改本身的参数，则需要加上<code>mutating</code>，但是class就没有这种限制。</p>
+        <h1 id="Swift-Tip-Notifications"><a href="#Swift-Tip-Notifications" class="headerlink" title="Swift Tip: Notifications"></a>Swift Tip: Notifications</h1><p>重构键盘监听代码，通过创建<code>KeyboardInfo</code>结构体，来简化代码。这样也能保证整个项目中都共享一套键盘监听的数据逻辑。</p>
 <a id="more"></a>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> numberOfWheels: <span class="type">Int</span> &#123;<span class="keyword">get</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyCar</span>: <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> numberOfWheels = <span class="number">4</span></span><br><span class="line">    <span class="keyword">var</span> color = <span class="type">UIColor</span>.blueColor()</span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        color = <span class="type">UIColor</span>.redColor()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.objc.io/blog/2018/07/03/notifications/" target="_blank" rel="noopener">Swift Tip: Notifications</a></p>
+<p>Posted on July 3rd 2018</p>
+<p>In <a href="https://talk.objc.io/episodes/S01E107-refactoring-large-view-controllers-child-view-controllers-2" target="_blank" rel="noopener">Episode 107</a> of our Swift Talk series on refactoring(重构) large view controllers, we move code from a view controller to a child view controller. The resulting child view controller deals with keyboard notifications.</p>
+<p>In this week’s tip, we’ll show how to factor out that code as well.</p>
+<p>In multiple places throughout the code base there are notification listeners for keyboard events. In each of the callback methods the properties are manually extracted, for example:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">keyboardChanged</span><span class="params">(notification: NSNotification)</span></span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> userInfo = notification.userInfo,</span><br><span class="line">        <span class="keyword">let</span> frameValue = userInfo[<span class="type">UIKeyboardFrameEndUserInfoKey</span>] <span class="keyword">as</span>? <span class="type">NSValue</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">        <span class="keyword">let</span> keyboardScreenFrame = frameValue.cgRectValue</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Instead of repeating this kind of code over and over, we can make life easier by writing a single struct that contains all the properties:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">KeyboardInfo</span> </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> animationCurve: <span class="type">UIView</span>.<span class="type">AnimationCurve</span></span><br><span class="line">            <span class="keyword">var</span> animationDuration: <span class="type">Double</span></span><br><span class="line">            <span class="keyword">var</span> isLocal: <span class="type">Bool</span></span><br><span class="line">            <span class="keyword">var</span> frameBegin: <span class="type">CGRect</span></span><br><span class="line">            <span class="keyword">var</span> frameEnd: <span class="type">CGRect</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>We can now write an initializer that constructs the struct from a notification:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">KeyboardInfo</span> </span>&#123;</span><br><span class="line">        <span class="keyword">init</span>?(<span class="number">_</span> notification: <span class="type">Notification</span>) &#123;</span><br><span class="line">                <span class="keyword">guard</span> notification.name == <span class="type">UIResponder</span>.keyboardWillShowNotification || notification.name == <span class="type">UIResponder</span>.keyboardWillChangeFrameNotification <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">                <span class="keyword">let</span> u = notification.userInfo!</span><br><span class="line">                </span><br><span class="line">                animationCurve = <span class="type">UIView</span>.<span class="type">AnimationCurve</span>(rawValue: u[<span class="type">UIWindow</span>.keyboardAnimationCurveUserInfoKey] <span class="keyword">as</span>! <span class="type">Int</span>)!</span><br><span class="line">                animationDuration = u[<span class="type">UIWindow</span>.keyboardAnimationDurationUserInfoKey] <span class="keyword">as</span>! <span class="type">Double</span></span><br><span class="line">                isLocal = u[<span class="type">UIWindow</span>.keyboardIsLocalUserInfoKey] <span class="keyword">as</span>! <span class="type">Bool</span></span><br><span class="line">                frameBegin = u[<span class="type">UIWindow</span>.keyboardFrameBeginUserInfoKey] <span class="keyword">as</span>! <span class="type">CGRect</span></span><br><span class="line">                frameEnd = u[<span class="type">UIWindow</span>.keyboardFrameEndUserInfoKey] <span class="keyword">as</span>! <span class="type">CGRect</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In our <code>keyboardChanged(notification:)</code> method, we can construct that struct, rather than parsing the user info dictionary manually:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">keyboardChanged</span><span class="params">(notification: NSNotification)</span></span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> payload = <span class="type">KeyboardInfo</span>(notification) <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</span><br><span class="line">        <span class="keyword">let</span> keyboardScreenFrame = payload.frameEnd</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Our code is a little bit more concise, and it’s also a little safer (the dictionary reading is now in a single place, rather than spread across the code base). When we want to access other properties, we can now type <code>payload.</code> and auto complete will suggest the different names.</p>
+<p>In <a href="https://talk.objc.io/episodes/S01E27-typed-notifications-part-1" target="_blank" rel="noopener">Swift Talk Episode 27</a> (a public episode), we take this approach a bit further, and we also add a way to create type-safe observers.</p>
+<p>If you’d like to follow the series, the <a href="https://talk.objc.io/episodes/S01E103-refactoring-large-view-controllers-extracting-pure-functions" target="_blank" rel="noopener">first episode is public</a>, and you can <a href="https://talk.objc.io/subscribe" target="_blank" rel="noopener">become a subscriber</a> to see how we progress. 👍</p>
 
       
     </div>
@@ -382,6 +396,8 @@
           
             <a href="/tags/Swift/" rel="tag"># Swift</a>
           
+            <a href="/tags/objc-io/" rel="tag"># objc.io</a>
+          
         </div>
       
 
@@ -393,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/25/Swift/Defer/" rel="next" title="Defer">
-                <i class="fa fa-chevron-left"></i> Defer
+              <a href="/2018/07/04/Daily/2018-06-28/" rel="next" title="2018-6-28">
+                <i class="fa fa-chevron-left"></i> 2018-6-28
               </a>
             
           </div>
@@ -402,10 +418,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/25/Swift/JSON/" rel="prev" title="JSON">
-                JSON <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -464,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/favicon.ico"
@@ -518,6 +539,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Swift-Tip-Notifications"><span class="nav-number">1.</span> <span class="nav-text">Swift Tip: Notifications</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -662,9 +699,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://caohr.com/2018/06/25/Swift/Mutating/';
-          this.page.identifier = '2018/06/25/Swift/Mutating/';
-          this.page.title = 'Mutating';
+          this.page.url = 'http://caohr.com/2018/07/05/Swift/Swift Tip Notifications/';
+          this.page.identifier = '2018/07/05/Swift/Swift Tip Notifications/';
+          this.page.title = 'Swift Tip: Notifications';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://caohr.disqus.com/embed.js';
