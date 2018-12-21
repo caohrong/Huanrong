@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Huanrong">
 <meta property="og:description" content="函数基础12返回类型 函数名称(一个或多个形参)returnType functionName(valueName:value, anotherValueName: value); 函数调用函数的调用完成两项工作：一个是用实参初始化函数的形参，而是将控制权转移给被调用的函数。此时，主调函数（calling function）的执行被暂时中断，被调用函数开始。这里暂停是需要消耗资源的，有些代码的少的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-21T07:28:26.184Z">
+<meta property="og:updated_time" content="2018-12-21T07:33:55.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数">
 <meta name="twitter:description" content="函数基础12返回类型 函数名称(一个或多个形参)returnType functionName(valueName:value, anotherValueName: value); 函数调用函数的调用完成两项工作：一个是用实参初始化函数的形参，而是将控制权转移给被调用的函数。此时，主调函数（calling function）的执行被暂时中断，被调用函数开始。这里暂停是需要消耗资源的，有些代码的少的">
@@ -386,14 +386,18 @@
 <p><strong>函数调用</strong><br>函数的调用完成两项工作：一个是用实参初始化函数的形参，而是将控制权转移给被调用的函数。此时，主调函数（calling function）的执行被暂时中断，被调用函数开始。这里暂停是需要消耗资源的，有些代码的少的话函数，就可以写成<strong>内联函数</strong>来降低这里的资源消耗。</p>
 <a id="more"></a>
 <h4 id="编写函数"><a href="#编写函数" class="headerlink" title="编写函数"></a>编写函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> vale)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret  = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (val &gt; <span class="number">1</span>) </span><br><span class="line">        ret *= val--;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = fact(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> j = fact(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
 <p>函数的调用完成两项工作: </p>
 <ul>
 <li>一是用实参初始化函数对应的形参。</li>
 <li>二是将控制权转移给被调用的函数。此时主调函数的指定被暂时中断，被调函数开始执行。</li>
 </ul>
 <p>执行函数的第一步是(隐式地)定义并初始化它的形参。因此，当调用<code>face</code>函数时，首先创建一个名为val的int变量，然后将它初始化为调用时所用的实参5。</p>
-<p>当遇到一条return语句的时候函数结束执行过程。和函数调用一样，return语句也完成亮相工作: 一是返回return语句中的值(如果有的话)，二是讲控制权从被调函数转移回主调函数。函数的返回值用于初始化调用表达式的结果。</p>
+<p>当遇到一条return语句的时候函数结束执行过程。和函数调用一样，return语句也完成相应工作: </p>
+<ul>
+<li>一是返回return语句中的值(如果有的话)，</li>
+<li>二是将控制权从被调函数转移回主调函数。函数的返回值用于初始化调用表达式的结果。</li>
+</ul>
 <h4 id="形参和实参"><a href="#形参和实参" class="headerlink" title="形参和实参"></a>形参和实参</h4><p>实参是形参的初始值。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fact(<span class="number">3.14</span>);      <span class="comment">//该实参能转换成int类型。</span></span><br><span class="line">fact(<span class="string">'a'</span>);          <span class="comment">//该字符也能转换成int类型，但是换成字符串则不行。</span></span><br></pre></td></tr></table></figure>
 <h4 id="函数的形参列表"><a href="#函数的形参列表" class="headerlink" title="函数的形参列表"></a>函数的形参列表</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br></pre></td></tr></table></figure>
@@ -426,7 +430,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isShorter</span> <span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s1, <span class="keyword">const</span> <span class="built_in">string</span> &amp;s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s1.size() &lt; s2.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>因为<code>string</code>对象可能会很长所以使用引用避免拷贝他们。又因为我们不需要改变<code>string</code>的值，所以在string引用的形参前面加上关键字<code>const</code>。</p>
 <h4 id="使用引用参数返回额外信息"><a href="#使用引用参数返回额外信息" class="headerlink" title="使用引用参数返回额外信息"></a>使用引用参数返回额外信息</h4><p>可以用函数定义一个引用的形参，然后将一个结果通过函数return返回，一个结果通过引用的形参返回。</p>
-<p><strong>这个类似Objective-C的错误返回机制，Swift因为加入了元组可以直接返回元组类型。C++也有类似元组的东西就是关联容器的pair。但是这里应该也是可以直接使用指针来返回，不一定非得用引用参数。</strong></p>
+<p><strong>这个类似Objective-C的错误返回机制，Swift因为加入了元组可以直接返回元组类型。C++关键容易的Pair和Swift元组很像。。</strong></p>
 <h3 id="const形参和实参"><a href="#const形参和实参" class="headerlink" title="const形参和实参"></a>const形参和实参</h3><p>顶层<code>const</code>作用于对象本身:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = <span class="number">42</span>;   <span class="comment">//不能改变ci，const是顶层的</span></span><br><span class="line"><span class="keyword">int</span> i = ci;                 <span class="comment">//正确:当拷贝ci时，忽略了它顶层的const</span></span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> p = &amp;i;  <span class="comment">//const是顶层的，不能给p赋值。</span></span><br><span class="line">*p = <span class="number">0</span>;                      <span class="comment">//正确：通过p改变对象的内容是允许的，现在i变成了0；</span></span><br></pre></td></tr></table></figure>
 <p>和其他初始化过程一样，当用实参初始化形参时会忽略掉顶层const。换句话说，形参的顶层<code>const</code>被忽略掉了。当形参有顶层<code>const</code>是，传递给它常量对象或者非常量对象都是可以的。</p>
@@ -666,6 +670,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/12/21/C++/顶层和底层/" rel="prev" title="顶层和底层">
+                顶层和底层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -748,7 +756,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
