@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="Variables that can store addresses are called pointers.">
+<meta name="description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指针">
 <meta property="og:url" content="http://caohr.com/2018/11/15/C/指针/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="Variables that can store addresses are called pointers.">
+<meta property="og:description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://www.caohr.com/ImagesFolder/001.JPG">
-<meta property="og:updated_time" content="2018-12-21T07:14:11.763Z">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/001.png">
+<meta property="og:updated_time" content="2018-12-21T07:43:47.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指针">
-<meta name="twitter:description" content="Variables that can store addresses are called pointers.">
-<meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/001.JPG">
+<meta name="twitter:description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
+<meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/001.png">
 
 
 
@@ -386,8 +386,8 @@
         <blockquote>
 <p>Variables that can store addresses are called pointers.</p>
 </blockquote>
+<p>指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。<br><img src="http://www.caohr.com/ImagesFolder/001.png" alt="001"></p>
 <a id="more"></a>
-<p>指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。<br><img src="http://www.caohr.com/ImagesFolder/001.JPG" alt="001"></p>
 <p>类型名为<code>void</code>表示没有指定类型，所以void<em>类型的指针可以包含任意类型的数据项地址。类型`void</em><code>常常用做参数类型，或以独立于类型的方式处理数据的函数的返回值类型。任意类型的指针都可以传送为</code>void<em><code>类型的值，在使用它时，再将其转换为合适的类型。例如, int类型变量的地址可以存储在</code>void</em><code>类型的指针变量中。要访问存储在</code>void<em><code>指针所指地址中的整数值，必须先把指针转化为</code>int </em>`类型。</p>
 <h2 id="申明指针"><a href="#申明指针" class="headerlink" title="申明指针"></a>申明指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *pnumber;</span><br><span class="line">int* pnumber;</span><br><span class="line">int *pnumber = NULL;  //指针变量可以和普通变量一起申明。</span><br><span class="line">double value, *pVal, fnum;</span><br></pre></td></tr></table></figure>
 <p>指针如果没有初始化比类型没有初始化更危险，因为有可能会覆盖该内存。<br><code>NULL</code>被定义在<code>stddef.h</code>,<code>stdlib.h</code>,<code>stdio.h</code>,<code>string.h</code>,<code>time.h</code>,<code>wchar.h</code>and<code>locale.h</code></p>
