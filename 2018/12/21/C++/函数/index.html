@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Huanrong">
 <meta property="og:description" content="函数基础12返回类型 函数名称(一个或多个形参)returnType functionName(valueName:value, anotherValueName: value); 函数调用函数的调用完成两项工作：一个是用实参初始化函数的形参，而是将控制权转移给被调用的函数。此时，主调函数（calling function）的执行被暂时中断，被调用函数开始。这里暂停是需要消耗资源的，有些代码的少的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-21T07:27:41.726Z">
+<meta property="og:updated_time" content="2018-12-21T07:28:26.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数">
 <meta name="twitter:description" content="函数基础12返回类型 函数名称(一个或多个形参)returnType functionName(valueName:value, anotherValueName: value); 函数调用函数的调用完成两项工作：一个是用实参初始化函数的形参，而是将控制权转移给被调用的函数。此时，主调函数（calling function）的执行被暂时中断，被调用函数开始。这里暂停是需要消耗资源的，有些代码的少的">
@@ -384,6 +384,7 @@
       
         <h2 id="函数基础"><a href="#函数基础" class="headerlink" title="函数基础"></a>函数基础</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">返回类型 函数名称(一个或多个形参)</span><br><span class="line"><span class="function">returnType <span class="title">functionName</span><span class="params">(valueName:value, anotherValueName: value)</span></span>;</span><br></pre></td></tr></table></figure>
 <p><strong>函数调用</strong><br>函数的调用完成两项工作：一个是用实参初始化函数的形参，而是将控制权转移给被调用的函数。此时，主调函数（calling function）的执行被暂时中断，被调用函数开始。这里暂停是需要消耗资源的，有些代码的少的话函数，就可以写成<strong>内联函数</strong>来降低这里的资源消耗。</p>
+<a id="more"></a>
 <h4 id="编写函数"><a href="#编写函数" class="headerlink" title="编写函数"></a>编写函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fact</span><span class="params">(<span class="keyword">int</span> vale)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret  = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (val &gt; <span class="number">1</span>) </span><br><span class="line">        ret *= val--;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = fact(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>函数的调用完成两项工作: </p>
