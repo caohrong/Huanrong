@@ -94,17 +94,19 @@
 
 
 
-<meta name="description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。 CMake安装到下载最新的项目后，运行下面命令安装CMake在Mac上。 1$ ./bootstrap &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install 关于腾讯Mars用C">
+<meta name="description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。 CMake安装下载最新的项目后，运行下面命令安装CMake在Mac上 1$ ./bootstrap &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install 关于腾讯Mars用CMa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMake">
 <meta property="og:url" content="http://caohr.com/2019/06/12/Tools/CMake/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。 CMake安装到下载最新的项目后，运行下面命令安装CMake在Mac上。 1$ ./bootstrap &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install 关于腾讯Mars用C">
+<meta property="og:description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。 CMake安装下载最新的项目后，运行下面命令安装CMake在Mac上 1$ ./bootstrap &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install 关于腾讯Mars用CMa">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-12T06:59:27.405Z">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/CMake-logo.png">
+<meta property="og:updated_time" content="2019-06-12T07:09:15.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMake">
-<meta name="twitter:description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。 CMake安装到下载最新的项目后，运行下面命令安装CMake在Mac上。 1$ ./bootstrap &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install 关于腾讯Mars用C">
+<meta name="twitter:description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。 CMake安装下载最新的项目后，运行下面命令安装CMake在Mac上 1$ ./bootstrap &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install 关于腾讯Mars用CMa">
+<meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/CMake-logo.png">
 
 
 
@@ -381,8 +383,8 @@
       
 
       
-        <h2 id="CMake介绍"><a href="#CMake介绍" class="headerlink" title="CMake介绍"></a>CMake介绍</h2><p>CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的<code>Makefile</code>，而<code>CMake</code>就可以为跨平台的项目，提供一次编写<code>Makefile</code>而到处编译的目的。</p>
-<h2 id="CMake安装"><a href="#CMake安装" class="headerlink" title="CMake安装"></a>CMake安装</h2><p>到<a href="https://gitlab.kitware.com/cmake/cmake" target="_blank" rel="noopener">下载</a>最新的项目后，运行下面命令安装<code>CMake</code>在<code>Mac</code>上。</p>
+        <h2 id="CMake介绍"><a href="#CMake介绍" class="headerlink" title="CMake介绍"></a>CMake介绍</h2><p>CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的<code>Makefile</code>，而<code>CMake</code>就可以为跨平台的项目，提供一次编写<code>Makefile</code>而到处编译的目的。<br><img src="http://www.caohr.com/ImagesFolder/CMake-logo.png" alt="CMake-logo"></p>
+<h2 id="CMake安装"><a href="#CMake安装" class="headerlink" title="CMake安装"></a>CMake安装</h2><p><a href="https://gitlab.kitware.com/cmake/cmake" target="_blank" rel="noopener">下载</a>最新的项目后，运行下面命令安装<code>CMake</code>在<code>Mac</code>上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bootstrap &amp;&amp; make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
 <h2 id="关于腾讯Mars用CMake编译"><a href="#关于腾讯Mars用CMake编译" class="headerlink" title="关于腾讯Mars用CMake编译"></a>关于腾讯<code>Mars</code>用<code>CMake</code>编译</h2><h3 id="运行Mars的示例程序"><a href="#运行Mars的示例程序" class="headerlink" title="运行Mars的示例程序"></a>运行<code>Mars</code>的示例程序</h3><p><code>Mars</code>示例程序iOS项目和Mac项目缺失<code>Mars</code>的<code>Framework</code>。需要自行下载最新的<code>Mars</code>利用<code>CMake</code>来编译，根据不同的平台，运行<code>Mars</code>底下相应的编译脚本。不导入<code>Mars</code>的<code>Framework</code>，会报一些头文件没找到，例如<code>mars/xlog/xlogger.h&#39; file not found</code>。如果没有安装<code>CMake</code>直接运行这些脚本会提示<code>CMake</code>命令缺失。</p>
 <p>Compile</p>
