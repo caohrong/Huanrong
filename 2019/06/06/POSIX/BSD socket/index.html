@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Huanrong">
 <meta property="og:description" content="BSD socket也叫做伯克利套接字 通讯domain:  UNIX(AF_UNIX) domain允许在同一主机上的应用程序之间进行通讯。（POSIX.1g使用名称AF_LOCAL作为AF_UNIX的同义词，但SUSv3并没有使用这个名称。） IPv4(AF_INET) domain允许在使用IPv4网络链接起来的主机上的应用程序之间进行通讯。 IPv6(AF_INET6) domain允许在">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T03:35:26.729Z">
+<meta property="og:updated_time" content="2019-06-11T03:32:36.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BSD socket">
 <meta name="twitter:description" content="BSD socket也叫做伯克利套接字 通讯domain:  UNIX(AF_UNIX) domain允许在同一主机上的应用程序之间进行通讯。（POSIX.1g使用名称AF_LOCAL作为AF_UNIX的同义词，但SUSv3并没有使用这个名称。） IPv4(AF_INET) domain允许在使用IPv4网络链接起来的主机上的应用程序之间进行通讯。 IPv6(AF_INET6) domain允许在">
@@ -393,7 +393,9 @@
 <li>流：socket（SOCK_STREAM）</li>
 <li>数据报：socket(SOCK_DGRAM)</li>
 </ul>
-<h2 id="Socket实现"><a href="#Socket实现" class="headerlink" title="Socket实现"></a>Socket实现</h2><h3 id="创建socket：socket"><a href="#创建socket：socket" class="headerlink" title="创建socket：socket()"></a>创建socket：socket()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> domain, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>protocol参数：<br>一般都是指定为0;</p>
+<h2 id="流socket"><a href="#流socket" class="headerlink" title="流socket"></a>流socket</h2><h2 id="Socket实现"><a href="#Socket实现" class="headerlink" title="Socket实现"></a>Socket实现</h2><h3 id="创建socket：socket"><a href="#创建socket：socket" class="headerlink" title="创建socket：socket()"></a>创建socket：socket()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> domain, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Address"><a href="#Address" class="headerlink" title="Address"></a>Address</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Use LOOPBACK address</span><br><span class="line">struct sockaddr_in sockaddr4;</span><br><span class="line">memset(&amp;sockaddr4, 0, sizeof(sockaddr4));</span><br><span class="line"></span><br><span class="line">sockaddr4.sin_len         = sizeof(struct sockaddr_in);</span><br><span class="line">sockaddr4.sin_family      = AF_INET;</span><br><span class="line">sockaddr4.sin_port        =  1234;</span><br><span class="line">sockaddr4.sin_addr.s_addr = htonl(INADDR_LOOPBACK);</span><br><span class="line">	</span><br><span class="line">struct sockaddr_in6 sockaddr6;</span><br><span class="line">memset(&amp;sockaddr6, 0, sizeof(sockaddr6));</span><br><span class="line"></span><br><span class="line">sockaddr6.sin6_len       = sizeof(struct sockaddr_in6);</span><br><span class="line">sockaddr6.sin6_family    = AF_INET6;</span><br><span class="line">sockaddr6.sin6_port      = htons(port);</span><br><span class="line">sockaddr6.sin6_addr      = in6addr_loopback;</span><br></pre></td></tr></table></figure>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://zh.wikipedia.org/wiki/Berkeley%E5%A5%97%E6%8E%A5%E5%AD%97" target="_blank" rel="noopener">Berkeley套接字</a></p>
 
       
@@ -515,7 +517,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -526,7 +528,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -572,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Socket实现"><span class="nav-number">1.</span> <span class="nav-text">Socket实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建socket：socket"><span class="nav-number">1.1.</span> <span class="nav-text">创建socket：socket()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流socket"><span class="nav-number">1.</span> <span class="nav-text">流socket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Socket实现"><span class="nav-number">2.</span> <span class="nav-text">Socket实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建socket：socket"><span class="nav-number">2.1.</span> <span class="nav-text">创建socket：socket()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Address"><span class="nav-number">2.2.</span> <span class="nav-text">Address</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>

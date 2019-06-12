@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="C++," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,18 +94,17 @@
 
 
 
-<meta name="description" content="指针（pointer）是“指向（point to）”另外一种符合类型。与引用类似，指针也实现了对其他对象的间接访问。 指针与引用的区别：其一：指针本身就是一个对象，允许指针复制和拷贝，而在指针的生命周期内可以先后指向几个不同的对象。其二：指针无须在定义时初始值。 和其他内置的类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。">
-<meta name="keywords" content="C++">
+<meta name="description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。 示例定义个自定义的类HRViewController。通过touchesBegan:跳转到这个Controller，在HRViewController里面的touchesBegan:来实现退出HRViewController控制器。通过进入和退出HRViewController`来查看效">
 <meta property="og:type" content="article">
-<meta property="og:title" content="指针">
-<meta property="og:url" content="http://caohr.com/2019/04/28/C++/指针/index.html">
+<meta property="og:title" content="weakSelf 和 strongSelf.">
+<meta property="og:url" content="http://caohr.com/2019/06/12/iOS/weakSelf & strongSelf/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="指针（pointer）是“指向（point to）”另外一种符合类型。与引用类似，指针也实现了对其他对象的间接访问。 指针与引用的区别：其一：指针本身就是一个对象，允许指针复制和拷贝，而在指针的生命周期内可以先后指向几个不同的对象。其二：指针无须在定义时初始值。 和其他内置的类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。">
+<meta property="og:description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。 示例定义个自定义的类HRViewController。通过touchesBegan:跳转到这个Controller，在HRViewController里面的touchesBegan:来实现退出HRViewController控制器。通过进入和退出HRViewController`来查看效">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T03:34:38.558Z">
+<meta property="og:updated_time" content="2019-06-12T02:26:18.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="指针">
-<meta name="twitter:description" content="指针（pointer）是“指向（point to）”另外一种符合类型。与引用类似，指针也实现了对其他对象的间接访问。 指针与引用的区别：其一：指针本身就是一个对象，允许指针复制和拷贝，而在指针的生命周期内可以先后指向几个不同的对象。其二：指针无须在定义时初始值。 和其他内置的类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。">
+<meta name="twitter:title" content="weakSelf 和 strongSelf.">
+<meta name="twitter:description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。 示例定义个自定义的类HRViewController。通过touchesBegan:跳转到这个Controller，在HRViewController里面的touchesBegan:来实现退出HRViewController控制器。通过进入和退出HRViewController`来查看效">
 
 
 
@@ -134,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/2019/04/28/C++/指针/"/>
+  <link rel="canonical" href="http://caohr.com/2019/06/12/iOS/weakSelf & strongSelf/"/>
 
 
 
 
 
-  <title>指针 | Huanrong</title>
+  <title>weakSelf 和 strongSelf. | Huanrong</title>
   
 
 
@@ -282,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2019/04/28/C++/指针/">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2019/06/12/iOS/weakSelf & strongSelf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong">
@@ -299,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">指针</h1>
+          <h1 class="post-title" itemprop="name headline">weakSelf 和 strongSelf.</h1>
         
 
         <div class="post-meta">
@@ -311,8 +310,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-28T11:27:37+08:00">
-                2019-04-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-12T09:57:14+08:00">
+                2019-06-12
               </time>
             
 
@@ -334,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -352,9 +351,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/28/C++/指针/#comments" itemprop="discussionUrl">
+                <a href="/2019/06/12/iOS/weakSelf & strongSelf/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/04/28/C++/指针/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/06/12/iOS/weakSelf & strongSelf/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,37 +381,24 @@
       
 
       
-        <p><strong>指针</strong>（pointer）是“指向（point to）”另外一种符合类型。与引用类似，指针也实现了对其他对象的间接访问。</p>
-<p>指针与引用的区别：<br>其一：指针本身就是一个对象，允许指针复制和拷贝，而在指针的生命周期内可以先后指向几个不同的对象。<br>其二：指针无须在定义时初始值。</p>
-<p>和其他内置的类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。</p>
-<a id="more"></a>
-<h2 id="指针的定义"><a href="#指针的定义" class="headerlink" title="指针的定义"></a>指针的定义</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">int</span> *ip1， *ip2;</span><br><span class="line"><span class="keyword">double</span> dp, *dp2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获对象地址（取地址符&amp;）</span></span><br><span class="line"><span class="keyword">int</span> ival =<span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;ival;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用指针访问对象</span></span><br><span class="line"><span class="keyword">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;ival;</span><br><span class="line">count &lt;&lt; *p;</span><br></pre></td></tr></table></figure>
-<p>指针的四种状态</p>
-<ol>
-<li>指向一个对象</li>
-<li>指向紧邻对象所占空间的下一个位置</li>
-<li>空指针，意味着指针没有指向任何对象。</li>
-<li>无效指针，也就是上述的情况之外的其他值。(一般都是没有初始化的指针，指向一个垃圾值)</li>
-</ol>
-<p>试图拷贝或以其他方式访问无效指针的值都将引发错误。<br>访问空指针和无效指针的后果是无法预计的。</p>
-<h2 id="指针-vs-对象"><a href="#指针-vs-对象" class="headerlink" title="指针 vs 对象"></a>指针 vs 对象</h2><p>指针可以降低传输大数据时候的花销。<br>指针可以修改自己所指的对象（相同的类型）。<br>但是指针在使用前要更加小心，因为有可能会指向<code>nullptr</code>，而直接使用对象就不会有这样的问题。</p>
-<p>A pointer allows us to pass potentially large amounts of data around at low cost: instead of copying the data we simply pass its address as a pointer value. The type of the pointer determines what can be done to the data through the pointer. Using a pointer differs from using the name of an object in a few ways:</p>
-<ol>
-<li>We use a different syntax, for example, ∗p instead of obj and p−&gt;m rather than obj.m.</li>
-<li>We can make a pointer point to different objects at different times.</li>
-<li>We must be more careful when using pointers than when using an object directly: a pointer may be a nullptr or point to an object that wasn’t the one we expected.</li>
-</ol>
-<h2 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h2><h3 id="void"><a href="#void" class="headerlink" title="void*"></a><code>void*</code></h3><p><code>void*</code> as pointer to an object of unknown type. <code>void *</code>可以用来返回位置的类型，有点类似Objective-C的id类型。任何类型的指针都可以赋值给<code>void *</code>类型。<code>void *</code>也可以隐形的转为其他的类型。</p>
-<h3 id="nullptr"><a href="#nullptr" class="headerlink" title="nullptr"></a><code>nullptr</code></h3><p>nullptr代表空指针, 使用<code>nullptr</code>使代码比替代方法更具有可读性，并避免函数重载以接受指针或整数时潜在混淆。<br>在nullptr引入之前，都是直接使用0来代表空指针。</p>
-<p>nullptr的优点是它没有整数类型。 说实话，它也没有指针类型，但您可以将其视为所有类型的指针。 nullptr的实际类型是std :: nullptr_t，并且在一个奇妙的循环定义中，std :: nullptr_t被定义为nullptr的类型。 类型std :: nullptr_t隐式转换为所有原始指针类型，这就是使得nullptr就像它是所有类型的指针一样的原因。</p>
-<h3 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a><code>NULL</code></h3><p><code>NULL</code>是一个宏，在不同的系统里面可能代表着不同的值。<br><code>NULL</code>可能是0或者是0L，在C语言里面是<code>(void*)0</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p1 = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">int</span> *p2 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> *p3 = <span class="literal">NULL</span>;   <span class="comment">//#include cstdlib</span></span><br></pre></td></tr></table></figure>
-<p>空指针最直接的办法就是用字面值<code>nullptr</code>来初始化。<br>NULL是一种定义在cstdlib的预处理变量来给指针赋值。</p>
-<h2 id="Pointer-into-Arrays"><a href="#Pointer-into-Arrays" class="headerlink" title="Pointer into Arrays"></a>Pointer into Arrays</h2><p>指针只能指向数组的第一个元素，所以程序员得自己维护数组的大小。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> v[] = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;; </span><br><span class="line"><span class="keyword">int</span>∗ p1 = v;             <span class="comment">// pointer to initial element (implicit conversion)</span></span><br><span class="line"><span class="keyword">int</span>∗ p2 = &amp;v[<span class="number">0</span>];      <span class="comment">// pointer to initial element</span></span><br><span class="line"><span class="keyword">int</span>∗ p3 = v+<span class="number">4</span>;        <span class="comment">// pointer to one-beyond-last element</span></span><br></pre></td></tr></table></figure>
-<p>有些算法在搜索元素位置的时候，如果没有找到，通常会把指针指向最后一个元素末尾一个不存在的位置。</p>
-<h2 id="Navigating-Arrays"><a href="#Navigating-Arrays" class="headerlink" title="Navigating Arrays"></a>Navigating Arrays</h2><p>For every built-in array a and integer j within the range of a, we have:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[j] == ∗(&amp;a[<span class="number">0</span>]+j) == ∗(a+j) == ∗(j+a) == j[a]</span><br></pre></td></tr></table></figure>
+        <p><code>weakSelf</code>是用来解决循环引用<br><code>strongSelf</code>则是保证任何情况下self在超出作用域以后仍旧能够使用。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>定义个自定义的类<code>HRViewController</code>。通过<code>touchesBegan:</code>跳转到这个<code>Controller</code>，在<code>HRViewController</code>里面的<code></code>touchesBegan:<code>来实现退出</code>HRViewController<code>控制器。通过进入和退出</code>HRViewController`来查看效果。</p>
+<p>前置条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@interface HRViewController ()</span><br><span class="line">@property (copy, nonatomic) void(^test)();</span><br><span class="line">@property (nonatomic, copy) NSString *locationInfo;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">-(void)dealloc &#123;</span><br><span class="line">    NSLog(@&quot;HRViewController销毁&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="WeakSelf"><a href="#WeakSelf" class="headerlink" title="WeakSelf"></a>WeakSelf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // Do any additional setup after loading the view.</span><br><span class="line">    self.locationInfo = @&quot;北京&quot;;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@&quot;地址:%@&quot;, self.locationInfo);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br><span class="line">    self.view.backgroundColor = UIColor.redColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码会导致死循环，<code>HRViewController销毁</code>不会被打印。<code>Controller</code>拥有这个Block，这个Bock强引用<code>Controller</code>，所以不会被销毁。如下面代码，block中改为弱引用，问题解决，<code>HRViewController销毁</code>打印。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // Do any additional setup after loading the view.</span><br><span class="line">    self.locationInfo = @&quot;北京&quot;;</span><br><span class="line">    __weak HRViewController *weakSelf = self;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@&quot;地址:%@&quot;, weakSelf.locationInfo);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br><span class="line">    self.view.backgroundColor = UIColor.redColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="StrongSelf"><a href="#StrongSelf" class="headerlink" title="StrongSelf"></a>StrongSelf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__weak HRViewController *weakSelf = self;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@&quot;地址:%@&quot;, weakSelf.locationInfo);</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            NSLog(@&quot;执行延时&quot;);</span><br><span class="line">            strongSelf.locationInfo = @&quot;湖南&quot;;</span><br><span class="line">            NSLog(@&quot;地址:%@&quot;, weakSelf.locationInfo);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br></pre></td></tr></table></figure>
+<p>进入<code>Controller</code>以后，在5秒内退出这个<code>Controller</code>。执行到延时<code>block</code>里面的代码的时候，<code>Controller</code>已经销毁了，<code>locationInfo</code>也随之销毁了，所以<code>湖南</code>不能被赋值，里面的打印地址为<code>null</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">地址:北京</span><br><span class="line">HRViewController销毁</span><br><span class="line">执行延时</span><br><span class="line">地址:(null)</span><br></pre></td></tr></table></figure>
+<p>这时候我们就要用到<code>strongSelf</code>来延迟<code>Controller</code>的销毁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__weak HRViewController *weakSelf = self;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@&quot;地址:%@&quot;, weakSelf.locationInfo);</span><br><span class="line">        __strong HRViewController *strongSelf = weakSelf;</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            NSLog(@&quot;执行延时&quot;);</span><br><span class="line">            strongSelf.locationInfo = @&quot;湖南&quot;;</span><br><span class="line">            NSLog(@&quot;地址:%@&quot;, strongSelf.locationInfo);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br></pre></td></tr></table></figure>
+<p>从打印可以看出<code>Controller</code>最终在赋值完以后才销毁，所以达到了延迟<code>Controller</code>的销毁的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">地址:北京</span><br><span class="line">执行延时</span><br><span class="line">地址:湖南</span><br><span class="line">HRViewController销毁</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不能直接在延迟block里面使用self，这样又是会死循环。</p>
+</blockquote>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://stackoverflow.com/questions/11013587/differences-between-strong-and-weak-in-" target="_blank" rel="noopener">https://stackoverflow.com/questions/11013587/differences-between-strong-and-weak-in-</a><br><a href="https://blog.csdn.net/u013046795/article/details/50789442" target="_blank" rel="noopener">https://blog.csdn.net/u013046795/article/details/50789442</a></p>
 
       
     </div>
@@ -428,12 +414,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/C/" rel="tag"># C++</a>
-          
-        </div>
-      
 
       
       
@@ -443,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/19/Daily/2018-12-19/" rel="next" title="穿越大洋的艺术">
-                <i class="fa fa-chevron-left"></i> 穿越大洋的艺术
+              <a href="/2019/06/06/POSIX/POSIX简介/" rel="next" title="POSIX简介">
+                <i class="fa fa-chevron-left"></i> POSIX简介
               </a>
             
           </div>
@@ -452,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/06/Daily/2019-06-06/" rel="prev" title="叔本华">
-                叔本华 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#指针的定义"><span class="nav-number">1.</span> <span class="nav-text">指针的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针-vs-对象"><span class="nav-number">2.</span> <span class="nav-text">指针 vs 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空指针"><span class="nav-number">3.</span> <span class="nav-text">空指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#void"><span class="nav-number">3.1.</span> <span class="nav-text">void*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nullptr"><span class="nav-number">3.2.</span> <span class="nav-text">nullptr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NULL"><span class="nav-number">3.3.</span> <span class="nav-text">NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pointer-into-Arrays"><span class="nav-number">4.</span> <span class="nav-text">Pointer into Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigating-Arrays"><span class="nav-number">5.</span> <span class="nav-text">Navigating Arrays</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakSelf"><span class="nav-number">1.1.</span> <span class="nav-text">WeakSelf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StrongSelf"><span class="nav-number">1.2.</span> <span class="nav-text">StrongSelf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关链接"><span class="nav-number">2.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
             
 
           </div>
@@ -746,9 +722,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://caohr.com/2019/04/28/C++/指针/';
-          this.page.identifier = '2019/04/28/C++/指针/';
-          this.page.title = '指针';
+          this.page.url = 'http://caohr.com/2019/06/12/iOS/weakSelf & strongSelf/';
+          this.page.identifier = '2019/06/12/iOS/weakSelf & strongSelf/';
+          this.page.title = 'weakSelf 和 strongSelf.';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://caohr.disqus.com/embed.js';
