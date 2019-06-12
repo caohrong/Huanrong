@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.">
+<meta name="description" content="An enumeration is a type that can hold a set of integer values specified by the user.C++中包含两种枚举类型：Plain enums:枚举值与枚举类型本身在用一个作用域中，枚举值会隐形的转为整数。enum class: 他们枚举的值作用域在枚举的内部，枚举值不会隐式的转为其他的类型。  enum is that">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unicode">
-<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/Unicode/index.html">
+<meta property="og:title" content="enumerations">
+<meta property="og:url" content="http://caohr.com/2019/06/12/C++/Enumerations/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.">
+<meta property="og:description" content="An enumeration is a type that can hold a set of integer values specified by the user.C++中包含两种枚举类型：Plain enums:枚举值与枚举类型本身在用一个作用域中，枚举值会隐形的转为整数。enum class: 他们枚举的值作用域在枚举的内部，枚举值不会隐式的转为其他的类型。  enum is that">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-21T07:12:43.479Z">
+<meta property="og:updated_time" content="2019-06-12T15:01:42.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unicode">
-<meta name="twitter:description" content="最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.">
+<meta name="twitter:title" content="enumerations">
+<meta name="twitter:description" content="An enumeration is a type that can hold a set of integer values specified by the user.C++中包含两种枚举类型：Plain enums:枚举值与枚举类型本身在用一个作用域中，枚举值会隐形的转为整数。enum class: 他们枚举的值作用域在枚举的内部，枚举值不会隐式的转为其他的类型。  enum is that">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/Unicode/"/>
+  <link rel="canonical" href="http://caohr.com/2019/06/12/C++/Enumerations/"/>
 
 
 
 
 
-  <title>Unicode | Huanrong</title>
+  <title>enumerations | Huanrong</title>
   
 
 
@@ -281,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Unicode/">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2019/06/12/C++/Enumerations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huanrong">
@@ -298,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Unicode</h1>
+          <h1 class="post-title" itemprop="name headline">enumerations</h1>
         
 
         <div class="post-meta">
@@ -310,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T13:13:10+08:00">
-                2018-06-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-12T22:59:39+08:00">
+                2019-06-12
               </time>
             
 
@@ -333,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -351,9 +352,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/25/Swift/Unicode/#comments" itemprop="discussionUrl">
+                <a href="/2019/06/12/C++/Enumerations/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/25/Swift/Unicode/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/06/12/C++/Enumerations/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,15 +382,15 @@
       
 
       
-        <p>最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.</p>
-<a id="more"></a>
-<p>Unicode为了解决各个国家的语言的问题，统一了所有文字的编码。Unicode通常用两个字节表示一个字符，原有的英文编码从单个字节变成双字节，只需要把高字节位全部填为0就可以。</p>
-<p>在文字处理方面，统一码为每一个字符而非字形定义唯一的代码（即一个整数）。换句话说，统一码以一种抽象的方式（即数字）来处理字符，并将视觉上的演绎工作（例如字体大小、外观形状、字体形态、文体等）留给其他软件来处理，例如网页浏览器或是文字处理器。</p>
-<p>Unicode将世界上所有的符号都纳入其中，给每个符号都赋予一个独一无二的编码，那么乱码的问题机会消失。</p>
-<h2 id="Unicode的问题"><a href="#Unicode的问题" class="headerlink" title="Unicode的问题"></a>Unicode的问题</h2><p>Unicode是一个字符集，他规定了二进制代码，去没有规定二进制代码该如何存储。有些字符可能需要需要4个字节存储，但是给本来一个字节就可以存储的ASCII编码现在换成Unicode编码文本大小就会四倍的增加，这是无法接受的。</p>
-<p>所以出现了多种正对于Unicode存储的方案，例如<code>UTF-8</code></p>
-<p>字符转换<a href="http://tool.chinaz.com/tools/unicode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/tools/unicode.aspx</a></p>
-
+        <p>An enumeration is a type that can hold a set of integer values specified by the user.<br>C++中包含两种枚举类型：<br><code>Plain enums:</code>枚举值与枚举类型本身在用一个作用域中，枚举值会隐形的转为整数。<br><code>enum class:</code> 他们枚举的值作用域在枚举的内部，枚举值不会隐式的转为其他的类型。</p>
+<blockquote>
+<p>enum is that while, It looks syntactically like a type, and it’s even referred to as a type, it’s not really a type. Enumerated names actually work more like constants than like types and they make a great alternative to pre-processor constants.</p>
+</blockquote>
+<h2 id="Plain-enums"><a href="#Plain-enums" class="headerlink" title="Plain enums"></a>Plain enums</h2><p>Plain需要注意有可能在当前的范围内存在两个枚举，而两个枚举里面都包含相同值。例如<code>x == red</code>，编译器是不会报错的。但是red有可能是<code>Traffic_light</code>或者是<code>Warning</code>里面的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> card_suit : <span class="keyword">uint8_t</span> &#123; SPD, HRT, DIA, CLB &#125;;</span><br><span class="line"><span class="keyword">enum</span> card_rank : <span class="keyword">uint8_t</span> &#123; ACE = <span class="number">1</span>, DEUCE = <span class="number">2</span>, JACK = <span class="number">11</span>, QUEEN, KING &#125;;   <span class="comment">//QUEEN 12 King 13. because by definition, they go sequentially from the last specified number.会连续到最后一个值。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> Traffic_light &#123; red, yellow, green &#125;;</span><br><span class="line"><span class="keyword">enum</span> Warning &#123; green, yellow, orange, red&#125;;</span><br><span class="line"></span><br><span class="line">Warning a1 = <span class="number">7</span>;   <span class="comment">//错误</span></span><br><span class="line"><span class="keyword">int</span> a1 = green;     <span class="comment">//可以</span></span><br><span class="line"><span class="keyword">int</span> a2 = red;          <span class="comment">//错误，在现在的范围内存在两个Red,需要指明Warning::red</span></span><br><span class="line"><span class="keyword">int</span> a3 = Warning::green;   </span><br><span class="line">Warning a4 = Warning::green;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## Enum classes</span><br><span class="line"></span><br><span class="line">```C++</span><br><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Traffic_light</span> &#123;</span> red, yellow, green&#125;;</span><br><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Warning</span> &#123;</span> green, yellow, orange, red&#125;; </span><br><span class="line"></span><br><span class="line">Warning a1 = <span class="number">7</span>;        <span class="comment">//不能隐性转换</span></span><br><span class="line"><span class="keyword">int</span> a2 = green;          <span class="comment">//gree不在范围内</span></span><br><span class="line"><span class="keyword">int</span> a3 = Warning::green;    <span class="comment">//不能隐性转换</span></span><br><span class="line">Warning a4 = Warning::green;  <span class="comment">//可以</span></span><br></pre></td></tr></table></figure>
+<p><code>enum class</code>默认的值是从0开始</p>
+<p><strong>显性转换<code>enum class</code>的值</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(Warning::green) == <span class="number">0</span></span><br><span class="line">Warning values = <span class="keyword">static_cast</span>&lt;Warning&gt;(<span class="number">0</span>)    <span class="comment">//Warning::green</span></span><br><span class="line">``` </span><br><span class="line">**自定义枚举的值**</span><br><span class="line"></span><br><span class="line">```C++</span><br><span class="line"><span class="keyword">enum</span> class Printer_flags &#123;</span><br><span class="line">    acknowledge = <span class="number">1</span>,</span><br><span class="line">    paper_empty = <span class="number">2</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -404,6 +405,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
 
       
       
@@ -413,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/25/Swift/JSON/" rel="next" title="JSON">
-                <i class="fa fa-chevron-left"></i> JSON
+              <a href="/2019/06/12/Tools/GPG/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -422,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/25/Swift/UTF8/" rel="prev" title="UTF-8">
-                UTF-8 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode的问题"><span class="nav-number">1.</span> <span class="nav-text">Unicode的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Plain-enums"><span class="nav-number">1.</span> <span class="nav-text">Plain enums</span></a></li></ol></div>
             
 
           </div>
@@ -716,9 +719,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://caohr.com/2018/06/25/Swift/Unicode/';
-          this.page.identifier = '2018/06/25/Swift/Unicode/';
-          this.page.title = 'Unicode';
+          this.page.url = 'http://caohr.com/2019/06/12/C++/Enumerations/';
+          this.page.identifier = '2019/06/12/C++/Enumerations/';
+          this.page.title = 'enumerations';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://caohr.disqus.com/embed.js';
