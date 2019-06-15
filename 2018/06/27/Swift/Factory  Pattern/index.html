@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Design Patterns," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="原文地址因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。">
+<meta name="keywords" content="Design Patterns">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Factory  Pattern">
+<meta property="og:url" content="http://caohr.com/2018/06/27/Swift/Factory  Pattern/index.html">
+<meta property="og:site_name" content="Huanrong">
+<meta property="og:description" content="原文地址因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/15300945892886.png">
+<meta property="og:updated_time" content="2018-12-21T07:12:43.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Factory  Pattern">
+<meta name="twitter:description" content="原文地址因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。">
+<meta name="twitter:image" content="http://o95nbyrid.bkt.clouddn.com/15300945892886.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://caohr.com/2018/06/27/Swift/Factory  Pattern/"/>
+
+
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "pub-9602249344531494",
+enable_page_level_ads: true
+});
+</script>
+
+
+
+  <title>Factory  Pattern | Huanrong</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-61905451-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Huanrong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">iOSDev</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/27/Swift/Factory  Pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.ico">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Factory  Pattern</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T18:14:32+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/27/Swift/Factory  Pattern/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/27/Swift/Factory  Pattern/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://medium.com/swift-programming/design-patterns-creational-patterns-factory-pattern-in-swift-d049af54235b" target="_blank" rel="noopener">原文地址</a><br>因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。</p>
+<a id="more"></a>
+<h1 id="Design-Patterns-—-Creational-Patterns-—-Factory-Pattern-in-Swift"><a href="#Design-Patterns-—-Creational-Patterns-—-Factory-Pattern-in-Swift" class="headerlink" title="Design Patterns — Creational Patterns — Factory Pattern in Swift"></a>Design Patterns — Creational Patterns — Factory Pattern in Swift</h1><p>As a budding computer scientist, you no doubt have heard of design patterns in your classes and learning paths. Design patterns are blueprints which outline the best practices that create re-usable object oriented code, solving common software problems. To avoid giving you a long history lesson, I will describe the origin of design patterns as dating back to the 1970s but gaining wide acceptance with the release of <a href="https://en.wikipedia.org/wiki/Design_Patterns" target="_blank" rel="noopener">Design Patterns: Elements of Reusable Object-Oriented Software</a>, published in 1994 and authored by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, collectively referred to as the <strong>Gang of Four </strong>(GoF). The book was wildly successful due to its description of 23 classic software design patterns. 【Design patterns are extremely useful for helping you break down complex systems into components that very often】, fit into one of the design patterns described by the <em>GoF</em>. Because I know, as developers, we love to learn and sometimes need quick references to do our jobs better, I’m dedicating time to write a series of articles, of which this is the first, to show how to use each GoF design pattern in Swift.</p>
+<p>It’s common to group the design patterns we will cover into several related categories: <a href="https://en.wikipedia.org/wiki/Software_design_pattern" target="_blank" rel="noopener">creational patterns, structural patterns, and behavioral patterns</a>. For the remainder of this article, we are going to focus on the <em>Creational patterns</em> and cover our first pattern: the <em>Factory</em> pattern.</p>
+<h4 id="Creational-Pattern-Factory-Pattern"><a href="#Creational-Pattern-Factory-Pattern" class="headerlink" title="Creational Pattern: Factory Pattern"></a>Creational Pattern: Factory Pattern</h4><p>创造型模式都是关于如何消除创建对象所涉及的复杂性的方法。 <em> factory </em>模式是封装创建对象的实现细节的一种方式，它遵循公共的基类或接口。 <em> factory </em>模式允许接收创建对象的客户端通过公共接口使用对象返回，而不关心实际创建的具体对象的类型。Creational patterns are all about ways to remove the complexities involved with creating objects. The <em>factory</em> pattern is a way to encapsulate the implementation details of creating objects, which adheres to a common base class or interface. The <em>factory</em> pattern allows the client that receives the created object to use the object return via the common interface without caring about the type of concrete object that is actually created.</p>
+<p><code>工厂模式</code>将创建对象的细节从通用的接口中分开，这样允许用户正常的使用该对象。<br>The <em>factory</em> pattern separates the implementation details of creating objects from the common interface that allows users to generically use the object. Let’s consider an example to make this idea more concrete.</p>
+<p>想象一下，你经营一家猎头公司，从各种工作板上获得潜在客户。对于每个工作板，你收集联系人信息和潜在对象。我只的是求职者。当你收集到联系信息，你把他们分类，并且给他们发送你为他们推荐的职位。你希望这一过程自动化，因为你每周要收集上百的联系人信息。本质上<code>电话就是金钱</code>所以你推送的越多，你就越有可能为他们推荐到合适的职位，你就越有可能得到报酬。我们将要通过<code>factory pattern</code>来解决这个问题。<br>Imagine that you run a head hunter firm that sources all of its leads from various job boards. For each job board, you collect the contact details and resumes for potential “targets”. I mean job seekers. Once you have the contact info, you categorize them and send out boilerplate emails to each contact telling the prospect about potential matches you have for them. You want to automate the process because you connect hundreds of prospects every week. You’re essentially just “dialing for dollars,” so the more prospects you can process, the greater your chances of placing a prospect into a position, and the greater likelihood you’ll get paid. We can and will solve this problem using the <em>factory</em> pattern to handle the creation of the email templates.</p>
+<p>I’m going to use a Swift Playground to show one way in which we could use the <em>factory</em> pattern to achieve our goal. You can find the playground file I used for this post <a href="https://github.com/mrkeithelliott/FactoryPattern" target="_blank" rel="noopener">here</a>. To simplify things, let’s assume that each contact will have personal details along with the type of role they are seeking.</p>
+<p>First, we will create the interface (or rather, protocol) that we will use to send our customized emails to our potential clients with information on the type of job they are seeking.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">JobContactProtocol</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">sendRequestResumeEmail</span><span class="params">()</span></span>-&gt;<span class="type">String</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Let’s also add a struct for the <em>Contact</em> object.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Contact</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">        <span class="keyword">var</span> email: <span class="type">String</span></span><br><span class="line">        <span class="keyword">var</span> job: <span class="type">Job</span></span><br><span class="line">        <span class="keyword">var</span> desiredSal: <span class="type">Double</span></span><br><span class="line">            </span><br><span class="line">        <span class="class"><span class="keyword">enum</span> <span class="title">Job</span> </span>&#123;</span><br><span class="line">                <span class="keyword">case</span> iOS</span><br><span class="line">                <span class="keyword">case</span> <span class="type">Android</span></span><br><span class="line">                <span class="keyword">case</span> <span class="type">Web</span></span><br><span class="line">                <span class="keyword">case</span> <span class="type">QA</span></span><br><span class="line">                <span class="keyword">case</span> <span class="type">Product_Owner</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Next, we will create several template objects that adhere to the <em>JobContacterProtocol</em>. We need templates to send to mobile developers, web developers, QA/ Testing, and product owners. We want to hide the details of these objects from clients and only expose the interface for use. What makes this pattern really useful is that each class is in charge of its implementation and can do anything as long as it adheres to the protocol. It can be used in a generic way by a client that only knows about the protocol.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iOSDeveloperJobSeeker</span>: <span class="title">JobContactProtocol</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(contact: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact = contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">sendRequestResumeEmail</span><span class="params">()</span></span>-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Dear <span class="subst">\(contact.name)</span>, this is the best time to be an iOS developer! Send me you're resume today! I have job opportunities that pay <span class="subst">\(contact.desiredSal)</span>."</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AndroidDeveloperJobSeeker</span>: <span class="title">JobContactProtocol</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(contact: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact = contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">sendRequestResumeEmail</span><span class="params">()</span></span>-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Dear <span class="subst">\(contact.name)</span>, this is as decent time to be an Android developer! Send me you're resume today! I have job opportunities that pay close to the <span class="subst">\(contact.desiredSal)</span> you are looking for"</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">WebDeveloperJobSeeker</span>: <span class="title">JobContactProtocol</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(contact: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact = contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">sendRequestResumeEmail</span><span class="params">()</span></span>-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Dear <span class="subst">\(contact.name)</span>, Send me you're resume today! I have job opportunities for you."</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QADeveloperJobSeeker</span>: <span class="title">JobContactProtocol</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(contact: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact = contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">sendRequestResumeEmail</span><span class="params">()</span></span>-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Dear <span class="subst">\(contact.name)</span>, The market is tough but the code is still buggy!  Good news for you because I know the best companies for buggy code and they need you!"</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ProductOwnerDeveloperJobSeeker</span>: <span class="title">JobContactProtocol</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(contact: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact = contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">sendRequestResumeEmail</span><span class="params">()</span></span>-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Dear <span class="subst">\(contact.name)</span>, Times are still good to be in development.  Maybe you should consider learning to code or going back to code. If we can cut your desired salary of <span class="subst">\(contact.desiredSal)</span> in half, I should be able to place you as a contract to hire. Send me your resume!"</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Our next step is to create the actual factory that our client will use to get a concrete object that adheres to our protocol. The factory object in our case has just one method to return the job seeker object that adheres to the <em>JobContacterProtocol</em> based on a <em>contact</em> object that is passed in as a parameter to the function.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">JobContacterFactory</span></span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">getJobSeeker</span><span class="params">(contact: Contact)</span></span>-&gt;<span class="type">JobContactProtocol</span> &#123;</span><br><span class="line">                <span class="keyword">switch</span> contact.job &#123;</span><br><span class="line">                <span class="keyword">case</span> .iOS:</span><br><span class="line">                        <span class="keyword">return</span> iOSDeveloperJobSeeker(contact: contact)</span><br><span class="line">                <span class="keyword">case</span> .<span class="type">Android</span>:</span><br><span class="line">                        <span class="keyword">return</span> <span class="type">AndroidDeveloperJobSeeker</span>(contact: contact)</span><br><span class="line">                <span class="keyword">case</span> .<span class="type">Web</span>:</span><br><span class="line">                        <span class="keyword">return</span> <span class="type">WebDeveloperJobSeeker</span>(contact: contact)</span><br><span class="line">                <span class="keyword">case</span> .<span class="type">QA</span>:</span><br><span class="line">                        <span class="keyword">return</span> <span class="type">QADeveloperJobSeeker</span>(contact: contact)</span><br><span class="line">                <span class="keyword">case</span> .<span class="type">Product_Owner</span>:</span><br><span class="line">                        <span class="keyword">return</span> <span class="type">ProductOwnerDeveloperJobSeeker</span>(contact: contact)</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Our factory hides the need to know the type of object created because we will use our interface methods when we want to do anything with the created object. The added benefit of doing this is that we can add, change, or remove concrete objects from our factory without changing our client code!</p>
+<p>In our example, we can create several contacts that we want to reach out to with opportunities. We can then contact these prospects with our exposed interface and cutdown our processing time with automation!</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> contacts = [<span class="type">Contact</span>]()</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"J Rob"</span>, email: <span class="string">"jrob@example.com"</span>, job: .iOS, desiredSal: <span class="number">135000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"K Rock"</span>, email: <span class="string">"krock@example.com"</span>, job: .<span class="type">Android</span>, desiredSal: <span class="number">134000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"P Money"</span>, email: <span class="string">"pmoney@example.com"</span>, job: .<span class="type">Web</span>, desiredSal: <span class="number">110000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"S Sham"</span>, email: <span class="string">"ssham@example.com"</span>, job: .<span class="type">QA</span>, desiredSal: <span class="number">95000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">"L Roger"</span>, email: <span class="string">"lroger@example.com"</span>, job: .<span class="type">Product_Owner</span>, desiredSal: <span class="number">165000</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> contact <span class="keyword">in</span> contacts&#123;</span><br><span class="line">    <span class="keyword">let</span> client = <span class="type">JobContacterFactory</span>.getJobSeeker(contact: contact)</span><br><span class="line">    <span class="built_in">print</span> (client.sendRequestResumeEmail())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://o95nbyrid.bkt.clouddn.com/15300945892886.png" alt=""></p>
+<p>That’s it! Our factory example is complete. We can now send customized emails to our contacts based on the type of job they are seeking. We could expand on our example as our needs change and not have to change code that our client uses as long as our interface doesn’t change. That means we could add new jobs and job seeker objects to send customized emails to new contact types with no change to the client that uses our <em>JobContactProtocol</em>. We could also change the logic for creating our template, since that would only encompass an implementation change.</p>
+<h4 id="Wrapping-Up"><a href="#Wrapping-Up" class="headerlink" title="Wrapping Up"></a>Wrapping Up</h4><p>The <em>factory</em> pattern makes it possible for us to hide the implementation details for creating objects by allowing our clients to rely solely on a common interface for interacting with our objects. This allows us to remove unnecessary complexities involved with creating objects that have similar behavioral needs. The <em>factory</em> pattern also promotes separation and abstraction which both lead to reusable code that is easier to maintain. You can find the playground file for this article <a href="https://github.com/mrkeithelliott/FactoryPattern" target="_blank" rel="noopener">here</a>.</p>
+<p>On a lighter note, I also wrote an article on why creating native apps is probably the best way to go in most of your mobile development endeavors. Read it and weigh in the discussion!</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Design-Patterns/" rel="tag"># Design Patterns</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/27/Swift/Pattern matching/" rel="next" title="Pattern matching">
+                <i class="fa fa-chevron-left"></i> Pattern matching
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/28/Swift/Swift Tutorial: Initialization In Depth Part 1/" rel="prev" title="Swift Tutorial/Initialization In Depth Part 1">
+                Swift Tutorial/Initialization In Depth Part 1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+<footer class="post-footer">
+      
+
+      
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9602249344531494"
+     data-ad-slot="1263693281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.ico"
+               alt="Huanrong" />
+          <p class="site-author-name" itemprop="name">Huanrong</p>
+           
+              <p class="site-description motion-element" itemprop="description">芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Design-Patterns-—-Creational-Patterns-—-Factory-Pattern-in-Swift"><span class="nav-number">1.</span> <span class="nav-text">Design Patterns — Creational Patterns — Factory Pattern in Swift</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Creational-Pattern-Factory-Pattern"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Creational Pattern: Factory Pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wrapping-Up"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Wrapping Up</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://caohr.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://caohr.com/2018/06/27/Swift/Factory  Pattern/';
+          this.page.identifier = '2018/06/27/Swift/Factory  Pattern/';
+          this.page.title = 'Factory  Pattern';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://caohr.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+</body>
+</html>

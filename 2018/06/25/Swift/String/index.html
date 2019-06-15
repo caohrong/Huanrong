@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1let someString = &amp;quot;some string literal value&amp;quot; + &amp;quot;other string&amp;quot; 多行字符串 1234let multiline = &amp;quot;&amp;quot;&amp;quot;one line two line&amp;quot;&amp;quot;&amp;quot; 如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String">
+<meta property="og:url" content="http://caohr.com/2018/06/25/Swift/String/index.html">
+<meta property="og:site_name" content="Huanrong">
+<meta property="og:description" content="1let someString = &amp;quot;some string literal value&amp;quot; + &amp;quot;other string&amp;quot; 多行字符串 1234let multiline = &amp;quot;&amp;quot;&amp;quot;one line two line&amp;quot;&amp;quot;&amp;quot; 如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/15299025228972.jpg">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/15299025413274.jpg">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/15299025575243.jpg">
+<meta property="og:updated_time" content="2018-12-21T07:12:43.728Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="String">
+<meta name="twitter:description" content="1let someString = &amp;quot;some string literal value&amp;quot; + &amp;quot;other string&amp;quot; 多行字符串 1234let multiline = &amp;quot;&amp;quot;&amp;quot;one line two line&amp;quot;&amp;quot;&amp;quot; 如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地">
+<meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/15299025228972.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://caohr.com/2018/06/25/Swift/String/"/>
+
+
+
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "pub-9602249344531494",
+enable_page_level_ads: true
+});
+</script>
+
+
+
+  <title>String | Huanrong</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-61905451-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Huanrong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">iOSDev</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon.ico">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">String</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T12:54:23+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/25/Swift/String/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/25/Swift/String/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let someString = &quot;some string literal value&quot; + &quot;other string&quot;</span><br></pre></td></tr></table></figure>
+<p>多行字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let multiline = &quot;&quot;&quot;</span><br><span class="line">one line </span><br><span class="line">two line</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地方加上<code>\</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let str1 = &quot;&quot;</span><br><span class="line">let str2 = &quot; &quot;</span><br><span class="line"></span><br><span class="line">let value = str1.isEmpty  //true</span><br><span class="line">let value2 = str2.isEmpty  //false</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="Characters"><a href="#Characters" class="headerlink" title="Characters"></a>Characters</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for character in &quot;Dog!狗&quot; &#123;</span><br><span class="line">    print(character)</span><br><span class="line">&#125;</span><br><span class="line">D  o g ! 🐶</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let exclamationMark: Character = &quot;!&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Grapheme-Clusters"><a href="#Grapheme-Clusters" class="headerlink" title="Grapheme Clusters"></a>Grapheme Clusters</h3><p><img src="http://www.caohr.com/ImagesFolder/15299025228972.jpg" alt=""><br><img src="http://www.caohr.com/ImagesFolder/15299025413274.jpg" alt=""></p>
+<p>通常在OC中我们访问相应位置的字符使用Int类型像数组一样就可以访问，但是针对于特别的情况OC中就显得力不从心，例如像e带音节，单独的e带音节是233，但是也有分开单独e字幕加音节，他们显示的东西完全是相同的，再者像Emoji表情，里面包含皮肤的Emoji其实也是由有个字符组合一起显示的效果。这个时候直接使用OC的int类型来访问字符，或者计算字符的总长度就会出问题。（oc中可能认为第二种情况的e是两个字符）</p>
+<p>但是在swift中用.count访问他们的时候，swift会认为只是一个字符，不管你用什么方式输入e加音节这个字符。而且上图的emoji表情，swift count的结果也是认为只是一个字符。因为这些改动导致，swfit的获取子字符串的range就变得和OC不一样了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let cafeNormal = &quot;café&quot;</span><br><span class="line">let cafeCombining = &quot;cafe\u&#123;0301&#125;&quot;</span><br><span class="line"></span><br><span class="line">cafeNormal.count //4</span><br><span class="line">cafeCombining.count //4</span><br></pre></td></tr></table></figure>
+<h3 id="获取实际字符数量。"><a href="#获取实际字符数量。" class="headerlink" title="获取实际字符数量。"></a>获取实际字符数量。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cafeNormal.unicodeScalars.count //4</span><br><span class="line">cafeCombining.unicodeScalars.count //5</span><br><span class="line">//遍历</span><br><span class="line">for codePoint in cafeCombining.unicodeScalars &#123;</span><br><span class="line">    print(codePoint.value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//99 97 102 101 769</span><br></pre></td></tr></table></figure>
+<h3 id="Indexing-Strings"><a href="#Indexing-Strings" class="headerlink" title="Indexing Strings"></a>Indexing Strings</h3><p>直接传入Int值来取Swift的字符串会报错。你必须使用特殊的<code>Index type</code>来操作Strings字符串。例如代表字符串的起始位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let firstIndex = cafeCombining.startIndex</span><br><span class="line">let firstChar = cafeCombining[firstIndex]</span><br></pre></td></tr></table></figure>
+<p>同理如果你要取得最后一个字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let lastIndex = cafeCombining.endIndex</span><br><span class="line">let lastChar = cafeCombining[lastIndex]</span><br><span class="line"></span><br><span class="line">//你会得到一个错误的提示fatal error: Can&apos;t form a Character from an empty String</span><br><span class="line">//因为endIndex获取的位置是字符串的末尾，末尾以后没有字符串，所以提示错误</span><br><span class="line"></span><br><span class="line">let lastIndex = cafeCombining.index(before: cafeCombining.endindex)</span><br><span class="line">let lastChar = cafeCombining[lastIndex]</span><br></pre></td></tr></table></figure>
+<p>offset from the first character</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let fourthIndex = cafeCombining.index(cafeCombining.startIndex, offsetBy:3)</span><br><span class="line">let fourthChar = cafeCombining[fourthIndex] //得到é</span><br><span class="line"></span><br><span class="line">这个é其实是两个编码组成的，所以`fourthChar.unicodeScalars.count`会等于2.</span><br></pre></td></tr></table></figure>
+<h3 id="combining-characters字符串的相等问题"><a href="#combining-characters字符串的相等问题" class="headerlink" title="combining characters字符串的相等问题"></a>combining characters字符串的相等问题</h3><p><img src="http://www.caohr.com/ImagesFolder/15299025575243.jpg" alt=""><br>其他语言里 认为这两个字符串是不相等，但是他们其实现实的字符是一样的，但是在Swift里面认为他们是相等的，原理就是swift里面使用了一种<code>canonicalization</code>的技术，而且会三倍速度的提升比起之前的检测相等。其实在swift内部就是把字符串统一称为一种然后再做比较。</p>
+<h3 id="String-as-bi-directional-collections"><a href="#String-as-bi-directional-collections" class="headerlink" title="String as bi-directional collections."></a>String as bi-directional collections.</h3><p>反向字符串Swift直接提供了<code>reversed()</code>方法，但是返回的不是<code>String</code>类型而是<code>reversed colletion</code>类型。这其实是一种机制的方法，这种类型直接引用字符串的地址，而不是重新创建他们。</p>
+<p>但是如果我想获得String类型怎么办？swift提供了以下方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let backwardsNameString = String(backwardsName) //这样介绍了在原来的字符串上反响引用，而为你的字符串申请了新的内存地址。</span><br></pre></td></tr></table></figure>
+<h3 id="SubStrings字符串"><a href="#SubStrings字符串" class="headerlink" title="SubStrings字符串"></a>SubStrings字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let fullName = &quot;Matt Galloway&quot;</span><br><span class="line">let spaceIndex = fullName.index(of: &quot; &quot;)!</span><br><span class="line">let firstName = fullName[fullName.startIndex..&lt;spaceIndex] // &quot;Matt”</span><br></pre></td></tr></table></figure>
+<p>以上的代码中<code>firstName</code>也和<code>reversed</code>方法一样只是提供在原始字符串上的引用。而你得到的<code>firstName</code>也不是直接的<code>String</code>类型，而是基本上功能和<code>String</code>一样的<code>SubString</code>。这样也同样为了节省内存。如果要获得字符串结束在原有的字符串上的引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let lastNameString = String(lastName)</span><br></pre></td></tr></table></figure>
+<h2 id="Encoding"><a href="#Encoding" class="headerlink" title="Encoding"></a>Encoding</h2><p>见HTTP里面的UTF-8</p>
+<h2 id="Range表示一个范围"><a href="#Range表示一个范围" class="headerlink" title="Range表示一个范围"></a>Range表示一个范围</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let underFive = 0.0..&lt;5.0</span><br><span class="line">underFive.contains(3.14)  // true</span><br><span class="line">underFive.contains(6.28) // false</span><br><span class="line">underFive.contains(5.0)  // false</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for n in 3..&lt;5 &#123;</span><br><span class="line">    print(n)</span><br><span class="line">&#125;</span><br><span class="line">// Prints &quot;3&quot;</span><br><span class="line">// Prints &quot;4&quot;</span><br></pre></td></tr></table></figure>
+<p>“Working with Cocoa Data Types in Using Swift with Cocoa and Objective-C”</p>
+<p>Excerpt From: Apple Inc. “The Swift Programming Language (Swift 4.1).” iBooks.</p>
+<p><a href="https://stackoverflow.com/questions/39677330/how-does-string-substring-work-in-swift" target="_blank" rel="noopener">https://stackoverflow.com/questions/39677330/how-does-string-substring-work-in-swift</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/25/Swift/Access Control/" rel="next" title="Access Control">
+                <i class="fa fa-chevron-left"></i> Access Control
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/25/Daily/2018-06-25/" rel="prev" title="2018-6-22">
+                2018-6-22 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+<footer class="post-footer">
+      
+
+      
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9602249344531494"
+     data-ad-slot="1263693281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.ico"
+               alt="Huanrong" />
+          <p class="site-author-name" itemprop="name">Huanrong</p>
+           
+              <p class="site-description motion-element" itemprop="description">芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Characters"><span class="nav-number">1.</span> <span class="nav-text">Characters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grapheme-Clusters"><span class="nav-number">2.</span> <span class="nav-text">Grapheme Clusters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取实际字符数量。"><span class="nav-number">3.</span> <span class="nav-text">获取实际字符数量。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Indexing-Strings"><span class="nav-number">4.</span> <span class="nav-text">Indexing Strings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#combining-characters字符串的相等问题"><span class="nav-number">5.</span> <span class="nav-text">combining characters字符串的相等问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-as-bi-directional-collections"><span class="nav-number">6.</span> <span class="nav-text">String as bi-directional collections.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SubStrings字符串"><span class="nav-number">7.</span> <span class="nav-text">SubStrings字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encoding"><span class="nav-number"></span> <span class="nav-text">Encoding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Range表示一个范围"><span class="nav-number"></span> <span class="nav-text">Range表示一个范围</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://caohr.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://caohr.com/2018/06/25/Swift/String/';
+          this.page.identifier = '2018/06/25/Swift/String/';
+          this.page.title = 'String';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://caohr.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+</body>
+</html>
