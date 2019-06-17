@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。 示例定义个自定义的类HRViewController。通过touchesBegan:跳转到这个Controller，在HRViewController里面的touchesBegan:来实现退出HRViewController控制器。通过进入和退出HRViewController`来查看效">
+<meta name="description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="weakSelf 和 strongSelf.">
 <meta property="og:url" content="http://caohr.com/2019/06/12/iOS/weakSelf & strongSelf/index.html">
 <meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。 示例定义个自定义的类HRViewController。通过touchesBegan:跳转到这个Controller，在HRViewController里面的touchesBegan:来实现退出HRViewController控制器。通过进入和退出HRViewController`来查看效">
+<meta property="og:description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-12T03:43:29.353Z">
+<meta property="og:updated_time" content="2019-06-17T10:42:39.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="weakSelf 和 strongSelf.">
-<meta name="twitter:description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。 示例定义个自定义的类HRViewController。通过touchesBegan:跳转到这个Controller，在HRViewController里面的touchesBegan:来实现退出HRViewController控制器。通过进入和退出HRViewController`来查看效">
+<meta name="twitter:description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。">
 
 
 
@@ -393,6 +393,7 @@ enable_page_level_ads: true
 
       
         <p><code>weakSelf</code>是用来解决循环引用<br><code>strongSelf</code>则是保证任何情况下self在超出作用域以后仍旧能够使用。</p>
+<a id="more"></a>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>定义个自定义的类<code>HRViewController</code>。通过<code>touchesBegan:</code>跳转到这个<code>Controller</code>，在<code>HRViewController</code>里面的<code></code>touchesBegan:<code>来实现退出</code>HRViewController<code>控制器。通过进入和退出</code>HRViewController`来查看效果。</p>
 <p>前置条件</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="function">interface <span class="title">HRViewController</span> <span class="params">()</span></span></span><br><span class="line">@property (copy, nonatomic) void(^test)();</span><br><span class="line">@property (nonatomic, copy) NSString *locationInfo;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)dealloc &#123;</span><br><span class="line">    NSLog(@<span class="string">"HRViewController销毁"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
