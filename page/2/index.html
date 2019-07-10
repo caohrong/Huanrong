@@ -396,25 +396,20 @@ enable_page_level_ads: true
 
       
         
-          
-            <p>BSD socket也叫做伯克利套接字</p>
+          <p>BSD socket也叫做伯克利套接字</p>
 <p>通讯domain:</p>
 <ul>
 <li>UNIX(AF_UNIX) domain允许在同一主机上的应用程序之间进行通讯。（POSIX.1g使用名称AF_LOCAL作为AF_UNIX的同义词，但SUSv3并没有使用这个名称。）</li>
 <li>IPv4(AF_INET) domain允许在使用IPv4网络链接起来的主机上的应用程序之间进行通讯。</li>
 <li>IPv6(AF_INET6) domain允许在使用IPv6被设计成了IPv4的</li>
 </ul>
-<p>socket类型：</p>
-<ul>
-<li>流：socket（SOCK_STREAM）</li>
-<li>数据报：socket(SOCK_DGRAM)</li>
-</ul>
-<p>protocol参数：<br>一般都是指定为0;</p>
-<h2 id="流socket"><a href="#流socket" class="headerlink" title="流socket"></a>流socket</h2><h2 id="Socket实现"><a href="#Socket实现" class="headerlink" title="Socket实现"></a>Socket实现</h2><h3 id="创建socket：socket"><a href="#创建socket：socket" class="headerlink" title="创建socket：socket()"></a>创建socket：socket()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> domain, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;</span><br></pre></td></tr></table></figure>
-<h3 id="Address"><a href="#Address" class="headerlink" title="Address"></a>Address</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Use LOOPBACK address</span><br><span class="line">struct sockaddr_in sockaddr4;</span><br><span class="line">memset(&amp;sockaddr4, 0, sizeof(sockaddr4));</span><br><span class="line"></span><br><span class="line">sockaddr4.sin_len         = sizeof(struct sockaddr_in);</span><br><span class="line">sockaddr4.sin_family      = AF_INET;</span><br><span class="line">sockaddr4.sin_port        =  1234;</span><br><span class="line">sockaddr4.sin_addr.s_addr = htonl(INADDR_LOOPBACK);</span><br><span class="line">	</span><br><span class="line">struct sockaddr_in6 sockaddr6;</span><br><span class="line">memset(&amp;sockaddr6, 0, sizeof(sockaddr6));</span><br><span class="line"></span><br><span class="line">sockaddr6.sin6_len       = sizeof(struct sockaddr_in6);</span><br><span class="line">sockaddr6.sin6_family    = AF_INET6;</span><br><span class="line">sockaddr6.sin6_port      = htons(port);</span><br><span class="line">sockaddr6.sin6_addr      = in6addr_loopback;</span><br></pre></td></tr></table></figure>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://zh.wikipedia.org/wiki/Berkeley%E5%A5%97%E6%8E%A5%E5%AD%97" target="_blank" rel="noopener">Berkeley套接字</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/06/POSIX/BSD socket/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
