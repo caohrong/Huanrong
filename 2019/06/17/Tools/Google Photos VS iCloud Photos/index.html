@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.7.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('http://caohr.com').hostname,
     root: '/',
-    scheme: 'Muse',
-    version: '7.4.1',
+    scheme: 'Mist',
+    version: '7.7.0',
     exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
@@ -36,6 +32,7 @@
     mediumzoom: false,
     lazyload: false,
     pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
       appID: '',
       apiKey: '',
@@ -45,13 +42,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
@@ -72,7 +63,8 @@
 <meta name="twitter:title" content="Google Photos VS iCloud Photos">
 <meta name="twitter:description" content="本篇对照片管理的方式和服务进行讨论，主要讨论的是会对照片进行检索的管理工具，例如百度云和OneDrive只提供存储，而不对照片进行索引分类，提供管理的服务不在本篇的讨论范围内。目前支持照片管理的，之前Facebook在国内出过一个软件彩色气球，目前已经下线。还有就是腾讯微云好像也对照片也有一些管理功能也不在本篇的讨论范围内。本篇主要侧重讨论两种照片管理服务,一个是Google Photos还有就是">
 <meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/Screen%20Shot%202019-06-17%20at%2010.07.18%20AM.png">
-  <link rel="canonical" href="http://caohr.com/2019/06/17/Tools/Google Photos VS iCloud Photos/">
+
+<link rel="canonical" href="http://caohr.com/2019/06/17/Tools/Google Photos VS iCloud Photos/">
 
 
 <script id="page-configurations">
@@ -80,16 +72,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isPost: true
   };
 </script>
 
   <title>Google Photos VS iCloud Photos | Huanrong</title>
   
-
-
 
 
 
@@ -108,7 +96,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -126,7 +113,7 @@
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
 
@@ -138,7 +125,6 @@
       </a>
     </div>
         <p class="site-subtitle">iOSDev</p>
-      
   </div>
 
   <div class="site-nav-toggle">
@@ -154,31 +140,17 @@
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-      
-      
-      
-        
         <li class="menu-item menu-item-home">
-      
-    
 
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
   </ul>
-
-    
 
 </nav>
 </div>
@@ -191,10 +163,12 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
 
   <div class="posts-expand">
@@ -205,18 +179,17 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2019/06/17/Tools/Google Photos VS iCloud Photos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Huanrong">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Google Photos VS iCloud Photos
-
-          
+        <h1 class="post-title" itemprop="name headline">
+          Google Photos VS iCloud Photos
         </h1>
 
         <div class="post-meta">
@@ -226,26 +199,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2019-06-17 15:37:49" itemprop="dateCreated datePublished" datetime="2019-06-17T15:37:49+08:00">2019-06-17</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -318,33 +284,23 @@
     
     
     
-        
-      
 
       <footer class="post-footer">
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/06/15/Tools/CMake/" rel="next" title="CMake">
-                  <i class="fa fa-chevron-left"></i> CMake
-                </a>
-              
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/06/17/Tools/Hexo/" rel="prev" title="Hexo">
-                  Hexo <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/06/15/Tools/CMake/" rel="prev" title="CMake">
+      <i class="fa fa-chevron-left"></i> CMake
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/06/17/Tools/Hexo/" rel="next" title="Hexo">
+      Hexo <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -358,6 +314,28 @@
           </div>
           
 
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
         </div>
           
   
@@ -369,11 +347,6 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -387,7 +360,6 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#费用💰"><span class="nav-number">1.</span> <span class="nav-text">费用💰</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Photos"><span class="nav-number">1.1.</span> <span class="nav-text">Google Photos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iCloud"><span class="nav-number">1.2.</span> <span class="nav-text">iCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#速度🐌"><span class="nav-number">2.</span> <span class="nav-text">速度🐌</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Photos-1"><span class="nav-number">2.1.</span> <span class="nav-text">Google Photos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iCloud-1"><span class="nav-number">2.2.</span> <span class="nav-text">iCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习📚"><span class="nav-number">3.</span> <span class="nav-text">机器学习📚</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Photos-2"><span class="nav-number">3.1.</span> <span class="nav-text">Google Photos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iCloud-2"><span class="nav-number">3.2.</span> <span class="nav-text">iCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#照片管理💼"><span class="nav-number">4.</span> <span class="nav-text">照片管理💼</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Photos-3"><span class="nav-number">4.1.</span> <span class="nav-text">Google Photos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iCloud-3"><span class="nav-number">4.2.</span> <span class="nav-text">iCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式支持👿"><span class="nav-number">5.</span> <span class="nav-text">格式支持👿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据导出🙂"><span class="nav-number">6.</span> <span class="nav-text">数据导出🙂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Photos-4"><span class="nav-number">6.1.</span> <span class="nav-text">Google Photos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iCloud-4"><span class="nav-number">6.2.</span> <span class="nav-text">iCloud</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分享👥"><span class="nav-number">7.</span> <span class="nav-text">分享👥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我目前使用的方案🌵"><span class="nav-number">8.</span> <span class="nav-text">我目前使用的方案🌵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#怎样建本地的Photos库"><span class="nav-number">8.1.</span> <span class="nav-text">怎样建本地的Photos库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么用内存卡"><span class="nav-number">8.2.</span> <span class="nav-text">为什么用内存卡</span></a></li></ol></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
@@ -399,55 +371,24 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
           <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
-          
-        
         <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">categories</span>
-        </a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
-          
-        
         <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">tags</span>
-        </a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
-    
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:caohrong@live.com" title="E-Mail &rarr; mailto:caohrong@live.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -461,17 +402,24 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Huanrong</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.1</div>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
 
         
 
@@ -482,22 +430,17 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
-<script src="/js/schemes/muse.js?v=7.4.1"></script>
-<script src="/js/next-boot.js?v=7.4.1"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -516,14 +459,6 @@
 
 
 
-
-
-
-
-
-
-
-  
 
   
 

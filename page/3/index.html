@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.7.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('http://caohr.com').hostname,
     root: '/',
-    scheme: 'Muse',
-    version: '7.4.1',
+    scheme: 'Mist',
+    version: '7.7.0',
     exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
@@ -36,6 +32,7 @@
     mediumzoom: false,
     lazyload: false,
     pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
       appID: '',
       apiKey: '',
@@ -45,13 +42,7 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    },
-    sidebarPadding: 40
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
@@ -65,7 +56,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Huanrong">
 <meta name="twitter:description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-  <link rel="canonical" href="http://caohr.com/page/3/">
+
+<link rel="canonical" href="http://caohr.com/page/3/">
 
 
 <script id="page-configurations">
@@ -73,16 +65,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome: true,
-    isPost: false,
-    isPage: false,
-    isArchive: false
+    isPost: false
   };
 </script>
 
   <title>Huanrong</title>
   
-
-
 
 
 
@@ -101,7 +89,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -119,7 +106,7 @@
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
 
@@ -131,7 +118,6 @@
       </a>
     </div>
         <p class="site-subtitle">iOSDev</p>
-      
   </div>
 
   <div class="site-nav-toggle">
@@ -147,31 +133,17 @@
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-      
-      
-      
-        
         <li class="menu-item menu-item-home">
-      
-    
 
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
   </ul>
-
-    
 
 </nav>
 </div>
@@ -184,10 +156,12 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
 
   <div class="posts-expand">
@@ -198,9 +172,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Defer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -208,9 +182,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Defer/" class="post-title-link" itemprop="url">Defer</a>
           
+            <a href="/2018/12/21/Swift/Defer/" class="post-title-link" itemprop="url">Defer</a>
         </h1>
 
         <div class="post-meta">
@@ -220,26 +193,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -254,13 +220,11 @@
       
           <p>A defer statement is used for executing code just before transferring program control outside of the scope that the defer statement appears in.</p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Defer/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -270,15 +234,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -286,9 +248,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Magical Error Handling in Swift/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -296,9 +258,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Magical Error Handling in Swift/" class="post-title-link" itemprop="url">Magical Error Handling in Swift</a>
           
+            <a href="/2018/12/21/Swift/Magical Error Handling in Swift/" class="post-title-link" itemprop="url">Magical Error Handling in Swift</a>
         </h1>
 
         <div class="post-meta">
@@ -308,26 +269,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -342,13 +296,11 @@
       
           <p>以下是阅读Ray Wenderlich的笔记。<a href="https://www.raywenderlich.com/130197/magical-error-handling-swift" target="_blank" rel="noopener">原文链接</a><br>这个简单的例子，完美把<code>Swift</code>很多的知识点都说到了。Swift <code>guard</code>的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。</p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Magical Error Handling in Swift/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -358,15 +310,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -374,9 +324,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Factory  Pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -384,9 +334,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Factory  Pattern/" class="post-title-link" itemprop="url">Factory  Pattern</a>
           
+            <a href="/2018/12/21/Swift/Factory  Pattern/" class="post-title-link" itemprop="url">Factory  Pattern</a>
         </h1>
 
         <div class="post-meta">
@@ -396,26 +345,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -430,13 +372,11 @@
       
           <p><a href="https://medium.com/swift-programming/design-patterns-creational-patterns-factory-pattern-in-swift-d049af54235b" target="_blank" rel="noopener">原文地址</a><br>因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。</p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Factory  Pattern/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -446,15 +386,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -462,9 +400,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Introducing Protocol-Oriented Programming in Swift 3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -472,9 +410,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Introducing Protocol-Oriented Programming in Swift 3/" class="post-title-link" itemprop="url">Introducing Protocol-Oriented Programming in Swift 3</a>
           
+            <a href="/2018/12/21/Swift/Introducing Protocol-Oriented Programming in Swift 3/" class="post-title-link" itemprop="url">Introducing Protocol-Oriented Programming in Swift 3</a>
         </h1>
 
         <div class="post-meta">
@@ -484,26 +421,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -518,13 +448,11 @@
       
           <p>Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。<br>Swift中<code>Protocol</code>基本具备了<code>calss</code>的特性。允许继承、扩展等。<a href="https://www.raywenderlich.com/148448/introducing-protocol-oriented-programming" target="_blank" rel="noopener">原文链接</a></p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Introducing Protocol-Oriented Programming in Swift 3/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -534,15 +462,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -550,9 +476,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Protocol/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -560,9 +486,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Protocol/" class="post-title-link" itemprop="url">Protocol</a>
           
+            <a href="/2018/12/21/Swift/Protocol/" class="post-title-link" itemprop="url">Protocol</a>
         </h1>
 
         <div class="post-meta">
@@ -572,26 +497,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -607,13 +525,11 @@
           <p>Protocol is name type, structs ,classes, and enums also name type. <code>A protocol can be adopted by a class, struct, or enum</code>.</p>
 <p>Swift中默认所有的方法都是必须实现是的</p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Protocol/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -623,15 +539,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -639,9 +553,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Pattern matching/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -649,9 +563,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Pattern matching/" class="post-title-link" itemprop="url">Pattern matching</a>
           
+            <a href="/2018/12/21/Swift/Pattern matching/" class="post-title-link" itemprop="url">Pattern matching</a>
         </h1>
 
         <div class="post-meta">
@@ -661,26 +574,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -696,13 +602,11 @@
           <p>来至于<code>Ray Wenderlich</code>的《Swift Apprentice》中的<code>Pattern matching</code>章节的笔记。</p>
 <p><a href="https://www.raywenderlich.com/134844/pattern-matching-in-swift" target="_blank" rel="noopener">https://www.raywenderlich.com/134844/pattern-matching-in-swift</a></p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Pattern matching/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -712,15 +616,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -728,9 +630,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Pattern Matching in Swift/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -738,9 +640,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Pattern Matching in Swift/" class="post-title-link" itemprop="url">Pattern Matching in Swift</a>
           
+            <a href="/2018/12/21/Swift/Pattern Matching in Swift/" class="post-title-link" itemprop="url">Pattern Matching in Swift</a>
         </h1>
 
         <div class="post-meta">
@@ -750,26 +651,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -787,13 +681,11 @@
 <p><em>Pattern matching</em> is one of the most powerful features of any programming language, because it enables you to design rules that match values against each other. This gives you flexibility and simplifies your code.</p>
 <p>Apple makes pattern matching available in Swift, and today you’ll explore Swift’s pattern matching techniques.</p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Pattern Matching in Swift/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -803,15 +695,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -819,9 +709,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Singleton/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -829,9 +719,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/Singleton/" class="post-title-link" itemprop="url">Singleton</a>
           
+            <a href="/2018/12/21/Swift/Singleton/" class="post-title-link" itemprop="url">Singleton</a>
         </h1>
 
         <div class="post-meta">
@@ -841,26 +730,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -876,13 +758,11 @@
           <h1 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h1><p>该文讲述了三种方法来创建单例, 各种方法的优点以及缺点，该文也介绍了另外一篇文章单例的Are Singletons Bad。</p>
 <p><a href="https://cocoacasts.com/what-is-a-singleton-and-how-to-create-one-in-swift" target="_blank" rel="noopener">原文地址</a></p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Singleton/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -892,15 +772,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -908,9 +786,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/StackView/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -918,9 +796,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/StackView/" class="post-title-link" itemprop="url">UIStackView Tutorial Introducing Stack Views</a>
           
+            <a href="/2018/12/21/Swift/StackView/" class="post-title-link" itemprop="url">UIStackView Tutorial Introducing Stack Views</a>
         </h1>
 
         <div class="post-meta">
@@ -930,26 +807,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -964,13 +834,11 @@
       
           <p>We’ve all been there. There’s a new requirement and you need to add or remove a view at runtime, and also need to reposition adjacent views.</p>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/StackView/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -980,15 +848,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
         
   
   
@@ -996,9 +862,9 @@
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/String/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Huanrong">
       <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1006,9 +872,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/12/21/Swift/String/" class="post-title-link" itemprop="url">String</a>
           
+            <a href="/2018/12/21/Swift/String/" class="post-title-link" itemprop="url">String</a>
         </h1>
 
         <div class="post-meta">
@@ -1018,26 +883,19 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              
-                
-              
-
               <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
             </span>
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -1056,13 +914,11 @@
 <p>如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地方加上<code>\</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let str1 = &quot;&quot;</span><br><span class="line">let str2 = &quot; &quot;</span><br><span class="line"></span><br><span class="line">let value = str1.isEmpty  //true</span><br><span class="line">let value2 = str2.isEmpty  //false</span><br></pre></td></tr></table></figure>
           <!--noindex-->
-          
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/String/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
-          
           <!--/noindex-->
         
       
@@ -1072,15 +928,13 @@
     
     
       <footer class="post-footer">
-          <div class="post-eof"></div>
-        
+        <div class="post-eof"></div>
       </footer>
   </article>
   
   
   
 
-    
   </div>
 
   
@@ -1092,6 +946,28 @@
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -1127,55 +1003,24 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
           <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
-          
-        
         <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">categories</span>
-        </a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
-          
-        
         <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">tags</span>
-        </a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
-    
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:caohrong@live.com" title="E-Mail &rarr; mailto:caohrong@live.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -1189,17 +1034,24 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Huanrong</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.1</div>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
 
         
 
@@ -1210,22 +1062,17 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
-<script src="/js/schemes/muse.js?v=7.4.1"></script>
-<script src="/js/next-boot.js?v=7.4.1"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -1244,14 +1091,6 @@
 
 
 
-
-
-
-
-
-
-
-  
 
   
 
