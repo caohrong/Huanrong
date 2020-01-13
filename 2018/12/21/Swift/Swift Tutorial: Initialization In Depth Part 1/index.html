@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的stored properties函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改">
+<meta name="keywords" content="Ray Wenderlich">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift Tutorial&#x2F;Initialization In Depth Part 1">
+<meta property="og:url" content="http://caohr.com/2018/12/21/Swift/Swift Tutorial: Initialization In Depth Part 1/index.html">
+<meta property="og:site_name" content="Huanrong">
+<meta property="og:description" content="在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的stored properties函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-0.png">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-3-480x45.png">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-2.png">
+<meta property="og:image" content="http://caohr.com/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/okay">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/Mars_Hubble-320x320.jpg">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-5-480x66.png">
+<meta property="og:image" content="http://www.caohr.com/ImagesFolder/Struct2PhaseInit-700x248.png">
+<meta property="og:updated_time" content="2018-12-21T07:12:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift Tutorial&#x2F;Initialization In Depth Part 1">
+<meta name="twitter:description" content="在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的stored properties函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改">
+<meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-0.png">
+  <link rel="canonical" href="http://caohr.com/2018/12/21/Swift/Swift Tutorial: Initialization In Depth Part 1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Swift Tutorial/Initialization In Depth Part 1 | Huanrong</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Huanrong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">iOSDev</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="default">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Swift Tutorial: Initialization In Depth Part 1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Swift Tutorial/Initialization In Depth Part 1
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。<br>本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的<code>stored properties</code>函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改初始化参数的顺序，系统默认根据你在结构体写的顺序来创建。<br>对于<code>optional</code>的值不需要在初始化方法中赋值，因为<code>optional</code>的方法默认会赋值为<code>nil</code>。<br>你也可以为<code>Init</code>方法为需要传入参数设置默认值，这样你在创建的时候就可以直接调用<code>()</code>,而不是需要传入其他的值。当因为传入的值不一样而有多个<code>Init</code>方法的时候，这时候就可以用<code>delegating initializer</code>方法来解决。<code>delegating initializer</code>在网络框架<code>Alamofire</code>里面大量被使用，例如用户如果不指定请求方法默认就会使用<code>get</code>方法，不指定配置就使用默认的配置。<br>对于传入参数不合法，<code>init</code>方法可以通过<code>Optional</code>和<code>throws</code>两种方法来告诉初始化失败。</p>
+<a id="more"></a>
+<p>Some things are inherently awesome: rockets, missions to Mars, initialization in Swift. This tutorial combines all three for a combo-platter of awesomeness in which you’ll get to learn about the power of initialization!</p>
+<p>Initialization in Swift is about what happens when you create a new instance of a named type:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = <span class="type">Float</span>()</span><br></pre></td></tr></table></figure>
+<p>Initialization is the time to manage the inital values of stored properties for named types: classes, structures, and enumerations. Because of the safety features built into Swift, initialization can be tricky. There are a lot of rules, some of which are not obvious.</p>
+<p>By following this two-part tutorial, you will learn the ins and outs to designing initializers for your Swift types. In Part 1, you’ll begin with the basics including structure initialization, and in Part 2 you’ll move on to learning about class initialization.<br>第一部分包含结构体的初始化，第二部分包含类的初始化。</p>
+<p>Before getting started, you should be familiar with the basics of initialization in Swift and be comfortable with concepts such as optional types, throwing and handling errors, and declaring default stored property values. Also, make sure you have Xcode 8.0 or later installed.</p>
+<p>If you need a refresher on the basics, or if you are just starting to learn Swift, check out our book <a href="http://www.raywenderlich.com/store/swift-apprentice" target="_blank" rel="noopener">Swift Apprentice</a> or our many <a href="http://www.raywenderlich.com/category/swift" target="_blank" rel="noopener">Swift intro tutorials</a>.</p>
+<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>Let’s set the scene: it’s your first day on your new job as a launch software engineer at NASA (go you!). You’ve been tasked with designing the data model that will drive the launch sequence for the first manned mission to Mars, Mars Unum. Of course, the first thing you do is convince the team to use Swift. Then …</p>
+<p>Open Xcode and create a new playground named <em>BlastOff</em>. You can select any platform, since the code in this tutorial is platform-agnostic and depends only on Foundation.</p>
+<p>在类没有完全初始化之前，你不能使用他。使用它包括，访问属性，设置属性，调用方法。<br>Throughout the tutorial, remember this one golden rule: <code>You cannot use an instance until it is fully initialized</code>. “Use” of an instance includes accessing properties, setting properties and calling methods. Everything in Part 1 applies specifically to structures unless otherwise specified.</p>
+<h2 id="Banking-on-the-Default-Initializer"><a href="#Banking-on-the-Default-Initializer" class="headerlink" title="Banking on the Default Initializer"></a>Banking on the Default Initializer</h2><p>To start modeling the launch sequence, declare a new structure named <code>RocketConfiguration</code> in your playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RocketConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Below the closing curly brace of the definition for <code>RocketConfiguration</code>, initialize a constant instance named <code>athena9Heavy</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> athena9Heavy = <span class="type">RocketConfiguration</span>()</span><br></pre></td></tr></table></figure>
+<p>当结构体或者类里面没有需要初始化的存储参数，或者所有的值都提供了默认的存储参数的时候，可以用系统默认听的初始化方法也就是用<code>()</code>来初始化。<br>This uses a <em>default initializer</em> to instantiate <code>athena9Heavy</code>. In the default initializer, the name of the type is followed by empty parentheses. You can use default initializers when your types either don’t have any stored properties, or all of the type’s stored properties have default values. This holds true for both structures and classes.</p>
+<p>Add the following three stored properties inside the struct definition:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name: <span class="type">String</span> = <span class="string">"Athena 9 Heavy"</span></span><br><span class="line"><span class="keyword">let</span> numberOfFirstStageCores: <span class="type">Int</span> = <span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> numberOfSecondStageCores: <span class="type">Int</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>Notice how the default initializer still works. The code continues to run because all the stored properties have default values. That means the default initializer doesn’t have very much work to do since you’ve provided defaults!</p>
+<p>What about optional types? Add a <em>variable</em> stored property named <code>numberOfStageReuseLandingLegs</code> to the struct definition:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numberOfStageReuseLandingLegs: <span class="type">Int</span>?</span><br></pre></td></tr></table></figure>
+<p>In our NASA scenario, some of the rockets are reusable, while others are not. That’s why <code>numberOfStageReuseLandingLegs</code> is an optional <code>Int</code>. The default initializer continues to run fine because optional stored property variables are initialized to <code>nil</code> by default. However, that’s <em>not</em> the case with constants. 对于<code>Optional</code>的值系统默认会给<code>nil</code>的值。所以仍然可以用默认的初始化。</p>
+<p>Change <code>numberOfStageReuseLandingLegs</code> from a variable to a constant:<br>但是如果把<code>var</code>改为<code>let</code>，编译器就会报错。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberOfStageReuseLandingLegs: <span class="type">Int</span>?</span><br></pre></td></tr></table></figure>
+<p>Notice how the playground reports a compiler error:</p>
+<p><a href="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-0.png" target="_blank" rel="noopener"><img src="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-0.png" alt=""></a></p>
+<p>You won’t run into this often, since constant optionals are rarely needed. To fix the compiler error, assign a default value of <code>nil</code> to <code>numberOfStageReuseLandingLegs</code>:<br>将<code>nil</code>赋值给<code>numberOfStageReuseLandingLegs</code>，这样的赋值没有意义，后面也无法在对这个值进行修改。只是满足了编译器</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberOfStageReuseLandingLegs: <span class="type">Int</span>? = <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+<p>Hooray! The compiler is happy again, and initialization succeeds. With this setup, <code>numberOfStageReuseLandingLegs</code> will never have a non-nil value. You cannot change it after initialization, since it is declared as a constant.</p>
+<h2 id="Banking-on-the-Memberwise-Initializer"><a href="#Banking-on-the-Memberwise-Initializer" class="headerlink" title="Banking on the Memberwise Initializer"></a>Banking on the Memberwise Initializer</h2><p>Rockets are usually made up of several <em>stages</em>, which is the next thing to model. Declare a new struct named <code>RocketStageConfiguration</code> at the bottom of the playground:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RocketStageConfiguration</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> propellantMass: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">let</span> liquidOxygenMass: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This time, you have three stored properties <code>propellantMass</code>, <code>liquidOxygenMass</code> and <code>nominalBurnTime</code> with no default values.</p>
+<p>Create an instance of <code>RocketStageConfiguration</code> for the rocket’s first stage:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stageOneConfiguration = <span class="type">RocketStageConfiguration</span>(</span><br><span class="line">                                                                                                        propellantMass: <span class="number">119.1</span>,</span><br><span class="line">                                                                                                        liquidOxygenMass: <span class="number">276.0</span>, </span><br><span class="line">                                                                                                        nominalBurnTime: <span class="number">180</span>)</span><br></pre></td></tr></table></figure>
+<p>None of <code>RocketStageConfiguration</code>‘s stored properties have default values. Also, there is no initializer implemented for <code>RocketStageConfiguration</code>. Why isn’t there a compiler error? Swift structures (and only structures) automatically generate a <em>memberwise initializer</em>. This means you get a ready-made initializer for all the stored properties that don’t have default values. This is super handy, but there are several gotchas.<br><code>Swift</code>自动会为<code>Struct</code>自动创建为每个<code>stored properties</code>的属性创建<code>numberwise initializer</code>方法。</p>
+<p>Imagine you submit this snippet for code review and your developer team lead tells you all properties should be ordered alphabetically.</p>
+<p>Update the <code>RocketStageConfiguration</code> to re-order the stored properties:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RocketStageConfiguration</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> liquidOxygenMass: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span></span><br><span class="line">        <span class="keyword">let</span> propellantMass: <span class="type">Double</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2015/11/SwiftInitInDepth-3.png" target="_blank" rel="noopener"><img src="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-3-480x45.png" alt=""></a></p>
+<p><code>Struct</code>自动生成的<code>numberwise initializer</code>方法只会按照你的写的参数的顺序生成。调换顺序是不行的。<br>What happened? The <code>stageOneConfiguaration</code> initializer call is no longer valid, because the automatic memberwise initializer argument list’s order mirrors that of the stored property list. Be careful, because when re-ordering structure properties, you might break instance initialization. Thankfully the compiler should catch the error, but it is definitely something to watch out for.</p>
+<p>Undo the stored property re-order change to get the playground compiling and running again:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RocketStageConfiguration</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> propellantMass: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">let</span> liquidOxygenMass: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>All your rockets burn for 180 seconds, so it’s not useful to pass the nominal burn time every time you instantiate a stage configuration. Set <code>nominalBurnTime</code>‘s default property value to 180:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span> = <span class="number">180</span></span><br></pre></td></tr></table></figure>
+<p>Now there’s another compiler error:</p>
+<p><a href="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-2.png" target="_blank" rel="noopener"><img src="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-2.png" alt=""></a><br>因为<code>memberwise initializers</code>只为没有默认值的<code>stored properties</code>提供初始化方法，一旦你提供了默认值，那么这个值就会从初始化方法中剔除。<br>Compilation fails because memberwise initializers only provide parameters for stored properties without default values. In this case, the memberwise initializer only takes in propellant mass and liquid oxygen mass, since there is already a default value for burn time.</p>
+<p>Remove <code>nominalBurnTime</code>‘s default value so that there is no compiler error.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+<p>Next, add a custom initializer to the struct definition that provides a default value for burn time:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(propellantMass: <span class="type">Double</span>, liquidOxygenMass: <span class="type">Double</span>) &#123;</span><br><span class="line">  <span class="keyword">self</span>.propellantMass = propellantMass</span><br><span class="line">  <span class="keyword">self</span>.liquidOxygenMass = liquidOxygenMass</span><br><span class="line">  <span class="keyword">self</span>.nominalBurnTime = <span class="number">180</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Notice that the same compiler error is back on <code>stageOneConfiguration</code>!</p>
+<p><a href="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-2.png" target="_blank" rel="noopener"><img src="okay" alt=""></a></p>
+<p>如果你定义了初始化方法，那么自动的初始化方法就会失效。<br>Wait, shouldn’t this work? All you did was provide an alternative initializer, but the original <code>stageOneConfiguration</code> initialization should work because it’s using the automatic memberwise initializer. This is where it gets tricky: you only get a memberwise initializer if a structure does not define any initializers. As soon as you define an initializer, you lose the automatic memberwise initializer. </p>
+<p>In other words, Swift will help you out to start. But as soon as you add your <em>own</em> initializer, it assumes you want it to get out of the way.</p>
+<p>Remove the <code>nominalBurnTime</code> argument from <code>stageOneConfiguration</code>‘s initialization:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stageOneConfiguration = <span class="type">RocketStageConfiguration</span>(propellantMass: <span class="number">119.1</span>,</span><br><span class="line">  liquidOxygenMass: <span class="number">276.0</span>)</span><br></pre></td></tr></table></figure>
+<p>All is good again! :]</p>
+<p>But what if you still need the automatic memberwise initializer? You can certainly write the equivalent initializer, but that’s a lot of work. Instead, <em>move</em> the custom initializer into an <code>extension</code> <em>before</em> you instantiate an instance.<br>如果你既想要系统为你提供的默认的初始化方法，又想自定义的初始化方法，那么你可以把自定义的初始化方法写在扩展里面。<br>Your struct will now be in two parts: the main definition, and an extension with your two-parameter initializer:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">RocketStageConfiguration</span> </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> propellantMass: <span class="type">Double</span></span><br><span class="line">            <span class="keyword">let</span> liquidOxygenMass: <span class="type">Double</span></span><br><span class="line">            <span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">RocketStageConfiguration</span> </span>&#123;</span><br><span class="line">        <span class="keyword">init</span>(propellantMass: <span class="type">Double</span>, liquidOxygenMass: <span class="type">Double</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.propellantMass = propellantMass</span><br><span class="line">                <span class="keyword">self</span>.liquidOxygenMass = liquidOxygenMass</span><br><span class="line">                <span class="keyword">self</span>.nominalBurnTime = <span class="number">180</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Notice how <code>stageOneConfiguration</code> continues to initialize successfully with two parameters. Now re-add the <code>nominalBurnTime</code> parameter to <code>stageOneConfiguration</code>‘s initialization:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stageOneConfiguration = <span class="type">RocketStageConfiguration</span>(propellantMass: <span class="number">119.1</span>,</span><br><span class="line">  liquidOxygenMass: <span class="number">276.0</span>, nominalBurnTime: <span class="number">180</span>)</span><br></pre></td></tr></table></figure>
+<p>That works too! If the main struct definition doesn’t include any initializers, Swift will still automatically generate the default memberwise initializer. Then you can add your custom ones via extensions to get the best of both worlds.</p>
+<h2 id="Implementing-a-Custom-Initializer"><a href="#Implementing-a-Custom-Initializer" class="headerlink" title="Implementing a Custom Initializer"></a>Implementing a Custom Initializer</h2><p>实现自定义的初始化方法<br>Weather plays a key role in launching rockets, so you’ll need to address that in the data model. Declare a new struct named <code>Weather</code> as follows:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Weather</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> temperatureCelsius: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">let</span> windSpeedKilometersPerHour: <span class="type">Double</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The <code>struct</code> has stored properties for temperature in degrees Celsius and wind speed in kilometers per hour.</p>
+<p>Implement a <em>custom initializer</em> for <code>Weather</code> that takes in temperature in degrees Fahrenheit and wind speed in miles per hour. Add this code below the stored properties:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(temperatureFahrenheit: <span class="type">Double</span>, windSpeedMilesPerHour: <span class="type">Double</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.temperatureCelsius = (temperatureFahrenheit - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line">        <span class="keyword">self</span>.windSpeedKilometersPerHour = windSpeedMilesPerHour * <span class="number">1.609344</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Defining a custom initializer is very similar to defining a method, because an initializer’s argument list behaves exactly the same as a method’s. For example, you can define a default argument value for any of the initializer parameters.<br>给<code>init</code>方法中的参数提供初始值，这样在初始化的时候可以直接用默认的值初始化。<br>Change the definition of the initializer to:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(temperatureFahrenheit: <span class="type">Double</span> = <span class="number">72</span>, windSpeedMilesPerHour: <span class="type">Double</span> = <span class="number">5</span>) &#123;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Now if you call the initializer with no parameters, you’ll get some sensible defaults. At the end of your playground file, create an instance of <code>Weather</code> and check its values:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> currentWeather = <span class="type">Weather</span>()</span><br><span class="line">currentWeather.temperatureCelsius</span><br><span class="line">currentWeather.windSpeedKilometersPerHour</span><br></pre></td></tr></table></figure>
+<p>Cool, right? The default initializer uses the default values provided by the custom initializer. The implementation of the custom initializer converts the values into metric system equivalents and stores the values. When you check the values of the stored properties in the playground sidebar, you’ll get the correct values in degrees Celsius (22.2222) and kilometers per hour (8.047).</p>
+<p>An initializer <em>must</em> assign a value to every single stored property that does not have a default value, or else you’ll get a compiler error. Remember that optional <em>variables</em> automatically have a default value of <code>nil</code>.对于optional的值自动赋值为nil</p>
+<p>Next, change <code>currentWeather</code> to use your custom initializer with new values:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> currentWeather = <span class="type">Weather</span>(temperatureFahrenheit: <span class="number">87</span>, windSpeedMilesPerHour: <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>As you can see, custom values work just as well in the initializer as default values. The playground sidebar should now show 30.556 degrees and 3.219 km/h.</p>
+<p>That’s how you implement and call a custom initializer. Your weather struct is ready to contribute to your mission to launch humans to Mars. Good work!</p>
+<p><img src="http://www.caohr.com/ImagesFolder/Mars_Hubble-320x320.jpg" alt="By NASA and The Hubble Heritage Team (STScI/AURA)"></p>
+<p>By NASA and The Hubble Heritage Team (STScI/AURA) – <a href="http://hubblesite.org/newscenter/archive/releases/2001/24/image/a/" target="_blank" rel="noopener">Source</a></p>
+<h2 id="Avoiding-Duplication-with-Initializer-Delegation"><a href="#Avoiding-Duplication-with-Initializer-Delegation" class="headerlink" title="Avoiding Duplication with Initializer Delegation"></a>Avoiding Duplication with Initializer Delegation</h2><p>当需要提供多个<code>initializer</code>方法的时候，各个方法之间只是有部分值不相同，这时候就可以通过<code>delegating initializer</code>来解决，<code>delegating initializer</code>在很多开源库里面都有应用。<br>It’s time to think about rocket guidance. Rockets need fancy guidance systems to keep them flying perfectly straight. Declare a new structure named <code>GuidanceSensorStatus</code> with the following code:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GuidanceSensorStatus</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> currentZAngularVelocityRadiansPerMinute: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">let</span> initialZAngularVelocityRadiansPerMinute: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">var</span> needsCorrection: <span class="type">Bool</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">init</span>(zAngularVelocityDegreesPerMinute: <span class="type">Double</span>, needsCorrection: <span class="type">Bool</span>) &#123;</span><br><span class="line">                <span class="keyword">let</span> radiansPerMinute = zAngularVelocityDegreesPerMinute * <span class="number">0.01745329251994</span></span><br><span class="line">                <span class="keyword">self</span>.currentZAngularVelocityRadiansPerMinute = radiansPerMinute</span><br><span class="line">                <span class="keyword">self</span>.initialZAngularVelocityRadiansPerMinute = radiansPerMinute</span><br><span class="line">                <span class="keyword">self</span>.needsCorrection = needsCorrection</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This struct holds the rocket’s current and initial angular velocity for the z-axis (how much it’s spinning). The struct also keeps track of whether or not the rocket needs a correction to stay on its target trajectory.</p>
+<p>The custom initializer holds important business logic: how to convert degrees per minute to radians per minute. The initializer also sets the initial value of the angular velocity to keep for reference.</p>
+<p>You’re happily coding away when the guidance engineers show up. They tell you that a new version of the rocket will give you an <code>Int</code> for <code>needsCorrection</code> instead of a <code>Bool</code>. The engineers say a positive integer should be interpreted as <code>true</code>, while zero and negative should be interpreted as <code>false</code>. Your team is not ready to change the rest of the code yet, since this change is part of a future feature. So how can you accommodate the guidance engineers while still keeping your structure definition intact?</p>
+<p>No sweat — add the following custom initializer below the first initializer:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(zAngularVelocityDegreesPerMinute: <span class="type">Double</span>, needsCorrection: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> radiansPerMinute = zAngularVelocityDegreesPerMinute * <span class="number">0.01745329251994</span></span><br><span class="line">        <span class="keyword">self</span>.currentZAngularVelocityRadiansPerMinute = radiansPerMinute</span><br><span class="line">        <span class="keyword">self</span>.initialZAngularVelocityRadiansPerMinute = radiansPerMinute</span><br><span class="line">        <span class="keyword">self</span>.needsCorrection = (needsCorrection &gt; <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This new initializer takes an <code>Int</code> instead of a <code>Bool</code> as the final parameter. However, the <code>needsCorrection</code>stored property is still a <code>Bool</code>, and you set correctly according to their rules.</p>
+<p>After you write this code though, something inside tells you there must be a better way. There’s so much repetition of the rest of the initializer code! And if there’s a bug in the calculation of the degrees to radians conversion, you’ll have to fix it in multiple places — an avoidable mistake. This is where <em>initializer delegation</em> comes in handy.</p>
+<p>Replace the initializer you just wrote with the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(zAngularVelocityDegreesPerMinute: <span class="type">Double</span>, needsCorrection: <span class="type">Int</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(zAngularVelocityDegreesPerMinute: zAngularVelocityDegreesPerMinute,</span><br><span class="line">        needsCorrection: (needsCorrection &gt; <span class="number">0</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This initializer is a <em>delegating initializer</em> and, exactly as it sounds, it delegates initialization to another initializer. To delegate, just call any other initializer on <code>self</code>.</p>
+<p>Delegate initialization is useful when you want to provide an alternate initializer argument list but you don’t want to repeat logic that is in your custom initializer. Also, using delegating initializers helps reduce the amount of code you have to write.</p>
+<p>To test the initializer, instantiate a variable named <code>guidanceStatus</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> guidanceStatus = <span class="type">GuidanceSensorStatus</span>(zAngularVelocityDegreesPerMinute: <span class="number">2.2</span>, needsCorrection: <span class="number">0</span>)</span><br><span class="line">guidanceStatus.currentZAngularVelocityRadiansPerMinute <span class="comment">// 0.038</span></span><br><span class="line">guidanceStatus.needsCorrection <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>The playground should compile and run, and the two values you checked for the <code>guidanceStatus</code> properties will be in the sidebar.</p>
+<p>One more thing — you’ve been asked to provide another initializer that defaults <code>needsCorrection</code> to false. That should be as easy as creating a new delegating initializer and setting the <code>needsCorrection</code> property inside before delegating initialization. Try adding the following initializer to the struct, and note that it won’t compile.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(zAngularVelocityDegreesPerMinute: <span class="type">Double</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.needsCorrection = <span class="literal">false</span></span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(zAngularVelocityDegreesPerMinute: zAngularVelocityDegreesPerMinute,</span><br><span class="line">        needsCorrection: <span class="keyword">self</span>.needsCorrection)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2015/11/SwiftInitInDepth-5.png" target="_blank" rel="noopener"><img src="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-5-480x66.png" alt=""></a></p>
+<p>Compilation fails because delegating initializers cannot actually initialize any properties. There’s a good reason for this: the initializer you are delegating to could very well override the value you’ve set, and that’s not safe. The only thing a delegating initializer can do is manipulate values that are passed into another initializer.</p>
+<p>Knowing that, remove the new initializer and give the <code>needsCorrection</code> argument of the main initiaziler a default value of <code>false</code>:</p>
+<p>init(zAngularVelocityDegreesPerMinute: Double, needsCorrection: Bool = false) {</p>
+<p>Update <code>guidanceStatus</code>‘s initialization by removing the <code>needsCorrection</code> argument:</p>
+<p>let guidanceStatus = GuidanceSensorStatus(zAngularVelocityDegreesPerMinute: 2.2)<br>guidanceStatus.currentZAngularVelocityRadiansPerMinute // 0.038<br>guidanceStatus.needsCorrection // false</p>
+<h2 id="Introducing-Two-Phase-Initialization"><a href="#Introducing-Two-Phase-Initialization" class="headerlink" title="Introducing Two-Phase Initialization"></a>Introducing Two-Phase Initialization</h2><p>So far, the code in your initializers have been setting up your properties and calling other initializers. That’s the first phase of initialization, but there are actually two phases to initializing a Swift type.</p>
+<p>Phase 1 starts at the beginning of initialization and ends once all stored properties have been assigned a value. The remaining initialization execution is phase 2. You cannot use the instance you are initializing during phase 1, but you <em>can</em> use the instance during phase 2. If you have a chain of delegating initializers, phase 1 spans the call stack up to the non-delegating initializer. Phase 2 spans the return trip from the call stack.</p>
+<p><a href="https://koenig-media.raywenderlich.com/uploads/2015/12/Struct2PhaseInit.png" target="_blank" rel="noopener"><img src="http://www.caohr.com/ImagesFolder/Struct2PhaseInit-700x248.png" alt="Struct2PhaseInit"></a></p>
+<h3 id="Putting-Two-Phase-Initialization-to-Work"><a href="#Putting-Two-Phase-Initialization-to-Work" class="headerlink" title="Putting Two-Phase Initialization to Work"></a>Putting Two-Phase Initialization to Work</h3><p>▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬▬▬▬</p>
+<p>Now that you understand two-phase initialization, let’s apply it to our scenario. Each rocket engine has a combustion chamber where fuel is injected with oxidizer to create a controlled explosion that propels the rocket. Setting up these parameters is the phase 1 part to prepare for blastoff.</p>
+<p>Implement the following <code>CombustionChamberStatus</code> struct to see Swift’s two-phase initialization in action. Make sure to show Xcode’s Debug area to see the output of the print statements.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CombustionChamberStatus</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> temperatureKelvin: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">var</span> pressureKiloPascals: <span class="type">Double</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">init</span>(temperatureKelvin: <span class="type">Double</span>, pressureKiloPascals: <span class="type">Double</span>) &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Phase 1 init"</span>)</span><br><span class="line">                <span class="keyword">self</span>.temperatureKelvin = temperatureKelvin</span><br><span class="line">                <span class="keyword">self</span>.pressureKiloPascals = pressureKiloPascals</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"CombustionChamberStatus fully initialized"</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Phase 2 init"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">init</span>(temperatureCelsius: <span class="type">Double</span>, pressureAtmospheric: <span class="type">Double</span>) &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Phase 1 delegating init"</span>)</span><br><span class="line">                <span class="keyword">let</span> temperatureKelvin = temperatureCelsius + <span class="number">273.15</span></span><br><span class="line">                <span class="keyword">let</span> pressureKiloPascals = pressureAtmospheric * <span class="number">101.325</span></span><br><span class="line">                <span class="keyword">self</span>.<span class="keyword">init</span>(temperatureKelvin: temperatureKelvin, pressureKiloPascals: pressureKiloPascals)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"Phase 2 delegating init"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>CombustionChamberStatus(temperatureCelsius: 32, pressureAtmospheric: 0.96)<br>You should see the following output in the Debug Area:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Phase 1 delegating init</span><br><span class="line">Phase 1 init</span><br><span class="line">CombustionChamberStatus fully initialized</span><br><span class="line">Phase 2 init</span><br><span class="line">Phase 2 delegating init</span><br></pre></td></tr></table></figure>
+<p>As you can see, phase 1 begins with the call to the delegating initializer <code>init(temperatureCelsius:pressureAtmospheric:)</code> during which <code>self</code> cannot be used. Phase 1 ends right after <code>self.pressureKiloPascals</code> gets assigned a value in the non-delegating initializer. Each initializer plays a role during each phase.</p>
+<p>Isn’t the compiler super crazy smart? It knows how to enforce all these rules. At first, those rules might seem like nuisances, but remember that they provide a ton of safety.</p>
+<h2 id="What-if-Things-Go-Wrong"><a href="#What-if-Things-Go-Wrong" class="headerlink" title="What if Things Go Wrong?"></a>What if Things Go Wrong?</h2><p>You’ve been told the launch sequence will be fully autonomous, and that the sequence will perform a ton of tests to make sure all systems are good to go for launch. If an invalid value is passed into an initializer, the launch system should be able to know and react.</p>
+<p>There are two ways to handle initialization failures in Swift: using failable initializers, and throwing from an initializer. Initialization can fail for many reasons, including invalid input, a missing system resource such as a file, and possible network failures.</p>
+<h3 id="Using-Failable-Initializers"><a href="#Using-Failable-Initializers" class="headerlink" title="Using Failable Initializers"></a>Using Failable Initializers</h3><p>如果传入的函数不符合初始化的要求，可以返回<code>optional</code>的初始化结果。对于不合格的初始化参数返回nil初始化失败。<br>There are two differences between normal initializers and failable initializers. One is that failable initializers return optional values, and the other is that failable initializers can <code>return nil</code> to express an initialization failure. This can be very useful — let’s apply it to the rocket’s tanks in our data model.</p>
+<p>Each rocket stage carries two large tanks; one holds fuel, while the other holds oxidizer. To keep track of each tank, implement a new struct named <code>TankStatus</code> as follows:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TankStatus</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> currentVolume: <span class="type">Double</span></span><br><span class="line">        <span class="keyword">var</span> currentLiquidType: <span class="type">String</span>?</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">init</span>(currentVolume: <span class="type">Double</span>, currentLiquidType: <span class="type">String</span>?) &#123;</span><br><span class="line">                <span class="keyword">self</span>.currentVolume = currentVolume</span><br><span class="line">                <span class="keyword">self</span>.currentLiquidType = currentLiquidType</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tankStatus = <span class="type">TankStatus</span>(currentVolume: <span class="number">0.0</span>, currentLiquidType: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+<p>There’s nothing wrong with this code except that it doesn’t recognize failure. What happens if you pass in a negative volume? What if you pass in a positive volume value but no liquid type? These are all failure scenarios. How can you model these situatons using failable initializers?</p>
+<p>Start by changing <code>TankStatus</code>‘s initializer to a <em>failable initializer</em> by appending a <code>?</code> to <code>init</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>?(currentVolume: <span class="type">Double</span>, currentLiquidType: <span class="type">String</span>?) &#123;</span><br></pre></td></tr></table></figure>
+<p>Option-click on <code>tankStatus</code> and notice how the initializer now returns an <em>optional</em> <code>TankStatus</code>.</p>
+<p>Update <code>tankStatus</code>‘s instantiation to match the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> tankStatus = <span class="type">TankStatus</span>(currentVolume: <span class="number">0.0</span>, currentLiquidType: <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Nice, tank status created."</span>) <span class="comment">// Printed!</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Oh no, an initialization failure occurred."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The instantiation logic checks for failure by evaluating whether the returned optional contains a value or not.</p>
+<p>Of course, there’s something missing: the initializer isn’t actually checking for invalid values yet. Update the failable initializer to the following:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>?(currentVolume: <span class="type">Double</span>, currentLiquidType: <span class="type">String</span>?) &#123;</span><br><span class="line">        <span class="keyword">if</span> currentVolume <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> currentVolume &gt; <span class="number">0</span> &amp;&amp; currentLiquidType == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">self</span>.currentVolume = currentVolume</span><br><span class="line"><span class="keyword">self</span>.currentLiquidType = currentLiquidType</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As soon as an invalid input is detected, the failable initializer returns <code>nil</code>. You can return <code>nil</code> at any time within a structure’s failable initializer. This is <em>not</em> the case with a class’s failable initializer, as you’ll see in Part 2 of this tutorial.</p>
+<p>To see instantiation failure, pass an invalid value into <code>tankStatus</code>‘s instantiation:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> tankStatus = <span class="type">TankStatus</span>(currentVolume: -<span class="number">10.0</span>, currentLiquidType: <span class="literal">nil</span>) &#123;</span><br></pre></td></tr></table></figure>
+<p>Notice how the playground prints, “Oh no, an initialization failure occurred.” Because initialization failed, the failable initializer returned a nil value and the <code>if let</code> statement executed the <code>else</code> clause.</p>
+<h3 id="Throwing-From-an-Initializer"><a href="#Throwing-From-an-Initializer" class="headerlink" title="Throwing From an Initializer"></a>Throwing From an Initializer</h3><p>在初始化函数中抛出错误</p>
+<p>Failable initializers are great when returning <code>nil</code> is an option. For more serious errors, the other way to handle failure is throwing from an initializer.</p>
+<p>You have one last structure to implement: one to represent each astronaut. Start by writing the following code:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Astronaut</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> name: <span class="type">String</span></span><br><span class="line">        <span class="keyword">let</span> age: <span class="type">Int</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.name = name</span><br><span class="line">                <span class="keyword">self</span>.age = age</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The manager tells you an astronaut should have a non-empty <code>String</code> for his or her <code>name</code> property and should have an <code>age</code> ranging from 18 to 70.</p>
+<p>To represent possible errors, add the following error enumeration <em>before</em> the implementation of <code>Astronaut</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">InvalidAstronautDataError</span>: <span class="title">Error</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="type">EmptyName</span></span><br><span class="line">        <span class="keyword">case</span> <span class="type">InvalidAge</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The enumeration cases here cover the possible problems you might run into when initializing a new <code>Astronaut</code> instance.</p>
+<p>Next, replace the the <code>Astronaut</code> initializer with the following implementation:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>) <span class="keyword">throws</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> name.isEmpty &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="type">InvalidAstronautDataError</span>.<span class="type">EmptyName</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> age <span class="number">18</span> || age &gt; <span class="number">70</span> &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="type">InvalidAstronautDataError</span>.<span class="type">InvalidAge</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="keyword">self</span>.age = age</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note that the initializer is now marked as <code>throws</code> to let callers know to expect errors.</p>
+<p>If an invalid input value is detected — either an empty string for the name, or an age outside the acceptable range — the initializer will now throw the appropriate error.</p>
+<p>Try this out by instantiating a new astronaut:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> johnny = <span class="keyword">try</span>? <span class="type">Astronaut</span>(name: <span class="string">"Johnny Cosmoseed"</span>, age: <span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+<p>This is exactly how you handle any old throwing method or function. Throwing initializers behave just like throwing methods and functions. You can also propagate throwing initializer errors, and handle errors with a <code>do</code>–<code>catch</code> statement. Nothing new here.</p>
+<p>To see the initializer throw an error, change <code>johnny</code>‘s age to 17:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> johnny = <span class="keyword">try</span>? <span class="type">Astronaut</span>(name: <span class="string">"Johnny Cosmoseed"</span>, age: <span class="number">17</span>) <span class="comment">// nil</span></span><br></pre></td></tr></table></figure>
+<p>When you call a throwing initializer, you write the <code>try</code> keyword — or the <code>try?</code> or <code>try!</code> variations — to identify that it can throw an error. In this case, you use <code>try?</code> so the value returned in the error case is nil. Notice how the value of <code>johnny</code> is <code>nil</code>. Seventeen is too young for spaceflight, sadly. Better luck next year, Johnny!</p>
+<h3 id="To-Fail-or-to-Throw"><a href="#To-Fail-or-to-Throw" class="headerlink" title="To Fail or to Throw?"></a>To Fail or to Throw?</h3><p>Initializing using a throwing initializer and <code>try?</code> looks an awful lot like initializing with a failable initializer. So which should you use?</p>
+<p>Consider using throwing initializers. Failable initializers can only express a binary failure/success situation. By using throwing initializers you can not only indicate failure, but also indicate a reason by throwing specific errors. Another benefit is that calling code can propagate any errors thrown by an initializer.</p>
+<p>Failable initializers are much simpler though, since you don’t need to define an error type and you can avoid all those extra <code>try?</code> keywords.</p>
+<p>Why does Swift even have failable initializers? Because the first version of Swift did not include throwing functions, so the language needed a way to manage initialization failures.</p>
+<p>Progress is what gets us to Mars, so we can grow rocks.</p>
+<h2 id="Where-To-Go-From-Here"><a href="#Where-To-Go-From-Here" class="headerlink" title="Where To Go From Here?"></a>Where To Go From Here?</h2><p>Wow — you’re not only halfway through getting humans to Mars, you’re now a Swift structure initialization guru! You can download the final playground for Part 1 <a href="https://koenig-media.raywenderlich.com/uploads/2016/04/BlastOff-Swift3.playground.zip" target="_blank" rel="noopener">here</a>.</p>
+<p>To learn all about Swift class initialization, carry on to <a href="https://www.raywenderlich.com/121603/swift-tutorial-initialization-part-2" target="_blank" rel="noopener">part 2 of this tutorial</a>.</p>
+<p>You can find more information about initialization in the <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203" target="_blank" rel="noopener">initialization chapter</a> of Apple’s <em>The Swift Programming Language</em> guide. If you have any questions or comments, please join the discussion in the forum below!</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Ray-Wenderlich/" rel="tag"># Ray Wenderlich</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2018/07/04/Daily/2018-06-28/" rel="next" title="2018-6-28">
+                  <i class="fa fa-chevron-left"></i> 2018-6-28
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2018/12/21/Swift/Swift Tip Notifications/" rel="prev" title="Swift Tip: Notifications">
+                  Swift Tip: Notifications <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Banking-on-the-Default-Initializer"><span class="nav-number">2.</span> <span class="nav-text">Banking on the Default Initializer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Banking-on-the-Memberwise-Initializer"><span class="nav-number">3.</span> <span class="nav-text">Banking on the Memberwise Initializer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementing-a-Custom-Initializer"><span class="nav-number">4.</span> <span class="nav-text">Implementing a Custom Initializer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Avoiding-Duplication-with-Initializer-Delegation"><span class="nav-number">5.</span> <span class="nav-text">Avoiding Duplication with Initializer Delegation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introducing-Two-Phase-Initialization"><span class="nav-number">6.</span> <span class="nav-text">Introducing Two-Phase Initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Putting-Two-Phase-Initialization-to-Work"><span class="nav-number">6.1.</span> <span class="nav-text">Putting Two-Phase Initialization to Work</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-if-Things-Go-Wrong"><span class="nav-number">7.</span> <span class="nav-text">What if Things Go Wrong?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Failable-Initializers"><span class="nav-number">7.1.</span> <span class="nav-text">Using Failable Initializers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Throwing-From-an-Initializer"><span class="nav-number">7.2.</span> <span class="nav-text">Throwing From an Initializer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#To-Fail-or-to-Throw"><span class="nav-number">7.3.</span> <span class="nav-text">To Fail or to Throw?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Where-To-Go-From-Here"><span class="nav-number">8.</span> <span class="nav-text">Where To Go From Here?</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Huanrong</p>
+  <div class="site-description" itemprop="description">芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:caohrong@live.com" title="E-Mail &rarr; mailto:caohrong@live.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.1</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/muse.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

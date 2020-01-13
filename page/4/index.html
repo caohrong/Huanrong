@@ -195,6 +195,374 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Swift Tip Notifications/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2018/12/21/Swift/Swift Tip Notifications/" class="post-title-link" itemprop="url">Swift Tip: Notifications</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Swift-Tip-Notifications"><a href="#Swift-Tip-Notifications" class="headerlink" title="Swift Tip: Notifications"></a>Swift Tip: Notifications</h1><p>重构键盘监听代码，通过创建<code>KeyboardInfo</code>结构体，来简化代码。这样也能保证整个项目中都共享一套键盘监听的数据逻辑。</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2018/12/21/Swift/Swift Tip Notifications/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/Swift/Swift Tutorial: Initialization In Depth Part 1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2018/12/21/Swift/Swift Tutorial: Initialization In Depth Part 1/" class="post-title-link" itemprop="url">Swift Tutorial/Initialization In Depth Part 1</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。<br>本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的<code>stored properties</code>函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改初始化参数的顺序，系统默认根据你在结构体写的顺序来创建。<br>对于<code>optional</code>的值不需要在初始化方法中赋值，因为<code>optional</code>的方法默认会赋值为<code>nil</code>。<br>你也可以为<code>Init</code>方法为需要传入参数设置默认值，这样你在创建的时候就可以直接调用<code>()</code>,而不是需要传入其他的值。当因为传入的值不一样而有多个<code>Init</code>方法的时候，这时候就可以用<code>delegating initializer</code>方法来解决。<code>delegating initializer</code>在网络框架<code>Alamofire</code>里面大量被使用，例如用户如果不指定请求方法默认就会使用<code>get</code>方法，不指定配置就使用默认的配置。<br>对于传入参数不合法，<code>init</code>方法可以通过<code>Optional</code>和<code>throws</code>两种方法来告诉初始化失败。</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2018/12/21/Swift/Swift Tutorial: Initialization In Depth Part 1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/07/04/Daily/2018-06-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2018/07/04/Daily/2018-06-28/" class="post-title-link" itemprop="url">2018-6-28</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2018-07-04 21:19:01" itemprop="dateCreated datePublished" datetime="2018-07-04T21:19:01+08:00">2018-07-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-12-21 15:12:43" itemprop="dateModified" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Beijing/" itemprop="url" rel="index"><span itemprop="name">Beijing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="http://www.caohr.com/ImagesFolder/IMG_6570.jpg" alt="IMG_6570"></p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
+    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/UTF8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Huanrong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2018/06/25/Swift/UTF8/" class="post-title-link" itemprop="url">UTF-8</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2018-06-25 13:14:00" itemprop="dateCreated datePublished" datetime="2018-06-25T13:14:00+08:00">2018-06-25</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-12-21 15:12:43" itemprop="dateModified" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>UTF-8可以与之前的<code>ASCII</code>码兼容，但是遇到比7bits更大的编码UTF-8是怎么处理的？</p>
+          <!--noindex-->
+          
+            <div class="post-button">
+              <a class="btn" href="/2018/06/25/Swift/UTF8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Unicode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -495,207 +863,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Defer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/06/25/Swift/Defer/" class="post-title-link" itemprop="url">Defer</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2018-06-25 13:06:52" itemprop="dateCreated datePublished" datetime="2018-06-25T13:06:52+08:00">2018-06-25</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-21 15:12:43" itemprop="dateModified" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>A defer statement is used for executing code just before transferring program control outside of the scope that the defer statement appears in.</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2018/06/25/Swift/Defer/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Protocol/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/06/25/Swift/Protocol/" class="post-title-link" itemprop="url">Protocol</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2018-06-25 13:04:53" itemprop="dateCreated datePublished" datetime="2018-06-25T13:04:53+08:00">2018-06-25</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-21 15:12:43" itemprop="dateModified" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Protocol is name type, structs ,classes, and enums also name type. <code>A protocol can be adopted by a class, struct, or enum</code>.</p>
-<p>Swift中默认所有的方法都是必须实现是的</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2018/06/25/Swift/Protocol/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
     <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Daily/2018-06-25/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -769,210 +936,6 @@
 <p>这周过得格外的快，可能是因为星期一是端午节的缘故，最近坚持到第三天长跑陶然亭公园，因为跑不动了走了捷径看到了满塘的荷花，很是漂亮。</p>
 <p><img src="http://www.caohr.com/ImagesFolder/IMG_6533.jpg" alt="IMG_6533"></p>
 
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/String/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/06/25/Swift/String/" class="post-title-link" itemprop="url">String</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2018-06-25 12:54:23" itemprop="dateCreated datePublished" datetime="2018-06-25T12:54:23+08:00">2018-06-25</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-21 15:12:43" itemprop="dateModified" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let someString = &quot;some string literal value&quot; + &quot;other string&quot;</span><br></pre></td></tr></table></figure>
-<p>多行字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let multiline = &quot;&quot;&quot;</span><br><span class="line">one line </span><br><span class="line">two line</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
-<p>如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地方加上<code>\</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let str1 = &quot;&quot;</span><br><span class="line">let str2 = &quot; &quot;</span><br><span class="line"></span><br><span class="line">let value = str1.isEmpty  //true</span><br><span class="line">let value2 = str2.isEmpty  //false</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2018/06/25/Swift/String/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </article>
-  
-  
-  
-
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="default">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/06/25/Swift/Access Control/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2018/06/25/Swift/Access Control/" class="post-title-link" itemprop="url">Access Control</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2018-06-25 09:49:45" itemprop="dateCreated datePublished" datetime="2018-06-25T09:49:45+08:00">2018-06-25</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-21 15:12:43" itemprop="dateModified" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>除了可以给属性、方法、加载器添加访问控制，还可以给类、结构体、和枚举。以及协议。Swift为了减少代码量，添加了默认的权限internal。Swift的访问控制是基于<code>modules</code>和<code>source files</code><br>modules：你可以通过<code>import</code>导入的一个框架或者是一个程序。<br>source files：即Swift中单个文件。但是一个文件中通常会定义多个类。</p>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2018/06/25/Swift/Access Control/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -1100,7 +1063,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
