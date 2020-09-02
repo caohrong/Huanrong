@@ -1,7 +1,11 @@
 {
-  "applinks": {
-      "details": [
-           { "appID": "Q5WPR2VLC9.com.ibmb.citic", "paths": ["/*"] }
-       ]
-   }
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "Q5WPR2VLC9.com.ibmb.citic",
+                "paths": ["/*"]
+            }
+        ]
+    }
 }
