@@ -4,7 +4,7 @@
         "details": [
             {
                 "appID": "Q5WPR2VLC9.com.ibmb.citic",
-                "paths": ["*"]
+                "paths": ["/app/*"]
             }
         ]
     }
