@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,67 +13,51 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://caohr.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMake">
-<meta property="og:url" content="http://caohr.com/2019/06/15/Tools/CMake/index.html">
-<meta property="og:site_name" content="Huanrong">
+<meta property="og:url" content="http://example.com/2019/06/15/Tools/CMake/index.html">
+<meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.caohr.com/ImagesFolder/CMake-logo.png">
-<meta property="og:updated_time" content="2019-06-15T05:18:23.000Z">
+<meta property="article:published_time" content="2019-06-15T05:18:23.000Z">
+<meta property="article:modified_time" content="2019-06-15T05:18:23.000Z">
+<meta property="article:author" content="HR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CMake">
-<meta name="twitter:description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。">
 <meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/CMake-logo.png">
 
-<link rel="canonical" href="http://caohr.com/2019/06/15/Tools/CMake/">
+<link rel="canonical" href="http://example.com/2019/06/15/Tools/CMake/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
   };
 </script>
 
-  <title>CMake | Huanrong</title>
+  <title>CMake | HR's Blog</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-61905451-1');
+      }
+    </script>
 
 
 
@@ -111,18 +95,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Huanrong</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">iOSDev</p>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
@@ -130,25 +102,58 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HR's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -164,24 +169,23 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="default">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2019/06/15/Tools/CMake/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/15/Tools/CMake/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="name" content="HR's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -191,7 +195,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -199,13 +203,11 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
                 </span>
             </span>
 
@@ -221,17 +223,23 @@
 
       
         <h2 id="CMake介绍"><a href="#CMake介绍" class="headerlink" title="CMake介绍"></a>CMake介绍</h2><p>CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的<code>Makefile</code>，而<code>CMake</code>就可以为跨平台的项目，提供一次编写<code>Makefile</code>而到处编译的目的。<br><img src="http://www.caohr.com/ImagesFolder/CMake-logo.png" alt="CMake-logo"></p>
-<a id="more"></a>
-<h2 id="CMake安装"><a href="#CMake安装" class="headerlink" title="CMake安装"></a>CMake安装</h2><p><a href="https://gitlab.kitware.com/cmake/cmake" target="_blank" rel="noopener">下载</a>最新的项目后，运行下面命令安装<code>CMake</code>在<code>Mac</code>上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bootstrap &amp;&amp; make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+
+<h2 id="CMake安装"><a href="#CMake安装" class="headerlink" title="CMake安装"></a>CMake安装</h2><p><a target="_blank" rel="noopener" href="https://gitlab.kitware.com/cmake/cmake">下载</a>最新的项目后，运行下面命令安装<code>CMake</code>在<code>Mac</code>上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;bootstrap &amp;&amp; make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
+
 <h2 id="关于腾讯Mars用CMake编译"><a href="#关于腾讯Mars用CMake编译" class="headerlink" title="关于腾讯Mars用CMake编译"></a>关于腾讯<code>Mars</code>用<code>CMake</code>编译</h2><h3 id="运行Mars的示例程序"><a href="#运行Mars的示例程序" class="headerlink" title="运行Mars的示例程序"></a>运行<code>Mars</code>的示例程序</h3><p><code>Mars</code>示例程序iOS项目和Mac项目缺失<code>Mars</code>的<code>Framework</code>。需要自行下载最新的<code>Mars</code>利用<code>CMake</code>来编译，根据不同的平台，运行<code>Mars</code>底下相应的编译脚本。不导入<code>Mars</code>的<code>Framework</code>，会报一些头文件没找到，例如<code>mars/xlog/xlogger.h&#39; file not found</code>。如果没有安装<code>CMake</code>直接运行这些脚本会提示<code>CMake</code>命令缺失。</p>
 <p>Compile</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python build_ios.py</span><br></pre></td></tr></table></figure>
+
 <p>or</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python build_osx.py</span><br></pre></td></tr></table></figure>
+
 <p>编译完成后，在相应的位置找到<code>mars.framework</code>，导入到示例的项目中，即可运行示例项目：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==================Output========================</span><br><span class="line">cmake_build/iOS/Darwin.out/mars.framework</span><br></pre></td></tr></table></figure>
-<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a href="https://cmake.org/" target="_blank" rel="noopener">CMake官网</a><br><a href="https://www.hahack.com/codes/cmake/" target="_blank" rel="noopener">CMake 入门实战</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;Output&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">cmake_build&#x2F;iOS&#x2F;Darwin.out&#x2F;mars.framework</span><br></pre></td></tr></table></figure>
+
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://cmake.org/">CMake官网</a><br><a target="_blank" rel="noopener" href="https://www.hahack.com/codes/cmake/">CMake 入门实战</a></p>
 
     </div>
 
@@ -247,12 +255,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/06/13/iOS/autoreleasepool的用法/" rel="prev" title="autoreleasepool的用法">
+    <a href="/2019/06/13/iOS/autoreleasepool%E7%9A%84%E7%94%A8%E6%B3%95/" rel="prev" title="autoreleasepool的用法">
       <i class="fa fa-chevron-left"></i> autoreleasepool的用法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/06/17/Tools/Google Photos VS iCloud Photos/" rel="next" title="Google Photos VS iCloud Photos">
-      Google Photos VS iCloud Photos <i class="fa fa-chevron-right"></i>
+    <a href="/2019/06/15/C++/Enumerations/" rel="next" title="enumerations">
+      enumerations <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -262,7 +270,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -270,7 +277,7 @@
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -313,14 +320,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake介绍"><span class="nav-number">1.</span> <span class="nav-text">CMake介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake安装"><span class="nav-number">2.</span> <span class="nav-text">CMake安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于腾讯Mars用CMake编译"><span class="nav-number">3.</span> <span class="nav-text">关于腾讯Mars用CMake编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行Mars的示例程序"><span class="nav-number">3.1.</span> <span class="nav-text">运行Mars的示例程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关链接"><span class="nav-number">4.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">CMake介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">CMake安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%85%BE%E8%AE%AFMars%E7%94%A8CMake%E7%BC%96%E8%AF%91"><span class="nav-number">3.</span> <span class="nav-text">关于腾讯Mars用CMake编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8CMars%E7%9A%84%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.1.</span> <span class="nav-text">运行Mars的示例程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Huanrong</p>
-  <div class="site-description" itemprop="description">芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。</div>
+  <p class="site-author-name" itemprop="name">HR</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -333,12 +340,14 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+          
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -360,19 +369,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+  <span class="author" itemprop="copyrightHolder">HR</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
@@ -392,9 +400,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

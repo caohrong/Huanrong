@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,68 +13,52 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://caohr.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="Implicitly unwrapped optionals表现和optional值一样，唯一的不同就是Implicitly unwrapped optionals等于向编译器承诺在运行时的时候一定会有值。最常见的使用场景就是IBOutlet的时候，我们可以确保在编译的时候有值，但是如果用optional就得到处检查IBOutlet检查的值，就会显得非常繁琐，所有Implicitly unwrap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="THE IMPLICITLY UNWRAPPED OPTIONAL &amp; WHEN TO USE IT">
-<meta property="og:url" content="http://caohr.com/2019/06/12/Swift/mplicitly unwrapped optionals/index.html">
-<meta property="og:site_name" content="Huanrong">
+<meta property="og:url" content="http://example.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/index.html">
+<meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="Implicitly unwrapped optionals表现和optional值一样，唯一的不同就是Implicitly unwrapped optionals等于向编译器承诺在运行时的时候一定会有值。最常见的使用场景就是IBOutlet的时候，我们可以确保在编译的时候有值，但是如果用optional就得到处检查IBOutlet检查的值，就会显得非常繁琐，所有Implicitly unwrap">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://caohr.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/media/15311074696570/15311179325909.png">
-<meta property="og:image" content="http://caohr.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/media/15311074696570/15311179478016.png">
-<meta property="og:updated_time" content="2019-06-12T01:58:50.000Z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/media/15311074696570/15311179325909.png">
+<meta property="og:image" content="http://example.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/media/15311074696570/15311179478016.png">
+<meta property="article:published_time" content="2019-06-12T01:58:50.000Z">
+<meta property="article:modified_time" content="2019-06-12T01:58:50.000Z">
+<meta property="article:author" content="HR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="THE IMPLICITLY UNWRAPPED OPTIONAL &amp; WHEN TO USE IT">
-<meta name="twitter:description" content="Implicitly unwrapped optionals表现和optional值一样，唯一的不同就是Implicitly unwrapped optionals等于向编译器承诺在运行时的时候一定会有值。最常见的使用场景就是IBOutlet的时候，我们可以确保在编译的时候有值，但是如果用optional就得到处检查IBOutlet检查的值，就会显得非常繁琐，所有Implicitly unwrap">
-<meta name="twitter:image" content="http://caohr.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/media/15311074696570/15311179325909.png">
+<meta name="twitter:image" content="http://example.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/media/15311074696570/15311179325909.png">
 
-<link rel="canonical" href="http://caohr.com/2019/06/12/Swift/mplicitly unwrapped optionals/">
+<link rel="canonical" href="http://example.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
   };
 </script>
 
-  <title>THE IMPLICITLY UNWRAPPED OPTIONAL & WHEN TO USE IT | Huanrong</title>
+  <title>THE IMPLICITLY UNWRAPPED OPTIONAL & WHEN TO USE IT | HR's Blog</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-61905451-1');
+      }
+    </script>
 
 
 
@@ -112,18 +96,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Huanrong</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">iOSDev</p>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
@@ -131,25 +103,58 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HR's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -165,24 +170,23 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="default">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2019/06/12/Swift/mplicitly unwrapped optionals/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/12/Swift/mplicitly%20unwrapped%20optionals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="name" content="HR's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -192,7 +196,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -200,13 +204,11 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
-                  </a>
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
                 </span>
             </span>
 
@@ -223,54 +225,62 @@
       
         <p><code>Implicitly unwrapped optionals</code>表现和<code>optional</code>值一样，唯一的不同就是<code>Implicitly unwrapped optionals</code>等于向编译器承诺在运行时的时候一定会有值。最常见的使用场景就是IBOutlet的时候，我们可以确保在编译的时候有值，但是如果用optional就得到处检查IBOutlet检查的值，就会显得非常繁琐，所有<code>Implicitly unwrapped optionals</code>可以解决这个问题。</p>
 <p>总结，就是你不能在初始化的时候就确保有值，但是你又能保证在运行时的时候一定有值，他具有Optional的所有属性，但是又不需要像Optional一样到处解包。</p>
-<a id="more"></a>
+<span id="more"></span>
+
 <p>Since the advent of Swift, our behavior towards nil values have greatly changed. Swift brings type safety, and also works hard to prevent sending messages to nil by introducing Optionals. Optionals force you to write guards around your optional code at compile time using “optional binding” which, while making your code more secure, also makes it look a bit messy. Implicitly unwrapped optionals behave like optionals: they can be set to nil, you can use optional chaining on implicitly unwrapped optional variables, and can check them for nil equality. The only difference between them is that implicitly unwrapped optionals are a promise to the swift compiler that it’s value will NOT be nil when accessed at runtime.</p>
-<h1 id="THE-IMPLICITLY-UNWRAPPED-OPTIONAL"><a href="#THE-IMPLICITLY-UNWRAPPED-OPTIONAL" class="headerlink" title="THE IMPLICITLY UNWRAPPED OPTIONAL"></a>THE IMPLICITLY UNWRAPPED OPTIONAL</h1><p>The first thing to remember about the implicitly unwrapped optional is that while you can use them in all the same places that you can use <code>optionals</code>, it isn’t an optional and it isn’t a class. This seems a little weird, but the <code>implicitly unwrapped optional</code> is actually an enum represented by the name ImplicitlyUnwrappedOptional while the <code>optional</code> is an enum represented by the name Optional. A quick look at the Swift library more or less shows this as the declaration for ImplicitlyUnwrappedOptional:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">ImplicitlyUnwrappedOptional</span>&lt;<span class="title">Wrapped</span>&gt; : <span class="title">ExpressibleByNilLiteral</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">none</span></span><br><span class="line">        <span class="keyword">case</span> some(<span class="type">Wrapped</span>)</span><br><span class="line">        <span class="comment">/// Construct a non-\ `nil` instance that stores `some`.</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">init</span>(<span class="number">_</span> some: <span class="type">Wrapped</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/// Construct an instance from an explicitly unwrapped optional</span></span><br><span class="line">        <span class="comment">/// (`T?`).</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">init</span>(nilLiteral: ())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>One more look at the Swift Library proves my point that <code>ImplicitlyUnwrappedOptionals</code> are not Optionals because the <code>Optional</code> enum has a separate declaration and there is no sign of inheritance that states that either one inherits from the other:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Optional</span>&lt;<span class="title">Wrapped</span>&gt; : <span class="title">ExpressibleByNilLiteral</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">none</span></span><br><span class="line">        <span class="keyword">case</span> some(<span class="type">Wrapped</span>)</span><br><span class="line">        <span class="comment">/// Construct a non-\ `nil` instance that stores `some`.</span></span><br><span class="line">        <span class="keyword">init</span>(<span class="number">_</span> some: <span class="type">Wrapped</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>This is despite a seemingly contradictory quote from <a href="https://itun.es/us/jEUH0.l" target="_blank" rel="noopener">Apple’s Swift Programming Book</a>:</p>
+<h1 id="THE-IMPLICITLY-UNWRAPPED-OPTIONAL"><a href="#THE-IMPLICITLY-UNWRAPPED-OPTIONAL" class="headerlink" title="THE IMPLICITLY UNWRAPPED OPTIONAL"></a>THE IMPLICITLY UNWRAPPED OPTIONAL</h1><p>The first thing to remember about the implicitly unwrapped optional is that while you can use them in all the same places that you can use <code>optionals</code>, it isn’t an optional and it isn’t a class. This seems a little weird, but the <code>implicitly unwrapped optional</code> is actually an enum represented by the name ImplicitlyUnwrappedOptional while the <code>optional</code> is an enum represented by the name Optional. A quick look at the Swift library more or less shows this as the declaration for ImplicitlyUnwrappedOptional:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">ImplicitlyUnwrappedOptional</span>&lt;<span class="title">Wrapped</span>&gt; : <span class="title">ExpressibleByNilLiteral</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> none</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">some</span>(<span class="type">Wrapped</span>)</span><br><span class="line">        <span class="comment">/// Construct a non-\ `nil` instance that stores `some`.</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">init</span>(<span class="keyword">_</span> <span class="params">some</span>: <span class="type">Wrapped</span>)</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">/// Construct an instance from an explicitly unwrapped optional</span></span><br><span class="line">        <span class="comment">/// (`T?`).</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">init</span>(<span class="params">nilLiteral</span>: ())</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>One more look at the Swift Library proves my point that <code>ImplicitlyUnwrappedOptionals</code> are not Optionals because the <code>Optional</code> enum has a separate declaration and there is no sign of inheritance that states that either one inherits from the other:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Optional</span>&lt;<span class="title">Wrapped</span>&gt; : <span class="title">ExpressibleByNilLiteral</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> none</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">some</span>(<span class="type">Wrapped</span>)</span><br><span class="line">        <span class="comment">/// Construct a non-\ `nil` instance that stores `some`.</span></span><br><span class="line">        <span class="function"><span class="keyword">init</span>(<span class="keyword">_</span> <span class="params">some</span>: <span class="type">Wrapped</span>)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This is despite a seemingly contradictory quote from <a target="_blank" rel="noopener" href="https://itun.es/us/jEUH0.l">Apple’s Swift Programming Book</a>:</p>
 <blockquote>
 <p>“An implicitly unwrapped optional is a normal optional behind the scenes, but can also be used like a non optional value”</p>
 </blockquote>
 <p>Do you see what I mean? They’re different but also the same. Maybe, this is alluding to the “compiler magic” I mention a bit later. I personally think it just means that they are implemented the same way. To be honest, we won’t know which one it is until Swift comes out as open source this fall. Hooray, open source!</p>
-<p>Further inspection of the <code>ImplicitlyUnwrappedOptional</code> enum actually shows us a neat little comment that explains why the implicitly unwrapped optional enum compared to all other enums is different and more special:</p>
+<p>Further inspection of the <code>ImplicitlyUnwrappedOptional</code> enum actually shows us a neat little comment that explains why the implicitly unwrapped optional enum compared to all other enums is different and more special:</p>
 <blockquote>
 <p>“An optional type that allows implicit member access (via compiler magic). The compiler has special knowledge of the existence of ImplicitlyUnwrappedOptional”</p>
 </blockquote>
-<p>Due to this compiler magic, we are able to wrap our property declarations in this enum using the postfix <code>&gt; !</code>&gt; as syntactic sugar like so:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BermudaTriangle</span> </span>&#123; </span><br><span class="line">        <span class="keyword">let</span> theEverPresentKraken: <span class="type">Kraken</span>! </span><br><span class="line">        <span class="keyword">init</span>() &#123; </span><br><span class="line">                theEverPresentKraken = <span class="type">Kraken</span>() </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>As opposed to how it actually looks without the <code>!</code>:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BermudaTriangle</span> </span>&#123; </span><br><span class="line">        <span class="keyword">let</span> theEverPresentKraken: <span class="type">ImplicitlyUnwrappedOptional</span>&lt;<span class="type">Kraken</span>&gt; = .<span class="type">None</span> </span><br><span class="line">        <span class="keyword">init</span>() &#123; </span><br><span class="line">                theEverPresentKraken = <span class="type">ImplicitlyUnwrappedOptional</span>.<span class="type">Some</span>(<span class="type">Kraken</span>()) </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>As you can see, in this scenario, the implicitly unwrapped optional is an enum of type <code>ImplicitlyUnwrappedOptional</code> that wraps an instance of the <code>Kraken</code> class in it’s <code>.Some</code> case value.</p>
+<p>Due to this compiler magic, we are able to wrap our property declarations in this enum using the postfix <code>&gt; !</code>&gt; as syntactic sugar like so:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BermudaTriangle</span> </span>&#123; </span><br><span class="line">        <span class="keyword">let</span> theEverPresentKraken: <span class="type">Kraken</span>! </span><br><span class="line">        <span class="function"><span class="keyword">init</span>()</span> &#123; </span><br><span class="line">                theEverPresentKraken <span class="operator">=</span> <span class="type">Kraken</span>() </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>As opposed to how it actually looks without the <code>!</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BermudaTriangle</span> </span>&#123; </span><br><span class="line">        <span class="keyword">let</span> theEverPresentKraken: <span class="type">ImplicitlyUnwrappedOptional</span>&lt;<span class="type">Kraken</span>&gt; <span class="operator">=</span> .<span class="type">None</span> </span><br><span class="line">        <span class="function"><span class="keyword">init</span>()</span> &#123; </span><br><span class="line">                theEverPresentKraken <span class="operator">=</span> <span class="type">ImplicitlyUnwrappedOptional</span>.<span class="type">Some</span>(<span class="type">Kraken</span>()) </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>As you can see, in this scenario, the implicitly unwrapped optional is an enum of type <code>ImplicitlyUnwrappedOptional</code> that wraps an instance of the <code>Kraken</code> class in it’s <code>.Some</code> case value.</p>
 <p>At it’s introduction the implicitly unwrapped optional raised a bit of concern amongst developers because of the nature of Swift and how it handles messages to nil. If a message is sent to nil in Swift, the application crashes. Swift does a great job of catching cases where this happens at compile time and will throw an error to let you know to guard against these scenarios. However, the implicitly unwrapped optional actually provides a bypass around these errors. It’s because of this bypass implementation that concerns began to rise around the use of the implicitly unwrapped optional.</p>
-<p>Apple actually expressly <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html" target="_blank" rel="noopener">states this</a> about the Implicitly Unwrapped Optional:</p>
+<p>Apple actually expressly <a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html">states this</a> about the Implicitly Unwrapped Optional:</p>
 <blockquote>
 <p>“Because the value of an implicitly unwrapped optional is automatically unwrapped when you use it, there’s no need to use the ! operator to unwrap it. That said, if you try to use an implicitly unwrapped optional that has a value of nil, you’ll get a runtime error.”</p>
 </blockquote>
 <h1 id="WHEN-TO-USE-IT"><a href="#WHEN-TO-USE-IT" class="headerlink" title="WHEN TO USE IT"></a>WHEN TO USE IT</h1><p>You should only ever mark a variable as an Implicitly Unwrapped Optional if you can guarantee that it will NOT be nil at the time it’s called. I can’t express this enough. If you have a question about the existence of an implicitly unwrapped optional variable at runtime, then it should NOT have been an implicitly unwrapped optional to begin with. Remember this: implicitly unwrapped optionals promise to have a value when accessed at runtime, but also have the ability to be mutated to nil at runtime as well. Here’s an example:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string: <span class="type">String</span>! = <span class="string">"I'm a string!"</span> </span><br><span class="line">string.capitalizedString <span class="comment">//NO crash at this point. It will return "I'm A String". </span></span><br><span class="line"></span><br><span class="line">string = <span class="literal">nil</span> <span class="comment">//Can be mutated to nil at runtime string.capitalizedString //CRASH - Can't send messages to nil in Swift!</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string: <span class="type">String</span>! <span class="operator">=</span> <span class="string">&quot;I&#x27;m a string!&quot;</span> </span><br><span class="line">string.capitalizedString <span class="comment">//NO crash at this point. It will return &quot;I&#x27;m A String&quot;. </span></span><br><span class="line"></span><br><span class="line">string <span class="operator">=</span> <span class="literal">nil</span> <span class="comment">//Can be mutated to nil at runtime string.capitalizedString //CRASH - Can&#x27;t send messages to nil in Swift!</span></span><br></pre></td></tr></table></figure>
+
 <p>Now that we got that out of the way, here are scenarios where it’s totally appropriate to create an implicitly unwrapped optional:</p>
 <p>(Author’s Note: A general rule you should use from here on out is that if you can’t find your scenario in this list, then you should be using an optional instead. Feel free to make suggestions of scenarios to add to this in the comments below. If they are valid, then good for you! I will immediately update this post with it. 😄)</p>
-<h2 id="WHEN-REFERENCING-AN-OBJECT-FROM-INTERFACE-BUILDER"><a href="#WHEN-REFERENCING-AN-OBJECT-FROM-INTERFACE-BUILDER" class="headerlink" title="WHEN REFERENCING AN OBJECT FROM INTERFACE BUILDER"></a>WHEN REFERENCING AN OBJECT FROM INTERFACE BUILDER</h2><p>When writing an iOS app, we have the luxury of using wonderful tools from Interface Builder like Storyboards. The problem we have when using Interface Builder is connecting our visual elements to our code through IBOutlets. Since it’s entirely possible (and common!) for someone to have over 10 IBOutlets in their classes, it becomes a bit unwieldy to use IBOutlet properties as straight optionals. Your code could be littered with <code>if let</code>s if you don’t use implicitly unwrapped optionals. In fact, when dragging an outlet from a storyboard to a swift file, Xcode generates these properties as implicitly unwrapped optionals for you!</p>
+<h2 id="WHEN-REFERENCING-AN-OBJECT-FROM-INTERFACE-BUILDER"><a href="#WHEN-REFERENCING-AN-OBJECT-FROM-INTERFACE-BUILDER" class="headerlink" title="WHEN REFERENCING AN OBJECT FROM INTERFACE BUILDER"></a>WHEN REFERENCING AN OBJECT FROM INTERFACE BUILDER</h2><p>When writing an iOS app, we have the luxury of using wonderful tools from Interface Builder like Storyboards. The problem we have when using Interface Builder is connecting our visual elements to our code through IBOutlets. Since it’s entirely possible (and common!) for someone to have over 10 IBOutlets in their classes, it becomes a bit unwieldy to use IBOutlet properties as straight optionals. Your code could be littered with <code>if let</code>s if you don’t use implicitly unwrapped optionals. In fact, when dragging an outlet from a storyboard to a swift file, Xcode generates these properties as implicitly unwrapped optionals for you!</p>
 <p>When we use storyboards, we can make a few assumptions. The first assumption is that we can rely on Interface Builder to create our references correctly at runtime. The second assumption is this; since storyboard elements are user facing, we always test our outlet code in the simulator by visually verifying that the element you created is there. Take this example:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BusinessCardView</span>: <span class="title">UIView</span> </span>&#123; </span><br><span class="line">        <span class="meta">@IBOutlet</span> <span class="keyword">private</span> <span class="keyword">weak</span> <span class="keyword">var</span> jobTitleLabel: <span class="type">UILabel</span>! </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span> &#123; </span><br><span class="line">                <span class="keyword">super</span>.layoutSubviews() </span><br><span class="line">                jobTitleLabel.text = <span class="string">"The Boss Man"</span> </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Here, a normal developer would make sure that their label on the <code>BusinessCardView</code> is displaying “The Boss Man”. How do we test this? Well we run the code, of course! If you forgot to connect the <code>jobTitleLabel</code> then when iOS loads this code at runtime, jobTitleLabel will be nil but you will get this VERY clear exception:</p>
-<p><img src="media/15311074696570/15311179325909.png" alt=""></p>
-<p><img src="media/15311074696570/15311179478016.png" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BusinessCardView</span>: <span class="title">UIView</span> </span>&#123; </span><br><span class="line">        <span class="keyword">@IBOutlet</span> <span class="keyword">private</span> <span class="keyword">weak</span> <span class="keyword">var</span> jobTitleLabel: <span class="type">UILabel</span>! </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span>()</span> &#123; </span><br><span class="line">                <span class="keyword">super</span>.layoutSubviews() </span><br><span class="line">                jobTitleLabel.text <span class="operator">=</span> <span class="string">&quot;The Boss Man&quot;</span> </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Here, a normal developer would make sure that their label on the <code>BusinessCardView</code> is displaying “The Boss Man”. How do we test this? Well we run the code, of course! If you forgot to connect the <code>jobTitleLabel</code> then when iOS loads this code at runtime, jobTitleLabel will be nil but you will get this VERY clear exception:</p>
+<p><img src="media/15311074696570/15311179325909.png"></p>
+<p><img src="media/15311074696570/15311179478016.png"></p>
 <p>In this case, your dev cycle would consist of you making sure the outlet is connected properly and connecting it if it wasn’t.</p>
-<p>A great place to use implicitly unwrapped optionals are also when loading prototype entities from Interface Builder. If you have a prototype cell that you created in a storyboard and you loaded it using <code>dequeueReusableCellWithIdentifier</code>, then an implicitly unwrapped optional would be great. This has the added benefit of not having a list of optional binding in scenarios where you have multiple cell prototypes for one UITableView. This is because of the same reason as stated above: you won’t actually release an app with new visual elements without testing them first.</p>
+<p>A great place to use implicitly unwrapped optionals are also when loading prototype entities from Interface Builder. If you have a prototype cell that you created in a storyboard and you loaded it using <code>dequeueReusableCellWithIdentifier</code>, then an implicitly unwrapped optional would be great. This has the added benefit of not having a list of optional binding in scenarios where you have multiple cell prototypes for one UITableView. This is because of the same reason as stated above: you won’t actually release an app with new visual elements without testing them first.</p>
 <p>Unless you don’t actually test your code. Then God rest your soul.</p>
-<h2 id="WHEN-INTERACTING-WITH-AN-EXTERNAL-FRAMEWORK-YOU-HAVE-NO-CONTROL-OF"><a href="#WHEN-INTERACTING-WITH-AN-EXTERNAL-FRAMEWORK-YOU-HAVE-NO-CONTROL-OF" class="headerlink" title="WHEN INTERACTING WITH AN EXTERNAL FRAMEWORK YOU HAVE NO CONTROL OF"></a>WHEN INTERACTING WITH AN EXTERNAL FRAMEWORK YOU HAVE NO CONTROL OF</h2><p>This one is fairly obvious. Since you can’t change the source code of an external framework such as <code>UIKit</code>, any implicitly unwrapped optionals there can’t be helped. Take the example of creating a <code>UITableViewRowAction</code>:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> rowAction = <span class="type">UITableViewRowAction</span>(style: .<span class="type">Normal</span>, title: <span class="string">""</span>) &#123; (rowAction: <span class="type">UITableViewRowAction</span>!, indexPath: <span class="type">NSIndexPath</span>!) -&gt; <span class="type">Void</span> <span class="keyword">in</span> </span><br><span class="line">        <span class="comment">//do some shtuff. We can't help that rowAction and indexPath are implicitly unwrapped. We're gonna have to trust that Apple knows their stuff. </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="WHEN-INTERACTING-WITH-AN-EXTERNAL-FRAMEWORK-YOU-HAVE-NO-CONTROL-OF"><a href="#WHEN-INTERACTING-WITH-AN-EXTERNAL-FRAMEWORK-YOU-HAVE-NO-CONTROL-OF" class="headerlink" title="WHEN INTERACTING WITH AN EXTERNAL FRAMEWORK YOU HAVE NO CONTROL OF"></a>WHEN INTERACTING WITH AN EXTERNAL FRAMEWORK YOU HAVE NO CONTROL OF</h2><p>This one is fairly obvious. Since you can’t change the source code of an external framework such as <code>UIKit</code>, any implicitly unwrapped optionals there can’t be helped. Take the example of creating a <code>UITableViewRowAction</code>:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> rowAction <span class="operator">=</span> <span class="type">UITableViewRowAction</span>(style: .<span class="type">Normal</span>, title: <span class="string">&quot;&quot;</span>) &#123; (rowAction: <span class="type">UITableViewRowAction</span>!, indexPath: <span class="type">NSIndexPath</span>!) -&gt; <span class="type">Void</span> <span class="keyword">in</span> </span><br><span class="line">        <span class="comment">//do some shtuff. We can&#x27;t help that rowAction and indexPath are implicitly unwrapped. We&#x27;re gonna have to trust that Apple knows their stuff. </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="WHEN-YOU-HAVE-A-PROPERTY-THAT-CAN’T-BE-POPULATED-DURING-INITIALIZATION"><a href="#WHEN-YOU-HAVE-A-PROPERTY-THAT-CAN’T-BE-POPULATED-DURING-INITIALIZATION" class="headerlink" title="WHEN YOU HAVE A PROPERTY THAT CAN’T BE POPULATED DURING INITIALIZATION"></a>WHEN YOU HAVE A PROPERTY THAT CAN’T BE POPULATED DURING INITIALIZATION</h2><p>Apple explains this very well in their Swift book:</p>
 <blockquote>
 <p>“Implicitly unwrapped optionals are useful when an optional’s value is confirmed to exist immediately after the optional is first defined and can definitely be assumed to exist at every point thereafter. The primary use of implicitly unwrapped optionals in Swift is during class initialization.”</p>
 </blockquote>
-<p>If you want further details on this straight from the source, you can find it at the U<a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html" target="_blank" rel="noopener">nowned References and Implicitly Unwrapped Optional Properties</a> section in their documentation.</p>
-<p>Many view based classes (including <code>UIViewController</code>s) have their initialization split up into phases. First is the initialization phase where the pointer to the class instance is created (This is where you assign your default values to your properties and is generally in the classes <code>init</code> function). Next is when the actual representation of the view is loaded and attached to the view hierarchy. You see this with UIViews and UIViewControllers where these two phases are tightly coupled and call one after the other. So in scenarios where you need to populate a variable with a view’s property values directly after initialization, it is ok to use implicitly unwrapped optionals. Take this example of a <code>UIView</code> subclass created in Interface Builder:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KrakenView</span>: <span class="title">UIView</span> </span>&#123; </span><br><span class="line">        <span class="keyword">var</span> startingOrigin: <span class="type">CGPoint</span>! </span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">awakeFromNib</span><span class="params">()</span></span> &#123; </span><br><span class="line">                <span class="keyword">super</span>.awakeFromNib() </span><br><span class="line">                startingOrigin = frame.origin </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>In this example, we need to hold on to the view’s starting point for whatever reason. The problem is, we can’t set the origin in the <code>init</code> function because the view won’t have an origin until it’s loaded in it’s second initialization phase - <code>awakeFromNib()</code>.</p>
+<p>If you want further details on this straight from the source, you can find it at the U<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Types.html">nowned References and Implicitly Unwrapped Optional Properties</a> section in their documentation.</p>
+<p>Many view based classes (including <code>UIViewController</code>s) have their initialization split up into phases. First is the initialization phase where the pointer to the class instance is created (This is where you assign your default values to your properties and is generally in the classes <code>init</code> function). Next is when the actual representation of the view is loaded and attached to the view hierarchy. You see this with UIViews and UIViewControllers where these two phases are tightly coupled and call one after the other. So in scenarios where you need to populate a variable with a view’s property values directly after initialization, it is ok to use implicitly unwrapped optionals. Take this example of a <code>UIView</code> subclass created in Interface Builder:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KrakenView</span>: <span class="title">UIView</span> </span>&#123; </span><br><span class="line">        <span class="keyword">var</span> startingOrigin: <span class="type">CGPoint</span>! </span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">awakeFromNib</span>()</span> &#123; </span><br><span class="line">                <span class="keyword">super</span>.awakeFromNib() </span><br><span class="line">                startingOrigin <span class="operator">=</span> frame.origin </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this example, we need to hold on to the view’s starting point for whatever reason. The problem is, we can’t set the origin in the <code>init</code> function because the view won’t have an origin until it’s loaded in it’s second initialization phase - <code>awakeFromNib()</code>.</p>
 <h1 id="CONCLUSION"><a href="#CONCLUSION" class="headerlink" title="CONCLUSION"></a>CONCLUSION</h1><p>There are VERY few scenarios where it is ok to use implicitly unwrapped optionals. The nature of Swift is to encourage the developer to be as safe as possible, so it’s highly recommended that we default to using Swift’s Optional Type as much as possible in order to prevent crashes from sending messages to nil. So here’s to writing safer code!</p>
 <p>Happy coding fellow nerds!</p>
 
@@ -288,8 +298,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/06/06/POSIX/BSD socket/" rel="prev" title="BSD socket">
-      <i class="fa fa-chevron-left"></i> BSD socket
+    <a href="/2019/06/06/C++/%E6%8C%87%E9%92%88/" rel="prev" title="指针">
+      <i class="fa fa-chevron-left"></i> 指针
     </a></div>
       <div class="post-nav-item">
     <a href="/2019/06/12/Daily/2019-06-06/" rel="next" title="叔本华">
@@ -303,7 +313,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -311,7 +320,7 @@
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -354,14 +363,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#THE-IMPLICITLY-UNWRAPPED-OPTIONAL"><span class="nav-number">1.</span> <span class="nav-text">THE IMPLICITLY UNWRAPPED OPTIONAL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WHEN-TO-USE-IT"><span class="nav-number">2.</span> <span class="nav-text">WHEN TO USE IT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WHEN-REFERENCING-AN-OBJECT-FROM-INTERFACE-BUILDER"><span class="nav-number">2.1.</span> <span class="nav-text">WHEN REFERENCING AN OBJECT FROM INTERFACE BUILDER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHEN-INTERACTING-WITH-AN-EXTERNAL-FRAMEWORK-YOU-HAVE-NO-CONTROL-OF"><span class="nav-number">2.2.</span> <span class="nav-text">WHEN INTERACTING WITH AN EXTERNAL FRAMEWORK YOU HAVE NO CONTROL OF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHEN-YOU-HAVE-A-PROPERTY-THAT-CAN’T-BE-POPULATED-DURING-INITIALIZATION"><span class="nav-number">2.3.</span> <span class="nav-text">WHEN YOU HAVE A PROPERTY THAT CAN’T BE POPULATED DURING INITIALIZATION</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CONCLUSION"><span class="nav-number">3.</span> <span class="nav-text">CONCLUSION</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#THE-IMPLICITLY-UNWRAPPED-OPTIONAL"><span class="nav-number">1.</span> <span class="nav-text">THE IMPLICITLY UNWRAPPED OPTIONAL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WHEN-TO-USE-IT"><span class="nav-number">2.</span> <span class="nav-text">WHEN TO USE IT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WHEN-REFERENCING-AN-OBJECT-FROM-INTERFACE-BUILDER"><span class="nav-number">2.1.</span> <span class="nav-text">WHEN REFERENCING AN OBJECT FROM INTERFACE BUILDER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHEN-INTERACTING-WITH-AN-EXTERNAL-FRAMEWORK-YOU-HAVE-NO-CONTROL-OF"><span class="nav-number">2.2.</span> <span class="nav-text">WHEN INTERACTING WITH AN EXTERNAL FRAMEWORK YOU HAVE NO CONTROL OF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHEN-YOU-HAVE-A-PROPERTY-THAT-CAN%E2%80%99T-BE-POPULATED-DURING-INITIALIZATION"><span class="nav-number">2.3.</span> <span class="nav-text">WHEN YOU HAVE A PROPERTY THAT CAN’T BE POPULATED DURING INITIALIZATION</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CONCLUSION"><span class="nav-number">3.</span> <span class="nav-text">CONCLUSION</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Huanrong</p>
-  <div class="site-description" itemprop="description">芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。</div>
+  <p class="site-author-name" itemprop="name">HR</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -374,12 +383,14 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+          
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -401,19 +412,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+  <span class="author" itemprop="copyrightHolder">HR</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
@@ -433,9 +443,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

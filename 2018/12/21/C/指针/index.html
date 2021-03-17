@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,68 +13,52 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://caohr.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
-<meta name="keywords" content="C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指针">
-<meta property="og:url" content="http://caohr.com/2018/12/21/C/指针/index.html">
-<meta property="og:site_name" content="Huanrong">
+<meta property="og:url" content="http://example.com/2018/12/21/C/%E6%8C%87%E9%92%88/index.html">
+<meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.caohr.com/ImagesFolder/001.png">
-<meta property="og:updated_time" content="2018-12-21T07:45:30.000Z">
+<meta property="article:published_time" content="2018-12-21T07:45:30.000Z">
+<meta property="article:modified_time" content="2018-12-21T07:45:30.000Z">
+<meta property="article:author" content="HR">
+<meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="指针">
-<meta name="twitter:description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
 <meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/001.png">
 
-<link rel="canonical" href="http://caohr.com/2018/12/21/C/指针/">
+<link rel="canonical" href="http://example.com/2018/12/21/C/%E6%8C%87%E9%92%88/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
   };
 </script>
 
-  <title>指针 | Huanrong</title>
+  <title>指针 | HR's Blog</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-61905451-1');
+      }
+    </script>
 
 
 
@@ -112,18 +96,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Huanrong</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">iOSDev</p>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
@@ -131,25 +103,58 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HR's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -165,24 +170,23 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="default">
-    <link itemprop="mainEntityOfPage" href="http://caohr.com/2018/12/21/C/指针/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/21/C/%E6%8C%87%E9%92%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Huanrong">
-      <meta itemprop="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Huanrong">
+      <meta itemprop="name" content="HR's Blog">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -192,7 +196,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
@@ -200,13 +204,11 @@
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a>
                 </span>
             </span>
 
@@ -225,28 +227,39 @@
 <p>Variables that can store addresses are called pointers.</p>
 </blockquote>
 <p>指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。<br><img src="http://www.caohr.com/ImagesFolder/001.png" alt="001"></p>
-<a id="more"></a>
-<p>类型名为<code>void</code>表示没有指定类型，所以void<em>类型的指针可以包含任意类型的数据项地址。类型`void</em><code>常常用做参数类型，或以独立于类型的方式处理数据的函数的返回值类型。任意类型的指针都可以传送为</code>void<em><code>类型的值，在使用它时，再将其转换为合适的类型。例如, int类型变量的地址可以存储在</code>void</em><code>类型的指针变量中。要访问存储在</code>void<em><code>指针所指地址中的整数值，必须先把指针转化为</code>int </em>`类型。</p>
-<h2 id="申明指针"><a href="#申明指针" class="headerlink" title="申明指针"></a>申明指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *pnumber;</span><br><span class="line">int* pnumber;</span><br><span class="line">int *pnumber = NULL;  //指针变量可以和普通变量一起申明。</span><br><span class="line">double value, *pVal, fnum;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<p>类型名为<code>void</code>表示没有指定类型，所以void*类型的指针可以包含任意类型的数据项地址。类型<code>void*</code>常常用做参数类型，或以独立于类型的方式处理数据的函数的返回值类型。任意类型的指针都可以传送为<code>void*</code>类型的值，在使用它时，再将其转换为合适的类型。例如, int类型变量的地址可以存储在<code>void*</code>类型的指针变量中。要访问存储在<code>void*</code>指针所指地址中的整数值，必须先把指针转化为<code>int *</code>类型。</p>
+<h2 id="申明指针"><a href="#申明指针" class="headerlink" title="申明指针"></a>申明指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int *pnumber;</span><br><span class="line">int* pnumber;</span><br><span class="line">int *pnumber &#x3D; NULL;  &#x2F;&#x2F;指针变量可以和普通变量一起申明。</span><br><span class="line">double value, *pVal, fnum;   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>指针如果没有初始化比类型没有初始化更危险，因为有可能会覆盖该内存。<br><code>NULL</code>被定义在<code>stddef.h</code>,<code>stdlib.h</code>,<code>stdio.h</code>,<code>string.h</code>,<code>time.h</code>,<code>wchar.h</code>and<code>locale.h</code></p>
 <p><strong>给指针对象所指的变量赋值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int number = 99;</span><br><span class="line">int *pnumber = &amp;number;</span><br></pre></td></tr></table></figure>
-<h2 id="通过指针访问值"><a href="#通过指针访问值" class="headerlink" title="通过指针访问值"></a>通过指针访问值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int number = 15;</span><br><span class="line">int *pointer = &amp;number;</span><br><span class="line">int result = 0;</span><br><span class="line">reuslt = *pointer + 5;   //访问指针所指的值，需要在指针前面加*，否则就变成了操作pointer的地址上+5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int number &#x3D; 99;</span><br><span class="line">int *pnumber &#x3D; &amp;number;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="通过指针访问值"><a href="#通过指针访问值" class="headerlink" title="通过指针访问值"></a>通过指针访问值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int number &#x3D; 15;</span><br><span class="line">int *pointer &#x3D; &amp;number;</span><br><span class="line">int result &#x3D; 0;</span><br><span class="line">reuslt &#x3D; *pointer + 5;   &#x2F;&#x2F;访问指针所指的值，需要在指针前面加*，否则就变成了操作pointer的地址上+5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><strong>示例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int number = 0;</span><br><span class="line">int *pnumber = NULL;</span><br><span class="line"></span><br><span class="line">number = 10;</span><br><span class="line">printf(&quot;number&apos;s address: %p\n&quot;, &amp;number);</span><br><span class="line">printf(&quot;number&apos;s value: %d\n\n&quot;, number);</span><br><span class="line"></span><br><span class="line">pnumber = &amp;number;</span><br><span class="line"></span><br><span class="line">printf(&quot;pnumber&apos;s address:%p\n&quot;, (void*)&amp;pnumber);</span><br><span class="line">printf(&quot;pnumber&apos;s size: %zd bytes\n&quot;, sizeof(pnumber));</span><br><span class="line">printf(&quot;pnumber&apos;s value: %p\n&quot;, pnumber);</span><br><span class="line">printf(&quot;value pointed to: %d\n&quot;, *pnumber);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">number&apos;s address: 0x7ffeefbff5c4          //打印number的地址</span><br><span class="line">number&apos;s value: 10                                     //打印number的值</span><br><span class="line"></span><br><span class="line">pnumber&apos;s address:0x7ffeefbff5b8         //打印pnumber自己本身的地址</span><br><span class="line">pnumber&apos;s size: 8 bytes                             //打印pnumber变量的大小，这里是8是因为用的64位的系统，每个byte是8位</span><br><span class="line">pnumber&apos;s value: 0x7ffeefbff5c4             //打印pnumber村粗的值，因为pnumber指向number所以他存储的值就是number的地址。</span><br><span class="line">value pointed to: 10                                    //打印pnumber所指参数的值。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int number &#x3D; 0;</span><br><span class="line">int *pnumber &#x3D; NULL;</span><br><span class="line"></span><br><span class="line">number &#x3D; 10;</span><br><span class="line">printf(&quot;number&#39;s address: %p\n&quot;, &amp;number);</span><br><span class="line">printf(&quot;number&#39;s value: %d\n\n&quot;, number);</span><br><span class="line"></span><br><span class="line">pnumber &#x3D; &amp;number;</span><br><span class="line"></span><br><span class="line">printf(&quot;pnumber&#39;s address:%p\n&quot;, (void*)&amp;pnumber);</span><br><span class="line">printf(&quot;pnumber&#39;s size: %zd bytes\n&quot;, sizeof(pnumber));</span><br><span class="line">printf(&quot;pnumber&#39;s value: %p\n&quot;, pnumber);</span><br><span class="line">printf(&quot;value pointed to: %d\n&quot;, *pnumber);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">number&#39;s address: 0x7ffeefbff5c4          &#x2F;&#x2F;打印number的地址</span><br><span class="line">number&#39;s value: 10                                     &#x2F;&#x2F;打印number的值</span><br><span class="line"></span><br><span class="line">pnumber&#39;s address:0x7ffeefbff5b8         &#x2F;&#x2F;打印pnumber自己本身的地址</span><br><span class="line">pnumber&#39;s size: 8 bytes                             &#x2F;&#x2F;打印pnumber变量的大小，这里是8是因为用的64位的系统，每个byte是8位</span><br><span class="line">pnumber&#39;s value: 0x7ffeefbff5c4             &#x2F;&#x2F;打印pnumber村粗的值，因为pnumber指向number所以他存储的值就是number的地址。</span><br><span class="line">value pointed to: 10                                    &#x2F;&#x2F;打印pnumber所指参数的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><code>pnumber</code> 访问是pnumber自己的参数，也就是pnumber所指的参数的地址。<br><code>*pnumber</code>访问pnumber所指地址参数的值<br><code>&amp;pnumber</code>访问pnumber自己的地址值。<br>The effect of the <code>*</code> operator is to access the data contained in the address stored at pnumber.<br>The <code>*</code>operator is called the <code>indirection operator</code> or sometimes the dereferencing operator.</p>
-<p>The cast to <strong>void*</strong> is to prevent a possible warning from the compiler.</p>
-<h2 id="使用指针"><a href="#使用指针" class="headerlink" title="使用指针"></a>使用指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">long num1 = 0L;</span><br><span class="line">long num2 = 0L;</span><br><span class="line">long *pnum = NULL;</span><br><span class="line"></span><br><span class="line">pnum = &amp;num1;                   </span><br><span class="line">*pnum = 2L;         </span><br><span class="line">++num2;</span><br><span class="line">num2 += *pnum;</span><br><span class="line"></span><br><span class="line">pnum = &amp;num2;</span><br><span class="line">++*pnum;</span><br><span class="line"></span><br><span class="line">printf(&quot;num1 = %ld num2 = %ld *pnum = %ld *pnum + num2 = %ld\n&quot;, num1, num2, *pnum, *pnum + num2);</span><br><span class="line">//num1 = 2 num2 = 4 *pnum = 4 *pnum + num2 = 8</span><br></pre></td></tr></table></figure>
+<p>The cast to <strong>void</strong>* is to prevent a possible warning from the compiler.</p>
+<h2 id="使用指针"><a href="#使用指针" class="headerlink" title="使用指针"></a>使用指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">long num1 &#x3D; 0L;</span><br><span class="line">long num2 &#x3D; 0L;</span><br><span class="line">long *pnum &#x3D; NULL;</span><br><span class="line"></span><br><span class="line">pnum &#x3D; &amp;num1;                   </span><br><span class="line">*pnum &#x3D; 2L;         </span><br><span class="line">++num2;</span><br><span class="line">num2 +&#x3D; *pnum;</span><br><span class="line"></span><br><span class="line">pnum &#x3D; &amp;num2;</span><br><span class="line">++*pnum;</span><br><span class="line"></span><br><span class="line">printf(&quot;num1 &#x3D; %ld num2 &#x3D; %ld *pnum &#x3D; %ld *pnum + num2 &#x3D; %ld\n&quot;, num1, num2, *pnum, *pnum + num2);</span><br><span class="line">&#x2F;&#x2F;num1 &#x3D; 2 num2 &#x3D; 4 *pnum &#x3D; 4 *pnum + num2 &#x3D; 8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>表达式<code>++*pnum</code>递增了<code>pnum</code>指向的值。但如果要使用后置的形式，必须写成<code>(*pnum)++</code>。括号很重要，它指定要递增的是数值，而不是地址。这是因为运算符<code>++</code>和一元运算符<code>&amp;</code>的优先级相同，且都是从左到右计算的。</p>
 </blockquote>
 <p><strong>测试NULL指针</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int *pvalue = NULL;</span><br><span class="line">int *pvalue = 0;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int *pvalue &#x3D; NULL;</span><br><span class="line">int *pvalue &#x3D; 0;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><code>NULL</code>在C语言中是一个特俗的常量，它相当于数字0的指针。<code>NULL</code>常量定义为<code>((void*))0</code>。给指针赋予0时，就等于它设为<code>NULL</code>。</p>
-<h2 id="指向常量的指针"><a href="#指向常量的指针" class="headerlink" title="指向常量的指针"></a>指向常量的指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">long value = 99999L;</span><br><span class="line">const long *pvalue = &amp;value;      //定义的pvalue指针无法修改value的值，但是可以改变pvalue指向别的变量地址。通过value还是可以修改。只是不能通过value这个指针修改。</span><br></pre></td></tr></table></figure>
-<h2 id="常量指针"><a href="#常量指针" class="headerlink" title="常量指针"></a>常量指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int count = 43;</span><br><span class="line">int *const pcount = &amp;count;    指针存储的地址不能改变，但是可以改变pcount所存储地址的变量的值。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const long *const kcount = &amp;value:  //定义的kcount指针既不能修改kcount指向的值，也不能修改指向的内存地址。</span><br></pre></td></tr></table></figure>
+<h2 id="指向常量的指针"><a href="#指向常量的指针" class="headerlink" title="指向常量的指针"></a>指向常量的指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">long value &#x3D; 99999L;</span><br><span class="line">const long *pvalue &#x3D; &amp;value;      &#x2F;&#x2F;定义的pvalue指针无法修改value的值，但是可以改变pvalue指向别的变量地址。通过value还是可以修改。只是不能通过value这个指针修改。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="常量指针"><a href="#常量指针" class="headerlink" title="常量指针"></a>常量指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int count &#x3D; 43;</span><br><span class="line">int *const pcount &#x3D; &amp;count;    指针存储的地址不能改变，但是可以改变pcount所存储地址的变量的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const long *const kcount &#x3D; &amp;value:  &#x2F;&#x2F;定义的kcount指针既不能修改kcount指向的值，也不能修改指向的内存地址。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><strong>指针的命名</strong><br>因为在C中很那区分哪个是指针，哪个是变量。那么如果是指针的话，可以在前面加<code>p</code>作为针名的第一个字母。</p>
 
     </div>
@@ -266,12 +279,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/12/21/Swift/Access Control/" rel="prev" title="Access Control">
-      <i class="fa fa-chevron-left"></i> Access Control
+    <a href="/2018/12/21/Daily/2018-06-25/" rel="prev" title="2018-6-22">
+      <i class="fa fa-chevron-left"></i> 2018-6-22
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/04/28/C++/指针/" rel="next" title="指针">
-      指针 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/06/06/Daily/2018-11-27/" rel="next" title="2018-6-28">
+      2018-6-28 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -281,7 +294,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -289,7 +301,7 @@
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -332,14 +344,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#申明指针"><span class="nav-number">1.</span> <span class="nav-text">申明指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过指针访问值"><span class="nav-number">2.</span> <span class="nav-text">通过指针访问值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用指针"><span class="nav-number">3.</span> <span class="nav-text">使用指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指向常量的指针"><span class="nav-number">4.</span> <span class="nav-text">指向常量的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量指针"><span class="nav-number">5.</span> <span class="nav-text">常量指针</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B3%E6%98%8E%E6%8C%87%E9%92%88"><span class="nav-number">1.</span> <span class="nav-text">申明指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">通过指针访问值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88"><span class="nav-number">3.</span> <span class="nav-text">使用指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%90%91%E5%B8%B8%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88"><span class="nav-number">4.</span> <span class="nav-text">指向常量的指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88"><span class="nav-number">5.</span> <span class="nav-text">常量指针</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Huanrong</p>
-  <div class="site-description" itemprop="description">芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。</div>
+  <p class="site-author-name" itemprop="name">HR</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -352,12 +364,14 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+          
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -379,19 +393,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+  <span class="author" itemprop="copyrightHolder">HR</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
@@ -411,9 +424,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 

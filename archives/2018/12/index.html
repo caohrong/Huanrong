@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,64 +13,45 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('http://caohr.com').hostname,
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-  <meta name="description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Huanrong">
-<meta property="og:url" content="http://caohr.com/archives/2018/12/index.html">
-<meta property="og:site_name" content="Huanrong">
-<meta property="og:description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
-<meta property="og:locale" content="default">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="HR&#39;s Blog">
+<meta property="og:url" content="http://example.com/archives/2018/12/index.html">
+<meta property="og:site_name" content="HR&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="HR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Huanrong">
-<meta name="twitter:description" content="芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。">
 
-<link rel="canonical" href="http://caohr.com/archives/2018/12/">
+<link rel="canonical" href="http://example.com/archives/2018/12/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: false
+    isHome : false,
+    isPost : false,
+    lang   : 'en'
   };
 </script>
 
-  <title>Archive | Huanrong</title>
+  <title>Archive | HR's Blog</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-61905451-1');
+      }
+    </script>
 
 
 
@@ -108,18 +89,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Huanrong</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">iOSDev</p>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
@@ -127,25 +96,58 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HR's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -161,7 +163,7 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content archive">
             
 
   
@@ -176,7 +178,7 @@
 
       
     <div class="collection-year">
-      <h1 class="collection-header">2018</h1>
+      <span class="collection-header">2018</span>
     </div>
 
   <article itemscope itemtype="http://schema.org/Article">
@@ -190,11 +192,11 @@
         </time>
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/12/21/C/指针/" itemprop="url">
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/C/%E6%8C%87%E9%92%88/" itemprop="url">
             <span itemprop="name">指针</span>
           </a>
-      </h2>
+      </div>
 
     </header>
   </article>
@@ -210,11 +212,51 @@
         </time>
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/12/21/Swift/Access Control/" itemprop="url">
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Daily/2018-06-25/" itemprop="url">
+            <span itemprop="name">2018-6-22</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Daily/2018-06-28/" itemprop="url">
+            <span itemprop="name">2018-6-28</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/Access%20Control/" itemprop="url">
             <span itemprop="name">Access Control</span>
           </a>
-      </h2>
+      </div>
 
     </header>
   </article>
@@ -230,11 +272,11 @@
         </time>
       </div>
 
-      <h2 class="post-title">
+      <div class="post-title">
           <a class="post-title-link" href="/2018/12/21/Swift/Defer/" itemprop="url">
             <span itemprop="name">Defer</span>
           </a>
-      </h2>
+      </div>
 
     </header>
   </article>
@@ -250,31 +292,11 @@
         </time>
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/12/21/Swift/Magical Error Handling in Swift/" itemprop="url">
-            <span itemprop="name">Magical Error Handling in Swift</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-12-21T15:12:43+08:00"
-              content="2018-12-21">
-          12-21
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/12/21/Swift/Factory  Pattern/" itemprop="url">
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/Factory%20%20Pattern/" itemprop="url">
             <span itemprop="name">Factory  Pattern</span>
           </a>
-      </h2>
+      </div>
 
     </header>
   </article>
@@ -290,11 +312,11 @@
         </time>
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/12/21/Swift/Introducing Protocol-Oriented Programming in Swift 3/" itemprop="url">
-            <span itemprop="name">Introducing Protocol-Oriented Programming in Swift 3</span>
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/JSON/" itemprop="url">
+            <span itemprop="name">JSON</span>
           </a>
-      </h2>
+      </div>
 
     </header>
   </article>
@@ -310,11 +332,51 @@
         </time>
       </div>
 
-      <h2 class="post-title">
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/Mutating/" itemprop="url">
+            <span itemprop="name">Mutating</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/Pattern%20matching/" itemprop="url">
+            <span itemprop="name">Pattern matching</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
           <a class="post-title-link" href="/2018/12/21/Swift/Protocol/" itemprop="url">
             <span itemprop="name">Protocol</span>
           </a>
-      </h2>
+      </div>
 
     </header>
   </article>
@@ -330,51 +392,91 @@
         </time>
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/12/21/Swift/Pattern matching/" itemprop="url">
-            <span itemprop="name">Pattern matching</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-12-21T15:12:43+08:00"
-              content="2018-12-21">
-          12-21
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/12/21/Swift/Pattern Matching in Swift/" itemprop="url">
-            <span itemprop="name">Pattern Matching in Swift</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-12-21T15:12:43+08:00"
-              content="2018-12-21">
-          12-21
-        </time>
-      </div>
-
-      <h2 class="post-title">
+      <div class="post-title">
           <a class="post-title-link" href="/2018/12/21/Swift/Singleton/" itemprop="url">
             <span itemprop="name">Singleton</span>
           </a>
-      </h2>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/String/" itemprop="url">
+            <span itemprop="name">String</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/Swift%20Tip%20Notifications/" itemprop="url">
+            <span itemprop="name">Swift Tip: Notifications</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/UTF8/" itemprop="url">
+            <span itemprop="name">UTF-8</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2018-12-21T15:12:43+08:00"
+              content="2018-12-21">
+          12-21
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2018/12/21/Swift/Unicode/" itemprop="url">
+            <span itemprop="name">Unicode</span>
+          </a>
+      </div>
 
     </header>
   </article>
@@ -398,7 +500,7 @@
 
 <script>
   window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
+    let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
@@ -446,8 +548,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Huanrong</p>
-  <div class="site-description" itemprop="description">芝蘭生於深谷，不以無人而不芳；君子修道立德，不為困窮而改節。</div>
+  <p class="site-author-name" itemprop="name">HR</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -460,12 +562,14 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+          
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -487,19 +591,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Huanrong</span>
+  <span class="author" itemprop="copyrightHolder">HR</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
@@ -519,9 +622,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
