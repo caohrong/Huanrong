@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://example.com/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的stored properties函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale">
 <meta property="og:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-0.png">
 <meta property="og:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-3-480x45.png">
 <meta property="og:image" content="http://www.caohr.com/ImagesFolder/SwiftInitInDepth-2.png">
@@ -50,7 +50,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'en'
+    lang   : 'cn'
   };
 </script>
 
@@ -117,6 +117,7 @@
       <h1 class="site-title">HR's Blog</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">Swimming 🏊 in the sea🌊of code!</p>
   </div>
 
   <div class="site-nav-right">
@@ -182,13 +183,13 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -437,10 +438,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2018/12/21/Swift/StackView/" rel="next" title="UIStackView Tutorial Introducing Stack Views">
-      UIStackView Tutorial Introducing Stack Views <i class="fa fa-chevron-right"></i>
+    <a href="/2018/12/21/Swift/Access%20Control/" rel="prev" title="Access Control">
+      <i class="fa fa-chevron-left"></i> Access Control
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/12/21/Daily/2018-06-28/" rel="next" title="2018-6-28">
+      2018-6-28 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -507,7 +511,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">HR</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">Swimming 🏊 in the sea🌊of code!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
