@@ -7,9 +7,9 @@ import json
 from datetime import datetime
 #from ImageProcess import Graphics
 
-class Graphics:  
+class Graphics:
     '''图片处理类
-    
+
     参数
     -------
     infile: 输入文件路径
@@ -19,69 +19,69 @@ class Graphics:
         self.infile = infile
         self.outfile = outfile
 
-    def fixed_size(self, width, height):  
-        """按照固定尺寸处理图片"""  
-        im = Image.open(self.infile)  
-        out = im.resize((width, height),Image.ANTIALIAS)  
-        out.save(self.outfile)  
+    def fixed_size(self, width, height):
+        """按照固定尺寸处理图片"""
+        im = Image.open(self.infile)
+        out = im.resize((width, height),Image.ANTIALIAS)
+        out.save(self.outfile)
 
 
-    def resize_by_width(self, w_divide_h):  
-        """按照宽度进行所需比例缩放"""  
-        im = Image.open(self.infile)  
-        (x, y) = im.size   
-        x_s = x  
-        y_s = x/w_divide_h  
-        out = im.resize((x_s, y_s), Image.ANTIALIAS)   
-        out.save(self.outfile)  
+    def resize_by_width(self, w_divide_h):
+        """按照宽度进行所需比例缩放"""
+        im = Image.open(self.infile)
+        (x, y) = im.size
+        x_s = x
+        y_s = x/w_divide_h
+        out = im.resize((x_s, y_s), Image.ANTIALIAS)
+        out.save(self.outfile)
 
 
-    def resize_by_height(self, w_divide_h):  
-        """按照高度进行所需比例缩放"""  
-        im = Image.open(self.infile)  
-        (x, y) = im.size   
-        x_s = y*w_divide_h  
-        y_s = y  
-        out = im.resize((x_s, y_s), Image.ANTIALIAS)   
-        out.save(self.outfile)  
+    def resize_by_height(self, w_divide_h):
+        """按照高度进行所需比例缩放"""
+        im = Image.open(self.infile)
+        (x, y) = im.size
+        x_s = y*w_divide_h
+        y_s = y
+        out = im.resize((x_s, y_s), Image.ANTIALIAS)
+        out.save(self.outfile)
 
 
-    def resize_by_size(self, size):  
-        """按照生成图片文件大小进行处理(单位KB)"""  
-        size *= 1024  
-        im = Image.open(self.infile)  
-        size_tmp = os.path.getsize(self.infile)  
-        q = 100  
-        while size_tmp > size and q > 0:  
-            print (q)  
-            out = im.resize(im.size, Image.ANTIALIAS)  
-            out.save(self.outfile, quality=q)  
-            size_tmp = os.path.getsize(self.outfile)  
-            q -= 5  
-        if q == 100:  
-            shutil.copy(self.infile, self.outfile)  
+    def resize_by_size(self, size):
+        """按照生成图片文件大小进行处理(单位KB)"""
+        size *= 1024
+        im = Image.open(self.infile)
+        size_tmp = os.path.getsize(self.infile)
+        q = 100
+        while size_tmp > size and q > 0:
+            print (q)
+            out = im.resize(im.size, Image.ANTIALIAS)
+            out.save(self.outfile, quality=q)
+            size_tmp = os.path.getsize(self.outfile)
+            q -= 5
+        if q == 100:
+            shutil.copy(self.infile, self.outfile)
 
-  
-    def cut_by_ratio(self):  
+
+    def cut_by_ratio(self):
         """按照图片长宽进行分割
-        
+
         ------------
         取中间的部分，裁剪成正方形
-        """  
-        im = Image.open(self.infile)  
-        (x, y) = im.size  
-        if x > y:  
-            region = (int(x/2-y/2), 0, int(x/2+y/2), y)  
-            #裁切图片  
-            crop_img = im.crop(region)  
-            #保存裁切后的图片  
-            crop_img.save(self.outfile)             
-        elif x < y:  
+        """
+        im = Image.open(self.infile)
+        (x, y) = im.size
+        if x > y:
+            region = (int(x/2-y/2), 0, int(x/2+y/2), y)
+            #裁切图片
+            crop_img = im.crop(region)
+            #保存裁切后的图片
+            crop_img.save(self.outfile)
+        elif x < y:
             region = (0, int(y/2-x/2), x, int(y/2+x/2))
-            #裁切图片  
-            crop_img = im.crop(region)  
-            #保存裁切后的图片  
-            crop_img.save(self.outfile)       
+            #裁切图片
+            crop_img = im.crop(region)
+            #保存裁切后的图片
+            crop_img.save(self.outfile)
 
 
 # 定义压缩比，数值越大，压缩越小
@@ -126,7 +126,7 @@ def print_help():
 
 def compress(choose, des_dir, src_dir, file_list):
     """压缩算法，img.thumbnail对图片进行压缩，
-    
+
     参数
     -----------
     choose: str
@@ -150,7 +150,7 @@ def compress_photo():
     '''调用压缩图片的函数
     '''
     src_dir, des_dir = "photos/", "min_photos/"
-    
+
     if directory_exists(src_dir):
         if not directory_exists(src_dir):
             make_directory(src_dir)
@@ -170,7 +170,7 @@ def compress_photo():
 
 def handle_photo():
     '''根据图片的文件名处理成需要的json格式的数据
-    
+
     -----------
     最后将data.json文件存到博客的source/photos文件夹下
     '''
@@ -183,7 +183,7 @@ def handle_photo():
         info='_'.join(info)
         info, _ = info.split(".")
         date = datetime.strptime(date_str, "%Y-%m-%d")
-        year_month = date_str[0:7]            
+        year_month = date_str[0:7]
         if i == 0:  # 处理第一个文件
             new_dict = {"date": year_month, "arr":{'year': date.year,
                                                                    'month': date.month,
@@ -191,7 +191,7 @@ def handle_photo():
                                                                    'text': [info],
                                                                    'type': ['image']
                                                                    }
-                                        } 
+                                        }
             list_info.append(new_dict)
         elif year_month != list_info[-1]['date']:  # 不是最后的一个日期，就新建一个dict
             new_dict = {"date": year_month, "arr":{'year': date.year,
@@ -208,11 +208,11 @@ def handle_photo():
             list_info[-1]['arr']['type'].append('image')
     list_info.reverse()  # 翻转
     final_dict = {"list": list_info}
-    with open("E:/malizhiBlog/blog/themes/next/source/lib/album/data.json","w") as fp:
+    with open("/Volumes/Huanrong\'s\ SD/HRBlog/Huanrong/lib/album/data.json","w") as fp:
         json.dump(final_dict, fp)
 def cut_photo():
     """裁剪算法
-    
+
     ----------
     调用Graphics类中的裁剪算法，将src_dir目录下的文件进行裁剪（裁剪成正方形）
     """
@@ -227,16 +227,16 @@ def cut_photo():
             print_help()
             for infile in file_list:
                 img = Image.open(src_dir+infile)
-                Graphics(infile=src_dir+infile, outfile=src_dir + infile).cut_by_ratio()            
+                Graphics(infile=src_dir+infile, outfile=src_dir + infile).cut_by_ratio()
         else:
             pass
     else:
-        print("source directory not exist!")     
+        print("source directory not exist!")
 
 
 
 def git_operation():
-    
+
     os.system('git add --all')
     os.system('git commit -m "add photos"')
     os.system('git push origin master')
@@ -249,7 +249,4 @@ def git_operation():
 cut_photo()        # 裁剪图片，裁剪成正方形，去中间部分
 compress_photo()   # 压缩图片，并保存到mini_photos文件夹下
 git_operation()    # 提交到github仓库
-handle_photo()     # 将文件处理成json格式，存到博客仓库中   
-    
-    
-    
+handle_photo()     # 将文件处理成json格式，存到博客仓库中
