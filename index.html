@@ -194,6 +194,232 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/" class="post-title-link" itemprop="url">ELF格式解析2-ELF Section Header Table</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-19 22:54:29" itemprop="dateCreated datePublished" datetime="2021-03-19T22:54:29+08:00">2021-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-21 14:56:51" itemprop="dateModified" datetime="2021-03-21T14:56:51+08:00">2021-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-System/" itemprop="url" rel="index"><span itemprop="name">Computer System</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/19/Computer System/ELF格式解析2-ELF Section Header Table/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>ELF头(ELF header) - 描述文件的主要特性：类型，CPU架构，入口地址，现有部分的大小和偏移等等；</p>
+<h2 id="ELF-Section-Header-Table"><a href="#ELF-Section-Header-Table" class="headerlink" title="ELF Section Header Table"></a>ELF Section Header Table</h2><p>你可以在内核源码种找到表示ELF64 header的结构体 <code>elf64_hdr</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">elf64_hdr</span> &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span>	e_ident[EI_NIDENT];</span><br><span class="line">	Elf64_Half e_type;</span><br><span class="line">	Elf64_Half e_machine;</span><br><span class="line">	Elf64_Word e_version;</span><br><span class="line">	Elf64_Addr e_entry;</span><br><span class="line">	Elf64_Off e_phoff;</span><br><span class="line">	Elf64_Off e_shoff;</span><br><span class="line">	Elf64_Word e_flags;</span><br><span class="line">	Elf64_Half e_ehsize;</span><br><span class="line">	Elf64_Half e_phentsize;</span><br><span class="line">	Elf64_Half e_phnum;</span><br><span class="line">	Elf64_Half e_shentsize;</span><br><span class="line">	Elf64_Half e_shnum;</span><br><span class="line">	Elf64_Half e_shstrndx;</span><br><span class="line">&#125; Elf64_Ehdr;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这个结构体定义在 <a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/elf.h#L220">elf.h</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># readelf -h prog</span><br><span class="line">ELF Header:</span><br><span class="line">  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00</span><br><span class="line">  Class:                             ELF64</span><br><span class="line">  Data:                              2&#39;s complement, little endian</span><br><span class="line">  Version:                           1 (current)</span><br><span class="line">  OS&#x2F;ABI:                            UNIX - System V</span><br><span class="line">  ABI Version:                       0</span><br><span class="line">  Type:                              EXEC (Executable file)</span><br><span class="line">  Machine:                           Advanced Micro Devices X86-64</span><br><span class="line">  Version:                           0x1</span><br><span class="line">  Entry point address:               0x400400</span><br><span class="line">  Start of program headers:          64 (bytes into file)</span><br><span class="line">  Start of section headers:          6480 (bytes into file)</span><br><span class="line">  Flags:                             0x0</span><br><span class="line">  Size of this header:               64 (bytes)</span><br><span class="line">  Size of program headers:           56 (bytes)</span><br><span class="line">  Number of program headers:         9</span><br><span class="line">  Size of section headers:           64 (bytes)</span><br><span class="line">  Number of section headers:         30</span><br><span class="line">  Section header string table index: 29</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">成员</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">e_ident</td>
+<td align="left">Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Class: ELF64</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">可执行与可链接格式 (Executable and Linkable Format)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Data: 2’s complement, little end</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Version: 1(current)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">OS/ABI: UNIX - System V</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ABI Version: 0</td>
+</tr>
+<tr>
+<td align="left">e_type</td>
+<td align="left">Type: EXEC (Executable file)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ELF文件类型</td>
+</tr>
+<tr>
+<td align="left">e_machine</td>
+<td align="left">Machine: Advanced Micro Devices X86-64</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ELF文件的CPI平台属性</td>
+</tr>
+<tr>
+<td align="left">e_version</td>
+<td align="left">Version: 0x1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ELF版本号。一般为常数1</td>
+</tr>
+<tr>
+<td align="left">e_entry</td>
+<td align="left">Entry point address: 0x400400</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">入口地址，规定ELF程序的入口虚拟地址，操作系统在加载完该程序后从这个地址开始执行进程的指令。可重定位指令一般没有入口地址，则该值为0</td>
+</tr>
+<tr>
+<td align="left">e_phoff</td>
+<td align="left">Start of program headers: 64(bytes into file)</td>
+</tr>
+<tr>
+<td align="left">e_shoff</td>
+<td align="left">Start of section headers: 6480 (bytes into file)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Section Header Table 在文件中的偏移</td>
+</tr>
+<tr>
+<td align="left">e_flags</td>
+<td align="left">Flags: 0x0</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ELF标志位，用来标识一些ELF文件平台相关的属性。</td>
+</tr>
+<tr>
+<td align="left">e_ehsize</td>
+<td align="left">Size of this header: 64 (bytes)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">ELF Header本身的大小</td>
+</tr>
+<tr>
+<td align="left">e_phentsize</td>
+<td align="left">Size of program headers: 56 (bytes)</td>
+</tr>
+<tr>
+<td align="left">e_phnum</td>
+<td align="left">Number of program headers: 9</td>
+</tr>
+<tr>
+<td align="left">e_shentsize</td>
+<td align="left">Size of section headers: 64 (bytes)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">单个Section Header大小</td>
+</tr>
+<tr>
+<td align="left">e_shnum</td>
+<td align="left">Number of section headers: 30</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Section Header的数量</td>
+</tr>
+<tr>
+<td align="left">e_shstrndx</td>
+<td align="left">Section header string table index: 29</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Section Header字符串表在Section Header Table中的索引</td>
+</tr>
+</tbody></table>
+<h3 id="Magic-Number"><a href="#Magic-Number" class="headerlink" title="Magic Number"></a>Magic Number</h3><p>魔数广泛的存在文件中，用开头的几个字节表示文件的类型。如：ELF的可执行文件格式的头4个字节为<code>0x7F</code>、<code>e</code>、<code>l</code>、<code>f</code>；Java的可执行文件格式的头4个字节为<code>c</code>、<code>a</code>、<code>f</code>、<code>e</code>；<br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Magic_number_(programming)">Magic number (programming) on Wiki</a></p>
+<h3 id="大小关系"><a href="#大小关系" class="headerlink" title="大小关系"></a>大小关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------【ELF文件开始】</span><br><span class="line">----------------------------------------ELF Header</span><br><span class="line">Size of this header: 64 (bytes) </span><br><span class="line">----------------------------------------Start of program headers: 64</span><br><span class="line">Size of program headers: 56 (bytes)</span><br><span class="line">x</span><br><span class="line">Number of program headers: 9</span><br><span class="line">----------------------------------------Section</span><br><span class="line">Size of section headers: 64</span><br><span class="line">x</span><br><span class="line">Number of section headers: 30</span><br><span class="line">----------------------------------------Start of section headers: 6480</span><br><span class="line">Section Header Table</span><br><span class="line">-------------------------------------------------【ELF文件结束】</span><br></pre></td></tr></table></figure>
+
+<p>这里有个地方没有明白：<br>Start of section headers = Size of this header + Size of program headers x Number of program headers + Size of section header X Number of section headers.<br>但是实际不相等</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a target="_blank" rel="noopener" href="https://www.cntofu.com/book/114/Theory/ELF.md">1.ELF文件格式</a><br><a href="">2.</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -217,10 +443,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-19 21:13:01 / Modified: 21:16:22" itemprop="dateCreated datePublished" datetime="2021-03-19T21:13:01+08:00">2021-03-19</time>
+              <time title="Created: 2021-03-19 21:13:01" itemprop="dateCreated datePublished" datetime="2021-03-19T21:13:01+08:00">2021-03-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-21 14:54:49" itemprop="dateModified" datetime="2021-03-21T14:54:49+08:00">2021-03-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -298,10 +530,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-19 21:10:23 / Modified: 21:55:00" itemprop="dateCreated datePublished" datetime="2021-03-19T21:10:23+08:00">2021-03-19</time>
+              <time title="Created: 2021-03-19 21:10:23" itemprop="dateCreated datePublished" datetime="2021-03-19T21:10:23+08:00">2021-03-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-22 08:31:06" itemprop="dateModified" datetime="2021-03-22T08:31:06+08:00">2021-03-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -615,7 +853,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -629,7 +867,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/19/Computer%20System/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">ELF文件结构</a>
+            <a href="/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/" class="post-title-link" itemprop="url">ELF格式解析1-Object Files</a>
         </h2>
 
         <div class="post-meta">
@@ -638,10 +876,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-19 11:17:58 / Modified: 21:01:54" itemprop="dateCreated datePublished" datetime="2021-03-19T11:17:58+08:00">2021-03-19</time>
+              <time title="Created: 2021-03-19 11:17:58" itemprop="dateCreated datePublished" datetime="2021-03-19T11:17:58+08:00">2021-03-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-21 14:54:49" itemprop="dateModified" datetime="2021-03-21T14:54:49+08:00">2021-03-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -661,8 +905,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/03/19/Computer%20System/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/19/Computer System/ELF文件格式/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/19/Computer System/ELF格式解析1-Object Files/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -677,8 +921,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>可执行文件的格式</p>
-
+          <h2 id="动态库类型"><a href="#动态库类型" class="headerlink" title="动态库类型"></a>动态库类型</h2><p>目标文件有三种格式：</p>
+<ul>
+<li><p>可重定位目标文件<br>包含二进制代码和数据，其形式可以在编译时与其他可重新定位的目标文件合并起来，创建一个可执行目标文件，自己本身没有办法独立运行。在iOS开发中，接触到.a的文件都属于这种类型的目标文件。可以直接打包进App中，不需要动态链接。</p>
+</li>
+<li><p>可执行目标文件<br>包含二进制代码和数据，其形式可以直接复制到内存并执行。也就是我们最终使用的可执行文件，或者App本身。</p>
+</li>
+<li><p>共享目标文件<br>一种特殊类型的可重定位目标文件，可以在加载或者运行时被动态加载进内存并链接。对应的就是iOS中Framework的动态库，但是iOS中Framework的动态库分两种情况：</p>
+<ul>
+<li>第一种：是系统的级的动态库，这种动态库可以保证在多个App引用相同类型的动态库的时候，通过虚拟内存技术，该动态库只在内存中存在一份。平时我们看到的UIKit之类的都属于系统级别的动态库。</li>
+<li>第二种：是开发者自己编译的动态库，这种动态库虽然也是在App运行的时候链接，但是苹果并不会保证该动态库多个App都使用的时候内存中只存在一份。因为该动态库只在App自己沙盒中，无法共享给其他应用使用，动态库在打包后也会被打包进各自的App中，但是当有Watch或者Extension的项目的时候，可以达到共享的目的。</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -780,6 +1043,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/19/Computer%20System/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">ELF文件结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-19 11:17:58 / Modified: 21:01:54" itemprop="dateCreated datePublished" datetime="2021-03-19T11:17:58+08:00">2021-03-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-System/" itemprop="url" rel="index"><span itemprop="name">Computer System</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/03/19/Computer%20System/ELF%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/19/Computer System/ELF文件格式/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>可执行文件的格式</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/10/06/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -811,7 +1156,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-18 12:23:18" itemprop="dateModified" datetime="2021-03-18T12:23:18+08:00">2021-03-18</time>
+                <time title="Modified: 2021-03-19 11:12:53" itemprop="dateModified" datetime="2021-03-19T11:12:53+08:00">2021-03-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -852,195 +1197,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/10/06/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/17/POSIX/BSD%20socket/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/17/POSIX/BSD%20socket/" class="post-title-link" itemprop="url">BSD socket</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-17 18:57:24" itemprop="dateCreated datePublished" datetime="2019-06-17T18:57:24+08:00">2019-06-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-18 09:19:11" itemprop="dateModified" datetime="2021-03-18T09:19:11+08:00">2021-03-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/POSIX/" itemprop="url" rel="index"><span itemprop="name">POSIX</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2019/06/17/POSIX/BSD%20socket/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/17/POSIX/BSD socket/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>BSD socket也叫做伯克利套接字</p>
-<p>通讯domain:</p>
-<ul>
-<li>UNIX(AF_UNIX) domain允许在同一主机上的应用程序之间进行通讯。（POSIX.1g使用名称AF_LOCAL作为AF_UNIX的同义词，但SUSv3并没有使用这个名称。）</li>
-<li>IPv4(AF_INET) domain允许在使用IPv4网络链接起来的主机上的应用程序之间进行通讯。</li>
-<li>IPv6(AF_INET6) domain允许在使用IPv6被设计成了IPv4的</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/17/POSIX/BSD%20socket/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/17/iOS/weakSelf%20&%20strongSelf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/17/iOS/weakSelf%20&%20strongSelf/" class="post-title-link" itemprop="url">weakSelf 和 strongSelf.</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-17 18:42:39" itemprop="dateCreated datePublished" datetime="2019-06-17T18:42:39+08:00">2019-06-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2019/06/17/iOS/weakSelf%20&%20strongSelf/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/17/iOS/weakSelf & strongSelf/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><code>weakSelf</code>是用来解决循环引用<br><code>strongSelf</code>则是保证任何情况下self在超出作用域以后仍旧能够使用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/17/iOS/weakSelf%20&%20strongSelf/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1131,7 +1287,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1144,7 +1300,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

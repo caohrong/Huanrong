@@ -22,19 +22,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.">
+  <meta name="description" content="动态库类型目标文件有三种格式：  可重定位目标文件包含二进制代码和数据，其形式可以在编译时与其他可重新定位的目标文件合并起来，创建一个可执行目标文件，自己本身没有办法独立运行。在iOS开发中，接触到.a的文件都属于这种类型的目标文件。可以直接打包进App中，不需要动态链接。  可执行目标文件包含二进制代码和数据，其形式可以直接复制到内存并执行。也就是我们最终使用的可执行文件，或者App本身。  共">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unicode">
-<meta property="og:url" content="http://example.com/2018/12/21/Swift/Unicode/index.html">
+<meta property="og:title" content="ELF格式解析1-Object Files">
+<meta property="og:url" content="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content="最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.">
+<meta property="og:description" content="动态库类型目标文件有三种格式：  可重定位目标文件包含二进制代码和数据，其形式可以在编译时与其他可重新定位的目标文件合并起来，创建一个可执行目标文件，自己本身没有办法独立运行。在iOS开发中，接触到.a的文件都属于这种类型的目标文件。可以直接打包进App中，不需要动态链接。  可执行目标文件包含二进制代码和数据，其形式可以直接复制到内存并执行。也就是我们最终使用的可执行文件，或者App本身。  共">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-12-21T07:12:43.000Z">
-<meta property="article:modified_time" content="2018-12-21T07:12:43.000Z">
+<meta property="og:image" content="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/media/16161643572232.png">
+<meta property="article:published_time" content="2021-03-19T03:17:58.000Z">
+<meta property="article:modified_time" content="2021-03-21T06:54:49.000Z">
 <meta property="article:author" content="HR">
+<meta property="article:tag" content="Linking">
+<meta property="article:tag" content="ELF">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/media/16161643572232.png">
 
-<link rel="canonical" href="http://example.com/2018/12/21/Swift/Unicode/">
+<link rel="canonical" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/">
 
 
 <script id="page-configurations">
@@ -47,7 +51,7 @@
   };
 </script>
 
-  <title>Unicode | HR's Blog</title>
+  <title>ELF格式解析1-Object Files | HR's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
     <script>
@@ -197,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/12/21/Swift/Unicode/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -210,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Unicode
+          ELF格式解析1-Object Files
         </h1>
 
         <div class="post-meta">
@@ -220,15 +224,22 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+              <time title="Created: 2021-03-19 11:17:58" itemprop="dateCreated datePublished" datetime="2021-03-19T11:17:58+08:00">2021-03-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-21 14:54:49" itemprop="dateModified" datetime="2021-03-21T14:54:49+08:00">2021-03-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                  <a href="/categories/Computer-System/" itemprop="url" rel="index"><span itemprop="name">Computer System</span></a>
                 </span>
             </span>
 
@@ -241,8 +252,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2018/12/21/Swift/Unicode/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/21/Swift/Unicode/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/19/Computer System/ELF格式解析1-Object Files/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -257,15 +268,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.</p>
+        <h2 id="动态库类型"><a href="#动态库类型" class="headerlink" title="动态库类型"></a>动态库类型</h2><p>目标文件有三种格式：</p>
+<ul>
+<li><p>可重定位目标文件<br>包含二进制代码和数据，其形式可以在编译时与其他可重新定位的目标文件合并起来，创建一个可执行目标文件，自己本身没有办法独立运行。在iOS开发中，接触到.a的文件都属于这种类型的目标文件。可以直接打包进App中，不需要动态链接。</p>
+</li>
+<li><p>可执行目标文件<br>包含二进制代码和数据，其形式可以直接复制到内存并执行。也就是我们最终使用的可执行文件，或者App本身。</p>
+</li>
+<li><p>共享目标文件<br>一种特殊类型的可重定位目标文件，可以在加载或者运行时被动态加载进内存并链接。对应的就是iOS中Framework的动态库，但是iOS中Framework的动态库分两种情况：</p>
+<ul>
+<li>第一种：是系统的级的动态库，这种动态库可以保证在多个App引用相同类型的动态库的时候，通过虚拟内存技术，该动态库只在内存中存在一份。平时我们看到的UIKit之类的都属于系统级别的动态库。</li>
+<li>第二种：是开发者自己编译的动态库，这种动态库虽然也是在App运行的时候链接，但是苹果并不会保证该动态库多个App都使用的时候内存中只存在一份。因为该动态库只在App自己沙盒中，无法共享给其他应用使用，动态库在打包后也会被打包进各自的App中，但是当有Watch或者Extension的项目的时候，可以达到共享的目的。</li>
+</ul>
+</li>
+</ul>
 <span id="more"></span>
 
-<p>Unicode为了解决各个国家的语言的问题，统一了所有文字的编码。Unicode通常用两个字节表示一个字符，原有的英文编码从单个字节变成双字节，只需要把高字节位全部填为0就可以。</p>
-<p>在文字处理方面，统一码为每一个字符而非字形定义唯一的代码（即一个整数）。换句话说，统一码以一种抽象的方式（即数字）来处理字符，并将视觉上的演绎工作（例如字体大小、外观形状、字体形态、文体等）留给其他软件来处理，例如网页浏览器或是文字处理器。</p>
-<p>Unicode将世界上所有的符号都纳入其中，给每个符号都赋予一个独一无二的编码，那么乱码的问题机会消失。</p>
-<h2 id="Unicode的问题"><a href="#Unicode的问题" class="headerlink" title="Unicode的问题"></a>Unicode的问题</h2><p>Unicode是一个字符集，他规定了二进制代码，去没有规定二进制代码该如何存储。有些字符可能需要需要4个字节存储，但是给本来一个字节就可以存储的ASCII编码现在换成Unicode编码文本大小就会四倍的增加，这是无法接受的。</p>
-<p>所以出现了多种正对于Unicode存储的方案，例如<code>UTF-8</code></p>
-<p>字符转换<a target="_blank" rel="noopener" href="http://tool.chinaz.com/tools/unicode.aspx">http://tool.chinaz.com/tools/unicode.aspx</a></p>
+<h2 id="动态库格式"><a href="#动态库格式" class="headerlink" title="动态库格式"></a>动态库格式</h2><p>Windows使用可移植（Portable Executable, PE）格式。<br>Mac OS使用Mach-O格式<br>Linux和Unix系统则使用（Executable and Linkable Format, ELF）<br>虽然各个平台的格式各不相同，但是基本概念是相似的。</p>
+<h2 id="ELF格式"><a href="#ELF格式" class="headerlink" title="ELF格式"></a>ELF格式</h2><p><img src="media/16161643572232.png"></p>
 
     </div>
 
@@ -274,6 +293,10 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linking/" rel="tag"># Linking</a>
+              <a href="/tags/ELF/" rel="tag"># ELF</a>
+          </div>
 
         
 
@@ -281,12 +304,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/12/21/Swift/Swift%20Tip%20Notifications/" rel="prev" title="Swift Tip: Notifications">
-      <i class="fa fa-chevron-left"></i> Swift Tip: Notifications
+    <a href="/2021/03/19/Computer%20System/Object%20Files/" rel="prev" title="Object Files">
+      <i class="fa fa-chevron-left"></i> Object Files
     </a></div>
       <div class="post-nav-item">
-    <a href="/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/" rel="next" title="Swift Tutorial/Initialization In Depth Part 1">
-      Swift Tutorial/Initialization In Depth Part 1 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/03/19/Daily/2021-03-19/" rel="next" title="2021年3月19日">
+      2021年3月19日 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -353,7 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">Unicode的问题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">动态库类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">动态库格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELF%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">ELF格式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -547,9 +570,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://example.com/2018/12/21/Swift/Unicode/";
-    this.page.identifier = "2018/12/21/Swift/Unicode/";
-    this.page.title = "Unicode";
+    this.page.url = "http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/";
+    this.page.identifier = "2021/03/19/Computer System/ELF格式解析1-Object Files/";
+    this.page.title = "ELF格式解析1-Object Files";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
