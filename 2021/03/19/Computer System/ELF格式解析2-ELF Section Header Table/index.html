@@ -19,13 +19,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="ELF头(ELF header) - 描述文件的主要特性：类型，CPU架构，入口地址，现有部分的大小和偏移等等； ELF Section Header Table你可以在内核源码种找到表示ELF64 header的结构体 elf64_hdr： 12345678910111213141516typedef struct elf64_hdr &amp;#123;	unsigned char	e_ident[E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ELF格式解析2-ELF Section Header Table">
-<meta property="og:url" content="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/index.html">
+<meta property="og:url" content="https://caohr.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="ELF头(ELF header) - 描述文件的主要特性：类型，CPU架构，入口地址，现有部分的大小和偏移等等； ELF Section Header Table你可以在内核源码种找到表示ELF64 header的结构体 elf64_hdr： 12345678910111213141516typedef struct elf64_hdr &amp;#123;	unsigned char	e_ident[E">
 <meta property="og:locale" content="en_US">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="ELF">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/">
+<link rel="canonical" href="https://caohr.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/">
 
 
 <script id="page-configurations">
@@ -199,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -689,7 +689,7 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://example.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/";
+    this.page.url = "https://caohr.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/";
     this.page.identifier = "2021/03/19/Computer System/ELF格式解析2-ELF Section Header Table/";
     this.page.title = "ELF格式解析2-ELF Section Header Table";
     };
