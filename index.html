@@ -194,6 +194,99 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/" class="post-title-link" itemprop="url">GCD Block循环引用问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-06-03 14:15:23 / Modified: 14:16:49" itemprop="dateCreated datePublished" datetime="2021-06-03T14:15:23+08:00">2021-06-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/06/03/iOS/GCD为什么不会导致循环引用/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="GCD-Block循环引用问题"><a href="#GCD-Block循环引用问题" class="headerlink" title="GCD Block循环引用问题"></a>GCD Block循环引用问题</h1><p>问题：GCD为什么不会导致循环引用</p>
+<p>这个问题得分开回答，分为同步和异步线程。</p>
+<h3 id="同步线程的情况"><a href="#同步线程的情况" class="headerlink" title="同步线程的情况"></a>同步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1452870-dispatch_sync">dispatch_sync</a>苹果官方是这么写的</p>
+<blockquote>
+<p>Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchronous, it “borrows” the reference of the caller. Moreover, no Block_copy is performed on the block.<br>As a performance optimization, this function executes blocks on the current thread whenever possible, with one exception: Blocks submitted to the main dispatch queue always run on the main thread.<br>也就是说同步线程不会增加引用计数，是借用调用者的引用计数，而且也是同步执行，而且也不会把block拷贝，所以不会导致循环引用。</p>
+</blockquote>
+<h3 id="异步线程的情况"><a href="#异步线程的情况" class="headerlink" title="异步线程的情况"></a>异步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1453057-dispatch_async">dispatch_async</a>苹果官方的描述是</p>
+<blockquote>
+<p>The block to submit to the target dispatch queue. This function performs Block_copy and Block_release on behalf of callers. This parameter cannot be NULL.</p>
+</blockquote>
+<p>也就是说会拷贝block，但是也会帮你调用release，所以也不会存在循环引用的问题。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904089252265991">GCD 捕获 self 是否会造成内存泄漏？</a><br><a target="_blank" rel="noopener" href="https://github.com/ibireme/YYKit/issues/41">YYKit作者讨论</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/06/03/Daily/2021-06-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -217,8 +310,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-06-03 08:10:21" itemprop="dateCreated datePublished" datetime="2021-06-03T08:10:21+08:00">2021-06-03</time>
+              <time title="Created: 2021-06-03 08:10:21 / Modified: 14:10:11" itemprop="dateCreated datePublished" datetime="2021-06-03T08:10:21+08:00">2021-06-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,6 +350,7 @@
 
       
           <p>日子真的是过得很快呢？想写的东西太多，又不知道从何起笔，先留个这个post吧！加油！六月！</p>
+<p><img src="http://www.caohr.com/ImagesFolder/2021%E5%A4%9A%E8%82%89.jpg"></p>
 
       
     </div>
@@ -912,89 +1007,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/03/19/Computer%20System/Object%20Files/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/19/Computer%20System/Object%20Files/" class="post-title-link" itemprop="url">Object Files</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-03-19 11:17:58 / Modified: 21:38:41" itemprop="dateCreated datePublished" datetime="2021-03-19T11:17:58+08:00">2021-03-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computer-System/" itemprop="url" rel="index"><span itemprop="name">Computer System</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/03/19/Computer%20System/Object%20Files/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/19/Computer System/Object Files/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>可执行文件的格式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">【ccl:编译器将man.c 翻译成cc7XYYjJ.s 上面的第一步+第二步的集合】</span><br><span class="line"> /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/cc1 -quiet -v main.c -quiet -dumpbase main.c -mtune=generic -march=x86-64 -auxbase main -Og -version -o /tmp/cc7XYYjJ.s</span><br><span class="line"></span><br><span class="line">【as汇编器：将cc7XYYjJ.s(main.c)翻译成ccTGUhq9.o】</span><br><span class="line"> as -v --64 -o /tmp/ccTGUhq9.o /tmp/cc7XYYjJ.s</span><br><span class="line"></span><br><span class="line">【ccl:编译器将sum.c 翻译成cc7XYYjJ.s 上面的第一步+第二步的集合】</span><br><span class="line"> /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/cc1 -quiet -v sum.c -quiet -dumpbase sum.c -mtune=generic -march=x86-64 -auxbase sum -Og -version -o /tmp/cc7XYYjJ.s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">【as汇编器：将cc7XYYjJ.s(main.c和sum.c的集合)翻译成cczmU2Bz.o】</span><br><span class="line"> as -v --64 -o /tmp/cczmU2Bz.o /tmp/cc7XYYjJ.s</span><br><span class="line"> </span><br><span class="line"> /tmp/ccTGUhq9.o </span><br><span class="line"> /tmp/cczmU2Bz.o </span><br><span class="line"> </span><br><span class="line"> -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/03/19/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1169,7 +1181,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

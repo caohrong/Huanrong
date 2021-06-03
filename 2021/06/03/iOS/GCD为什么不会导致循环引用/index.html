@@ -22,19 +22,19 @@
     var CONFIG = {"hostname":"caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Photos     图片正在加载中…       (function() {     var loadScript &#x3D; function(path) {       var $script &#x3D; document.createElement(&#39;script&#39;)       document.getElementsByTagName(&#39;body&#39;)[0].appendChild($s">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Album">
-<meta property="og:url" content="https://caohr.com/album/index.html">
+  <meta name="description" content="GCD Block循环引用问题问题：GCD为什么不会导致循环引用 这个问题得分开回答，分为同步和异步线程。 同步线程的情况dispatch_sync苹果官方是这么写的  Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCD Block循环引用问题">
+<meta property="og:url" content="https://caohr.com/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content="Photos     图片正在加载中…       (function() {     var loadScript &#x3D; function(path) {       var $script &#x3D; document.createElement(&#39;script&#39;)       document.getElementsByTagName(&#39;body&#39;)[0].appendChild($s">
+<meta property="og:description" content="GCD Block循环引用问题问题：GCD为什么不会导致循环引用 这个问题得分开回答，分为同步和异步线程。 同步线程的情况dispatch_sync苹果官方是这么写的  Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchron">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-09-02T13:00:00.000Z">
-<meta property="article:modified_time" content="2021-03-30T09:02:16.000Z">
+<meta property="article:published_time" content="2021-06-03T06:15:23.144Z">
+<meta property="article:modified_time" content="2021-06-03T06:16:49.756Z">
 <meta property="article:author" content="HR">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://caohr.com/album/">
+<link rel="canonical" href="https://caohr.com/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -42,13 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Album | HR's Blog
-</title>
+  <title>GCD Block循环引用问题 | HR's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
     <script>
@@ -190,68 +189,125 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="en">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GCD Block循环引用问题
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">Album
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
 
-<div class="post-meta">
+              <time title="Created: 2021-06-03 14:15:23 / Modified: 14:16:49" itemprop="dateCreated datePublished" datetime="2021-06-03T14:15:23+08:00">2021-06-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/06/03/iOS/GCD为什么不会导致循环引用/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 
-</div>
+        </div>
+      </header>
 
-</header>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <link rel="stylesheet" href="../lib/album/ins.css">
-<link rel="stylesheet" href="../lib/album/photoswipe.css"> 
-<link rel="stylesheet" href="../lib/album/default-skin/default-skin.css"> 
-<div class="photos-btn-wrap">
-  <a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="external">Photos</a>
-</div>
-<div class="instagram itemscope">
-  <a href="https://caohr.com" target="_blank" class="open-ins">图片正在加载中…</a>
-</div>
- 
-<script>
-  (function() {
-    var loadScript = function(path) {
-      var $script = document.createElement('script')
-      document.getElementsByTagName('body')[0].appendChild($script)
-      $script.setAttribute('src', path)
-    }
-    setTimeout(function() {
-        loadScript('../lib/album/ins.js')
-    }, 0)
-  })()
-</script>
-      </div>
-      
-      
-      
+        <h1 id="GCD-Block循环引用问题"><a href="#GCD-Block循环引用问题" class="headerlink" title="GCD Block循环引用问题"></a>GCD Block循环引用问题</h1><p>问题：GCD为什么不会导致循环引用</p>
+<p>这个问题得分开回答，分为同步和异步线程。</p>
+<h3 id="同步线程的情况"><a href="#同步线程的情况" class="headerlink" title="同步线程的情况"></a>同步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1452870-dispatch_sync">dispatch_sync</a>苹果官方是这么写的</p>
+<blockquote>
+<p>Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchronous, it “borrows” the reference of the caller. Moreover, no Block_copy is performed on the block.<br>As a performance optimization, this function executes blocks on the current thread whenever possible, with one exception: Blocks submitted to the main dispatch queue always run on the main thread.<br>也就是说同步线程不会增加引用计数，是借用调用者的引用计数，而且也是同步执行，而且也不会把block拷贝，所以不会导致循环引用。</p>
+</blockquote>
+<h3 id="异步线程的情况"><a href="#异步线程的情况" class="headerlink" title="异步线程的情况"></a>异步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1453057-dispatch_async">dispatch_async</a>苹果官方的描述是</p>
+<blockquote>
+<p>The block to submit to the target dispatch queue. This function performs Block_copy and Block_release on behalf of callers. This parameter cannot be NULL.</p>
+</blockquote>
+<p>也就是说会拷贝block，但是也会帮你调用release，所以也不会存在循环引用的问题。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904089252265991">GCD 捕获 self 是否会造成内存泄漏？</a><br><a target="_blank" rel="noopener" href="https://github.com/ibireme/YYKit/issues/41">YYKit作者讨论</a></p>
+
     </div>
-    
 
     
     
     
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/03/Daily/2021-06-02/" rel="prev" title="2021年6月2日">
+      <i class="fa fa-chevron-left"></i> 2021年6月2日
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -298,6 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GCD-Block%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">GCD Block循环引用问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">1.0.1.</span> <span class="nav-text">同步线程的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">1.0.2.</span> <span class="nav-text">异步线程的情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.1.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -513,6 +570,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://caohr.com/2021/06/03/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/";
+    this.page.identifier = "2021/06/03/iOS/GCD为什么不会导致循环引用/";
+    this.page.title = "GCD Block循环引用问题";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://caohr.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>
