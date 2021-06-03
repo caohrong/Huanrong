@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://caohr.com/2021/06/03/Daily/2021-06-02/</loc>
+    
+    <lastmod>2021-06-03</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://caohr.com/tags/index.html</loc>
     
     <lastmod>2021-03-30</lastmod>
@@ -86,21 +93,14 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2018/12/21/Swift/String/</loc>
+    <loc>https://caohr.com/2019/06/06/Daily/2019-06-06-1/</loc>
     
     <lastmod>2021-03-19</lastmod>
     
   </url>
   
   <url>
-    <loc>https://caohr.com/2019/06/06/Daily/2018-12-19/</loc>
-    
-    <lastmod>2021-03-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/03/19/Daily/2021-03-19/</loc>
+    <loc>https://caohr.com/2019/06/12/Daily/2019-06-06/</loc>
     
     <lastmod>2021-03-19</lastmod>
     
@@ -128,14 +128,21 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2019/06/06/Daily/2019-06-06-1/</loc>
+    <loc>https://caohr.com/2019/06/06/Daily/2018-12-19/</loc>
     
     <lastmod>2021-03-19</lastmod>
     
   </url>
   
   <url>
-    <loc>https://caohr.com/2019/06/12/Daily/2019-06-06/</loc>
+    <loc>https://caohr.com/2021/03/19/Daily/2021-03-19/</loc>
+    
+    <lastmod>2021-03-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2018/12/21/Swift/String/</loc>
     
     <lastmod>2021-03-19</lastmod>
     
@@ -247,14 +254,7 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2018/12/21/Swift/Magical%20Error%20Handling%20in%20Swift/</loc>
-    
-    <lastmod>2018-12-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2018/12/21/Swift/StackView/</loc>
+    <loc>https://caohr.com/2018/12/21/Swift/Pattern%20Matching%20in%20Swift/</loc>
     
     <lastmod>2018-12-21</lastmod>
     
@@ -268,6 +268,13 @@
   </url>
   
   <url>
+    <loc>https://caohr.com/2018/12/21/Swift/Magical%20Error%20Handling%20in%20Swift/</loc>
+    
+    <lastmod>2018-12-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://caohr.com/2018/12/21/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/</loc>
     
     <lastmod>2018-12-21</lastmod>
@@ -275,7 +282,7 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2018/12/21/Swift/Unicode/</loc>
+    <loc>https://caohr.com/2018/12/21/Swift/UTF8/</loc>
     
     <lastmod>2018-12-21</lastmod>
     
@@ -296,7 +303,7 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2018/12/21/Swift/Pattern%20Matching%20in%20Swift/</loc>
+    <loc>https://caohr.com/2018/12/21/Swift/StackView/</loc>
     
     <lastmod>2018-12-21</lastmod>
     
@@ -352,7 +359,7 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2018/12/21/Swift/UTF8/</loc>
+    <loc>https://caohr.com/2018/12/21/Swift/Unicode/</loc>
     
     <lastmod>2018-12-21</lastmod>
     
@@ -361,7 +368,7 @@
 
   <url>
     <loc>https://caohr.com/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -369,91 +376,91 @@
   
   <url>
     <loc>https://caohr.com/tags/C/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/C/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/iOS/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Design-Patterns/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Ray-Wenderlich/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/objc-io/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Computer-System/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Daily/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/The-Economist/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Hexo/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Linking/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/ELF/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Latex/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -462,77 +469,77 @@
   
   <url>
     <loc>https://caohr.com/categories/C/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/C/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Beijing/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/GitHub/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/POSIX/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Objective-C/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Tools/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Swift/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/iOS/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Computer-System/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/English/</loc>
-    <lastmod>2021-03-30</lastmod>
+    <lastmod>2021-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

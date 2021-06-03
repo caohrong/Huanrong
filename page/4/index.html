@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2018/12/21/Swift/Swift%20Tip%20Notifications/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2018/12/21/Swift/Unicode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -208,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/12/21/Swift/Swift%20Tip%20Notifications/" class="post-title-link" itemprop="url">Swift Tip: Notifications</a>
+            <a href="/2018/12/21/Swift/Unicode/" class="post-title-link" itemprop="url">Unicode</a>
         </h2>
 
         <div class="post-meta">
@@ -239,8 +239,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2018/12/21/Swift/Swift%20Tip%20Notifications/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/21/Swift/Swift Tip Notifications/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2018/12/21/Swift/Unicode/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/21/Swift/Unicode/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -255,10 +255,111 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Swift-Tip-Notifications"><a href="#Swift-Tip-Notifications" class="headerlink" title="Swift Tip: Notifications"></a>Swift Tip: Notifications</h1><p>重构键盘监听代码，通过创建<code>KeyboardInfo</code>结构体，来简化代码。这样也能保证整个项目中都共享一套键盘监听的数据逻辑。</p>
+          <p>最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/12/21/Swift/Swift%20Tip%20Notifications/#more" rel="contents">
+              <a class="btn" href="/2018/12/21/Swift/Unicode/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2018/12/21/Swift/String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/21/Swift/String/" class="post-title-link" itemprop="url">String</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-19 21:00:08" itemprop="dateModified" datetime="2021-03-19T21:00:08+08:00">2021-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/12/21/Swift/String/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/21/Swift/String/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someString <span class="operator">=</span> <span class="string">&quot;some string literal value&quot;</span> <span class="operator">+</span> <span class="string">&quot;other string&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>多行字符串</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> multiline <span class="operator">=</span> <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">one line </span></span><br><span class="line"><span class="string">two line</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地方加上<code>\</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">let</span> str2 <span class="operator">=</span> <span class="string">&quot; &quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> value <span class="operator">=</span> str1.isEmpty  <span class="comment">//true</span></span><br><span class="line"><span class="keyword">let</span> value2 <span class="operator">=</span> str2.isEmpty  <span class="comment">//false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/12/21/Swift/String/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -348,95 +449,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/12/21/Swift/Singleton/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2018/12/21/Swift/Protocol/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/21/Swift/Protocol/" class="post-title-link" itemprop="url">Protocol</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/12/21/Swift/Protocol/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/21/Swift/Protocol/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Protocol is name type, structs ,classes, and enums also name type. <code>A protocol can be adopted by a class, struct, or enum</code>.</p>
-<p>Swift中默认所有的方法都是必须实现是的</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/12/21/Swift/Protocol/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -815,6 +827,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/" class="post-title-link" itemprop="url">Swift Tutorial/Initialization In Depth Part 1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/21/Swift/Swift Tutorial: Initialization In Depth Part 1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。<br>本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的<code>stored properties</code>函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改初始化参数的顺序，系统默认根据你在结构体写的顺序来创建。<br>对于<code>optional</code>的值不需要在初始化方法中赋值，因为<code>optional</code>的方法默认会赋值为<code>nil</code>。<br>你也可以为<code>Init</code>方法为需要传入参数设置默认值，这样你在创建的时候就可以直接调用<code>()</code>,而不是需要传入其他的值。当因为传入的值不一样而有多个<code>Init</code>方法的时候，这时候就可以用<code>delegating initializer</code>方法来解决。<code>delegating initializer</code>在网络框架<code>Alamofire</code>里面大量被使用，例如用户如果不指定请求方法默认就会使用<code>get</code>方法，不指定配置就使用默认的配置。<br>对于传入参数不合法，<code>init</code>方法可以通过<code>Optional</code>和<code>throws</code>两种方法来告诉初始化失败。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/12/21/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://caohr.com/2018/12/21/Swift/UTF8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -988,94 +1088,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2018/12/21/Swift/Mutating/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/21/Swift/Mutating/" class="post-title-link" itemprop="url">Mutating</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-21 15:12:43" itemprop="dateCreated datePublished" datetime="2018-12-21T15:12:43+08:00">2018-12-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2018/12/21/Swift/Mutating/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/21/Swift/Mutating/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>因为<code>Swift</code>的协议<code>protocol</code>可以被<code>class</code>，<code>struct</code>和<code>enum</code>来实现，对于<code>struct</code>和<code>enum</code>如果协议定义的方法需要修改本身的参数，则需要加上<code>mutating</code>，但是class就没有这种限制。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/12/21/Swift/Mutating/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1147,7 +1159,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
