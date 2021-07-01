@@ -27,7 +27,7 @@ function main1() {
     }
 
     // 发送请求:
-    request.open('GET', 'https://api.github.com');
+    request.open('POST', 'http://mptest.citicbank.com/mstep/wechastream.do?act=filetoPdfWeChat');
     request.send();
 
     alert('请求已发送，请等待响应...');
