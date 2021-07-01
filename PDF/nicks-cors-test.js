@@ -16,11 +16,12 @@ function main()
     ({
         dataType: "json",
         url: "http://mptest.citicbank.com/mstep/wechastream.do?act=filetoPdfWeChat",
-        type: "POST"
+        type: "POST",
         success: function(data)
         {
             console.log("log response on success");
             console.log(data);
         }
     });
+    console.log("--------");
 }
