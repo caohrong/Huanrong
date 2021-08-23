@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://caohr.com/2021/08/18/Python/%E6%9E%81%E7%AE%80%E5%AE%89%E8%A3%85Conda/</loc>
+    
+    <lastmod>2021-08-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/04/03/Tools/Hexo/</loc>
+    
+    <lastmod>2021-08-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://caohr.com/2021/08/23/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/</loc>
     
     <lastmod>2021-08-23</lastmod>
@@ -87,13 +101,6 @@
   
   <url>
     <loc>https://caohr.com/2021/04/03/English/BrexitLaysAnEgg/</loc>
-    
-    <lastmod>2021-04-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/04/03/Tools/Hexo/</loc>
     
     <lastmod>2021-04-03</lastmod>
     
@@ -532,6 +539,13 @@
   
   <url>
     <loc>https://caohr.com/categories/Swift/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/categories/Python/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
