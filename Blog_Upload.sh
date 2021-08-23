@@ -3,24 +3,32 @@ export PATH
 
 SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
 TIME=$(date "+%Y-%m-%d %H:%M:%S")
+echo ${SHELL_FOLDER}
+Volumes=${SHELL_FOLDER%/MWebLibrary/*}
+echo ${Volumes}
+ImageFolder=${Volumes}"/HRBlog/Album"
+BlogFolder=${Volumes}"/MWebLibrary/HRBlog"
+HTMLFolder=${Volumes}"/HRBlog"
+echo ${ImageFolder}
 
-#cd /Volumes/Huanrong\'s\ SD/HRBlog/Album/
-#echo "${python_version}"
-#conda activate HR
-#python tool.py
+echo "${python_version}"
+
 echo "--------------------[处理图片]"
-source ~/miniconda3/bin/activate HR
-python --version
-./conda activate HR
-cd /Volumes/MWeb/HRBlog/Album/
-python tool.py
+#echo ${ImageFolder}
+#cd ${ImageFolder}
+#
+#source ~/miniconda3/bin/activate HR
+#python --version
+#python tool.py
 
 echo "--------------------[博客生成]"
-cd /Volumes/MWeb/HRWeb/HRBlog
+echo ${BlogFolder}
+cd "${BlogFolder}"
 hexo generate
 
 echo "--------------------[提交代码]"
-cd /Volumes/MWeb/HRBlog
+echo ${HTMLFolder}
+cd "${HTMLFolder}"
 git add .
 git commit -m "${TIME}"
 git push

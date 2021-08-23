@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/03/19/Computer%20System/Object%20Files/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/04/03/Tools/LaTeX/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -208,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/19/Computer%20System/Object%20Files/" class="post-title-link" itemprop="url">Object Files</a>
+            <a href="/2021/04/03/Tools/LaTeX/" class="post-title-link" itemprop="url">测试数学格式支持</a>
         </h2>
 
         <div class="post-meta">
@@ -217,9 +217,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-19 11:17:58 / Modified: 21:38:41" itemprop="dateCreated datePublished" datetime="2021-03-19T11:17:58+08:00">2021-03-19</time>
+              <time title="Created: 2021-04-03 10:56:46" itemprop="dateCreated datePublished" datetime="2021-04-03T10:56:46+08:00">2021-04-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computer-System/" itemprop="url" rel="index"><span itemprop="name">Computer System</span></a>
+                  <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
                 </span>
             </span>
 
@@ -240,8 +239,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/03/19/Computer%20System/Object%20Files/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/19/Computer System/Object Files/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/04/03/Tools/LaTeX/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/04/03/Tools/LaTeX/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -256,99 +255,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>可执行文件的格式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">【ccl:编译器将man.c 翻译成cc7XYYjJ.s 上面的第一步+第二步的集合】</span><br><span class="line"> /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/cc1 -quiet -v main.c -quiet -dumpbase main.c -mtune=generic -march=x86-64 -auxbase main -Og -version -o /tmp/cc7XYYjJ.s</span><br><span class="line"></span><br><span class="line">【as汇编器：将cc7XYYjJ.s(main.c)翻译成ccTGUhq9.o】</span><br><span class="line"> as -v --64 -o /tmp/ccTGUhq9.o /tmp/cc7XYYjJ.s</span><br><span class="line"></span><br><span class="line">【ccl:编译器将sum.c 翻译成cc7XYYjJ.s 上面的第一步+第二步的集合】</span><br><span class="line"> /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/cc1 -quiet -v sum.c -quiet -dumpbase sum.c -mtune=generic -march=x86-64 -auxbase sum -Og -version -o /tmp/cc7XYYjJ.s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">【as汇编器：将cc7XYYjJ.s(main.c和sum.c的集合)翻译成cczmU2Bz.o】</span><br><span class="line"> as -v --64 -o /tmp/cczmU2Bz.o /tmp/cc7XYYjJ.s</span><br><span class="line"> </span><br><span class="line"> /tmp/ccTGUhq9.o </span><br><span class="line"> /tmp/cczmU2Bz.o </span><br><span class="line"> </span><br><span class="line"> -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/10/06/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/06/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">百度图片识别iOS实现!</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-10-06 19:39:52" itemprop="dateCreated datePublished" datetime="2019-10-06T19:39:52+08:00">2019-10-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-19 11:12:53" itemprop="dateModified" datetime="2021-03-19T11:12:53+08:00">2021-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2019/10/06/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/06/iOS/百度图片识别iOS实现/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近公司做一款用户拍照识别垃圾的功能，参考了各大服务提供商的图片识别效果，最终百度胜出。以下是如何手动不通过<code>AFNetworking</code>或者<code>Alamofire</code>的框架，直接手动将百度图片识别功能集成到自己的项目中。</p>
+          <p>$$\sin \alpha + \sin \beta = 2\sin\frac{\alpha + \beta}{2}\cos\frac{\alpha-\beta}{2}$$<br>$$\sin \alpha - \sin \beta = 2\cos\frac{\alpha + \beta}{2}\sin\frac{\alpha-\beta}{2}$$<br>$$\cos \alpha + \cos \beta = 2\cos\frac{\alpha + \beta}{2}\cos\frac{\alpha-\beta}{2}$$<br>$$\cos \alpha - \cos \beta = 2\sin\frac{\alpha + \beta}{2}\sin\frac{\alpha-\beta}{2}$$<br>$$\left \lbrace \sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9} \right \rbrace$$<br>$$ \lbrace \sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9}  \rbrace$$</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/10/06/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/#more" rel="contents">
+              <a class="btn" href="/2021/04/03/Tools/LaTeX/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -372,7 +282,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/06/17/POSIX/BSD%20socket/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/04/03/Swift/String/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -386,7 +296,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/06/17/POSIX/BSD%20socket/" class="post-title-link" itemprop="url">BSD socket</a>
+            <a href="/2021/04/03/Swift/String/" class="post-title-link" itemprop="url">String</a>
         </h2>
 
         <div class="post-meta">
@@ -396,15 +306,102 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-06-17 18:57:24" itemprop="dateCreated datePublished" datetime="2019-06-17T18:57:24+08:00">2019-06-17</time>
+              <time title="Created: 2021-04-03 10:56:46" itemprop="dateCreated datePublished" datetime="2021-04-03T10:56:46+08:00">2021-04-03</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-18 11:20:57" itemprop="dateModified" datetime="2021-03-18T11:20:57+08:00">2021-03-18</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/04/03/Swift/String/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/04/03/Swift/String/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someString <span class="operator">=</span> <span class="string">&quot;some string literal value&quot;</span> <span class="operator">+</span> <span class="string">&quot;other string&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>多行字符串</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> multiline <span class="operator">=</span> <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">one line </span></span><br><span class="line"><span class="string">two line</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地方加上<code>\</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">let</span> str2 <span class="operator">=</span> <span class="string">&quot; &quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> value <span class="operator">=</span> str1.isEmpty  <span class="comment">//true</span></span><br><span class="line"><span class="keyword">let</span> value2 <span class="operator">=</span> str2.isEmpty  <span class="comment">//false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/03/Swift/String/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/03/18/POSIX/BSD%20socket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/18/POSIX/BSD%20socket/" class="post-title-link" itemprop="url">BSD socket</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-18 21:40:03" itemprop="dateCreated datePublished" datetime="2021-03-18T21:40:03+08:00">2021-03-18</time>
+            </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -424,8 +421,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2019/06/17/POSIX/BSD%20socket/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/17/POSIX/BSD socket/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/03/18/POSIX/BSD%20socket/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/18/POSIX/BSD socket/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -449,7 +446,7 @@
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/06/17/POSIX/BSD%20socket/#more" rel="contents">
+              <a class="btn" href="/2021/03/18/POSIX/BSD%20socket/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -473,7 +470,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/06/17/iOS/dispatch_get_specific/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/03/18/iOS/dispatch_get_specific/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -487,7 +484,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/06/17/iOS/dispatch_get_specific/" class="post-title-link" itemprop="url">dispatch_get_specific</a>
+            <a href="/2021/03/18/iOS/dispatch_get_specific/" class="post-title-link" itemprop="url">dispatch_get_specific</a>
         </h2>
 
         <div class="post-meta">
@@ -497,15 +494,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-06-17 18:42:39" itemprop="dateCreated datePublished" datetime="2019-06-17T18:42:39+08:00">2019-06-17</time>
+              <time title="Created: 2021-03-18 21:40:03" itemprop="dateCreated datePublished" datetime="2021-03-18T21:40:03+08:00">2021-03-18</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-18 11:50:01" itemprop="dateModified" datetime="2021-03-18T11:50:01+08:00">2021-03-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -525,8 +515,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2019/06/17/iOS/dispatch_get_specific/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/17/iOS/dispatch_get_specific/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/03/18/iOS/dispatch_get_specific/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/18/iOS/dispatch_get_specific/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -544,7 +534,95 @@
           <p><code>dispatch_get_specific</code> 和 <code>dispatch_queue_set_specific</code> 用法就是用set方法在线程里设置一个key，通过get查找当前线程，是不是包含该key来判断代码是不是在特定的线程里执行。set则是给线程设置key值。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/06/17/iOS/dispatch_get_specific/#more" rel="contents">
+              <a class="btn" href="/2021/03/18/iOS/dispatch_get_specific/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/03/18/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/18/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">百度图片识别iOS实现!</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-18 21:40:03" itemprop="dateCreated datePublished" datetime="2021-03-18T21:40:03+08:00">2021-03-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/03/18/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/03/18/iOS/百度图片识别iOS实现/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近公司做一款用户拍照识别垃圾的功能，参考了各大服务提供商的图片识别效果，最终百度胜出。以下是如何手动不通过<code>AFNetworking</code>或者<code>Alamofire</code>的框架，直接手动将百度图片识别功能集成到自己的项目中。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/18/iOS/%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%ABiOS%E5%AE%9E%E7%8E%B0/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -638,105 +716,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/06/17/Tools/Hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/17/Tools/Hexo/" class="post-title-link" itemprop="url">Hexo入门</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-17 18:41:36" itemprop="dateCreated datePublished" datetime="2019-06-17T18:41:36+08:00">2019-06-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-19 21:05:46" itemprop="dateModified" datetime="2021-03-19T21:05:46+08:00">2021-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2019/06/17/Tools/Hexo/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/17/Tools/Hexo/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//通过`npm`安装`Hexo`</span><br><span class="line">npm install hexo-cli -g</span><br><span class="line"></span><br><span class="line">//初始化blog</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line">//新建tag页面</span><br><span class="line">hexo new page tags</span><br><span class="line">//新建categories页面</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><h3 id="hexo-theme-next"><a href="#hexo-theme-next" class="headerlink" title="hexo-theme-next"></a>hexo-theme-next</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd hexo</span><br><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
-
-<h2 id="附加功能"><a href="#附加功能" class="headerlink" title="附加功能"></a>附加功能</h2><h3 id="加载相册"><a href="#加载相册" class="headerlink" title="加载相册"></a>加载相册</h3><p><a target="_blank" rel="noopener" href="https://malizhi.cn/HexoAlbum/">脚本</a></p>
-<h3 id="Google-AdSense"><a href="#Google-AdSense" class="headerlink" title="Google AdSense"></a>Google AdSense</h3><p><a target="_blank" rel="noopener" href="http://www.mdslq.cn/archives/3a06bb38.html">在Hexo里面加入Google1</a><br><a target="_blank" rel="noopener" href="https://juejin.im/post/5c95d230e51d45124e35cef6">在Hexo里面加入Google2</a></p>
-<h3 id="添加阅读量"><a href="#添加阅读量" class="headerlink" title="添加阅读量"></a>添加阅读量</h3><p><a target="_blank" rel="noopener" href="http://www.jeyzhang.com/hexo-next-add-post-views.html">添加阅读量统计</a></p>
-<h3 id="RSS"><a href="#RSS" class="headerlink" title="RSS"></a>RSS</h3><p>Hexo默认生成的RSS地址是：域名/atom.xml<br>atom.xml</p>
-<h3 id="为博客添加一直猫"><a href="#为博客添加一直猫" class="headerlink" title="为博客添加一直猫"></a>为博客添加一直猫</h3><p><a target="_blank" rel="noopener" href="https://mrmcree.github.io/2019/05/05/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E4%B8%80%E5%8F%AA%E7%8C%AB/">为博客添加一只猫</a></p>
-<h3 id="数学公式支持"><a href="#数学公式支持" class="headerlink" title="数学公式支持"></a>数学公式支持</h3><p><a target="_blank" rel="noopener" href="http://stevenshi.me/2017/06/26/hexo-insert-formula/">http://stevenshi.me/2017/06/26/hexo-insert-formula/</a></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2>
       
     </div>
 
@@ -932,7 +911,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/06/15/C++/Enumerations/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/06/13/iOS/Runloop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -946,7 +925,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/06/15/C++/Enumerations/" class="post-title-link" itemprop="url">enumerations</a>
+            <a href="/2019/06/13/iOS/Runloop/" class="post-title-link" itemprop="url">runLoop</a>
         </h2>
 
         <div class="post-meta">
@@ -956,102 +935,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-06-15 13:18:23" itemprop="dateCreated datePublished" datetime="2019-06-15T13:18:23+08:00">2019-06-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-19 21:00:08" itemprop="dateModified" datetime="2021-03-19T21:00:08+08:00">2021-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2019/06/15/C++/Enumerations/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/15/C++/Enumerations/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>An enumeration is a type that can hold a set of integer values specified by the user.<br>C++中包含两种枚举类型：<br><code>Plain enums:</code>枚举值与枚举类型本身在用一个作用域中，枚举值会隐形的转为整数。<br><code>enum class:</code> 他们枚举的值作用域在枚举的内部，枚举值不会隐式的转为其他的类型。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/15/C++/Enumerations/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/06/13/iOS/autoreleasepool%E7%9A%84%E7%94%A8%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/13/iOS/autoreleasepool%E7%9A%84%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">autoreleasepool的用法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-13 09:09:08" itemprop="dateCreated datePublished" datetime="2019-06-13T09:09:08+08:00">2019-06-13</time>
+              <time title="Created: 2019-06-13 09:08:21" itemprop="dateCreated datePublished" datetime="2019-06-13T09:08:21+08:00">2019-06-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1072,8 +956,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2019/06/13/iOS/autoreleasepool%E7%9A%84%E7%94%A8%E6%B3%95/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/13/iOS/autoreleasepool的用法/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2019/06/13/iOS/Runloop/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/13/iOS/Runloop/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1089,6 +973,88 @@
 
       
           
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2019/06/12/POSIX/POSIX%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/12/POSIX/POSIX%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">POSIX简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-06-12 23:19:57" itemprop="dateCreated datePublished" datetime="2019-06-12T23:19:57+08:00">2019-06-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/POSIX/" itemprop="url" rel="index"><span itemprop="name">POSIX</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/06/12/POSIX/POSIX%E7%AE%80%E4%BB%8B/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/12/POSIX/POSIX简介/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近发现许多GitHub的源码，引用都来自于iOS中<code>/usr/includ</code>目录的头文件，后面查到这些头文件其实都是基于<code>POSIX</code>的标准。查了一下<code>POSIX</code>是由<code>IEEE</code>制定的标准，在认证的系统里面，基于<code>POSIX</code>开发的软件，具有移植性。而常用的<code>macOS</code>、<code>iOS</code>、<code>Android</code>以及<code>Linux</code>系统，基本上都是和<code>POSIX</code>兼容的。最典型的例子就有<code>Tencent</code>开源的网络框架<code>Mars</code>，就是基于<code>POSIX</code>实现的可移植性。</p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/POSIX">wiki</a></p>
+
       
     </div>
 
@@ -1174,7 +1140,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
