@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-25 20:16:31 / Modified: 20:44:19" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-08-25 20:16:31 / Modified: 21:53:05" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,7 +257,8 @@
 
       
           <span id="more"></span>
-<h1 id="out-of-line状态的判定"><a href="#out-of-line状态的判定" class="headerlink" title="out of line状态的判定"></a>out of line状态的判定</h1>
+
+
       
     </div>
 
@@ -301,7 +302,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-25 20:16:31 / Modified: 20:44:19" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-08-25 20:16:31 / Modified: 21:53:57" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -338,7 +339,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="SideTable的Hash值"><a href="#SideTable的Hash值" class="headerlink" title="SideTable的Hash值"></a>SideTable的Hash值</h1>
+          
       
     </div>
 
@@ -371,7 +372,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">out of line状态的判定</a>
+            <a href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">Untitled</a>
         </h2>
 
         <div class="post-meta">
@@ -382,16 +383,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-25 20:16:31 / Modified: 20:44:19" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
+              <time title="Created: 2021-08-25 20:16:31 / Modified: 21:53:57" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
             </span>
 
           
@@ -419,19 +411,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<h1 id="weak-table-t扩容和缩容"><a href="#weak-table-t扩容和缩容" class="headerlink" title="weak_table_t扩容和缩容"></a>weak_table_t扩容和缩容</h1><h2 id="扩容和缩容的调取时机"><a href="#扩容和缩容的调取时机" class="headerlink" title="扩容和缩容的调取时机"></a>扩容和缩容的调取时机</h2><p>添加和删除弱应用的指针是通过<code>weak_register_no_lock</code>和<code>weak_unregister_no_lock</code>来实现的。</p>
-<h3 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">id <span class="title">weak_register_no_lock</span><span class="params">(<span class="keyword">weak_table_t</span> *weak_table, id referent_id, </span></span></span><br><span class="line"><span class="function"><span class="params">                      id *referrer_id, <span class="keyword">bool</span> crashIfDeallocating)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    objc_object *referent = (objc_object *)referent_id;</span><br><span class="line">    objc_object **referrer = (objc_object **)referrer_id;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">       <span class="keyword">weak_entry_t</span> *entry;</span><br><span class="line">    <span class="keyword">if</span> ((entry = weak_entry_for_referent(weak_table, referent))) &#123;</span><br><span class="line">        <span class="comment">//添加到之前的weak_entry_t表</span></span><br><span class="line">        append_referrer(entry, referrer);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">weak_entry_t</span> new_entry(referent, referrer);</span><br><span class="line">        <span class="comment">//确保容量，不够的话就扩容</span></span><br><span class="line">        weak_grow_maybe(weak_table);</span><br><span class="line">        weak_entry_insert(weak_table, &amp;new_entry);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> referent_id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="扩容-1"><a href="#扩容-1" class="headerlink" title="扩容"></a>扩容</h3><p>初始容量为64，当容量达到3/4时对数组进行扩容，每次扩容为原来的2倍。<code>weak_resize(weak_table, old_size ? old_size*2 : 64);</code>。<br>调用<code>weak_resize</code>重新对元素进行Hash值计算。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark - 扩容操作</span></span><br><span class="line"><span class="comment">// Grow the given zone&#x27;s table of weak references if it is full.</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">weak_grow_maybe</span><span class="params">(<span class="keyword">weak_table_t</span> *weak_table)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> old_size = TABLE_SIZE(weak_table);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Grow if at least 3/4 full.</span></span><br><span class="line">    <span class="keyword">if</span> (weak_table-&gt;num_entries &gt;= old_size * <span class="number">3</span> / <span class="number">4</span>) &#123;</span><br><span class="line">        weak_resize(weak_table, old_size ? old_size*<span class="number">2</span> : <span class="number">64</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="缩容"><a href="#缩容" class="headerlink" title="缩容"></a>缩容</h3><p>缩容规则当表大于1024但是只放了16分之一的数据的时候，就会缩容，缩小到原来的八分之一，调用<code>weak_resize</code>重新对元素进行Hash值计算。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark - 缩容操作</span></span><br><span class="line"><span class="comment">// Shrink the table if it is mostly empty.</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">weak_compact_maybe</span><span class="params">(<span class="keyword">weak_table_t</span> *weak_table)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> old_size = TABLE_SIZE(weak_table);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Shrink if larger than 1024 buckets and at most 1/16 full.</span></span><br><span class="line">    <span class="keyword">if</span> (old_size &gt;= <span class="number">1024</span>  &amp;&amp; old_size / <span class="number">16</span> &gt;= weak_table-&gt;num_entries) &#123;</span><br><span class="line">        weak_resize(weak_table, old_size / <span class="number">8</span>);</span><br><span class="line">        <span class="comment">// leaves new table no more than 1/2 full</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="weak-resize"><a href="#weak-resize" class="headerlink" title="weak_resize"></a>weak_resize</h3><p><code>weak_resize</code>传入weak_table和一个新的尺寸，根据传入的尺寸重新生成新的<code>new_entries</code>，遍历之前的<code>entries</code>，然后把找到的对象通过<code>weak_entry_insert</code>函数插入到新的<code>weak_table_t</code>（此时的<code>weak_table_t</code>已经扩容了），通过<code>weak_entry_insert</code>插入后，元素的位置也会改变，因为容量改变以后hash index的值都会重新计算。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">weak_resize</span><span class="params">(<span class="keyword">weak_table_t</span> *weak_table, <span class="keyword">size_t</span> new_size)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> old_size = TABLE_SIZE(weak_table);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">weak_entry_t</span> *old_entries = weak_table-&gt;weak_entries;</span><br><span class="line">    <span class="keyword">weak_entry_t</span> *new_entries = (<span class="keyword">weak_entry_t</span> *)<span class="built_in">calloc</span>(new_size, <span class="keyword">sizeof</span>(<span class="keyword">weak_entry_t</span>));</span><br><span class="line">    </span><br><span class="line">    weak_table-&gt;mask = new_size - <span class="number">1</span>;</span><br><span class="line">    weak_table-&gt;weak_entries = new_entries;</span><br><span class="line">    weak_table-&gt;max_hash_displacement = <span class="number">0</span>;</span><br><span class="line">    weak_table-&gt;num_entries = <span class="number">0</span>;  <span class="comment">// restored by weak_entry_insert below</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (old_entries) &#123;</span><br><span class="line">        <span class="keyword">weak_entry_t</span> *entry;</span><br><span class="line">        <span class="keyword">weak_entry_t</span> *end = old_entries + old_size;</span><br><span class="line">        <span class="keyword">for</span> (entry = old_entries; entry &lt; end; entry++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (entry-&gt;referent) &#123;</span><br><span class="line">                weak_entry_insert(weak_table, entry);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">free</span>(old_entries);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <hr>
+<p>title: out of line状态的判定<br>categories:</p>
+<ul>
+<li>Objective-C<br>tags:</li>
+<li>源码解析</li>
+<li>Runtime</li>
+<li>内存管理</li>
+<li>-</li>
+</ul>
+<h2 id="扩容和缩容的调取时机"><a href="#扩容和缩容的调取时机" class="headerlink" title="扩容和缩容的调取时机"></a>扩容和缩容的调取时机</h2><p>添加和删除弱应用的指针是通过<code>weak_register_no_lock</code>和<code>weak_unregister_no_lock</code>来实现的。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -475,7 +472,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-25 20:16:31 / Modified: 20:44:19" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-08-25 20:16:31 / Modified: 21:53:57" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -512,7 +509,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h1><p>To add to what unwind is explaining, here is a struct I have recently used in an assignment :</p>
+          <span id="more"></span>
+
+<p>To add to what unwind is explaining, here is a struct I have recently used in an assignment :</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">infosale</span> &#123;</span>               </span><br><span class="line">    <span class="keyword">int</span>   noseq;                </span><br><span class="line">    <span class="keyword">char</span>  salesman[<span class="number">30</span>];         </span><br><span class="line">    <span class="keyword">char</span>  product[<span class="number">11</span>];          </span><br><span class="line">    <span class="keyword">int</span>   count;                </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>You may expect the size of this struct to be (4+30+11+4=) 49 bytes, but it is in fact 52 compared with sizeof. Because noseq is 4 bytes + salesman is 32 bytes (aligned) + product is 12 bytes (aligned) and count is 4 bytes, thus 52 bytes.</p>
 
@@ -559,7 +558,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-25 20:16:31 / Modified: 20:41:35" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-08-25 20:16:31 / Modified: 21:53:57" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -598,7 +597,7 @@
       
           <span id="more"></span>
 
-<h1 id="🌵SideTable"><a href="#🌵SideTable" class="headerlink" title="🌵SideTable"></a>🌵SideTable</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SideTable</span> &#123;</span></span><br><span class="line">    <span class="keyword">spinlock_t</span> slock;</span><br><span class="line">    RefcountMap refcnts;</span><br><span class="line">    <span class="keyword">weak_table_t</span> weak_table;</span><br><span class="line"></span><br><span class="line">    SideTable() &#123;</span><br><span class="line">        <span class="built_in">memset</span>(&amp;weak_table, <span class="number">0</span>, <span class="keyword">sizeof</span>(weak_table));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~SideTable() &#123;</span><br><span class="line">        _objc_fatal(<span class="string">&quot;Do not delete SideTable.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123; slock.lock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123; slock.unlock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">forceReset</span><span class="params">()</span> </span>&#123; slock.forceReset(); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Address-ordered lock discipline for a pair of side tables.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">lockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">unlockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SideTable</span> &#123;</span></span><br><span class="line">    <span class="keyword">spinlock_t</span> slock;</span><br><span class="line">    RefcountMap refcnts;</span><br><span class="line">    <span class="keyword">weak_table_t</span> weak_table;</span><br><span class="line"></span><br><span class="line">    SideTable() &#123;</span><br><span class="line">        <span class="built_in">memset</span>(&amp;weak_table, <span class="number">0</span>, <span class="keyword">sizeof</span>(weak_table));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~SideTable() &#123;</span><br><span class="line">        _objc_fatal(<span class="string">&quot;Do not delete SideTable.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123; slock.lock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123; slock.unlock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">forceReset</span><span class="params">()</span> </span>&#123; slock.forceReset(); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Address-ordered lock discipline for a pair of side tables.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">lockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">unlockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="weak-table-t"><a href="#weak-table-t" class="headerlink" title="weak_table_t"></a>weak_table_t</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">The weak table is a hash table governed(管理) by a single spin lock.</span><br><span class="line">An allocated blob of memory, most often an object, but under GC any such </span><br><span class="line">allocation, may have its address stored in a __weak marked storage location </span><br><span class="line">through use of compiler generated write-barriers or hand coded uses of the </span><br><span class="line">register weak primitive. Associated with the registration can be a callback </span><br><span class="line">block for the case when one of the allocated chunks of memory is reclaimed. </span><br><span class="line">The table is hashed on the address of the allocated memory.  When __weak </span><br><span class="line">marked memory changes its reference, we count on the fact that we can still </span><br><span class="line">see its previous reference.</span><br><span class="line"></span><br><span class="line">So, in the hash table, indexed by the weakly referenced item, is a list of </span><br><span class="line">all locations where this address is currently being stored.</span><br><span class="line"> </span><br><span class="line">For ARC, we also keep track of whether an arbitrary object is being </span><br><span class="line">deallocated by briefly placing it in the table just prior to invoking </span><br><span class="line">dealloc, and removing it via objc_clear_deallocating just prior to memory </span><br><span class="line">reclamation.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; The address of a __weak variable.</span><br><span class="line">&#x2F;&#x2F; These pointers are stored disguised so memory analysis tools</span><br><span class="line">&#x2F;&#x2F; don&#39;t see lots of interior pointers from the weak table into objects.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">weak_table_t</span> &#123;</span></span><br><span class="line">    <span class="keyword">weak_entry_t</span> *weak_entries;</span><br><span class="line">    <span class="keyword">size_t</span>    num_entries;</span><br><span class="line">    <span class="keyword">uintptr_t</span> mask;</span><br><span class="line">    <span class="keyword">uintptr_t</span> max_hash_displacement;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -646,10 +645,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-08-23 17:26:19 / Modified: 23:40:32" itemprop="dateCreated datePublished" datetime="2021-08-23T17:26:19+08:00">2021-08-23</time>
+              <time title="Created: 2021-08-23 17:26:19" itemprop="dateCreated datePublished" datetime="2021-08-23T17:26:19+08:00">2021-08-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-25 21:54:22" itemprop="dateModified" datetime="2021-08-25T21:54:22+08:00">2021-08-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -685,7 +690,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Setter和Getter原理"><a href="#Setter和Getter原理" class="headerlink" title="Setter和Getter原理"></a>Setter和Getter原理</h1><p>当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？</p>
+          <p>当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？</p>
 <h2 id="1-实例代码"><a href="#1-实例代码" class="headerlink" title="1. 实例代码"></a>1. 实例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@interface HRObject : NSObject</span><br><span class="line">@property (nonatomic, strong) NSString *strongName;</span><br><span class="line">@property (nonatomic, copy) NSString *weakName;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation HRObject</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        &#x2F;&#x2F; insert code here...</span><br><span class="line">        NSLog(@&quot;Hello, World!&quot;);</span><br><span class="line">        </span><br><span class="line">        HRObject *object &#x3D; [HRObject new];</span><br><span class="line">        object.strongName &#x3D; @&quot;strong&quot;;</span><br><span class="line">        object.weakName &#x3D; @&quot;weak&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o arm64.cpp</span><br></pre></td></tr></table></figure>

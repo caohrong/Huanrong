@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="内存对齐To add to what unwind is explaining, here is a struct I have recently used in an assignment : 123456struct infosale &amp;#123;                   int   noseq;                    char  salesman[30];">
+  <meta name="description" content="To add to what unwind is explaining, here is a struct I have recently used in an assignment : 123456struct infosale &amp;#123;                   int   noseq;                    char  salesman[30];">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内存对齐">
 <meta property="og:url" content="https://caohr.com/2021/08/25/iOS/%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content="内存对齐To add to what unwind is explaining, here is a struct I have recently used in an assignment : 123456struct infosale &amp;#123;                   int   noseq;                    char  salesman[30];">
+<meta property="og:description" content="To add to what unwind is explaining, here is a struct I have recently used in an assignment : 123456struct infosale &amp;#123;                   int   noseq;                    char  salesman[30];">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-25T12:16:31.457Z">
-<meta property="article:modified_time" content="2021-08-25T12:44:19.146Z">
+<meta property="article:modified_time" content="2021-08-25T13:53:57.777Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="源码解析">
 <meta property="article:tag" content="Runtime">
@@ -224,7 +224,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-25 20:16:31 / Modified: 20:44:19" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-08-25 20:16:31 / Modified: 21:53:57" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h1><p>To add to what unwind is explaining, here is a struct I have recently used in an assignment :</p>
+        <span id="more"></span>
+
+<p>To add to what unwind is explaining, here is a struct I have recently used in an assignment :</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">infosale</span> &#123;</span>               </span><br><span class="line">    <span class="keyword">int</span>   noseq;                </span><br><span class="line">    <span class="keyword">char</span>  salesman[<span class="number">30</span>];         </span><br><span class="line">    <span class="keyword">char</span>  product[<span class="number">11</span>];          </span><br><span class="line">    <span class="keyword">int</span>   count;                </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>You may expect the size of this struct to be (4+30+11+4=) 49 bytes, but it is in fact 52 compared with sizeof. Because noseq is 4 bytes + salesman is 32 bytes (aligned) + product is 12 bytes (aligned) and count is 4 bytes, thus 52 bytes.</p>
 
@@ -288,8 +290,8 @@
       <i class="fa fa-chevron-left"></i> 🌵SideTable
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" rel="next" title="out of line状态的判定">
-      out of line状态的判定 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -356,7 +358,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90"><span class="nav-number">1.</span> <span class="nav-text">内存对齐</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

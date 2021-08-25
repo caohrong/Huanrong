@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Setter和Getter原理当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？ 1. 实例代码12345678910111213141516171819@interface HRObject : NSObject@property (nonatomic, strong) NSString *strongName;@property (nonatomic,">
+  <meta name="description" content="当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？ 1. 实例代码12345678910111213141516171819@interface HRObject : NSObject@property (nonatomic, strong) NSString *strongName;@property (nonatomic, copy) NSString">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Setter和Getter原理">
 <meta property="og:url" content="https://caohr.com/2021/08/23/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content="Setter和Getter原理当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？ 1. 实例代码12345678910111213141516171819@interface HRObject : NSObject@property (nonatomic, strong) NSString *strongName;@property (nonatomic,">
+<meta property="og:description" content="当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？ 1. 实例代码12345678910111213141516171819@interface HRObject : NSObject@property (nonatomic, strong) NSString *strongName;@property (nonatomic, copy) NSString">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-23T09:26:19.869Z">
-<meta property="article:modified_time" content="2021-08-23T15:40:32.662Z">
+<meta property="article:modified_time" content="2021-08-25T13:54:22.681Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="源码解析">
 <meta name="twitter:card" content="summary">
@@ -220,10 +220,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-08-23 17:26:19 / Modified: 23:40:32" itemprop="dateCreated datePublished" datetime="2021-08-23T17:26:19+08:00">2021-08-23</time>
+              <time title="Created: 2021-08-23 17:26:19" itemprop="dateCreated datePublished" datetime="2021-08-23T17:26:19+08:00">2021-08-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-25 21:54:22" itemprop="dateModified" datetime="2021-08-25T21:54:22+08:00">2021-08-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -259,7 +265,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Setter和Getter原理"><a href="#Setter和Getter原理" class="headerlink" title="Setter和Getter原理"></a>Setter和Getter原理</h1><p>当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？</p>
+        <p>当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？</p>
 <h2 id="1-实例代码"><a href="#1-实例代码" class="headerlink" title="1. 实例代码"></a>1. 实例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@interface HRObject : NSObject</span><br><span class="line">@property (nonatomic, strong) NSString *strongName;</span><br><span class="line">@property (nonatomic, copy) NSString *weakName;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation HRObject</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        &#x2F;&#x2F; insert code here...</span><br><span class="line">        NSLog(@&quot;Hello, World!&quot;);</span><br><span class="line">        </span><br><span class="line">        HRObject *object &#x3D; [HRObject new];</span><br><span class="line">        object.strongName &#x3D; @&quot;strong&quot;;</span><br><span class="line">        object.weakName &#x3D; @&quot;weak&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o arm64.cpp</span><br></pre></td></tr></table></figure>
@@ -390,7 +396,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Setter和Getter原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9E%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">1. 实例代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BC%96%E8%AF%91%E5%90%8E%E6%BA%90%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">2. 编译后源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Runtime%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">3.Runtime源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter"><span class="nav-number">1.3.1.</span> <span class="nav-text">Getter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setter"><span class="nav-number">1.3.2.</span> <span class="nav-text">Setter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84Offset%E6%98%AF%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E7%9A%84%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4. 成员变量的Offset是怎么计算的？</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9E%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">1. 实例代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BC%96%E8%AF%91%E5%90%8E%E6%BA%90%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">2. 编译后源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Runtime%E6%BA%90%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">3.Runtime源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter"><span class="nav-number">3.1.</span> <span class="nav-text">Getter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setter"><span class="nav-number">3.2.</span> <span class="nav-text">Setter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84Offset%E6%98%AF%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E7%9A%84%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">4. 成员变量的Offset是怎么计算的？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
