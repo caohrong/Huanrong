@@ -943,6 +943,13 @@
 
               <time title="Created: 2021-06-03 21:28:17" itemprop="dateCreated datePublished" datetime="2021-06-03T21:28:17+08:00">2021-06-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-06 13:09:21" itemprop="dateModified" datetime="2021-09-06T13:09:21+08:00">2021-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -978,17 +985,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="GCD-Block循环引用问题"><a href="#GCD-Block循环引用问题" class="headerlink" title="GCD Block循环引用问题"></a>GCD Block循环引用问题</h1><p>问题：GCD为什么不会导致循环引用</p>
-<p>这个问题得分开回答，分为同步和异步线程。</p>
+          <h1 id="GCD-Block循环引用问题"><a href="#GCD-Block循环引用问题" class="headerlink" title="GCD Block循环引用问题"></a>GCD Block循环引用问题</h1><p>问题：GCD为什么不会导致循环引用？</p>
+<p>这个问题得分开回答，分为同步和异步线程两种情况。</p>
 <h3 id="同步线程的情况"><a href="#同步线程的情况" class="headerlink" title="同步线程的情况"></a>同步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1452870-dispatch_sync">dispatch_sync</a>苹果官方是这么写的</p>
 <blockquote>
-<p>Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchronous, it “borrows” the reference of the caller. Moreover, no Block_copy is performed on the block.<br>As a performance optimization, this function executes blocks on the current thread whenever possible, with one exception: Blocks submitted to the main dispatch queue always run on the main thread.<br>也就是说同步线程不会增加引用计数，是借用调用者的引用计数，而且也是同步执行，而且也不会把block拷贝，所以不会导致循环引用。</p>
+<p>Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchronous, it “borrows” the reference of the caller. Moreover, no Block_copy is performed on the block.<br>As a performance optimization, this function executes blocks on the current thread whenever possible, with one exception: Blocks submitted to the main dispatch queue always run on the main thread.</p>
 </blockquote>
+<p>也就是说同步线程不会增加引用计数，是借用调用者的引用计数，而且也是同步执行，而且也不会把block拷贝，所以不会导致循环引用。</p>
 <h3 id="异步线程的情况"><a href="#异步线程的情况" class="headerlink" title="异步线程的情况"></a>异步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1453057-dispatch_async">dispatch_async</a>苹果官方的描述是</p>
 <blockquote>
 <p>The block to submit to the target dispatch queue. This function performs Block_copy and Block_release on behalf of callers. This parameter cannot be NULL.</p>
 </blockquote>
 <p>也就是说会拷贝block，但是也会帮你调用release，所以也不会存在循环引用的问题。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以根据苹果官方的文档解释，不管是在异步或者同步线程调用过程中，开发者都不需要是去考了在GCD中会导致循环引用的问题。</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904089252265991">GCD 捕获 self 是否会造成内存泄漏？</a><br><a target="_blank" rel="noopener" href="https://github.com/ibireme/YYKit/issues/41">YYKit作者讨论</a></p>
 
       
