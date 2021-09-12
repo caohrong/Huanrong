@@ -1699,8 +1699,11 @@ function CookieUpdate(oldValue, newValue, path = 'cookie') {
   };
 }
 
+// 获取cookie
 function GetCookie() {
+        
   const req = $request;
+  $nobyda.notify(`Req`, ``, `${req}`);
   if (req.method != 'OPTIONS' && req.headers) {
     const CV = (req.headers['Cookie'] || req.headers['cookie'] || '');
     const ckItems = CV.match(/(pt_key|pt_pin)=.+?;/g);
