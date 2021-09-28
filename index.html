@@ -384,7 +384,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">out of line状态的判定</a>
+            <a href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">扩容和缩容的调取时机</a>
         </h2>
 
         <div class="post-meta">
@@ -401,7 +401,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-06 13:04:23" itemprop="dateModified" datetime="2021-09-06T13:04:23+08:00">2021-09-06</time>
+                <time title="Modified: 2021-09-28 17:15:51" itemprop="dateModified" datetime="2021-09-28T17:15:51+08:00">2021-09-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -775,7 +775,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-08-24 00:37:46" itemprop="dateModified" datetime="2021-08-24T00:37:46+08:00">2021-08-24</time>
+                <time title="Modified: 2021-09-28 17:14:37" itemprop="dateModified" datetime="2021-09-28T17:14:37+08:00">2021-09-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -812,8 +812,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>以下用Shell方式来安装Conda，除了Mac该方法也适用于Linux系统。</p>
-<h2 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h2><p>下载<code>sh</code>文件<br><a target="_blank" rel="noopener" href="https://repo.anaconda.com/miniconda/">官方安装脚本下载</a><br>找到新版的Miniconda版本，下载最新的的sh文件，例如Mac端：<br><code>Miniconda3-py39_4.9.2-MacOSX-x86_64.sh</code>。</p>
+          <p>以下用Shell方式来安装Conda，除了Mac，该方法也适用于Linux系统。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/08/18/Python/%E6%9E%81%E7%AE%80%E5%AE%89%E8%A3%85Conda/#more" rel="contents">
@@ -960,7 +959,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-06 13:09:21" itemprop="dateModified" datetime="2021-09-06T13:09:21+08:00">2021-09-06</time>
+                <time title="Modified: 2021-09-28 16:49:24" itemprop="dateModified" datetime="2021-09-28T16:49:24+08:00">2021-09-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -997,19 +996,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="GCD-Block循环引用问题"><a href="#GCD-Block循环引用问题" class="headerlink" title="GCD Block循环引用问题"></a>GCD Block循环引用问题</h1><p>问题：GCD为什么不会导致循环引用？</p>
-<p>这个问题得分开回答，分为同步和异步线程两种情况。</p>
-<h3 id="同步线程的情况"><a href="#同步线程的情况" class="headerlink" title="同步线程的情况"></a>同步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1452870-dispatch_sync">dispatch_sync</a>苹果官方是这么写的</p>
+          <h1 id="GCD-Block循环引用问题"><a href="#GCD-Block循环引用问题" class="headerlink" title="GCD Block循环引用问题"></a>GCD Block循环引用问题</h1><p>问题：GCD为什么不会导致循环引用</p>
+<p>这个问题得分开回答，同步和异步线程</p>
+<h3 id="1-同步线程的情况"><a href="#1-同步线程的情况" class="headerlink" title="1.同步线程的情况"></a>1.同步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1452870-dispatch_sync">dispatch_sync</a>苹果官方是这么写的</p>
 <blockquote>
-<p>Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchronous, it “borrows” the reference of the caller. Moreover, no Block_copy is performed on the block.<br>As a performance optimization, this function executes blocks on the current thread whenever possible, with one exception: Blocks submitted to the main dispatch queue always run on the main thread.</p>
+<p>Unlike with dispatch_async, no retain is performed on the target queue. Because calls to this function are synchronous, it “borrows” the reference of the caller. Moreover, no Block_copy is performed on the block.<br>As a performance optimization, this function executes blocks on the current thread whenever possible, with one exception: Blocks submitted to the main dispatch queue always run on the main thread.<br>也就是说同步线程不会增加引用计数，是借用调用者的引用计数，而且也是同步执行，而且也不会把block拷贝，所以不会导致循环引用。</p>
 </blockquote>
-<p>也就是说同步线程不会增加引用计数，是借用调用者的引用计数，而且也是同步执行，而且也不会把block拷贝，所以不会导致循环引用。</p>
-<h3 id="异步线程的情况"><a href="#异步线程的情况" class="headerlink" title="异步线程的情况"></a>异步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1453057-dispatch_async">dispatch_async</a>苹果官方的描述是</p>
+<h3 id="2-异步线程的情况"><a href="#2-异步线程的情况" class="headerlink" title="2. 异步线程的情况"></a>2. 异步线程的情况</h3><p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/dispatch/1453057-dispatch_async">dispatch_async</a>苹果官方的描述是</p>
 <blockquote>
 <p>The block to submit to the target dispatch queue. This function performs Block_copy and Block_release on behalf of callers. This parameter cannot be NULL.</p>
 </blockquote>
 <p>也就是说会拷贝block，但是也会帮你调用release，所以也不会存在循环引用的问题。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以根据苹果官方的文档解释，不管是在异步或者同步线程调用过程中，开发者都不需要是去考了在GCD中会导致循环引用的问题。</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904089252265991">GCD 捕获 self 是否会造成内存泄漏？</a><br><a target="_blank" rel="noopener" href="https://github.com/ibireme/YYKit/issues/41">YYKit作者讨论</a></p>
 
       
@@ -1056,6 +1053,13 @@
 
               <time title="Created: 2021-04-03 10:56:46" itemprop="dateCreated datePublished" datetime="2021-04-03T10:56:46+08:00">2021-04-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-06 13:31:28" itemprop="dateModified" datetime="2021-09-06T13:31:28+08:00">2021-09-06</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
