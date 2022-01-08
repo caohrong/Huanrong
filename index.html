@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/09/29/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/weakSelf%20&%20strongSelf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -208,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/29/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/" class="post-title-link" itemprop="url">Autorelease系列1- Autorelease的本质</a>
+            <a href="/2021/12/16/iOS/weakSelf%20&%20strongSelf/" class="post-title-link" itemprop="url">weakSelf 和 strongSelf.</a>
         </h2>
 
         <div class="post-meta">
@@ -217,9 +217,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-09-29 11:33:07 / Modified: 11:33:50" itemprop="dateCreated datePublished" datetime="2021-09-29T11:33:07+08:00">2021-09-29</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,8 +239,184 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/09/29/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/09/29/iOS/Autorelease系列1- Autorelease的本质/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/weakSelf%20&%20strongSelf/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/weakSelf & strongSelf/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>weakSelf</code>是用来解决循环引用<br><code>strongSelf</code>则是保证任何情况下self在超出作用域以后仍旧能够使用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/16/iOS/weakSelf%20&%20strongSelf/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/" class="post-title-link" itemprop="url">Block系列1-block的本质</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Block系列1-block的本质/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="block的本质"><a href="#block的本质" class="headerlink" title="block的本质"></a>block的本质</h2><p><img src="https://caohr.com/ImagesFolder/16191466002025/01.png" alt="01"><br>__weak与源码编译问题解决<br><img src="https://caohr.com/ImagesFolder/16191466002025/08.png" alt="08"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/16/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/" class="post-title-link" itemprop="url">Autorelease系列1- Autorelease的本质</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/12/16/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Autorelease系列1- Autorelease的本质/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +450,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -289,7 +464,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/29/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Block系列3-block __block修饰符值捕获源码分析</a>
+            <a href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Block系列2-block auto和static值捕获源码分析</a>
         </h2>
 
         <div class="post-meta">
@@ -298,9 +473,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-09-29 11:21:59 / Modified: 11:25:44" itemprop="dateCreated datePublished" datetime="2021-09-29T11:21:59+08:00">2021-09-29</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -321,92 +495,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/09/29/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/09/29/iOS/Block系列3-block __block修饰符值捕获源码分析/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        __block <span class="keyword">int</span> age = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">void</span>(^block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ^(<span class="keyword">int</span> a, <span class="keyword">int</span> b)&#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, age);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, a);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, b);</span><br><span class="line">        &#125;;</span><br><span class="line">        block(<span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">        age = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在加上__block以后，age的值被包装成了<code>__Block_byref_age_0</code>的对象，而且后续的访问也都是通过对象来访问里面的值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包装引用的外部参数</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">Block_byref_age_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *__isa;</span><br><span class="line">__Block_byref_age_0 *__forwarding;</span><br><span class="line"> <span class="keyword">int</span> __flags;</span><br><span class="line"> <span class="keyword">int</span> __size;</span><br><span class="line"> <span class="keyword">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Block实现类</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">main_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  __Block_byref_age_0 *age; <span class="comment">// by ref</span></span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, struct __main_block_desc_0 *desc, __Block_byref_age_0 *_age, <span class="keyword">int</span> flags=<span class="number">0</span>) : age(_age-&gt;__forwarding) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *isa;</span><br><span class="line">  <span class="keyword">int</span> Flags;</span><br><span class="line">  <span class="keyword">int</span> Reserved;</span><br><span class="line">  <span class="keyword">void</span> *FuncPtr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最终Block中的代码分装</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(struct __main_block_impl_0 *__cself, <span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">  __Block_byref_age_0 *age = __cself-&gt;age; <span class="comment">// bound by ref</span></span><br><span class="line"></span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_0, (age-&gt;__forwarding-&gt;age));</span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_1, a);</span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_2, b);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) &#123;_Block_object_assign((<span class="keyword">void</span>*)&amp;dst-&gt;age, (<span class="keyword">void</span>*)src-&gt;age, <span class="number">8</span><span class="comment">/*BLOCK_FIELD_IS_BYREF*/</span>);&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_dispose_0(struct __main_block_impl_0*src) &#123;_Block_object_dispose((<span class="keyword">void</span>*)src-&gt;age, <span class="number">8</span><span class="comment">/*BLOCK_FIELD_IS_BYREF*/</span>);&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Block描述信息</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">size_t</span> reserved;</span><br><span class="line">  <span class="keyword">size_t</span> Block_size;</span><br><span class="line">  <span class="keyword">void</span> (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);</span><br><span class="line">  <span class="keyword">void</span> (*dispose)(struct __main_block_impl_0*);</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; <span class="number">0</span>, <span class="keyword">sizeof</span>(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Main方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* @autoreleasepool */</span> &#123; __AtAutoreleasePool __autoreleasepool; </span><br><span class="line">    </span><br><span class="line">       <span class="comment">//加上__block以后的外部参数age</span></span><br><span class="line">        __attribute__((__blocks__(byref))) __Block_byref_age_0 age = &#123;(<span class="keyword">void</span>*)<span class="number">0</span>,(__Block_byref_age_0 *)&amp;age, <span class="number">0</span>, <span class="keyword">sizeof</span>(__Block_byref_age_0), <span class="number">10</span>&#125;;</span><br><span class="line">    </span><br><span class="line">       <span class="comment">//Block定义</span></span><br><span class="line">        <span class="keyword">void</span>(*block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ((<span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">int</span>))&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_age_0 *)&amp;age, <span class="number">570425344</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Block调用</span></span><br><span class="line">        ((<span class="keyword">void</span> (*)(__block_impl *, <span class="keyword">int</span>, <span class="keyword">int</span>))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block, <span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//后续age的访问</span></span><br><span class="line">        (age.__forwarding-&gt;age) = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/29/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Block系列2-block auto和static值捕获源码分析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-09-29 11:20:29 / Modified: 11:28:46" itemprop="dateCreated datePublished" datetime="2021-09-29T11:20:29+08:00">2021-09-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/09/29/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/09/29/iOS/Block系列2-block auto和static值捕获源码分析/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Block系列2-block auto和static值捕获源码分析/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -434,6 +524,13 @@
 
 <h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>从block最终的实现可以看到结构体<code>__main_block_impl_0</code>初始化的时候传入了<code>__main_block_func_0</code>的参数，调用的时候实质上是调用了<code>__block_impl</code>的<code>FuncPtr</code>方法。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> staticValues = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">auto</span> <span class="keyword">int</span> autoValues = <span class="number">20</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//block实现</span></span><br><span class="line"><span class="keyword">void</span>(*block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ((<span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">int</span>))&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, &amp;staticValues, autoValues));</span><br><span class="line">((<span class="keyword">void</span> (*)(__block_impl *, <span class="keyword">int</span>, <span class="keyword">int</span>))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block, <span class="number">50</span>, <span class="number">60</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/">Block系列1-block的本质</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Block系列2-block auto和static值捕获源码分析</a>[当前]</li>
+<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Block系列3-block __block修饰符值捕获源码分析</a></li>
+</ul>
+
       
     </div>
 
@@ -452,7 +549,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -466,7 +563,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/29/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/" class="post-title-link" itemprop="url">Block系列1-block的本质</a>
+            <a href="/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">Setter和Getter原理</a>
         </h2>
 
         <div class="post-meta">
@@ -475,9 +572,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-09-29 09:45:43 / Modified: 11:33:07" itemprop="dateCreated datePublished" datetime="2021-09-29T09:45:43+08:00">2021-09-29</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -498,8 +594,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/09/29/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/09/29/iOS/Block系列1-block的本质/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Setter和Getter原理/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -514,10 +610,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="block的本质"><a href="#block的本质" class="headerlink" title="block的本质"></a>block的本质</h2><p><img src="https://caohr.com/ImagesFolder/16191466002025/01.png" alt="01"><br>__weak与源码编译问题解决<br><img src="https://caohr.com/ImagesFolder/16191466002025/08.png" alt="08"></p>
+          <p>当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？</p>
+<h2 id="1-实例代码"><a href="#1-实例代码" class="headerlink" title="1. 实例代码"></a>1. 实例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@interface HRObject : NSObject</span><br><span class="line">@property (nonatomic, strong) NSString *strongName;</span><br><span class="line">@property (nonatomic, copy) NSString *weakName;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation HRObject</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        &#x2F;&#x2F; insert code here...</span><br><span class="line">        NSLog(@&quot;Hello, World!&quot;);</span><br><span class="line">        </span><br><span class="line">        HRObject *object &#x3D; [HRObject new];</span><br><span class="line">        object.strongName &#x3D; @&quot;strong&quot;;</span><br><span class="line">        object.weakName &#x3D; @&quot;weak&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o arm64.cpp</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/09/29/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/#more" rel="contents">
+              <a class="btn" href="/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -541,7 +640,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/08/25/iOS/out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -555,7 +654,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/25/iOS/out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/" class="post-title-link" itemprop="url">🌵out of line状态的判定</a>
+            <a href="/2021/12/16/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">Weak 1.原理解析</a>
         </h2>
 
         <div class="post-meta">
@@ -565,15 +664,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-08-25 20:16:31" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-06 13:25:47" itemprop="dateModified" datetime="2021-09-06T13:25:47+08:00">2021-09-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -593,97 +685,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/08/25/iOS/out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/25/iOS/out of line状态的判定/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/08/25/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/25/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">Weak 1.原理解析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-08-25 20:16:31" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-29 09:40:01" itemprop="dateModified" datetime="2021-09-29T09:40:01+08:00">2021-09-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/08/25/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/25/iOS/Weak 1.原理解析/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 1.原理解析/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -701,7 +704,7 @@
           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@interface HRObject : NSObject</span><br><span class="line">@property (nonatomic, strong) NSObject *objectA;</span><br><span class="line">@property (nonatomic, strong) NSObject *objectB;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation HRObject</span><br><span class="line">- (void)weakTest &#123;</span><br><span class="line">    self.objectA &#x3D; [NSObject new];</span><br><span class="line">    self.objectB &#x3D; [NSObject new];</span><br><span class="line">    </span><br><span class="line">    __weak NSObject *weakObject &#x3D; self.objectA;</span><br><span class="line">    weakObject &#x3D; self.objectB;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        &#x2F;&#x2F; insert code here...</span><br><span class="line">        [[HRObject new] weakTest];</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/08/25/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/#more" rel="contents">
+              <a class="btn" href="/2021/12/16/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -725,7 +728,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/08/25/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Weak%202.SideTable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -739,7 +742,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/25/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/" class="post-title-link" itemprop="url">Weak 5.out of line状态的判定</a>
+            <a href="/2021/12/16/iOS/Weak%202.SideTable/" class="post-title-link" itemprop="url">Weak 2.SideTable</a>
         </h2>
 
         <div class="post-meta">
@@ -749,15 +752,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-08-25 20:16:31" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-29 09:43:52" itemprop="dateModified" datetime="2021-09-29T09:43:52+08:00">2021-09-29</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -777,8 +773,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/08/25/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/25/iOS/Weak 5.out of line状态的判定/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/Weak%202.SideTable/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 2.SideTable/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -793,10 +789,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>out of line状态的判定</p>
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SideTable</span> &#123;</span></span><br><span class="line">    <span class="keyword">spinlock_t</span> slock;</span><br><span class="line">    RefcountMap refcnts;</span><br><span class="line">    <span class="keyword">weak_table_t</span> weak_table;</span><br><span class="line"></span><br><span class="line">    SideTable() &#123;</span><br><span class="line">        <span class="built_in">memset</span>(&amp;weak_table, <span class="number">0</span>, <span class="keyword">sizeof</span>(weak_table));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~SideTable() &#123;</span><br><span class="line">        _objc_fatal(<span class="string">&quot;Do not delete SideTable.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123; slock.lock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123; slock.unlock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">forceReset</span><span class="params">()</span> </span>&#123; slock.forceReset(); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Address-ordered lock discipline for a pair of side tables.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">lockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">unlockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/08/25/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/#more" rel="contents">
+              <a class="btn" href="/2021/12/16/iOS/Weak%202.SideTable/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -820,7 +816,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/08/25/iOS/SideTable%E7%9A%84Hash%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -834,7 +830,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/25/iOS/SideTable%E7%9A%84Hash%E5%80%BC/" class="post-title-link" itemprop="url">🌵SideTable的Hash值</a>
+            <a href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Block系列3-block __block修饰符值捕获源码分析</a>
         </h2>
 
         <div class="post-meta">
@@ -844,15 +840,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-08-25 20:16:31" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-06 13:25:47" itemprop="dateModified" datetime="2021-09-06T13:25:47+08:00">2021-09-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -872,8 +861,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/08/25/iOS/SideTable%E7%9A%84Hash%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/25/iOS/SideTable的Hash值/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Block系列3-block __block修饰符值捕获源码分析/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -888,7 +877,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        __block <span class="keyword">int</span> age = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">void</span>(^block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ^(<span class="keyword">int</span> a, <span class="keyword">int</span> b)&#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, age);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, a);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, b);</span><br><span class="line">        &#125;;</span><br><span class="line">        block(<span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">        age = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在加上__block以后，age的值被包装成了<code>__Block_byref_age_0</code>的对象，而且后续的访问也都是通过对象来访问里面的值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包装引用的外部参数</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">Block_byref_age_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *__isa;</span><br><span class="line">__Block_byref_age_0 *__forwarding;</span><br><span class="line"> <span class="keyword">int</span> __flags;</span><br><span class="line"> <span class="keyword">int</span> __size;</span><br><span class="line"> <span class="keyword">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Block实现类</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">main_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  __Block_byref_age_0 *age; <span class="comment">// by ref</span></span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, struct __main_block_desc_0 *desc, __Block_byref_age_0 *_age, <span class="keyword">int</span> flags=<span class="number">0</span>) : age(_age-&gt;__forwarding) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *isa;</span><br><span class="line">  <span class="keyword">int</span> Flags;</span><br><span class="line">  <span class="keyword">int</span> Reserved;</span><br><span class="line">  <span class="keyword">void</span> *FuncPtr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最终Block中的代码分装</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(struct __main_block_impl_0 *__cself, <span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">  __Block_byref_age_0 *age = __cself-&gt;age; <span class="comment">// bound by ref</span></span><br><span class="line"></span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_0, (age-&gt;__forwarding-&gt;age));</span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_1, a);</span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_2, b);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) &#123;_Block_object_assign((<span class="keyword">void</span>*)&amp;dst-&gt;age, (<span class="keyword">void</span>*)src-&gt;age, <span class="number">8</span><span class="comment">/*BLOCK_FIELD_IS_BYREF*/</span>);&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_dispose_0(struct __main_block_impl_0*src) &#123;_Block_object_dispose((<span class="keyword">void</span>*)src-&gt;age, <span class="number">8</span><span class="comment">/*BLOCK_FIELD_IS_BYREF*/</span>);&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Block描述信息</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">size_t</span> reserved;</span><br><span class="line">  <span class="keyword">size_t</span> Block_size;</span><br><span class="line">  <span class="keyword">void</span> (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);</span><br><span class="line">  <span class="keyword">void</span> (*dispose)(struct __main_block_impl_0*);</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; <span class="number">0</span>, <span class="keyword">sizeof</span>(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Main方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* @autoreleasepool */</span> &#123; __AtAutoreleasePool __autoreleasepool; </span><br><span class="line">    </span><br><span class="line">       <span class="comment">//加上__block以后的外部参数age</span></span><br><span class="line">        __attribute__((__blocks__(byref))) __Block_byref_age_0 age = &#123;(<span class="keyword">void</span>*)<span class="number">0</span>,(__Block_byref_age_0 *)&amp;age, <span class="number">0</span>, <span class="keyword">sizeof</span>(__Block_byref_age_0), <span class="number">10</span>&#125;;</span><br><span class="line">    </span><br><span class="line">       <span class="comment">//Block定义</span></span><br><span class="line">        <span class="keyword">void</span>(*block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ((<span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">int</span>))&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_age_0 *)&amp;age, <span class="number">570425344</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Block调用</span></span><br><span class="line">        ((<span class="keyword">void</span> (*)(__block_impl *, <span class="keyword">int</span>, <span class="keyword">int</span>))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block, <span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//后续age的访问</span></span><br><span class="line">        (age.__forwarding-&gt;age) = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/">Block系列1-block的本质</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Block系列2-block auto和static值捕获源码分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Block系列3-block __block修饰符值捕获源码分析</a>[当前]</li>
+</ul>
+
       
     </div>
 
@@ -907,7 +906,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/08/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -921,7 +920,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/" class="post-title-link" itemprop="url">Weak 3.SideTable的Hash值</a>
+            <a href="/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/" class="post-title-link" itemprop="url">Weak 3.SideTable的Hash值</a>
         </h2>
 
         <div class="post-meta">
@@ -931,15 +930,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-08-25 20:16:31" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-29 09:43:12" itemprop="dateModified" datetime="2021-09-29T09:43:12+08:00">2021-09-29</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -959,8 +951,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/08/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/25/iOS/Weak 3.SideTable的Hash值/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 3.SideTable的Hash值/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -995,7 +987,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1009,7 +1001,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">扩容和缩容的调取时机</a>
+            <a href="/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">Weak 4.扩容和缩容的调取时机</a>
         </h2>
 
         <div class="post-meta">
@@ -1019,15 +1011,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-08-25 20:16:31" itemprop="dateCreated datePublished" datetime="2021-08-25T20:16:31+08:00">2021-08-25</time>
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-28 17:15:51" itemprop="dateModified" datetime="2021-09-28T17:15:51+08:00">2021-09-28</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1047,8 +1032,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/08/25/iOS/weak_table_t扩容和缩容/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 4.weak_table_t扩容和缩容/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1066,7 +1051,7 @@
           <h2 id="扩容和缩容的调取时机"><a href="#扩容和缩容的调取时机" class="headerlink" title="扩容和缩容的调取时机"></a>扩容和缩容的调取时机</h2><p>添加和删除弱应用的指针是通过<code>weak_register_no_lock</code>和<code>weak_unregister_no_lock</code>来实现的。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/08/25/iOS/weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#more" rel="contents">
+              <a class="btn" href="/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1089,7 +1074,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1157,20 +1142,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1208,7 +1193,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

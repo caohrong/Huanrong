@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/js/src/photoswipe.min.js?v="></script>
+<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？ 1. 实例代码12345678910111213141516171819@interface HRObject : NSObject@property (nonatomic, strong) NSString *strongName;@property (nonatomic, copy) NSString">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setter和Getter原理">
+<meta property="og:url" content="https://caohr.com/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="HR&#39;s Blog">
+<meta property="og:description" content="当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？ 1. 实例代码12345678910111213141516171819@interface HRObject : NSObject@property (nonatomic, strong) NSString *strongName;@property (nonatomic, copy) NSString">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-16T15:57:31.506Z">
+<meta property="article:modified_time" content="2021-12-16T15:57:31.506Z">
+<meta property="article:author" content="HR">
+<meta property="article:tag" content="源码解析">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://caohr.com/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Setter和Getter原理 | HR's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-61905451-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1b08dac8932c829229886a7ff2235549";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+<!-- 相册相关代码开始 -->
+  
+<!-- 相册相关代码结束 -->
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HR's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Swimming 🏊 in the sea🌊of code!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/album/" rel="section"><i class="fa fa-camera fa-fw"></i>photos</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Setter和Getter原理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Setter和Getter原理/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>当我们在@property上加上strong和copy关键字以后，编译器都为我们做了什么？</p>
+<h2 id="1-实例代码"><a href="#1-实例代码" class="headerlink" title="1. 实例代码"></a>1. 实例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@interface HRObject : NSObject</span><br><span class="line">@property (nonatomic, strong) NSString *strongName;</span><br><span class="line">@property (nonatomic, copy) NSString *weakName;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation HRObject</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        &#x2F;&#x2F; insert code here...</span><br><span class="line">        NSLog(@&quot;Hello, World!&quot;);</span><br><span class="line">        </span><br><span class="line">        HRObject *object &#x3D; [HRObject new];</span><br><span class="line">        object.strongName &#x3D; @&quot;strong&quot;;</span><br><span class="line">        object.weakName &#x3D; @&quot;weak&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o arm64.cpp</span><br></pre></td></tr></table></figure>
+
+
+<span id="more"></span>
+
+
+<h2 id="2-编译后源码"><a href="#2-编译后源码" class="headerlink" title="2. 编译后源码"></a>2. 编译后源码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* @autoreleasepool */</span> &#123; __AtAutoreleasePool __autoreleasepool; </span><br><span class="line"></span><br><span class="line">        NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_c597e0_mi_0);</span><br><span class="line"></span><br><span class="line">        HRObject *object = ((HRObject *(*)(id, SEL))(<span class="keyword">void</span> *)objc_msgSend)((id)objc_getClass(<span class="string">&quot;HRObject&quot;</span>), sel_registerName(<span class="string">&quot;new&quot;</span>));</span><br><span class="line">        ((<span class="keyword">void</span> (*)(id, SEL, NSString *))(<span class="keyword">void</span> *)objc_msgSend)((id)object, sel_registerName(<span class="string">&quot;setStrongName:&quot;</span>), (NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_c597e0_mi_1);</span><br><span class="line">        ((<span class="keyword">void</span> (*)(id, SEL, NSString *))(<span class="keyword">void</span> *)objc_msgSend)((id)object, sel_registerName(<span class="string">&quot;setWeakName:&quot;</span>), (NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_c597e0_mi_2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到我们在使用点语法的时候，最终是生成了相应的set方法<code>setStrongName:</code>和<code>setWeakName:</code>，找到这两个方法的实现，<code>_INSTANCE_METHODS_HRObject</code>给所有参数都申请了<code>Setter</code>和<code>Getter</code>方法。而<code>object.weakName = @&quot;weak&quot;;</code>最终调用的是<code>_I_HRObject_setWeakName_</code>方法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> /*_<span class="title">method_list_t</span>*/ &#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> entsize;  <span class="comment">// sizeof(struct _objc_method)</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> method_count;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> _<span class="title">objc_method</span> <span class="title">method_list</span>[8];</span></span><br><span class="line">&#125; _OBJC_$_INSTANCE_METHODS_HRObject __attribute__ ((used, section (<span class="string">&quot;__DATA,__objc_const&quot;</span>))) = &#123;</span><br><span class="line">	<span class="keyword">sizeof</span>(_objc_method),</span><br><span class="line">	<span class="number">8</span>,</span><br><span class="line">	&#123;&#123;(struct objc_selector *)<span class="string">&quot;strongName&quot;</span>, <span class="string">&quot;@16@0:8&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_strongName&#125;,</span><br><span class="line">	&#123;(struct objc_selector *)<span class="string">&quot;setStrongName:&quot;</span>, <span class="string">&quot;v24@0:8@16&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_setStrongName_&#125;,</span><br><span class="line">	&#123;(struct objc_selector *)<span class="string">&quot;weakName&quot;</span>, <span class="string">&quot;@16@0:8&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_weakName&#125;,</span><br><span class="line">	&#123;(struct objc_selector *)<span class="string">&quot;setWeakName:&quot;</span>, <span class="string">&quot;v24@0:8@16&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_setWeakName_&#125;,</span><br><span class="line">	&#123;(struct objc_selector *)<span class="string">&quot;strongName&quot;</span>, <span class="string">&quot;@16@0:8&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_strongName&#125;,</span><br><span class="line">	&#123;(struct objc_selector *)<span class="string">&quot;setStrongName:&quot;</span>, <span class="string">&quot;v24@0:8@16&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_setStrongName_&#125;,</span><br><span class="line">	&#123;(struct objc_selector *)<span class="string">&quot;weakName&quot;</span>, <span class="string">&quot;@16@0:8&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_weakName&#125;,</span><br><span class="line">	&#123;(struct objc_selector *)<span class="string">&quot;setWeakName:&quot;</span>, <span class="string">&quot;v24@0:8@16&quot;</span>, (<span class="keyword">void</span> *)_I_HRObject_setWeakName_&#125;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>_I_HRObject_setWeakName_</code>最终调用的是<code>objc_setProperty</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> _I_HRObject_setWeakName_(HRObject * self, SEL _cmd, NSString *weakName) &#123; objc_setProperty (self, _cmd, __OFFSETOFIVAR__(struct HRObject, _weakName), (id)weakName, <span class="number">0</span>, <span class="number">1</span>); &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Runtime源码"><a href="#3-Runtime源码" class="headerlink" title="3.Runtime源码"></a>3.Runtime源码</h2><p>申明</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Properties */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//🏆Getter方法</span></span><br><span class="line"><span class="comment">// Read or write an object property. Not all object properties use these.</span></span><br><span class="line"><span class="function">id _Nullable <span class="title">objc_getProperty</span><span class="params">(id _Nullable self, SEL _Nonnull _cmd,</span></span></span><br><span class="line"><span class="function"><span class="params">                 <span class="keyword">ptrdiff_t</span> offset, BOOL atomic)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//🏆Setter方法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty</span><span class="params">(id _Nullable self, SEL _Nonnull _cmd, <span class="keyword">ptrdiff_t</span> offset,</span></span></span><br><span class="line"><span class="function"><span class="params">                 id _Nullable newValue, BOOL atomic, <span class="keyword">signed</span> <span class="keyword">char</span> shouldCopy)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_atomic</span><span class="params">(id _Nullable self, SEL _Nonnull _cmd,</span></span></span><br><span class="line"><span class="function"><span class="params">                        id _Nullable newValue, <span class="keyword">ptrdiff_t</span> offset)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_nonatomic</span><span class="params">(id _Nullable self, SEL _Nonnull _cmd,</span></span></span><br><span class="line"><span class="function"><span class="params">                           id _Nullable newValue, <span class="keyword">ptrdiff_t</span> offset)</span></span>;</span><br><span class="line">                           </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_atomic_copy</span><span class="params">(id _Nullable self, SEL _Nonnull _cmd,</span></span></span><br><span class="line"><span class="function"><span class="params">                             id _Nullable newValue, <span class="keyword">ptrdiff_t</span> offset)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_nonatomic_copy</span><span class="params">(id _Nullable self, SEL _Nonnull _cmd,</span></span></span><br><span class="line"><span class="function"><span class="params">                                id _Nullable newValue, <span class="keyword">ptrdiff_t</span> offset)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Read or write a non-object property. Not all uses are C structs, </span></span><br><span class="line"><span class="comment">// and not all C struct properties use this.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_copyStruct</span><span class="params">(<span class="keyword">void</span> * _Nonnull dest, <span class="keyword">const</span> <span class="keyword">void</span> * _Nonnull src,</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">ptrdiff_t</span> size, BOOL atomic, BOOL hasStrong)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Perform a copy of a C++ object using striped locks. Used by non-POD C++ typed atomic properties.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_copyCppObjectAtomic</span><span class="params">(<span class="keyword">void</span> * _Nonnull dest, <span class="keyword">const</span> <span class="keyword">void</span> * _Nonnull src,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">void</span> (* _Nonnull copyHelper)</span></span></span><br><span class="line"><span class="function"><span class="params">                           (<span class="keyword">void</span> * _Nonnull dest, <span class="keyword">const</span> <span class="keyword">void</span> * _Nonnull source))</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><p>Getter方法的逻辑比较简单，判断是否有加锁，没有的话，直接返回变量的值，有的话则先加锁。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">id <span class="title">objc_getProperty</span><span class="params">(id self, SEL _cmd, <span class="keyword">ptrdiff_t</span> offset, BOOL atomic)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (offset == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> object_getClass(self);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retain release world</span></span><br><span class="line">    id *slot = (id*) ((<span class="keyword">char</span>*)self + offset);</span><br><span class="line">    <span class="keyword">if</span> (!atomic) <span class="keyword">return</span> *slot;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Atomic retain release world</span></span><br><span class="line">    <span class="keyword">spinlock_t</span>&amp; slotlock = PropertyLocks[slot];</span><br><span class="line">    slotlock.lock();</span><br><span class="line">    id value = objc_retain(*slot);</span><br><span class="line">    slotlock.unlock();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// for performance, we (safely) issue the autorelease OUTSIDE of the spinlock.</span></span><br><span class="line">    <span class="keyword">return</span> objc_autoreleaseReturnValue(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Setter"><a href="#Setter" class="headerlink" title="Setter"></a>Setter</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_atomic</span><span class="params">(id self, SEL _cmd, id newValue, <span class="keyword">ptrdiff_t</span> offset)</span> </span>&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, <span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_nonatomic</span><span class="params">(id self, SEL _cmd, id newValue, <span class="keyword">ptrdiff_t</span> offset)</span> </span>&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_atomic_copy</span><span class="params">(id self, SEL _cmd, id newValue, <span class="keyword">ptrdiff_t</span> offset)</span> </span>&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, <span class="literal">true</span>, <span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty_nonatomic_copy</span><span class="params">(id self, SEL _cmd, id newValue, <span class="keyword">ptrdiff_t</span> offset)</span> </span>&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, <span class="literal">false</span>, <span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">objc_setProperty</span><span class="params">(id self, SEL _cmd, <span class="keyword">ptrdiff_t</span> offset, id newValue, BOOL atomic, <span class="keyword">signed</span> <span class="keyword">char</span> shouldCopy)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> copy = (shouldCopy &amp;&amp; shouldCopy != MUTABLE_COPY);</span><br><span class="line">    <span class="keyword">bool</span> mutableCopy = (shouldCopy == MUTABLE_COPY);</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, atomic, copy, mutableCopy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reallySetProperty</span><span class="params">(id self, SEL _cmd, id newValue, <span class="keyword">ptrdiff_t</span> offset, <span class="keyword">bool</span> atomic, <span class="keyword">bool</span> copy, <span class="keyword">bool</span> mutableCopy)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (offset == <span class="number">0</span>) &#123;</span><br><span class="line">        object_setClass(self, newValue);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    id oldValue;</span><br><span class="line">    id *slot = (id*) ((<span class="keyword">char</span>*)self + offset);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (copy) &#123;</span><br><span class="line">        newValue = [newValue copyWithZone:nil];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mutableCopy) &#123;</span><br><span class="line">        newValue = [newValue mutableCopyWithZone:nil];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (*slot == newValue) <span class="keyword">return</span>;</span><br><span class="line">        newValue = objc_retain(newValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!atomic) &#123;</span><br><span class="line">        oldValue = *slot;</span><br><span class="line">        *slot = newValue;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">spinlock_t</span>&amp; slotlock = PropertyLocks[slot];</span><br><span class="line">        slotlock.lock();</span><br><span class="line">        oldValue = *slot;</span><br><span class="line">        *slot = newValue;        </span><br><span class="line">        slotlock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    objc_release(oldValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-成员变量的Offset是怎么计算的？"><a href="#4-成员变量的Offset是怎么计算的？" class="headerlink" title="4. 成员变量的Offset是怎么计算的？"></a>4. 成员变量的Offset是怎么计算的？</h2><p>The sequence of operations can be illustrated in the following way:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="number">0</span></span><br><span class="line"><span class="number">2.</span> ((TYPE *)<span class="number">0</span>)</span><br><span class="line"><span class="number">3.</span> ( ((TYPE *)<span class="number">0</span>)-&gt;MEMBER )</span><br><span class="line"><span class="number">4.</span> &amp;( ((TYPE *)<span class="number">0</span>)-&gt;MEMBER )</span><br><span class="line"><span class="number">5.</span> ( (<span class="keyword">size_t</span>) &amp;( ((TYPE *)<span class="number">0</span>)-&gt;MEMBER )</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>定义数字0。</li>
+<li>将数字0转换成指向<code>struct Type</code>的指针。也就是把Type的起始位置转变成0。</li>
+<li>获取结构体<code>Type</code>的变量<code>MEMBER</code>。</li>
+<li>但是并没有使用<code>MEMBER</code>的值，使用的是<code>MEMBER</code>的内存地址。</li>
+<li>最终又把地址转换成了<code>size_t</code>的类型。</li>
+</ol>
+<p>因为这个结构体的起始位置被指定为0，所以<code>MEMBER</code>的地址转换成数字的时候，就是<code>MEMBER</code>基于<code>struct</code>的偏移量。</p>
+<p>这个特定代码无害的原因是没有写入，甚至没有访问过内存位置。 一切都只涉及指向这些位置（而不是它们的内容）和数字的指针。 所有这些都保存在机器寄存器或通常的本地堆栈中。</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18554721/how-to-understand-size-t-type-0-member/18554751">How to understand “((size_t) &amp;((TYPE *)0)-&gt;MEMBER)”?</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># 源码解析</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/16/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" rel="prev" title="Weak 1.原理解析">
+      <i class="fa fa-chevron-left"></i> Weak 1.原理解析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" rel="next" title="Block系列2-block auto和static值捕获源码分析">
+      Block系列2-block auto和static值捕获源码分析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9E%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">1. 实例代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BC%96%E8%AF%91%E5%90%8E%E6%BA%90%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">2. 编译后源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Runtime%E6%BA%90%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">3.Runtime源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter"><span class="nav-number">3.1.</span> <span class="nav-text">Getter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setter"><span class="nav-number">3.2.</span> <span class="nav-text">Setter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84Offset%E6%98%AF%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E7%9A%84%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">4. 成员变量的Offset是怎么计算的？</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HR"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">HR</p>
+  <div class="site-description" itemprop="description">Swimming 🏊 in the sea🌊of code!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/caohrong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;caohrong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:caohr@outlook.com" title="E-Mail → mailto:caohr@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/caohuanrong" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;caohuanrong" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HR</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://caohr.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://caohr.com/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/";
+    this.page.identifier = "2021/12/16/iOS/Setter和Getter原理/";
+    this.page.title = "Setter和Getter原理";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://caohr.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
