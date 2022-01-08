@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://www.caohr.com/ImagesFolder/001.png">
+<meta property="og:image" content="http://blog.caohr.com/ImagesFolder/001.png">
 <meta property="article:published_time" content="2021-12-16T15:57:31.463Z">
-<meta property="article:modified_time" content="2021-12-16T15:57:31.463Z">
+<meta property="article:modified_time" content="2022-01-08T05:39:58.713Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.caohr.com/ImagesFolder/001.png">
+<meta name="twitter:image" content="http://blog.caohr.com/ImagesFolder/001.png">
 
 <link rel="canonical" href="https://caohr.com/2021/12/16/C/%E6%8C%87%E9%92%88/">
 
@@ -225,6 +225,13 @@
 
               <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-08 13:39:58" itemprop="dateModified" datetime="2022-01-08T13:39:58+08:00">2022-01-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -263,7 +270,7 @@
         <blockquote>
 <p>Variables that can store addresses are called pointers.</p>
 </blockquote>
-<p>指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。<br><img src="http://www.caohr.com/ImagesFolder/001.png" alt="001"></p>
+<p>指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。<br><img src="http://blog.caohr.com/ImagesFolder/001.png" alt="001"></p>
 <span id="more"></span>
 
 <p>类型名为<code>void</code>表示没有指定类型，所以void*类型的指针可以包含任意类型的数据项地址。类型<code>void*</code>常常用做参数类型，或以独立于类型的方式处理数据的函数的返回值类型。任意类型的指针都可以传送为<code>void*</code>类型的值，在使用它时，再将其转换为合适的类型。例如, int类型变量的地址可以存储在<code>void*</code>类型的指针变量中。要访问存储在<code>void*</code>指针所指地址中的整数值，必须先把指针转化为<code>int *</code>类型。</p>

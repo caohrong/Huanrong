@@ -2,6 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://caohr.com/2021/12/16/Daily/2018-11-27/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Tools/Google%20Photos%20VS%20iCloud%20Photos/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Swift/StackView/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Daily/2018-06-28/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Daily/2018-06-25/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Tools/CMake/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Daily/2018-12-19/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Daily/2021-06-02/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Daily/2019-06-06/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/C/%E6%8C%87%E9%92%88/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Daily/2019-06-06-1/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caohr.com/2021/12/16/Swift/String/</loc>
+    
+    <lastmod>2022-01-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://caohr.com/tags/index.html</loc>
     
     <lastmod>2021-12-16</lastmod>
@@ -121,20 +212,6 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2021/12/16/Tools/CMake/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Tools/Google%20Photos%20VS%20iCloud%20Photos/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://caohr.com/2021/12/16/Tools/Hexo/</loc>
     
     <lastmod>2021-12-16</lastmod>
@@ -177,13 +254,6 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2021/12/16/Swift/StackView/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://caohr.com/2021/12/16/Swift/Singleton/</loc>
     
     <lastmod>2021-12-16</lastmod>
@@ -198,21 +268,7 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2021/12/16/Swift/String/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://caohr.com/2021/12/16/Swift/UTF8/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/</loc>
     
     <lastmod>2021-12-16</lastmod>
     
@@ -303,56 +359,7 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2021/12/16/Daily/2018-06-25/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Daily/2018-06-28/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Daily/2018-11-27/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Daily/2018-12-19/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Daily/2019-06-06-1/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://caohr.com/2021/12/16/Daily/2021-03-19/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Daily/2019-06-06/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/Daily/2021-06-02/</loc>
     
     <lastmod>2021-12-16</lastmod>
     
@@ -381,13 +388,6 @@
   
   <url>
     <loc>https://caohr.com/2021/12/16/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caohr.com/2021/12/16/C/%E6%8C%87%E9%92%88/</loc>
     
     <lastmod>2021-12-16</lastmod>
     
