@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://caohr.com/2021/12/16/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/</loc>
+    
+    <lastmod>2022-03-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/</loc>
     
     <lastmod>2022-02-06</lastmod>
@@ -373,13 +380,6 @@
   </url>
   
   <url>
-    <loc>https://caohr.com/2021/12/16/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://caohr.com/2021/12/16/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/</loc>
     
     <lastmod>2021-12-16</lastmod>
@@ -410,7 +410,7 @@
 
   <url>
     <loc>https://caohr.com/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -418,98 +418,98 @@
   
   <url>
     <loc>https://caohr.com/tags/C/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/C/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Linking/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/ELF/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Daily/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/The-Economist/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Hexo/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Latex/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Runtime/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Design-Patterns/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/Ray-Wenderlich/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/tags/objc-io/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -518,70 +518,70 @@
   
   <url>
     <loc>https://caohr.com/categories/C/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/C/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Computer-System/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Beijing/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/English/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/POSIX/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Objective-C/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Tools/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Python/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://caohr.com/categories/Swift/</loc>
-    <lastmod>2022-02-06</lastmod>
+    <lastmod>2022-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
