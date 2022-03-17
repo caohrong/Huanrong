@@ -17,9 +17,10 @@ https://d1g4mbj10o50ni.cloudfront.net/qt/Channel-QT-TX-AWS-virginia-2/Source-QT-
 https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-1000-1_live.m3u8
 #EXTINF:-1 tvg-id="NBCNewsNow.us" status="online",NBC News Now (1080p)
 http://nbcnews2.akamaized.net/hls/live/723426-b/NBCNewsPlaymaker24x7Linear99a3a827-ua/master.m3u8
-#EXTINF:-1 tvg-country="CN" tvg-language="Chinese;Mandarin Chinese" tvg-logo="https://p5.img.cctvpic.com/photoAlbum/page/performance/img/2018/7/3/1530586773068_87.png" group-title="News",CCTV-1 综合
-rtp://239.3.1.129:8008
-#EXTINF:-1 ,CCTV-2 财经
+#EXTINF:-1 tvg-country="CN" tvg-language="Chinese;Mandarin Chinese" tvg-logo="https://blog.caohr.com/etc/Logo/CCTV1.png" group-title="News",CCTV-1 综合
+rtp://239.3.1.129:8008 
+#EXTINF:-1 tvg-country="CN" tvg-language="Chinese;Mandarin Chinese" tvg-logo="https://blog.caohr.com/etc/Logo/CCTV2.png"
+group-title="News",CCTV-2 财经
 rtp://239.3.1.60:8084
 #EXTINF:-1 ,CCTV-4 中文国际
 rtp://239.3.1.105:8092
@@ -45,7 +46,7 @@ rtp://239.3.1.150:8064
 rtp://239.3.1.151:8144
 #EXTINF:-1 ,BTV北京卫视
 rtp://239.3.1.241:8000
-#EXTINF:-1 ,湖南卫视
+#EXTINF:-1 ,湖南卫视 tvg-logo="https://blog.caohr.com/etc/Logo/HNWS.png"
 rtp://239.3.1.132:8012
 #EXTINF:-1 ,黑龙江卫视
 rtp://239.3.1.133:8016
@@ -55,7 +56,7 @@ rtp://239.3.1.134:8020
 rtp://239.3.1.135:8028
 #EXTINF:-1 ,东方卫视
 rtp://239.3.1.136:8032
-#EXTINF:-1 ,浙江卫视
+#EXTINF:-1 ,浙江卫视 tvg-logo="https://blog.caohr.com/etc/Logo/ZJWS.png"
 rtp://239.3.1.137:8036
 #EXTINF:-1 ,湖北卫视
 rtp://239.3.1.138:8044
