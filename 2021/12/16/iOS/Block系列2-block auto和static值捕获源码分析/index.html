@@ -30,7 +30,7 @@
 <meta property="og:description" content="123456789101112131415161718int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;                static int staticValues &#x3D; 10;        auto int autoValues &#x3D; 20;        void(^block)(i">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-16T15:57:31.506Z">
-<meta property="article:modified_time" content="2021-12-16T15:57:31.506Z">
+<meta property="article:modified_time" content="2022-03-30T12:40:17.513Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="源码解析">
 <meta name="twitter:card" content="summary">
@@ -160,7 +160,7 @@ gtag('config', 'UA-61905451-1');
   </li>
         <li class="menu-item menu-item-photos">
 
-    <a href="/album/" rel="section"><i class="fa fa-camera fa-fw"></i>photos</a>
+    <a href="/album/" rel="section"><i class="fa fa-camera fa-fw"></i>Photos</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -222,6 +222,13 @@ gtag('config', 'UA-61905451-1');
 
               <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-03-30 20:40:17" itemprop="dateModified" datetime="2022-03-30T20:40:17+08:00">2022-03-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -258,6 +265,9 @@ gtag('config', 'UA-61905451-1');
 
       
         <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> staticValues = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">auto</span> <span class="keyword">int</span> autoValues = <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">void</span>(^block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ^(<span class="keyword">int</span> a, <span class="keyword">int</span> b)&#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, staticValues);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, autoValues);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, a);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, b);</span><br><span class="line">        &#125;;</span><br><span class="line">        block(<span class="number">50</span>, <span class="number">60</span>);</span><br><span class="line">        </span><br><span class="line">        staticValues = <span class="number">30</span>;</span><br><span class="line">        autoValues = <span class="number">40</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o arm64.cpp</span><br></pre></td></tr></table></figure>
 
@@ -382,7 +392,7 @@ gtag('config', 'UA-61905451-1');
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -395,7 +405,7 @@ gtag('config', 'UA-61905451-1');
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

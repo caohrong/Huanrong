@@ -157,7 +157,7 @@ gtag('config', 'UA-61905451-1');
   </li>
         <li class="menu-item menu-item-photos">
 
-    <a href="/album/" rel="section"><i class="fa fa-camera fa-fw"></i>photos</a>
+    <a href="/album/" rel="section"><i class="fa fa-camera fa-fw"></i>Photos</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -189,6 +189,182 @@ gtag('config', 'UA-61905451-1');
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Block系列3-block __block修饰符值捕获源码分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-03-30 20:43:17" itemprop="dateModified" datetime="2022-03-30T20:43:17+08:00">2022-03-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Block系列3-block __block修饰符值捕获源码分析/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        __block <span class="keyword">int</span> age = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">void</span>(^block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ^(<span class="keyword">int</span> a, <span class="keyword">int</span> b)&#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, age);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, a);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, b);</span><br><span class="line">        &#125;;</span><br><span class="line">        block(<span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">        age = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/" class="post-title-link" itemprop="url">Weak 3.SideTable的Hash值</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 3.SideTable的Hash值/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Weak中的SideTable</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -918,184 +1094,6 @@ gtag('config', 'UA-61905451-1');
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/" class="post-title-link" itemprop="url">THE IMPLICITLY UNWRAPPED OPTIONAL & WHEN TO USE IT</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/Swift/mplicitly unwrapped optionals/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><code>Implicitly unwrapped optionals</code>表现和<code>optional</code>值一样，唯一的不同就是<code>Implicitly unwrapped optionals</code>等于向编译器承诺在运行时的时候一定会有值。最常见的使用场景就是IBOutlet的时候，我们可以确保在编译的时候有值，但是如果用optional就得到处检查IBOutlet检查的值，就会显得非常繁琐，所有<code>Implicitly unwrapped optionals</code>可以解决这个问题。</p>
-<p>总结，就是你不能在初始化的时候就确保有值，但是你又能保证在运行时的时候一定有值，他具有Optional的所有属性，但是又不需要像Optional一样到处解包。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Swift/Protocol/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/16/Swift/Protocol/" class="post-title-link" itemprop="url">Protocol</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/12/16/Swift/Protocol/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/Swift/Protocol/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Protocol is name type, structs ,classes, and enums also name type. <code>A protocol can be adopted by a class, struct, or enum</code>.</p>
-<p>Swift中默认所有的方法都是必须实现是的</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/12/16/Swift/Protocol/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1167,7 +1165,7 @@ gtag('config', 'UA-61905451-1');
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1180,7 +1178,7 @@ gtag('config', 'UA-61905451-1');
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
