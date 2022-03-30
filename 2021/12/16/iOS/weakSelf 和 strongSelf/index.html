@@ -22,20 +22,19 @@
     var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1234567891011121314int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        __block int age &#x3D; 10;        void(^block)(int, int) &#x3D; ^(int a, int b)&amp;#123;            NSLog(@&quot;">
+  <meta name="description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Block系列3-block __block修饰符值捕获源码分析">
-<meta property="og:url" content="https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="weakSelf 和 strongSelf.">
+<meta property="og:url" content="https://blog.caohr.com/2021/12/16/iOS/weakSelf%20%E5%92%8C%20strongSelf/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content="1234567891011121314int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        __block int age &#x3D; 10;        void(^block)(int, int) &#x3D; ^(int a, int b)&amp;#123;            NSLog(@&quot;">
+<meta property="og:description" content="weakSelf是用来解决循环引用strongSelf则是保证任何情况下self在超出作用域以后仍旧能够使用。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-12-16T15:57:31.506Z">
-<meta property="article:modified_time" content="2021-12-16T15:57:31.506Z">
+<meta property="article:published_time" content="2021-12-16T15:57:31.507Z">
+<meta property="article:modified_time" content="2021-12-16T15:57:31.507Z">
 <meta property="article:author" content="HR">
-<meta property="article:tag" content="源码解析">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+<link rel="canonical" href="https://blog.caohr.com/2021/12/16/iOS/weakSelf%20%E5%92%8C%20strongSelf/">
 
 
 <script id="page-configurations">
@@ -48,7 +47,7 @@
   };
 </script>
 
-  <title>Block系列3-block __block修饰符值捕获源码分析 | HR's Blog</title>
+  <title>weakSelf 和 strongSelf. | HR's Blog</title>
   
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61905451-1"></script>
@@ -197,7 +196,7 @@ gtag('config', 'UA-61905451-1');
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/weakSelf%20%E5%92%8C%20strongSelf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -210,7 +209,7 @@ gtag('config', 'UA-61905451-1');
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Block系列3-block __block修饰符值捕获源码分析
+          weakSelf 和 strongSelf.
         </h1>
 
         <div class="post-meta">
@@ -241,8 +240,8 @@ gtag('config', 'UA-61905451-1');
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Block系列3-block __block修饰符值捕获源码分析/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/12/16/iOS/weakSelf%20%E5%92%8C%20strongSelf/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/weakSelf 和 strongSelf/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -257,16 +256,30 @@ gtag('config', 'UA-61905451-1');
     <div class="post-body" itemprop="articleBody">
 
       
-        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        __block <span class="keyword">int</span> age = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">void</span>(^block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ^(<span class="keyword">int</span> a, <span class="keyword">int</span> b)&#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, age);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, a);</span><br><span class="line">            NSLog(@<span class="string">&quot;This is block %d&quot;</span>, b);</span><br><span class="line">        &#125;;</span><br><span class="line">        block(<span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">        age = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p><code>weakSelf</code>是用来解决循环引用<br><code>strongSelf</code>则是保证任何情况下self在超出作用域以后仍旧能够使用。</p>
+<span id="more"></span>
 
-<p>在加上__block以后，age的值被包装成了<code>__Block_byref_age_0</code>的对象，而且后续的访问也都是通过对象来访问里面的值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包装引用的外部参数</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">Block_byref_age_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *__isa;</span><br><span class="line">__Block_byref_age_0 *__forwarding;</span><br><span class="line"> <span class="keyword">int</span> __flags;</span><br><span class="line"> <span class="keyword">int</span> __size;</span><br><span class="line"> <span class="keyword">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Block实现类</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">main_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  __Block_byref_age_0 *age; <span class="comment">// by ref</span></span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, struct __main_block_desc_0 *desc, __Block_byref_age_0 *_age, <span class="keyword">int</span> flags=<span class="number">0</span>) : age(_age-&gt;__forwarding) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *isa;</span><br><span class="line">  <span class="keyword">int</span> Flags;</span><br><span class="line">  <span class="keyword">int</span> Reserved;</span><br><span class="line">  <span class="keyword">void</span> *FuncPtr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最终Block中的代码分装</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(struct __main_block_impl_0 *__cself, <span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">  __Block_byref_age_0 *age = __cself-&gt;age; <span class="comment">// bound by ref</span></span><br><span class="line"></span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_0, (age-&gt;__forwarding-&gt;age));</span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_1, a);</span><br><span class="line">            NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_kw_5dr8tfr96kn9f2mf2nh0111r0000gp_T_main_6d3256_mi_2, b);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) &#123;_Block_object_assign((<span class="keyword">void</span>*)&amp;dst-&gt;age, (<span class="keyword">void</span>*)src-&gt;age, <span class="number">8</span><span class="comment">/*BLOCK_FIELD_IS_BYREF*/</span>);&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_dispose_0(struct __main_block_impl_0*src) &#123;_Block_object_dispose((<span class="keyword">void</span>*)src-&gt;age, <span class="number">8</span><span class="comment">/*BLOCK_FIELD_IS_BYREF*/</span>);&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Block描述信息</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">size_t</span> reserved;</span><br><span class="line">  <span class="keyword">size_t</span> Block_size;</span><br><span class="line">  <span class="keyword">void</span> (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);</span><br><span class="line">  <span class="keyword">void</span> (*dispose)(struct __main_block_impl_0*);</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; <span class="number">0</span>, <span class="keyword">sizeof</span>(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Main方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* @autoreleasepool */</span> &#123; __AtAutoreleasePool __autoreleasepool; </span><br><span class="line">    </span><br><span class="line">       <span class="comment">//加上__block以后的外部参数age</span></span><br><span class="line">        __attribute__((__blocks__(byref))) __Block_byref_age_0 age = &#123;(<span class="keyword">void</span>*)<span class="number">0</span>,(__Block_byref_age_0 *)&amp;age, <span class="number">0</span>, <span class="keyword">sizeof</span>(__Block_byref_age_0), <span class="number">10</span>&#125;;</span><br><span class="line">    </span><br><span class="line">       <span class="comment">//Block定义</span></span><br><span class="line">        <span class="keyword">void</span>(*block)(<span class="keyword">int</span>, <span class="keyword">int</span>) = ((<span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">int</span>))&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_age_0 *)&amp;age, <span class="number">570425344</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Block调用</span></span><br><span class="line">        ((<span class="keyword">void</span> (*)(__block_impl *, <span class="keyword">int</span>, <span class="keyword">int</span>))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block, <span class="number">10</span>, <span class="number">12</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//后续age的访问</span></span><br><span class="line">        (age.__forwarding-&gt;age) = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/">Block系列1-block的本质</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Block系列2-block auto和static值捕获源码分析</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.caohr.com/2021/09/29/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">Block系列3-block __block修饰符值捕获源码分析</a>[当前]</li>
-</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>定义个自定义的类<code>HRViewController</code>。通过<code>touchesBegan:</code>跳转到这个<code>Controller</code>，在<code>HRViewController</code>里面的``touchesBegan:<code>来实现退出</code>HRViewController<code>控制器。通过进入和退出</code>HRViewController`来查看效果。</p>
+<p>前置条件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="function">interface <span class="title">HRViewController</span> <span class="params">()</span></span></span><br><span class="line">@property (copy, nonatomic) void(^test)();</span><br><span class="line">@property (nonatomic, copy) NSString *locationInfo;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)dealloc &#123;</span><br><span class="line">    NSLog(@<span class="string">&quot;HRViewController销毁&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="WeakSelf"><a href="#WeakSelf" class="headerlink" title="WeakSelf"></a>WeakSelf</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view.</span></span><br><span class="line">    self.locationInfo = @<span class="string">&quot;北京&quot;</span>;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@<span class="string">&quot;地址:%@&quot;</span>, self.locationInfo);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br><span class="line">    self.view.backgroundColor = UIColor.redColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码会导致死循环，<code>HRViewController销毁</code>不会被打印。<code>Controller</code>拥有这个Block，这个Bock强引用<code>Controller</code>，所以不会被销毁。如下面代码，block中改为弱引用，问题解决，<code>HRViewController销毁</code>打印。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view.</span></span><br><span class="line">    self.locationInfo = @<span class="string">&quot;北京&quot;</span>;</span><br><span class="line">    __weak HRViewController *weakSelf = self;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@<span class="string">&quot;地址:%@&quot;</span>, weakSelf.locationInfo);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br><span class="line">    self.view.backgroundColor = UIColor.redColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="StrongSelf"><a href="#StrongSelf" class="headerlink" title="StrongSelf"></a>StrongSelf</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__weak HRViewController *weakSelf = self;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@<span class="string">&quot;地址:%@&quot;</span>, weakSelf.locationInfo);</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (<span class="keyword">int64_t</span>)(<span class="number">5</span> * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;执行延时&quot;</span>);</span><br><span class="line">            strongSelf.locationInfo = @<span class="string">&quot;湖南&quot;</span>;</span><br><span class="line">            NSLog(@<span class="string">&quot;地址:%@&quot;</span>, weakSelf.locationInfo);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br></pre></td></tr></table></figure>
+<p>进入<code>Controller</code>以后，在5秒内退出这个<code>Controller</code>。执行到延时<code>block</code>里面的代码的时候，<code>Controller</code>已经销毁了，<code>locationInfo</code>也随之销毁了，所以<code>湖南</code>不能被赋值，里面的打印地址为<code>null</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">地址:北京</span><br><span class="line">HRViewController销毁</span><br><span class="line">执行延时</span><br><span class="line">地址:(null)</span><br></pre></td></tr></table></figure>
+<p>这时候我们就要用到<code>strongSelf</code>来延迟<code>Controller</code>的销毁。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__weak HRViewController *weakSelf = self;</span><br><span class="line">    self.test = ^&#123;</span><br><span class="line">        NSLog(@<span class="string">&quot;地址:%@&quot;</span>, weakSelf.locationInfo);</span><br><span class="line">        __strong HRViewController *strongSelf = weakSelf;</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (<span class="keyword">int64_t</span>)(<span class="number">5</span> * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;执行延时&quot;</span>);</span><br><span class="line">            strongSelf.locationInfo = @<span class="string">&quot;湖南&quot;</span>;</span><br><span class="line">            NSLog(@<span class="string">&quot;地址:%@&quot;</span>, strongSelf.locationInfo);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">    self.test();</span><br></pre></td></tr></table></figure>
+<p>从打印可以看出<code>Controller</code>最终在赋值完以后才销毁，所以达到了延迟<code>Controller</code>的销毁的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">地址:北京</span><br><span class="line">执行延时</span><br><span class="line">地址:湖南</span><br><span class="line">HRViewController销毁</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不能直接在延迟block里面使用self，这样又是会死循环。</p>
+</blockquote>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/11013587/differences-between-strong-and-weak-in-">https://stackoverflow.com/questions/11013587/differences-between-strong-and-weak-in-</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013046795/article/details/50789442">https://blog.csdn.net/u013046795/article/details/50789442</a></p>
 
     </div>
 
@@ -275,9 +288,6 @@ gtag('config', 'UA-61905451-1');
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># 源码解析</a>
-          </div>
 
         
 
@@ -285,12 +295,12 @@ gtag('config', 'UA-61905451-1');
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/" rel="prev" title="Weak 3.SideTable的Hash值">
-      <i class="fa fa-chevron-left"></i> Weak 3.SideTable的Hash值
+    <a href="/2021/12/16/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/" rel="prev" title="Block系列1-block的本质">
+      <i class="fa fa-chevron-left"></i> Block系列1-block的本质
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/12/16/iOS/Weak%202.SideTable/" rel="next" title="Weak 2.SideTable">
-      Weak 2.SideTable <i class="fa fa-chevron-right"></i>
+    <a href="/2021/12/16/iOS/weakSelf%20&%20strongSelf/" rel="next" title="weakSelf 和 strongSelf.">
+      weakSelf 和 strongSelf. <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -357,6 +367,7 @@ gtag('config', 'UA-61905451-1');
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakSelf"><span class="nav-number">1.1.</span> <span class="nav-text">WeakSelf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StrongSelf"><span class="nav-number">1.2.</span> <span class="nav-text">StrongSelf</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -575,9 +586,9 @@ gtag('config', 'UA-61905451-1');
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/";
-    this.page.identifier = "2021/12/16/iOS/Block系列3-block __block修饰符值捕获源码分析/";
-    this.page.title = "Block系列3-block __block修饰符值捕获源码分析";
+    this.page.url = "https://blog.caohr.com/2021/12/16/iOS/weakSelf%20%E5%92%8C%20strongSelf/";
+    this.page.identifier = "2021/12/16/iOS/weakSelf 和 strongSelf/";
+    this.page.title = "weakSelf 和 strongSelf.";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
