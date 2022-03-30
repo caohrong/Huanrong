@@ -17,20 +17,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的stored properties函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift Tutorial&#x2F;Initialization In Depth Part 1">
-<meta property="og:url" content="https://caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/index.html">
+<meta property="og:url" content="https://blog.caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="在类没有完全初始化之前，你不能使用他，使用他包含访问属性、设置属性、调用方法。本篇主要讲解结构体的初始化，结构体会在没有自定义初始化方法的情况下自动为所有的stored properties函数创建默认的初始化方法，但是如果你自己提供了初始化方法，那么自动的初始化方法就会失效，但是也可以把自定义的初始化方法写在扩展中这样编译器还是会为主体的结构体创建默认的初始化方法，默认创建的初始化方法你不能更改">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-0.png">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-3-480x45.png">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-2.png">
-<meta property="og:image" content="https://caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/okay">
+<meta property="og:image" content="https://blog.caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/okay">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/Mars_Hubble-320x320.jpg">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-5-480x66.png">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/Struct2PhaseInit-700x248.png">
@@ -41,7 +41,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-0.png">
 
-<link rel="canonical" href="https://caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/">
+<link rel="canonical" href="https://blog.caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/">
 
 
 <script id="page-configurations">
@@ -200,7 +200,7 @@ gtag('config', 'UA-61905451-1');
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -295,7 +295,7 @@ gtag('config', 'UA-61905451-1');
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberOfStageReuseLandingLegs: <span class="type">Int</span>?</span><br></pre></td></tr></table></figure>
 
 <p>Notice how the playground reports a compiler error:</p>
-<p><a target="_blank" rel="noopener" href="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-0.png"><img src="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-0.png"></a></p>
+<p><a href="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-0.png"><img src="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-0.png"></a></p>
 <p>You won’t run into this often, since constant optionals are rarely needed. To fix the compiler error, assign a default value of <code>nil</code> to <code>numberOfStageReuseLandingLegs</code>:<br>将<code>nil</code>赋值给<code>numberOfStageReuseLandingLegs</code>，这样的赋值没有意义，后面也无法在对这个值进行修改。只是满足了编译器</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numberOfStageReuseLandingLegs: <span class="type">Int</span>? <span class="operator">=</span> <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
 
@@ -320,7 +320,7 @@ gtag('config', 'UA-61905451-1');
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span> <span class="operator">=</span> <span class="number">180</span></span><br></pre></td></tr></table></figure>
 
 <p>Now there’s another compiler error:</p>
-<p><a target="_blank" rel="noopener" href="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-2.png"><img src="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-2.png"></a><br>因为<code>memberwise initializers</code>只为没有默认值的<code>stored properties</code>提供初始化方法，一旦你提供了默认值，那么这个值就会从初始化方法中剔除。<br>Compilation fails because memberwise initializers only provide parameters for stored properties without default values. In this case, the memberwise initializer only takes in propellant mass and liquid oxygen mass, since there is already a default value for burn time.</p>
+<p><a href="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-2.png"><img src="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-2.png"></a><br>因为<code>memberwise initializers</code>只为没有默认值的<code>stored properties</code>提供初始化方法，一旦你提供了默认值，那么这个值就会从初始化方法中剔除。<br>Compilation fails because memberwise initializers only provide parameters for stored properties without default values. In this case, the memberwise initializer only takes in propellant mass and liquid oxygen mass, since there is already a default value for burn time.</p>
 <p>Remove <code>nominalBurnTime</code>‘s default value so that there is no compiler error.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nominalBurnTime: <span class="type">Int</span></span><br></pre></td></tr></table></figure>
 
@@ -328,7 +328,7 @@ gtag('config', 'UA-61905451-1');
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">init</span>(<span class="params">propellantMass</span>: <span class="type">Double</span>, <span class="params">liquidOxygenMass</span>: <span class="type">Double</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">self</span>.propellantMass <span class="operator">=</span> propellantMass</span><br><span class="line">  <span class="keyword">self</span>.liquidOxygenMass <span class="operator">=</span> liquidOxygenMass</span><br><span class="line">  <span class="keyword">self</span>.nominalBurnTime <span class="operator">=</span> <span class="number">180</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Notice that the same compiler error is back on <code>stageOneConfiguration</code>!</p>
-<p><a target="_blank" rel="noopener" href="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-2.png"><img src="okay"></a></p>
+<p><a href="http://blog.caohr.com/ImagesFolder/SwiftInitInDepth-2.png"><img src="okay"></a></p>
 <p>如果你定义了初始化方法，那么自动的初始化方法就会失效。<br>Wait, shouldn’t this work? All you did was provide an alternative initializer, but the original <code>stageOneConfiguration</code> initialization should work because it’s using the automatic memberwise initializer. This is where it gets tricky: you only get a memberwise initializer if a structure does not define any initializers. As soon as you define an initializer, you lose the automatic memberwise initializer. </p>
 <p>In other words, Swift will help you out to start. But as soon as you add your <em>own</em> initializer, it assumes you want it to get out of the way.</p>
 <p>Remove the <code>nominalBurnTime</code> argument from <code>stageOneConfiguration</code>‘s initialization:</p>
@@ -767,7 +767,7 @@ gtag('config', 'UA-61905451-1');
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/";
+    this.page.url = "https://blog.caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/";
     this.page.identifier = "2021/12/16/Swift/Swift Tutorial: Initialization In Depth Part 1/";
     this.page.title = "Swift Tutorial/Initialization In Depth Part 1";
     };

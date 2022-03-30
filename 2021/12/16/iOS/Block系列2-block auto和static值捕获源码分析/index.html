@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="123456789101112131415161718int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;                static int staticValues &#x3D; 10;        auto int autoValues &#x3D; 20;        void(^block)(i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Block系列2-block auto和static值捕获源码分析">
-<meta property="og:url" content="https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/index.html">
+<meta property="og:url" content="https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="123456789101112131415161718int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;                static int staticValues &#x3D; 10;        auto int autoValues &#x3D; 20;        void(^block)(i">
 <meta property="og:locale" content="en_US">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="源码解析">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+<link rel="canonical" href="https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
 
 
 <script id="page-configurations">
@@ -192,7 +192,7 @@ gtag('config', 'UA-61905451-1');
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -580,7 +580,7 @@ gtag('config', 'UA-61905451-1');
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/";
+    this.page.url = "https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/";
     this.page.identifier = "2021/12/16/iOS/Block系列2-block auto和static值捕获源码分析/";
     this.page.title = "Block系列2-block auto和static值捕获源码分析";
     };
