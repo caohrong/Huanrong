@@ -1,63 +1,73 @@
 #EXTM3U
-#EXTINF:-1 ,CCTV-1高清
+#EXTINF:-1 tvg-id="YahooFinance.us" status="online",Yahoo! Finance (1080p)
+https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8
+#EXTINF:-1 tvg-id="BloombergQuicktake.us" status="online",Bloomberg Quicktake (1080p)
+https://d1g4mbj10o50ni.cloudfront.net/qt/Channel-QT-TX-AWS-virginia-2/Source-QT-10M-2-sn9jy9-BP-07-02-oNnPi5xc6sq_live.m3u8
+#EXTINF:-1 tvg-id="" status="online",ABC 2 Atlanta GA (WSB-TV) (720p)
+https://d2rwx6gwduugne.cloudfront.net/v1/master/77872db67918a151b697b5fbc23151e5765767dc/cmg_PROD_cmg-tv-10010_183ec1c7-4183-4661-803b-3ed282ffb625_LE/in/cmg-wsbtvnow-hls-v3/live.m3u8
+#EXTINF:-1 tvg-id="" status="online",ABC 5 Cleveland OH (WEWS-TV) (1080p)
+https://wews-syndication.ewscloud.com/out/v1/72729e3f4dbe4aafbab93d6b1117e5f1/index.m3u8
+#EXTINF:-1 tvg-id="CNBCEurope.us" status="online" user-agent="Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",CNBC Europe (480p)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148
+http://ott-cdn.ucom.am/s65/index.m3u8
+#EXTINF:-1 tvg-id="BloombergQuicktake.us" status="online",Bloomberg Quicktake (720p)
+https://d1g4mbj10o50ni.cloudfront.net/qt/Channel-QT-TX-AWS-virginia-2/Source-QT-10M-2-sn9jy9-BP-07-03-qPp9HnlfNtK_live.m3u8
+#EXTINF:-1 tvg-id="BloombergTVEurope.us" status="online",Bloomberg TV Europe (720p)
+https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-1000-1_live.m3u8
+#EXTINF:-1 tvg-id="NBCNewsNow.us" status="online",NBC News Now (1080p)
+http://nbcnews2.akamaized.net/hls/live/723426-b/NBCNewsPlaymaker24x7Linear99a3a827-ua/master.m3u8
+#EXTINF:-1 tvg-country="CN" tvg-logo="https://blog.caohr.com/Files/TV/Logo/CCTV1.png" group-title="News",CCTV-1 综合
 rtp://239.3.1.129:8008
-#EXTINF:-1 ,CCTV-2高清
+#EXTINF:-1 tvg-country="CN" tvg-logo="https://blog.caohr.com/Files/TV/Logo/CCTV2.png"
+group-title="News",CCTV-2财经
 rtp://239.3.1.60:8084
-#EXTINF:-1 ,CCTV-3
-rtp://239.3.1.240:8008
-#EXTINF:-1 ,CCTV-4高清
+#EXTINF:-1 ,CCTV-4 中文国际
 rtp://239.3.1.105:8092
-#EXTINF:-1 ,CCTV-5
-rtp://239.3.1.244:8016
-#EXTINF:-1 ,CCTV5+
+#EXTINF:-1 ,CCTV5+ 体育赛事
 rtp://239.3.1.130:8004
-#EXTINF:-1 ,CCTV-6
-rtp://239.3.1.245:8220
-#EXTINF:-1 ,CCTV-7高清
+#EXTINF:-1 ,CCTV-7 国防军事
 rtp://239.3.1.61:8104
-#EXTINF:-1 ,CCTV-8
-rtp://239.3.1.246:8224
-#EXTINF:-1 ,CCTV-9高清
+#EXTINF:-1 ,CCTV-9 记录
 rtp://239.3.1.62:8112
-#EXTINF:-1 ,CCTV-10高清
+#EXTINF:-1 ,CCTV-10 科教
 rtp://239.3.1.63:8116
-#EXTINF:-1 ,CCTV-12高清
+#EXTINF:-1 ,CCTV-12 社会与法
 rtp://239.3.1.64:8124
-#EXTINF:-1 ,CCTV-13
+#EXTINF:-1 ,CCTV-13 新闻 [Not 24/7]
 rtp://239.3.1.13:8048
-#EXTINF:-1 ,CCTV-14高清
+#EXTINF:-1 ,CCTV-14 少儿
 rtp://239.3.1.65:8132
-#EXTINF:-1 ,CCTV-15
+#EXTINF:-1 ,CCTV-15 音乐
 rtp://239.3.1.15:8052
 #EXTINF:-1 ,CCTV-17
 rtp://239.3.1.150:8064
-#EXTINF:-1 ,CCTV-17高清
+#EXTINF:-1 ,CCTV-17
 rtp://239.3.1.151:8144
-#EXTINF:-1 ,BTV北京卫视高清
+#EXTINF:-1 ,BTV北京卫视
 rtp://239.3.1.241:8000
-#EXTINF:-1 ,湖南卫视高清
+#EXTINF:-1 tvg-logo="https://blog.caohr.com/Files/TV/Logo/HNWS.png",湖南卫视
 rtp://239.3.1.132:8012
-#EXTINF:-1 ,黑龙江卫视高清
+#EXTINF:-1 ,黑龙江卫视
 rtp://239.3.1.133:8016
-#EXTINF:-1 ,深圳卫视高清
+#EXTINF:-1 ,深圳卫视
 rtp://239.3.1.134:8020
-#EXTINF:-1 ,江苏卫视高清
+#EXTINF:-1 ,江苏卫视
 rtp://239.3.1.135:8028
-#EXTINF:-1 ,东方卫视高清
+#EXTINF:-1 ,东方卫视
 rtp://239.3.1.136:8032
-#EXTINF:-1 ,浙江卫视高清
+#EXTINF:-1 tvg-logo="https://blog.caohr.com/Files/TV/Logo/ZJWS.png",浙江卫视
 rtp://239.3.1.137:8036
-#EXTINF:-1 ,湖北卫视高清
+#EXTINF:-1 ,湖北卫视
 rtp://239.3.1.138:8044
-#EXTINF:-1 ,天津卫视高清
+#EXTINF:-1 ,天津卫视
 rtp://239.3.1.141:1234
-#EXTINF:-1 ,广东卫视高清
+#EXTINF:-1 ,广东卫视
 rtp://239.3.1.142:8048
-#EXTINF:-1 ,山东卫视高清
+#EXTINF:-1 ,山东卫视
 rtp://239.3.1.209:8052
-#EXTINF:-1 ,辽宁卫视高清
+#EXTINF:-1 ,辽宁卫视
 rtp://239.3.1.210:8056
-#EXTINF:-1 ,安徽卫视高清
+#EXTINF:-1 ,安徽卫视
 rtp://239.3.1.211:8064
 #EXTINF:-1 ,河南卫视
 rtp://239.3.1.27:8128
@@ -115,9 +125,9 @@ rtp://239.3.1.93:4120
 rtp://239.3.1.94:4120
 #EXTINF:-1 ,爱上4K
 rtp://239.3.1.236:2000
-#EXTINF:-1 ,BTV文艺高清
+#EXTINF:-1 ,BTV文艺
 rtp://239.3.1.242:8000
-#EXTINF:-1 ,BTV体育高清
+#EXTINF:-1 ,BTV体育
 rtp://239.3.1.243:8000
 #EXTINF:-1 ,BTV科教
 rtp://239.3.1.227:8000
@@ -135,7 +145,7 @@ rtp://239.3.1.233:8000
 rtp://239.3.1.234:8000
 #EXTINF:-1 ,BTV国际频道
 rtp://239.3.1.235:8000
-#EXTINF:-1 ,CETV1高清
+#EXTINF:-1 ,CETV1
 rtp://239.3.1.57:8152
 #EXTINF:-1 ,CETV2
 rtp://239.3.1.54:4120
