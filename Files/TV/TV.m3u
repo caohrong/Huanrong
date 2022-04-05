@@ -1,13 +1,13 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="https://blog.caohr.com/Files/TV/Logo/Yahoo.png" group-title="未分类",Yahoo! Finance (1080p)
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",Yahoo! Finance (1080p)
 https://d1ewctnvcwvvvu.cloudfront.net/playlist.m3u8
 #EXTINF:-1 tvg-id="6140" tvg-name="BloombergTV" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/BloombergTV.png" group-title="港澳台",Bloomberg Quicktake (1080
 https://d1g4mbj10o50ni.cloudfront.net/qt/Channel-QT-TX-AWS-virginia-2/Source-QT-10M-2-sn9jy9-BP-07-02-oNnPi5xc6sq_live.m3u8
-#EXTINF:-1 tvg-id="1878" tvg-name="BTV生活" tvg-logo="http://epg.51zmt.top:8000/tb1/sheng/BTV生活.png" group-title="北京",ABC 2 Atlanta GA (WSB-TV)
+#EXTINF:-1 tvg-id="7100" tvg-name="ABCAustralia" tvg-logo="http://epg.51zmt.top:8000/tb1/sheng/BTV生活.png" group-title="北京",ABC 2 Atlanta GA (WSB-TV)
 https://d2rwx6gwduugne.cloudfront.net/v1/master/77872db67918a151b697b5fbc23151e5765767dc/cmg_PROD_cmg-tv-10010_183ec1c7-4183-4661-803b-3ed282ffb625_LE/in/cmg-wsbtvnow-hls-v3/live.m3u8
 #EXTINF:-1 tvg-id="7100" tvg-name="ABCAustralia" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/abcaus.png" group-title="港澳台",ABC 5 Cleveland OH (WEWS-
 https://wews-syndication.ewscloud.com/out/v1/72729e3f4dbe4aafbab93d6b1117e5f1/index.m3u8
-#EXTINF:-1 tvg-id="688" tvg-name="CNBCHongKong" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/CNBC.png" group-title="港澳台", like Gecko) Mobile/15E14
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/CNBC.png" group-title="港澳台", like Gecko) Mobile/15E14
 http://ott-cdn.ucom.am/s65/index.m3u8
 #EXTINF:-1 tvg-id="6140" tvg-name="BloombergTV" tvg-logo="http://epg.51zmt.top:8000/tb1/gt/BloombergTV.png" group-title="港澳台",Bloomberg Quicktake (720p
 https://d1g4mbj10o50ni.cloudfront.net/qt/Channel-QT-TX-AWS-virginia-2/Source-QT-10M-2-sn9jy9-BP-07-03-qPp9HnlfNtK_live.m3u8
@@ -15,9 +15,9 @@ https://d1g4mbj10o50ni.cloudfront.net/qt/Channel-QT-TX-AWS-virginia-2/Source-QT-
 https://liveprodeuwest.akamaized.net/eu1/Channel-EUTVqvs-AWS-ireland-1/Source-EUTVqvs-1000-1_live.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",NBC News Now (1080p)
 http://nbcnews2.akamaized.net/hls/live/723426-b/NBCNewsPlaymaker24x7Linear99a3a827-ua/master.m3u8
-#EXTINF:-1 tvg-id="1" tvg-name="CCTV1" tvg-logo="https://blog.caohr.com/Files/TV/Logo/CCTV1.png" group-title="央视",CCTV-1 综合
+#EXTINF:-1 tvg-id="1" tvg-name="CCTV1" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV1.png" group-title="央视",CCTV-1 综合
 rtp://239.3.1.129:8008
-#EXTINF:-1 tvg-id="2" tvg-name="CCTV2" tvg-logo="https://blog.caohr.com/Files/TV/Logo/CCTV2.png" group-title="央视",CCTV-2 财经
+#EXTINF:-1 tvg-id="2" tvg-name="CCTV2" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV2.png" group-title="央视",CCTV-2 财经
 rtp://239.3.1.60:8084
 #EXTINF:-1 tvg-id="4" tvg-name="CCTV4" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV4.png" group-title="央视",CCTV-4 中文国际
 rtp://239.3.1.105:8092
@@ -27,7 +27,7 @@ rtp://239.3.1.130:8004
 rtp://239.3.1.61:8104
 #EXTINF:-1 tvg-id="10" tvg-name="CCTV9" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV9.png" group-title="央视",CCTV-9 记录
 rtp://239.3.1.62:8112
-#EXTINF:-1 tvg-id="11" tvg-name="CCTV10" tvg-logo="https://blog.caohr.com/Files/TV/Logo/CCTV10.png" group-title="央视",CCTV-10 科教
+#EXTINF:-1 tvg-id="11" tvg-name="CCTV10" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV10.png" group-title="央视",CCTV-10 科教
 rtp://239.3.1.63:8116
 #EXTINF:-1 tvg-id="13" tvg-name="CCTV12" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV12.png" group-title="央视",CCTV-12 社会与法
 rtp://239.3.1.64:8124
@@ -41,47 +41,47 @@ rtp://239.3.1.15:8052
 rtp://239.3.1.151:8144
 #EXTINF:-1 tvg-id="30" tvg-name="北京卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/beijing.png" group-title="卫视",BTV北京卫视
 rtp://239.3.1.241:8000
-#EXTINF:-1 tvg-id="27" tvg-name="湖南卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/HNWS.png" group-title="卫视",湖南卫视
+#EXTINF:-1 tvg-id="27" tvg-name="湖南卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/hunan.png" group-title="卫视",湖南卫视
 rtp://239.3.1.132:8012
-#EXTINF:-1 tvg-id="46" tvg-name="黑龙江卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/HLJWS.png" group-title="卫视",黑龙江卫视
+#EXTINF:-1 tvg-id="46" tvg-name="黑龙江卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/heilongjiang.png" group-title="卫视",黑龙江卫视
 rtp://239.3.1.133:8016
-#EXTINF:-1 tvg-id="34" tvg-name="深圳卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/SZWS.png" group-title="卫视",深圳卫视
+#EXTINF:-1 tvg-id="34" tvg-name="深圳卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/shenzhen.png" group-title="卫视",深圳卫视
 rtp://239.3.1.134:8020
-#EXTINF:-1 tvg-id="29" tvg-name="江苏卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/JSWS.png" group-title="卫视",江苏卫视
+#EXTINF:-1 tvg-id="29" tvg-name="江苏卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/jiangsu.png" group-title="卫视",江苏卫视
 rtp://239.3.1.135:8028
-#EXTINF:-1 tvg-id="31" tvg-name="东方卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/DFWS.png" group-title="卫视",东方卫视
+#EXTINF:-1 tvg-id="31" tvg-name="东方卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/dongfang.png" group-title="卫视",东方卫视
 rtp://239.3.1.136:8032
-#EXTINF:-1 tvg-id="28" tvg-name="浙江卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/ZJWS.png" group-title="卫视",浙江卫视
+#EXTINF:-1 tvg-id="28" tvg-name="浙江卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/zhejiang.png" group-title="卫视",浙江卫视
 rtp://239.3.1.137:8036
-#EXTINF:-1 tvg-id="48" tvg-name="湖北卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/HBWS.png" group-title="卫视",湖北卫视
+#EXTINF:-1 tvg-id="48" tvg-name="湖北卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/hubei.png" group-title="卫视",湖北卫视
 rtp://239.3.1.138:8044
-#EXTINF:-1 tvg-id="39" tvg-name="天津卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/TJWS.png" group-title="卫视",天津卫视
+#EXTINF:-1 tvg-id="39" tvg-name="天津卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/tianjin.png" group-title="卫视",天津卫视
 rtp://239.3.1.141:1234
-#EXTINF:-1 tvg-id="33" tvg-name="广东卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/GDWS.png" group-title="卫视",广东卫视
+#EXTINF:-1 tvg-id="33" tvg-name="广东卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/guangdong.png" group-title="卫视",广东卫视
 rtp://239.3.1.142:8048
-#EXTINF:-1 tvg-id="38" tvg-name="山东卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/SDWS.png" group-title="卫视",山东卫视
+#EXTINF:-1 tvg-id="38" tvg-name="山东卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/shandong.png" group-title="卫视",山东卫视
 rtp://239.3.1.209:8052
-#EXTINF:-1 tvg-id="36" tvg-name="辽宁卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/LNWS.png" group-title="卫视",辽宁卫视
+#EXTINF:-1 tvg-id="36" tvg-name="辽宁卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/liaoning.png" group-title="卫视",辽宁卫视
 rtp://239.3.1.210:8056
-#EXTINF:-1 tvg-id="32" tvg-name="安徽卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/AHWS.png" group-title="卫视",安徽卫视
+#EXTINF:-1 tvg-id="32" tvg-name="安徽卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/anhui.png" group-title="卫视",安徽卫视
 rtp://239.3.1.211:8064
-#EXTINF:-1 tvg-id="47" tvg-name="河南卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/HNWS.png" group-title="卫视",河南卫视
+#EXTINF:-1 tvg-id="47" tvg-name="河南卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/henan.png" group-title="卫视",河南卫视
 rtp://239.3.1.27:8128
-#EXTINF:-1 tvg-id="56" tvg-name="四川卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/SCWS.png" group-title="卫视",四川卫视
+#EXTINF:-1 tvg-id="56" tvg-name="四川卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/sichuan.png" group-title="卫视",四川卫视
 rtp://239.3.1.29:8288
-#EXTINF:-1 tvg-id="50" tvg-name="江西卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/JXWS.png" group-title="卫视",江西卫视
+#EXTINF:-1 tvg-id="50" tvg-name="江西卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/jiangxi.png" group-title="卫视",江西卫视
 rtp://239.3.1.30:8280
-#EXTINF:-1 tvg-id="44" tvg-name="贵州卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/GZWS.png" group-title="卫视",贵州卫视
+#EXTINF:-1 tvg-id="44" tvg-name="贵州卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/guizhou.png" group-title="卫视",贵州卫视
 rtp://239.3.1.31:8120
-#EXTINF:-1 tvg-id="40" tvg-name="重庆卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/CQWS.png" group-title="卫视",重庆卫视
+#EXTINF:-1 tvg-id="40" tvg-name="重庆卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/chongqing.png" group-title="卫视",重庆卫视
 rtp://239.3.1.35:8296
-#EXTINF:-1 tvg-id="41" tvg-name="东南卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/DNWS.png" group-title="卫视",东南卫视
+#EXTINF:-1 tvg-id="41" tvg-name="东南卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/dongnan.png" group-title="卫视",东南卫视
 rtp://239.3.1.36:8112
-#EXTINF:-1 tvg-id="45" tvg-name="河北卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/HBWS.png" group-title="卫视",河北卫视
+#EXTINF:-1 tvg-id="45" tvg-name="河北卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/hebei.png" group-title="卫视",河北卫视
 rtp://239.3.1.37:8292
-#EXTINF:-1 tvg-id="43" tvg-name="广西卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/GXWS.png" group-title="卫视",广西卫视
+#EXTINF:-1 tvg-id="43" tvg-name="广西卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/guangxi.png" group-title="卫视",广西卫视
 rtp://239.3.1.39:8300
-#EXTINF:-1 tvg-id="51" tvg-name="吉林卫视" tvg-logo="https://blog.caohr.com/Files/TV/Logo/JLWS.png" group-title="卫视",吉林卫视
+#EXTINF:-1 tvg-id="51" tvg-name="吉林卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/jilin.png" group-title="卫视",吉林卫视
 rtp://239.3.1.40:8200
 #EXTINF:-1 tvg-id="55" tvg-name="陕西卫视" tvg-logo="http://epg.51zmt.top:8000/tb1/ws/shanxi.png" group-title="卫视",陕西卫视
 rtp://239.3.1.41:8140
@@ -267,3 +267,4 @@ rtp://239.3.1.103:8001
 rtp://239.3.1.247:2000
 #EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",总平台测试2
 rtp://239.3.1.248:2000
+
