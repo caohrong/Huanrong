@@ -53,9 +53,9 @@ rtp://239.3.1.65:8132
 rtp://239.3.1.153:8136
 #EXTINF:-1 tvg-id="17" tvg-name="CCTV 17" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV17.png" group-title="央视",CCTV-17 农业农村 HD
 rtp://239.3.1.151:8144
-#EXTINF:-1 tvg-id="4" tvg-name="CCTV 4" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV4.png" group-title="央视",CCTV-4 中文国际 欧洲 HD
+#EXTINF:-1 tvg-id="4" tvg-name="CCTV 4 Europe" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV4.png" group-title="央视",CCTV-4 中文国际 欧洲 HD
 rtp://239.3.1.213:4220
-#EXTINF:-1 tvg-id="4" tvg-name="CCTV 4" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV4.png" group-title="央视",CCTV-4 中文国际 美洲 HD
+#EXTINF:-1 tvg-id="4" tvg-name="CCTV 4 America" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/CCTV4.png" group-title="央视",CCTV-4 中文国际 美洲 HD
 rtp://239.3.1.214:4220
 #EXTINF:-1 tvg-id="20" tvg-name="CGTN" tvg-logo="http://epg.51zmt.top:8000/tb1/CCTV/cgtn.png" group-title="央视",CGTN 新闻 HD
 rtp://239.3.1.215:4220
@@ -131,13 +131,13 @@ rtp://239.3.1.123:8164
 rtp://239.3.1.236:2000
 #EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",BTV国际频道
 rtp://239.3.1.235:8000
-#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",CETV1
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="CETV 1" group-title="未分类",CETV1
 rtp://239.3.1.57:8152
-#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",CETV2
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="CETV 2" group-title="未分类",CETV2
 rtp://239.3.1.54:4120
-#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",CETV3
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="CETV 3" group-title="未分类",CETV3
 rtp://239.3.1.55:4120
-#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="" group-title="未分类",CETV4
+#EXTINF:-1 tvg-id="" tvg-name="" tvg-logo="CETV 4" group-title="未分类",CETV4
 rtp://239.3.1.56:4120
 #EXTINF:-1 tvg-id="6010" tvg-name="嘉佳卡通" tvg-logo="http://epg.51zmt.top:8000/tb1/qt/jiajiakt.png" group-title="地方",嘉佳卡通
 rtp://239.3.1.147:9268
