@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.caohr.com/2022/04/26/Tools/PDFViewer/</loc>
+    <lastmod>2022-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://blog.caohr.com/2022/04/01/iOS/weakSelf%20%E5%92%8C%20strongSelf/</loc>
     <lastmod>2022-04-01</lastmod>
   </url>
