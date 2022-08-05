@@ -2,198 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.caohr.com/2022/04/01/iOS/weakSelf%20%E5%92%8C%20strongSelf/</loc>
-    
-    <lastmod>2022-04-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2022/03/31/Swift/Swift%E5%85%B3%E9%94%AE%E5%AD%97Some%EF%BC%9A%E6%B5%91%E6%B5%8A%E7%B1%BB%E5%9E%8B-Opaque-return-types-%E5%88%B0%E6%B8%85%E6%99%B0-Opaque-types-%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E5%8F%98/</loc>
-    
-    <lastmod>2022-04-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2022/03/30/Tools/vi%E5%B8%B8%E7%94%A8%E6%98%8E%E4%BB%A4%E5%85%A5%E9%97%A8/</loc>
-    
-    <lastmod>2022-03-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
-    
-    <lastmod>2022-03-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
-    
-    <lastmod>2022-03-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/</loc>
-    
-    <lastmod>2022-03-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/</loc>
-    
-    <lastmod>2022-02-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2018-11-27/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Tools/Google%20Photos%20VS%20iCloud%20Photos/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/StackView/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2018-06-28/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2018-06-25/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Tools/CMake/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2018-12-19/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2021-06-02/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2019-06-06/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/C/%E6%8C%87%E9%92%88/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2019-06-06-1/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/String/</loc>
-    
-    <lastmod>2022-01-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.caohr.com/tags/index.html</loc>
     
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/dispatch_get_specific/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/</loc>
     
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/dispatch_get_specific/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/weakSelf%20%E5%92%8C%20strongSelf/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -202,16 +49,7 @@
   <url>
     <loc>https://blog.caohr.com/about/index.html</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/album/index.html</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -220,322 +58,484 @@
   <url>
     <loc>https://blog.caohr.com/categories/index.html</loc>
     
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/</loc>
+    <loc>https://blog.caohr.com/album/index.html</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Autorelease%E7%B3%BB%E5%88%971-%20Autorelease%E7%9A%84%E6%9C%AC%E8%B4%A8/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Weak%202.SideTable/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Block%E7%B3%BB%E5%88%971-block%E7%9A%84%E6%9C%AC%E8%B4%A8/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Block%E7%B3%BB%E5%88%972-block%20auto%E5%92%8Cstatic%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Tools/Hexo/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Tools/LaTeX/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/GCD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Pattern%20Matching%20in%20Swift/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Pattern%20matching/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Setter%E5%92%8CGetter%E5%8E%9F%E7%90%86/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Protocol/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Singleton/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Swift%20Tip%20Notifications/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/UTF8/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Weak%202.SideTable/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Unicode/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Python/%E6%9E%81%E7%AE%80%E5%AE%89%E8%A3%85Conda/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Access%20Control/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Defer/</loc>
+    <loc>https://blog.caohr.com/2022/03/30/Tools/vi%E5%B8%B8%E7%94%A8%E6%98%8E%E4%BB%A4%E5%85%A5%E9%97%A8/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Factory%20%20Pattern/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/Tools/CMake/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/JSON/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Magical%20Error%20Handling%20in%20Swift/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/Tools/Google%20Photos%20VS%20iCloud%20Photos/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Swift/Mutating/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/English/BrexitLaysAnEgg/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/Tools/Hexo/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/POSIX/BSD%20socket/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/POSIX/POSIX%E7%AE%80%E4%BB%8B/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/Tools/LaTeX/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Daily/2021-03-19/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Computer%20System/Compiles%20Drivers/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/mplicitly%20unwrapped%20optionals/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Protocol/</loc>
     
-    <lastmod>2021-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/2021/12/16/C++/Enumerations/</loc>
-    
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/2021/12/16/C++/%E6%8C%87%E9%92%88/</loc>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Singleton/</loc>
     
-    <lastmod>2021-12-16</lastmod>
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/String/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/StackView/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Swift%20Tip%20Notifications/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Swift%20Tutorial:%20Initialization%20In%20Depth%20Part%201/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/03/31/Swift/Swift%E5%85%B3%E9%94%AE%E5%AD%97Some%EF%BC%9A%E6%B5%91%E6%B5%8A%E7%B1%BB%E5%9E%8B-Opaque-return-types-%E5%88%B0%E6%B8%85%E6%99%B0-Opaque-types-%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E5%8F%98/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/UTF8/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Unicode/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Defer/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Factory%20%20Pattern/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/JSON/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Mutating/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Pattern%20Matching%20in%20Swift/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Pattern%20matching/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/English/BrexitLaysAnEgg/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Python/%E6%9E%81%E7%AE%80%E5%AE%89%E8%A3%85Conda/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/POSIX/BSD%20socket/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/POSIX/POSIX%E7%AE%80%E4%BB%8B/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Swift/Access%20Control/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2021-03-19/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2021-06-02/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2018-06-25/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2018-06-28/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2018-11-27/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2018-12-19/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2019-06-06-1/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Daily/2019-06-06/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/C/%E6%8C%87%E9%92%88/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/C++/Enumerations/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/C++/%E6%8C%87%E9%92%88/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Computer%20System/Compiles%20Drivers/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/2022/05/25/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/</loc>
+    
+    <lastmod>2022-05-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -579,14 +579,14 @@
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/tags/Daily/</loc>
+    <loc>https://blog.caohr.com/tags/The-Economist/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/tags/The-Economist/</loc>
+    <loc>https://blog.caohr.com/tags/Daily/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -608,27 +608,6 @@
   
   <url>
     <loc>https://blog.caohr.com/tags/vi/</loc>
-    <lastmod>2022-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2022-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/tags/Runtime/</loc>
-    <lastmod>2022-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.caohr.com/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -662,6 +641,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://blog.caohr.com/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2022-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/tags/Runtime/</loc>
+    <lastmod>2022-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2022-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -686,13 +686,6 @@
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/categories/Beijing/</loc>
-    <lastmod>2022-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.caohr.com/categories/English/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -700,7 +693,7 @@
   </url>
   
   <url>
-    <loc>https://blog.caohr.com/categories/POSIX/</loc>
+    <loc>https://blog.caohr.com/categories/Beijing/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -708,6 +701,13 @@
   
   <url>
     <loc>https://blog.caohr.com/categories/Python/</loc>
+    <lastmod>2022-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.caohr.com/categories/POSIX/</loc>
     <lastmod>2022-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

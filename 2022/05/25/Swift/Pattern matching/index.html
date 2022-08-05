@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="来至于Ray Wenderlich的《Swift Apprentice》中的Pattern matching章节的笔记。 https:&#x2F;&#x2F;www.raywenderlich.com&#x2F;134844&#x2F;pattern-matching-in-swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pattern matching">
+<meta property="og:url" content="https://blog.caohr.com/2022/05/25/Swift/Pattern%20matching/index.html">
+<meta property="og:site_name" content="HR&#39;s Blog">
+<meta property="og:description" content="来至于Ray Wenderlich的《Swift Apprentice》中的Pattern matching章节的笔记。 https:&#x2F;&#x2F;www.raywenderlich.com&#x2F;134844&#x2F;pattern-matching-in-swift">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-25T05:19:04.294Z">
+<meta property="article:modified_time" content="2022-05-25T05:19:04.294Z">
+<meta property="article:author" content="HR">
+<meta property="article:tag" content="Ray Wenderlich">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.caohr.com/2022/05/25/Swift/Pattern%20matching/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Pattern matching | HR's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QW1BDQNRXY"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QW1BDQNRXY');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1b08dac8932c829229886a7ff2235549";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HR's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Swimming 🏊 in the sea🌊of code!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/album/" rel="section"><i class="fa fa-camera fa-fw"></i>Photos</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Swift/Pattern%20matching/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pattern matching
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/25/Swift/Pattern%20matching/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Swift/Pattern matching/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>来至于<code>Ray Wenderlich</code>的《Swift Apprentice》中的<code>Pattern matching</code>章节的笔记。</p>
+<p><a target="_blank" rel="noopener" href="https://www.raywenderlich.com/134844/pattern-matching-in-swift">https://www.raywenderlich.com/134844/pattern-matching-in-swift</a></p>
+<span id="more"></span>
+
+<h2 id="Basic-pattern-matching"><a href="#Basic-pattern-matching" class="headerlink" title="Basic pattern matching"></a>Basic pattern matching</h2><h3 id="if-and-guard"><a href="#if-and-guard" class="headerlink" title="if and guard"></a>if and guard</h3><p>匹配元组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func process(point: (x: Int, y:Int, z:Int)) -&gt; String &#123;</span><br><span class="line">        if case (0, 0, 0) &#x3D; point &#123;</span><br><span class="line">            return &quot;At origin&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;Not at origin&quot; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let point &#x3D; (x:0, y:0, z:0)</span><br><span class="line">let response &#x3D; process(point: pint)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">process</span>(<span class="params">point</span>: <span class="params">（x</span>: <span class="type">Int</span>, <span class="params">y</span>:<span class="type">Int</span>, <span class="params">z</span>:<span class="type">Int）</span>)</span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">    guarde <span class="keyword">case</span> (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) <span class="operator">=</span> point <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Not at origin&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;At origin&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> closeRange <span class="operator">=</span> <span class="operator">-</span><span class="number">2</span><span class="operator">...</span><span class="number">2</span></span><br><span class="line"><span class="keyword">let</span> midRange <span class="operator">=</span> <span class="operator">-</span><span class="number">5</span><span class="operator">...</span><span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> point &#123;</span><br><span class="line"><span class="keyword">case</span> (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;At origin&quot;</span></span><br><span class="line"><span class="keyword">case</span> (closeRange, closeRange, closeRange):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Nearby origin&quot;</span></span><br><span class="line"><span class="keyword">case</span> (midRnage, midRnage, midRnage):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Not ear origin&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> point <span class="operator">=</span> (x:<span class="number">15</span>, y:<span class="number">5</span>, z:<span class="number">3</span>)</span><br><span class="line"><span class="keyword">let</span> response <span class="operator">=</span> process(point: point)  <span class="comment">//Not near origin</span></span><br></pre></td></tr></table></figure>
+
+<p>Switch可以匹配多种情况，<code>Switch</code>可以匹配范围。<br>找到第一个匹配值以后，<code>Switch</code>会退出。</p>
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> groupSizes <span class="operator">=</span> [<span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>,<span class="number">6</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">case</span> <span class="number">1</span> <span class="keyword">in</span> groupSize &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Found an individual&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Patterns"><a href="#Patterns" class="headerlink" title="Patterns"></a>Patterns</h2><h3 id="Wildcard-pattern"><a href="#Wildcard-pattern" class="headerlink" title="Wildcard pattern"></a>Wildcard pattern</h3><p>检查点是不是在x轴上。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> (<span class="keyword">_</span>, <span class="number">0</span>, <span class="number">0</span>) <span class="operator">=</span> coordinate &#123;</span><br><span class="line">    print (<span class="string">&quot;on the x-axis&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Value-binding-pattern"><a href="#Value-binding-pattern" class="headerlink" title="Value-binding pattern"></a>Value-binding pattern</h3><p>检查点是不是在x轴上面，并且得到x的值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> (<span class="keyword">let</span> x, <span class="number">0</span>, <span class="number">0</span>) <span class="operator">=</span> coordinate &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;On the x-axis at <span class="subst">\(x)</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于你要得到多个值的情况，你可以直接把<code>let</code>写在括号外，switch获得枚举值的时候，也是可以把let或者var写在外面。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> <span class="keyword">let</span> (x, y, <span class="number">0</span>) <span class="operator">=</span> coordinate &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;On the x-y plane at (<span class="subst">\(x)</span>, <span class="subst">\(y)</span>)&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Enumeration-case-pattern"><a href="#Enumeration-case-pattern" class="headerlink" title="Enumeration case pattern"></a>Enumeration case pattern</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Direction</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> north, south, east, west</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> heading <span class="operator">=</span> <span class="type">Direction</span>.north</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> .north <span class="operator">=</span> heading &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Don&#x27;t forget your jacket&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这个也可以用在处理错误的时候，传递相关的错误信息。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Organism</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> plant</span><br><span class="line">        <span class="keyword">case</span> animal(legs: <span class="type">Int</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> pet <span class="operator">=</span> <span class="type">Organism</span>.animal(legs: <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> pet &#123;</span><br><span class="line"><span class="keyword">case</span> .animal(<span class="keyword">let</span> legs):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;ok&quot;</span>)</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;ok&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Optional-pattern"><a href="#Optional-pattern" class="headerlink" title="Optional pattern"></a>Optional pattern</h3><p>当数组包含<code>Optional</code>的值，可以通过这种<code>syntactic sugar</code>来获取里面的值并且解包。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="keyword">case</span> <span class="keyword">let</span> name<span class="operator">?</span> <span class="keyword">in</span> names &#123;</span><br><span class="line">    <span class="built_in">print</span>(name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="“Is”-type-casting-pattern"><a href="#“Is”-type-casting-pattern" class="headerlink" title="“Is” type-casting pattern"></a>“Is” type-casting pattern</h3><p>用is检查是不是特定的类型,多用在JSON的解析。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array: [<span class="keyword">Any</span>] <span class="operator">=</span> [<span class="number">15</span>, <span class="string">&quot;George&quot;</span>, <span class="number">2.0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> array &#123;</span><br><span class="line">        <span class="keyword">switch</span> element &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">is</span> <span class="type">String</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;ok&quot;</span>)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="“As”-type-casting-pattern"><a href="#“As”-type-casting-pattern" class="headerlink" title="“As” type-casting pattern"></a>“As” type-casting pattern</h3><p>当element是<code>string</code>类型，运行下面语句。并将值赋值给<code>text</code>变量</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> array &#123;</span><br><span class="line">        <span class="keyword">switch</span> element &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> text <span class="keyword">as</span> <span class="type">String</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Found a string:<span class="subst">\(text)</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Found something else&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Advanced-patterns"><a href="#Advanced-patterns" class="headerlink" title="Advanced patterns"></a>Advanced patterns</h2><p>###Qualifying with where<br>传入的值可以被2整除</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">9</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> number &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> x <span class="keyword">where</span> x <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;even&quot;</span>)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;odd&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">LevelStatus</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> complete</span><br><span class="line">        <span class="keyword">case</span> inProgress(percent: <span class="type">Double</span>)</span><br><span class="line">        <span class="keyword">case</span> notStarted</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> leves: [<span class="type">LevelStatus</span>] <span class="operator">=</span> [.complete, .inProgress(percent:<span class="number">0.9</span>), .notStarted]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> level <span class="keyword">in</span> levels &#123;</span><br><span class="line">    <span class="keyword">switch</span> level &#123;</span><br><span class="line">    <span class="keyword">case</span> .inProgress(<span class="keyword">let</span> percent) <span class="keyword">where</span> percent <span class="operator">&gt;</span> <span class="number">0.8</span> :</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Almost there!&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> .inProgress(<span class="keyword">let</span> percent) <span class="keyword">where</span> percent <span class="operator">&gt;</span> <span class="number">0.5</span> :</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Halfway there!&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> .inProgress(<span class="keyword">let</span> precent) <span class="keyword">where</span> percent <span class="operator">&gt;</span> <span class="number">0.2</span> :</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Made it throug the beginning!&quot;</span>)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Chaining-with-commas"><a href="#Chaining-with-commas" class="headerlink" title="Chaining with commas"></a>Chaining with commas</h3><p>用都好匹配多个值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">timeOfDayDescription</span>(<span class="params">hour</span>: <span class="type">Int</span>)</span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> hour &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Early morning&quot;</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Morning&quot;</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Afternoon&quot;</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Late evening&quot;</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;INVALID HOUR!&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先匹配<code>pet</code>是不是动物，然后在匹配这个动物的腿是不是在2…4之间。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> .animal(<span class="keyword">let</span> legs) <span class="operator">=</span> pet, <span class="keyword">case</span> <span class="number">2</span><span class="operator">...</span><span class="number">4</span> <span class="operator">=</span> legs &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;potentially cuddly&quot;</span>) <span class="comment">//Printed!</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;no change for cuddles&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Swift</code>的<code>if</code>申明，用途相当广</p>
+<ul>
+<li>Simple logical test <code>foot == 10 || bar &gt; baz</code></li>
+<li>Optional binding <code>let foot = maybeFoo</code></li>
+<li>Pattern matching <code>cas .bar(let something) = theValue</code></li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Number</span> </span>&#123;</span><br><span class="line">        <span class="keyword">case</span> integerValue(<span class="type">Int</span>)</span><br><span class="line">        <span class="keyword">case</span> doubleValue(<span class="type">Double</span>)</span><br><span class="line">        <span class="keyword">case</span> booleanValue(<span class="type">Bool</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a <span class="operator">=</span> <span class="number">5</span></span><br><span class="line"><span class="keyword">let</span> b <span class="operator">=</span> <span class="number">6</span></span><br><span class="line"><span class="keyword">let</span> c : <span class="type">Number</span>? <span class="operator">=</span> .integerValue(<span class="number">7</span>)</span><br><span class="line"><span class="keyword">let</span> d: <span class="type">Number</span>? <span class="operator">=</span> .integerValue(<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> a <span class="operator">!=</span> b &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> c <span class="operator">=</span> c &#123;</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">let</span> d <span class="operator">=</span> d &#123;</span><br><span class="line">                        <span class="keyword">if</span> <span class="keyword">case</span> .integervalue(<span class="keyword">let</span> cValue) <span class="operator">=</span> c &#123;</span><br><span class="line">                                <span class="keyword">if</span> <span class="keyword">case</span> .integerValue(<span class="keyword">let</span> dValue) <span class="operator">=</span> d &#123;</span><br><span class="line">                                        <span class="keyword">if</span> dValue <span class="operator">&gt;</span> cValue &#123;</span><br><span class="line">                                                <span class="built_in">print</span>(<span class="string">&quot;some code&quot;</span>)</span><br><span class="line">                                        &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在<code>Swift</code>中我们可以简写成如下代码，和guard功能类似，有可以把<code>if</code>金字塔式的结构给流水化。下面的代码只要有一个不满足，那么if就不成立。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> a <span class="operator">!=</span>b,</span><br><span class="line">    <span class="keyword">let</span> c <span class="operator">=</span> c,</span><br><span class="line">    <span class="keyword">let</span> d <span class="operator">=</span> d,</span><br><span class="line">    <span class="keyword">case</span> .integervalue(<span class="keyword">let</span> cValue) <span class="operator">=</span> c,</span><br><span class="line">    <span class="keyword">case</span> .integerValue(<span class="keyword">let</span> dValue) <span class="operator">=</span> d,</span><br><span class="line">    dValue <span class="operator">&gt;</span> cValue &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;some code&quot;</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Custom-tuple"><a href="#Custom-tuple" class="headerlink" title="Custom tuple"></a>Custom tuple</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name <span class="operator">=</span> <span class="string">&quot;Bob&quot;</span></span><br><span class="line"><span class="keyword">let</span> age <span class="operator">=</span> <span class="number">23</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> (<span class="string">&quot;Bob&quot;</span>, <span class="number">23</span>) <span class="operator">=</span> (name, age) &#123;</span><br><span class="line">        <span class="built_in">print</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> username: <span class="type">String</span>?</span><br><span class="line"><span class="keyword">var</span> password: <span class="type">String</span>?</span><br><span class="line"><span class="keyword">switch</span> (username, password) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">let</span> (username<span class="operator">?</span>, password<span class="operator">?</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Success&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">let</span> (username<span class="operator">?</span>, <span class="literal">nil</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Password is missing&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">let</span> (<span class="literal">nil</span>, password):</span><br><span class="line">        print (<span class="string">&quot;Username is missing&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> (<span class="literal">nil</span>, <span class="literal">nil</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Both username and password are missing&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fun-with-wildcards"><a href="#Fun-with-wildcards" class="headerlink" title="Fun with wildcards"></a>Fun with wildcards</h3><h4 id="Do-something-multiple-times"><a href="#Do-something-multiple-times" class="headerlink" title="Do something multiple times"></a>Do something multiple times</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="keyword">_</span> <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">3</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;hi&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>_</code>意味着你不关心里面的值是什么。</p>
+<h4 id="Validate-that-an-optional-exists"><a href="#Validate-that-an-optional-exists" class="headerlink" title="Validate that an optional exists"></a>Validate that an optional exists</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user: <span class="type">String</span>? <span class="operator">=</span> <span class="string">&quot;Bob&quot;</span></span><br><span class="line"><span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">_</span> <span class="operator">=</span> user <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;There is no user.&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>检查<code>optional</code>是否有值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> user <span class="operator">!=</span> <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;There is no user.&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Organize-an-if-else-if"><a href="#Organize-an-if-else-if" class="headerlink" title="Organize an if-else-if"></a>Organize an if-else-if</h4><p>用<code>switch</code>代替在<code>OC</code>中的<code>if else</code>的结构</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> width: <span class="type">Int</span></span><br><span class="line">        <span class="keyword">let</span> height: <span class="type">Int</span></span><br><span class="line">        <span class="keyword">let</span> color: <span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> view <span class="operator">=</span> <span class="type">Rectangle</span>(width:<span class="number">15</span>, height:<span class="number">60</span>, color:<span class="string">&quot;Green&quot;</span>)</span><br><span class="line"><span class="keyword">switch</span> view &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">_</span> <span class="keyword">where</span> view.height <span class="operator">&lt;</span> <span class="number">50</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Shrter thant 50 units&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">_</span> <span class="keyword">where</span> view.width <span class="operator">&gt;</span> <span class="number">20</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Over 50 tall, &amp; over 20 wide&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">_</span> <span class="keyword">where</span> view.color <span class="operator">=</span> <span class="string">&quot;Green&quot;</span>:</span><br><span class="line">        print (<span class="string">&quot;Over 50 tall, at most 20 wide, &amp; green&quot;</span>)</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;This view can&#x27;t be described by this example&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Programming-exercises"><a href="#Programming-exercises" class="headerlink" title="Programming exercises"></a>Programming exercises</h3><h4 id="Fibonacci斐波那契数列"><a href="#Fibonacci斐波那契数列" class="headerlink" title="Fibonacci斐波那契数列"></a>Fibonacci斐波那契数列</h4><p>斐波那契数列每个数字都是前面两个数字之和例如0，1，1，2，3，5，8…<br>通过传入position的值，算出该位置的值。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fibonacci</span>(<span class="params">position</span>: <span class="type">Int</span>)</span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> position &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> n <span class="keyword">where</span> n <span class="operator">&lt;=</span> <span class="number">1</span> :</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>  <span class="comment">//当是第一位的时候返回0</span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> n:</span><br><span class="line">                <span class="keyword">return</span> fiboncci(position: n <span class="operator">-</span><span class="number">1</span> ) <span class="operator">+</span> fibonacci(position: n<span class="operator">-</span> <span class="number">2</span>)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个例子也是避免在<code>Switch</code>中使用<code>default</code>的例子，因为<code>let n</code>已经包含所有的值，所以<code>default</code>就不需要在写。</p>
+</blockquote>
+<h4 id="FizzBuzz"><a href="#FizzBuzz" class="headerlink" title="FizzBuzz"></a>FizzBuzz</h4><p>从1-100中，当是3的倍数的时候打印<code>Fizz</code>，当是5的倍数的时候返回<code>Buzz</code>，当既是5的倍数也是3的倍数的时候返回<code>FizzBuzz</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">100</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> (i <span class="operator">%</span><span class="number">3</span>, i<span class="operator">%</span><span class="number">5</span>) &#123;</span><br><span class="line">        <span class="keyword">case</span> (<span class="number">0</span>, <span class="number">0</span>):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;FizzBuzz&quot;</span>)</span><br><span class="line">        <span class="keyword">case</span> (<span class="number">0</span>, <span class="keyword">_</span>):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Fizz&quot;</span>)</span><br><span class="line">        <span class="keyword">case</span> (<span class="keyword">_</span>, <span class="number">0</span>):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Buzz&quot;</span>)</span><br><span class="line">        <span class="keyword">case</span> (<span class="keyword">_</span>, <span class="keyword">_</span>):</span><br><span class="line">                <span class="built_in">print</span>(i)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Expression-pattern"><a href="#Expression-pattern" class="headerlink" title="Expression pattern"></a>Expression pattern</h3><p>当你要检查Int的值是不是在一个范围内的时候，这时候就要用<code>~=</code>符号来判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let matched &#x3D; (1...10 ~&#x3D; 5)   &#x2F;&#x2F;true</span><br><span class="line"></span><br><span class="line">if case 1...10 &#x3D; 5 &#123;</span><br><span class="line">    print(&quot;Int the range&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Overloading"><a href="#Overloading" class="headerlink" title="Overloading~="></a>Overloading~=</h3><p>如果你要自己实现<code>~=</code>例如，提供数组[0, 1, 2, 3]然后检查2是不是在该数组中，如果直接写以下代码会报错</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list <span class="operator">=</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> integer <span class="operator">=</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">let</span> isInArray <span class="operator">=</span> (list <span class="operator">~=</span> integer)  <span class="comment">//Error!</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">case</span> list <span class="operator">=</span> integer &#123;  <span class="comment">//Error</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;The integer is in the array&quot;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;The integer is not in the array&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="重写-方法"><a href="#重写-方法" class="headerlink" title="重写~=方法"></a>重写<code>~=方法</code></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">~=</span>(<span class="params">pattern</span>: [<span class="type">Int</span>], <span class="params">value</span>: <span class="type">Int</span>)</span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> pattern &#123;</span><br><span class="line">                <span class="keyword">if</span> i <span class="operator">==</span> value &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Ray-Wenderlich/" rel="tag"># Ray Wenderlich</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/25/Swift/Protocol/" rel="prev" title="Protocol">
+      <i class="fa fa-chevron-left"></i> Protocol
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/25/Swift/Pattern%20Matching%20in%20Swift/" rel="next" title="Pattern Matching in Swift">
+      Pattern Matching in Swift <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-pattern-matching"><span class="nav-number">1.</span> <span class="nav-text">Basic pattern matching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-and-guard"><span class="nav-number">1.1.</span> <span class="nav-text">if and guard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Switch"><span class="nav-number">1.2.</span> <span class="nav-text">Switch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for"><span class="nav-number">1.3.</span> <span class="nav-text">for</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Patterns"><span class="nav-number">2.</span> <span class="nav-text">Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Wildcard-pattern"><span class="nav-number">2.1.</span> <span class="nav-text">Wildcard pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value-binding-pattern"><span class="nav-number">2.2.</span> <span class="nav-text">Value-binding pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enumeration-case-pattern"><span class="nav-number">2.3.</span> <span class="nav-text">Enumeration case pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional-pattern"><span class="nav-number">2.4.</span> <span class="nav-text">Optional pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CIs%E2%80%9D-type-casting-pattern"><span class="nav-number">2.5.</span> <span class="nav-text">“Is” type-casting pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CAs%E2%80%9D-type-casting-pattern"><span class="nav-number">2.6.</span> <span class="nav-text">“As” type-casting pattern</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-patterns"><span class="nav-number">3.</span> <span class="nav-text">Advanced patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Chaining-with-commas"><span class="nav-number">3.1.</span> <span class="nav-text">Chaining with commas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Custom-tuple"><span class="nav-number">3.2.</span> <span class="nav-text">Custom tuple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fun-with-wildcards"><span class="nav-number">3.3.</span> <span class="nav-text">Fun with wildcards</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Do-something-multiple-times"><span class="nav-number">3.3.1.</span> <span class="nav-text">Do something multiple times</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Validate-that-an-optional-exists"><span class="nav-number">3.3.2.</span> <span class="nav-text">Validate that an optional exists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Organize-an-if-else-if"><span class="nav-number">3.3.3.</span> <span class="nav-text">Organize an if-else-if</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Programming-exercises"><span class="nav-number">3.4.</span> <span class="nav-text">Programming exercises</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fibonacci%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="nav-number">3.4.1.</span> <span class="nav-text">Fibonacci斐波那契数列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FizzBuzz"><span class="nav-number">3.4.2.</span> <span class="nav-text">FizzBuzz</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expression-pattern"><span class="nav-number">3.5.</span> <span class="nav-text">Expression pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overloading"><span class="nav-number">3.6.</span> <span class="nav-text">Overloading~&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99-%E6%96%B9%E6%B3%95"><span class="nav-number">3.6.1.</span> <span class="nav-text">重写~&#x3D;方法</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HR"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">HR</p>
+  <div class="site-description" itemprop="description">Swimming 🏊 in the sea🌊of code!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/caohrong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;caohrong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:caohr@outlook.com" title="E-Mail → mailto:caohr@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/caohuanrong" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;caohuanrong" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HR</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://caohr.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.caohr.com/2022/05/25/Swift/Pattern%20matching/";
+    this.page.identifier = "2022/05/25/Swift/Pattern matching/";
+    this.page.title = "Pattern matching";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://caohr.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

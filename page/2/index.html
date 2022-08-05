@@ -189,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Weak%202.SideTable/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/Weak%202.SideTable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -203,7 +203,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/iOS/Weak%202.SideTable/" class="post-title-link" itemprop="url">Weak 2.SideTable</a>
+            <a href="/2022/05/25/iOS/Weak%202.SideTable/" class="post-title-link" itemprop="url">Weak 2.SideTable</a>
         </h2>
 
         <div class="post-meta">
@@ -213,7 +213,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,8 +234,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/iOS/Weak%202.SideTable/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 2.SideTable/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/iOS/Weak%202.SideTable/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/Weak 2.SideTable/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -253,7 +253,7 @@
           <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SideTable</span> &#123;</span></span><br><span class="line">    <span class="keyword">spinlock_t</span> slock;</span><br><span class="line">    RefcountMap refcnts;</span><br><span class="line">    <span class="keyword">weak_table_t</span> weak_table;</span><br><span class="line"></span><br><span class="line">    SideTable() &#123;</span><br><span class="line">        <span class="built_in">memset</span>(&amp;weak_table, <span class="number">0</span>, <span class="keyword">sizeof</span>(weak_table));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~SideTable() &#123;</span><br><span class="line">        _objc_fatal(<span class="string">&quot;Do not delete SideTable.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123; slock.lock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123; slock.unlock(); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">forceReset</span><span class="params">()</span> </span>&#123; slock.forceReset(); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Address-ordered lock discipline for a pair of side tables.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">lockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">    <span class="keyword">template</span>&lt;HaveOld, HaveNew&gt;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">unlockTwo</span><span class="params">(SideTable *lock1, SideTable *lock2)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/12/16/iOS/Weak%202.SideTable/#more" rel="contents">
+              <a class="btn" href="/2022/05/25/iOS/Weak%202.SideTable/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -277,7 +277,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -291,7 +291,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/" class="post-title-link" itemprop="url">Weak 3.SideTable的Hash值</a>
+            <a href="/2022/05/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/" class="post-title-link" itemprop="url">Weak 3.SideTable的Hash值</a>
         </h2>
 
         <div class="post-meta">
@@ -301,7 +301,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,8 +322,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 3.SideTable的Hash值/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/Weak 3.SideTable的Hash值/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -358,7 +358,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -372,7 +372,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">Weak 4.扩容和缩容的调取时机</a>
+            <a href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">Weak 4.扩容和缩容的调取时机</a>
         </h2>
 
         <div class="post-meta">
@@ -382,7 +382,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -403,8 +403,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 4.weak_table_t扩容和缩容/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/Weak 4.weak_table_t扩容和缩容/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -422,7 +422,7 @@
           <h2 id="扩容和缩容的调取时机"><a href="#扩容和缩容的调取时机" class="headerlink" title="扩容和缩容的调取时机"></a>扩容和缩容的调取时机</h2><p>添加和删除弱应用的指针是通过<code>weak_register_no_lock</code>和<code>weak_unregister_no_lock</code>来实现的。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/12/16/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#more" rel="contents">
+              <a class="btn" href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -446,7 +446,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Tools/CMake/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -460,7 +460,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/" class="post-title-link" itemprop="url">Weak 5.out of line状态的判定</a>
+            <a href="/2022/05/25/Tools/CMake/" class="post-title-link" itemprop="url">CMake</a>
         </h2>
 
         <div class="post-meta">
@@ -470,7 +470,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -491,191 +491,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/Weak 5.out of line状态的判定/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>out of line状态的判定</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/12/16/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/iOS/dispatch_get_specific/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/16/iOS/dispatch_get_specific/" class="post-title-link" itemprop="url">dispatch_get_specific</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/12/16/iOS/dispatch_get_specific/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/iOS/dispatch_get_specific/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><code>dispatch_get_specific</code> 和 <code>dispatch_queue_set_specific</code> 用法就是用set方法在线程里设置一个key，通过get查找当前线程，是不是包含该key来判断代码是不是在特定的线程里执行。set则是给线程设置key值。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/12/16/iOS/dispatch_get_specific/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Tools/CMake/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/16/Tools/CMake/" class="post-title-link" itemprop="url">CMake</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-08 13:39:58" itemprop="dateModified" datetime="2022-01-08T13:39:58+08:00">2022-01-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/12/16/Tools/CMake/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/Tools/CMake/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/Tools/CMake/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Tools/CMake/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -693,7 +510,7 @@
           <h2 id="CMake介绍"><a href="#CMake介绍" class="headerlink" title="CMake介绍"></a>CMake介绍</h2><p>CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的<code>Makefile</code>，而<code>CMake</code>就可以为跨平台的项目，提供一次编写<code>Makefile</code>而到处编译的目的。<br><img src="http://blog.caohr.com/ImagesFolder/CMake-logo.png" alt="CMake-logo"></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/12/16/Tools/CMake/#more" rel="contents">
+              <a class="btn" href="/2022/05/25/Tools/CMake/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -717,7 +534,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Tools/Google%20Photos%20VS%20iCloud%20Photos/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Tools/Google%20Photos%20VS%20iCloud%20Photos/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -731,7 +548,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/Tools/Google%20Photos%20VS%20iCloud%20Photos/" class="post-title-link" itemprop="url">Google Photos VS iCloud Photos</a>
+            <a href="/2022/05/25/Tools/Google%20Photos%20VS%20iCloud%20Photos/" class="post-title-link" itemprop="url">Google Photos VS iCloud Photos</a>
         </h2>
 
         <div class="post-meta">
@@ -741,15 +558,8 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-08 13:39:58" itemprop="dateModified" datetime="2022-01-08T13:39:58+08:00">2022-01-08</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -769,8 +579,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/Tools/Google%20Photos%20VS%20iCloud%20Photos/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/Tools/Google Photos VS iCloud Photos/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/Tools/Google%20Photos%20VS%20iCloud%20Photos/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Tools/Google Photos VS iCloud Photos/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -789,7 +599,7 @@
 <p>前置条件：苹果生态系统用户(至少拥有苹果一款设备，iPhone或者Mac)。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/12/16/Tools/Google%20Photos%20VS%20iCloud%20Photos/#more" rel="contents">
+              <a class="btn" href="/2022/05/25/Tools/Google%20Photos%20VS%20iCloud%20Photos/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -813,7 +623,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Tools/Hexo/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Tools/Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -827,7 +637,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/Tools/Hexo/" class="post-title-link" itemprop="url">Hexo入门</a>
+            <a href="/2022/05/25/Tools/Hexo/" class="post-title-link" itemprop="url">Hexo入门</a>
         </h2>
 
         <div class="post-meta">
@@ -837,7 +647,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -858,8 +668,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/Tools/Hexo/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/Tools/Hexo/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/Tools/Hexo/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Tools/Hexo/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -907,7 +717,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Tools/LaTeX/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Tools/LaTeX/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -921,7 +731,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/Tools/LaTeX/" class="post-title-link" itemprop="url">测试数学格式支持</a>
+            <a href="/2022/05/25/Tools/LaTeX/" class="post-title-link" itemprop="url">测试数学格式支持</a>
         </h2>
 
         <div class="post-meta">
@@ -931,7 +741,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -952,8 +762,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/Tools/LaTeX/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/Tools/LaTeX/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/Tools/LaTeX/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Tools/LaTeX/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -971,7 +781,7 @@
           <p>$$\sin \alpha + \sin \beta = 2\sin\frac{\alpha + \beta}{2}\cos\frac{\alpha-\beta}{2}$$<br>$$\sin \alpha - \sin \beta = 2\cos\frac{\alpha + \beta}{2}\sin\frac{\alpha-\beta}{2}$$<br>$$\cos \alpha + \cos \beta = 2\cos\frac{\alpha + \beta}{2}\cos\frac{\alpha-\beta}{2}$$<br>$$\cos \alpha - \cos \beta = 2\sin\frac{\alpha + \beta}{2}\sin\frac{\alpha-\beta}{2}$$<br>$$\left \lbrace \sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9} \right \rbrace$$<br>$$ \lbrace \sum_{i=0}^n i^3 = \frac{(n^2+n)(n+6)}{9}  \rbrace$$</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/12/16/Tools/LaTeX/#more" rel="contents">
+              <a class="btn" href="/2022/05/25/Tools/LaTeX/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -995,7 +805,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Swift/mplicitly%20unwrapped%20optionals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1009,7 +819,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/" class="post-title-link" itemprop="url">THE IMPLICITLY UNWRAPPED OPTIONAL & WHEN TO USE IT</a>
+            <a href="/2022/05/25/Swift/mplicitly%20unwrapped%20optionals/" class="post-title-link" itemprop="url">THE IMPLICITLY UNWRAPPED OPTIONAL & WHEN TO USE IT</a>
         </h2>
 
         <div class="post-meta">
@@ -1019,7 +829,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-12-16 23:57:31" itemprop="dateCreated datePublished" datetime="2021-12-16T23:57:31+08:00">2021-12-16</time>
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1040,8 +850,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/12/16/Swift/mplicitly unwrapped optionals/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/Swift/mplicitly%20unwrapped%20optionals/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Swift/mplicitly unwrapped optionals/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1060,7 +870,190 @@
 <p>总结，就是你不能在初始化的时候就确保有值，但是你又能保证在运行时的时候一定有值，他具有Optional的所有属性，但是又不需要像Optional一样到处解包。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/12/16/Swift/mplicitly%20unwrapped%20optionals/#more" rel="contents">
+              <a class="btn" href="/2022/05/25/Swift/mplicitly%20unwrapped%20optionals/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Swift/Singleton/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/25/Swift/Singleton/" class="post-title-link" itemprop="url">Singleton</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/25/Swift/Singleton/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Swift/Singleton/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Singleton"><a href="#Singleton" class="headerlink" title="Singleton"></a>Singleton</h1><p>该文讲述了三种方法来创建单例, 各种方法的优点以及缺点，该文也介绍了另外一篇文章单例的Are Singletons Bad。</p>
+<p><a target="_blank" rel="noopener" href="https://cocoacasts.com/what-is-a-singleton-and-how-to-create-one-in-swift">原文地址</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/25/Swift/Singleton/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Swift/String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/25/Swift/String/" class="post-title-link" itemprop="url">String</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/25/Swift/String/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Swift/String/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someString <span class="operator">=</span> <span class="string">&quot;some string literal value&quot;</span> <span class="operator">+</span> <span class="string">&quot;other string&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>多行字符串</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> multiline <span class="operator">=</span> <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">one line </span></span><br><span class="line"><span class="string">two line</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果你只是想换行让文本更易读，而不是想在字符串中真正的换行可以在要换行的地方加上<code>\</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 <span class="operator">=</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">let</span> str2 <span class="operator">=</span> <span class="string">&quot; &quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> value <span class="operator">=</span> str1.isEmpty  <span class="comment">//true</span></span><br><span class="line"><span class="keyword">let</span> value2 <span class="operator">=</span> str2.isEmpty  <span class="comment">//false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/25/Swift/String/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

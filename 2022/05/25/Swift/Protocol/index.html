@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Protocol is name type, structs ,classes, and enums also name type. A protocol can be adopted by a class, struct, or enum. Swift中默认所有的方法都是必须实现是的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Protocol">
+<meta property="og:url" content="https://blog.caohr.com/2022/05/25/Swift/Protocol/index.html">
+<meta property="og:site_name" content="HR&#39;s Blog">
+<meta property="og:description" content="Protocol is name type, structs ,classes, and enums also name type. A protocol can be adopted by a class, struct, or enum. Swift中默认所有的方法都是必须实现是的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-25T05:19:04.294Z">
+<meta property="article:modified_time" content="2022-05-25T05:19:04.295Z">
+<meta property="article:author" content="HR">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.caohr.com/2022/05/25/Swift/Protocol/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Protocol | HR's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QW1BDQNRXY"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QW1BDQNRXY');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1b08dac8932c829229886a7ff2235549";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HR's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Swimming 🏊 in the sea🌊of code!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/album/" rel="section"><i class="fa fa-camera fa-fw"></i>Photos</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/Swift/Protocol/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Protocol
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index"><span itemprop="name">Swift</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/25/Swift/Protocol/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/Swift/Protocol/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Protocol is name type, structs ,classes, and enums also name type. <code>A protocol can be adopted by a class, struct, or enum</code>.</p>
+<p>Swift中默认所有的方法都是必须实现是的</p>
+<span id="more"></span>
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">protocal <span class="type">Vehicle</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">accelerate</span>()</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">stop</span>()</span></span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">Double</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>协议可以被<code>class</code>、<code>struct</code>、<code>enum</code>所遵守。</li>
+<li>协议里的方法不能包含默认值。</li>
+<li>如果要定义<code>Optional</code>的值，需要提供两个方法。 <code>fun turn()</code>和<code>fun turn(_ value:valueType)</code></li>
+</ul>
+<!-- more -->
+
+<h2 id="Protocol-inheritance"><a href="#Protocol-inheritance" class="headerlink" title="Protocol inheritance"></a>Protocol inheritance</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">WheeledVehicle</span>: <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> numberOfWheels: <span class="type">Int</span> &#123;<span class="keyword">get</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> wheelSize: <span class="type">Double</span> &#123; <span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Implementing-properties"><a href="#Implementing-properties" class="headerlink" title="Implementing properties"></a>Implementing properties</h2><p>当协议里面定义必须实现的值的<code>get</code>或者<code>set</code>方法。该值既可以是<code>stored property</code> 也可以是 <code>computed property</code>。而如果协议之要求你实现<code>get</code>方法，你的参数可以实现<code>get</code>和<code>set</code>方法一起。</p>
+<h2 id="Associated-Types-in-protocols"><a href="#Associated-Types-in-protocols" class="headerlink" title="Associated Types in protocols"></a>Associated Types in protocols</h2><p>你可以用<code>associated type</code>关键字来定义协议要用到的相关类型，有点类似函数的泛型</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">WeightCalculatable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">associatedtype</span> <span class="type">WeightType</span></span><br><span class="line">    <span class="keyword">var</span> weight: <span class="type">WeightType</span> &#123;<span class="keyword">get</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeavyThing</span>: <span class="title">WeightCalculatable</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This heavy thing only needs integer accuracy</span></span><br><span class="line">  <span class="keyword">typealias</span> <span class="type">WeightType</span> <span class="operator">=</span> <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LightThing</span>: <span class="title">WeightCalculatable</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This light thing needs decimal places</span></span><br><span class="line">  <span class="keyword">typealias</span> <span class="type">WeightType</span> <span class="operator">=</span> <span class="type">Double</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> weight: <span class="type">Double</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.0025</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们用<code>typealias</code>关键字解释<code>WeightType</code>是什么类型，这个通常是不需要写的。</p>
+<h2 id="Implementing-multiple-protocols"><a href="#Implementing-multiple-protocols" class="headerlink" title="Implementing multiple protocols"></a>Implementing multiple protocols</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bike</span>: <span class="title">Vehicle</span>, <span class="title">Wheeled</span> </span>&#123;</span><br><span class="line">    <span class="comment">//Implement both Vehicle and Wheeled</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Protocol-Composition"><a href="#Protocol-Composition" class="headerlink" title="Protocol Composition"></a>Protocol Composition</h2><p>In the previous section you learned how to implement multiple protocols. Sometimes you need a function to take a data type that must conform to multiple protocols. That is where protocol composition comes in. Imagine you need a function that needs access to the Vehicle protocol’s stop() function and the Wheeled protocol’s numberOfWheels property. You can do this using the &amp; composition operator.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">roundAndRound</span>(<span class="params">transportation</span>: <span class="type">Vehicle</span> &amp; <span class="type">Wheeled</span>)</span> &#123;</span><br><span class="line">    transportation.stop()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;The brakes are being applied to <span class="subst">\(transportation.numberOfWheels)</span> wheels.&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">roundAndRound(transportation: <span class="type">Bike</span>())</span><br><span class="line"><span class="comment">// The brakes are being applied to 2 wheels. </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Extensions-and-protocol-conformance"><a href="#Extensions-and-protocol-conformance" class="headerlink" title="Extensions and protocol conformance"></a>Extensions and protocol conformance</h2><p>可以用类的扩展来遵守也写，即使是像String这样的类，我们也可以通过这个方法让String来遵守一些协议。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Reflective</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> typeName: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">String</span>: <span class="title">Reflective</span> </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> typeName: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;I&#x27;m a String&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两个好处</p>
+<ol>
+<li>可以让一些系统类来遵守你的协议</li>
+<li>可以把一些协议的实现定义在扩展里面，让代码看起来不那么乱</li>
+</ol>
+<blockquote>
+<p>最近Swift版本可以在协议里面访问该类的私有变量<br>你不能在扩展里面定义<code>stored properties</code>但是你仍然可以通过在原来的类中定义<code>stored properties</code>来满足你在扩展里面协议需要实现的参数。</p>
+</blockquote>
+<h2 id="Requiring-Reference-semantics"><a href="#Requiring-Reference-semantics" class="headerlink" title="Requiring Reference semantics"></a>Requiring Reference semantics</h2><p>因为协议能够被<code>types type</code>(structs 和 enums)遵守和<code>reference type</code>类型(classes)所遵守，所以对于<code>structs</code>和<code>classes</code>复制时不同的处理方式，你可能想要某些协议限制只能被<code>classes</code>所遵守。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Named</span>: <span class="title">class</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> &#123; <span class="keyword">get</span> <span class="keyword">set</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Protocols-in-the-standard-library"><a href="#Protocols-in-the-standard-library" class="headerlink" title="Protocols in the standard library"></a>Protocols in the standard library</h2><h3 id="Equatable"><a href="#Equatable" class="headerlink" title="Equatable"></a>Equatable</h3><p>当你要用<code>==</code>比对两个自定义的对象是否相等的时候，你需要是显示系统的<code>Equatable</code>协议</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Equatable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">=</span>(<span class="params">lhs</span>: <span class="keyword">self</span>, <span class="params">rhs</span>: <span class="keyword">self</span>)</span> -&gt; <span class="type">Bool</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你需要在你的协议里面遵守该协议，如果你想比对你定义的协议是否相等，在方法里给出Bool值，来判断两个自定义的对象是否相等。</p>
+<h3 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h3><p><code>Comparable</code>类似<code>==</code>，提供了<code>&lt;</code>,<code>&lt;=</code>,<code>&gt;</code>和<code>&gt;=</code>来比对你自定义的对象。<br>你只需要实现<code>&lt;</code>和<code>==</code>，其他的运算方法标准库会为你自动实现。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Comparable</span>: <span class="title">Equatable</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">&lt;</span>(<span class="params">lhs</span>: <span class="keyword">Self</span>, <span class="params">rhs</span>: <span class="keyword">Self</span>)</span> -&gt; <span class="type">Bool</span></span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">&lt;=</span>(<span class="params">lhs</span>: <span class="keyword">Self</span>, <span class="params">rhs</span>: <span class="keyword">Self</span>)</span> -&gt; <span class="type">Bool</span></span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">&gt;=</span>(<span class="params">lhs</span>: <span class="keyword">Self</span>, <span class="params">rhs</span>: <span class="keyword">Self</span>)</span> -&gt; <span class="type">Bool</span></span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">&gt;</span>(<span class="params">lhs</span>: <span class="keyword">Self</span>, <span class="params">rhs</span>: <span class="keyword">Self</span>)</span> -&gt; <span class="type">Bool</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<h3 id="Freefunctions"><a href="#Freefunctions" class="headerlink" title="Freefunctions"></a><code>Free</code>functions</h3><p>当你为你的类实现了<code>==</code>和<code>&lt;</code>协议，那么系统会自动为你实现其他的方法例如</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">leagueRecords.max() <span class="comment">// &#123;wins 23, losses 8&#125;</span></span><br><span class="line">leagueRecords.min() <span class="comment">// &#123;wins 14, losses 11&#125;</span></span><br><span class="line">leagueRecords.starts(with: [teamA, teamC]) <span class="comment">// true  //这个没有明白是什么意思</span></span><br><span class="line">leagueRecords.contains(teamA) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Hashable"><a href="#Hashable" class="headerlink" title="Hashable"></a>Hashable</h3><p><code>Hashable</code>是<code>Equatable</code>的子类，任何你要用作为<code>Dictionary</code>字典的<code>Key</code>都需要遵守该协议。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Hashable</span> : <span class="title">Equatable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> hashValue: <span class="type">Int</span> &#123;<span class="keyword">get</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Hashable可以快速帮你在集合中找到元素，所以<code>==</code>为<code>true</code>的值，那么<code>Hash</code>值应该是一样的。</p>
+<blockquote>
+<p>一般用==比对的值来发挥相同的hash值，例如<code>student</code>对象里面<code>name</code>，我们可以用<code>name</code>来判断该学生是否为同一个学生，也可以用<code>name</code>的hash值来当做整个student对象的hash值</p>
+</blockquote>
+<h3 id="CustomStringConvertible"><a href="#CustomStringConvertible" class="headerlink" title="CustomStringConvertible"></a>CustomStringConvertible</h3><p><code>CustomStringConvertible</code>提供你<code>print</code>自定义对象时候的内容。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">CustomStringConvertible</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>CustomDebugStringConvertibale</code>和<code>CustomStringConvertible</code>非常相识，只是互相对应的<code>debugPrint</code>和<code>print</code>方法</p>
+</blockquote>
+<h2 id="Objective-C-中的Optional选项"><a href="#Objective-C-中的Optional选项" class="headerlink" title="Objective-C 中的Optional选项"></a>Objective-C 中的Optional选项</h2><p>对于Swift中的<code>Optional</code>的值，我觉得可以在Swift中通过继承的方式来实现。</p>
+<p>原生的Swift protocol里没有可选值，所有定义的方法都必须实现的。如果我们想要像Objective-C里那样定义可选的接口方法，就需要将接口本身定义为Objective-C的，也即在protocol定义之前加上@objc。另外和Objective-C中的@Optional不同，我们使用没有@符号的关键字optional来定义可选方法：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@objc</span> <span class="class"><span class="keyword">protocol</span> <span class="title">viewDelegate</span> </span>&#123;</span><br><span class="line">	<span class="keyword">optional</span> <span class="function"><span class="keyword">func</span> <span class="title">viewClike</span>()</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">view</span>:<span class="title">NSObject</span> </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> delegate:viewDelegate<span class="operator">?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">clickFunc</span>()</span> &#123;</span><br><span class="line">	delegate<span class="operator">?</span>.viewClick()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/25/English/BrexitLaysAnEgg/" rel="prev" title="Brexit lays an egg">
+      <i class="fa fa-chevron-left"></i> Brexit lays an egg
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/25/Swift/Pattern%20matching/" rel="next" title="Pattern matching">
+      Pattern matching <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol-inheritance"><span class="nav-number">1.</span> <span class="nav-text">Protocol inheritance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementing-properties"><span class="nav-number">2.</span> <span class="nav-text">Implementing properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Associated-Types-in-protocols"><span class="nav-number">3.</span> <span class="nav-text">Associated Types in protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implementing-multiple-protocols"><span class="nav-number">4.</span> <span class="nav-text">Implementing multiple protocols</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocol-Composition"><span class="nav-number">5.</span> <span class="nav-text">Protocol Composition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extensions-and-protocol-conformance"><span class="nav-number">6.</span> <span class="nav-text">Extensions and protocol conformance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Requiring-Reference-semantics"><span class="nav-number">7.</span> <span class="nav-text">Requiring Reference semantics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protocols-in-the-standard-library"><span class="nav-number">8.</span> <span class="nav-text">Protocols in the standard library</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Equatable"><span class="nav-number">8.1.</span> <span class="nav-text">Equatable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparable"><span class="nav-number">8.2.</span> <span class="nav-text">Comparable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Freefunctions"><span class="nav-number">8.3.</span> <span class="nav-text">Freefunctions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hashable"><span class="nav-number">8.4.</span> <span class="nav-text">Hashable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CustomStringConvertible"><span class="nav-number">8.5.</span> <span class="nav-text">CustomStringConvertible</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective-C-%E4%B8%AD%E7%9A%84Optional%E9%80%89%E9%A1%B9"><span class="nav-number">9.</span> <span class="nav-text">Objective-C 中的Optional选项</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HR"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">HR</p>
+  <div class="site-description" itemprop="description">Swimming 🏊 in the sea🌊of code!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/caohrong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;caohrong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:caohr@outlook.com" title="E-Mail → mailto:caohr@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/caohuanrong" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;caohuanrong" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HR</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://caohr.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://blog.caohr.com/2022/05/25/Swift/Protocol/";
+    this.page.identifier = "2022/05/25/Swift/Protocol/";
+    this.page.title = "Protocol";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://caohr.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
