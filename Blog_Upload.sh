@@ -14,12 +14,12 @@ echo ${ImageFolder}
 echo "${python_version}"
 
 echo "--------------------[处理图片]"
-echo ${ImageFolder}
-cd ${ImageFolder}
+# echo ${ImageFolder}
+# cd ${ImageFolder}
 
-source ~/miniconda3/bin/activate HR
-python --version
-python tool.py
+# source ~/miniconda3/bin/activate HR
+# python --version
+# python tool.py
 
 echo "--------------------[博客生成]"
 echo ${BlogFolder}
