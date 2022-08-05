@@ -4,7 +4,7 @@ export PATH
 SHELL_FOLDER=$(cd "$(dirname "$0")";pwd)
 TIME=$(date "+%Y-%m-%d %H:%M:%S")
 echo "Shell Location:${SHELL_FOLDER}"
-Volumes="$(dirname "$dir")"
+Volumes="$(dirname "$SHELL_FOLDER")"
 echo "Work Space:${Volumes}"
 ImageFolder=${Volumes}"/HRBlog/Album"
 BlogFolder=${Volumes}"/MWebLibrary/HRBlog/Hexo"
