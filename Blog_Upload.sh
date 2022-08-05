@@ -7,7 +7,7 @@ echo ${SHELL_FOLDER}
 Volumes=${SHELL_FOLDER%/MWebLibrary/*}
 echo ${Volumes}
 ImageFolder=${Volumes}"/HRBlog/Album"
-BlogFolder=${Volumes}"/MWebLibrary/HRBlog"
+BlogFolder=${Volumes}"/MWebLibrary/HRBlog/Hexo"
 HTMLFolder=${Volumes}"/HRBlog"
 echo ${ImageFolder}
 
