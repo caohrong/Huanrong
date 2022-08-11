@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://caohr.com/sitemap.xml
-Sitemap: https://caohr.com/baidusitemap.xml
+Sitemap: https://blog.caohr.com/sitemap.xml
+Sitemap: https://blog.caohr.com/baidusitemap.xml
