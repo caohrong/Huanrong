@@ -30,7 +30,7 @@
 <meta property="og:description" content="以下是Brew在M1电脑中遇到的问题汇总">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-05T11:59:56.000Z">
-<meta property="article:modified_time" content="2022-08-05T12:05:30.000Z">
+<meta property="article:modified_time" content="2022-08-21T08:29:29.489Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="brew">
 <meta name="twitter:card" content="summary">
@@ -220,10 +220,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-05 19:59:56 / Modified: 20:05:30" itemprop="dateCreated datePublished" datetime="2022-08-05T19:59:56+08:00">2022-08-05</time>
+              <time title="Created: 2022-08-05 19:59:56" itemprop="dateCreated datePublished" datetime="2022-08-05T19:59:56+08:00">2022-08-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-21 16:29:29" itemprop="dateModified" datetime="2022-08-21T16:29:29+08:00">2022-08-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -265,14 +271,21 @@
 <h2 id="1-官方安装地址"><a href="#1-官方安装地址" class="headerlink" title="1. 官方安装地址"></a>1. 官方安装地址</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://brew.sh/">传送门</a></p>
-<h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><p>无法找到wget之类的安装包，在安装的过程中，即使常见的软件都无法找到例如wget，报错信息如下：</p>
+<h2 id="2-brew安装源有问题"><a href="#2-brew安装源有问题" class="headerlink" title="2. brew安装源有问题"></a>2. brew安装源有问题</h2><p>无法找到wget之类的安装包，在安装的过程中，即使常见的软件都无法找到例如wget，报错信息如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Warning: No available formula with the name &quot;ca-certificates&quot;.</span><br><span class="line">==&gt; Searching for similarly named formulae...</span><br><span class="line">Error: No similarly named formulae found.</span><br><span class="line">==&gt; Searching for a previously deleted formula (in the last month)...</span><br><span class="line">Error: No previously deleted formula found.</span><br><span class="line">==&gt; Searching taps on GitHub...</span><br><span class="line">Running `brew update --preinstall`...</span><br><span class="line">Error: No formulae found in taps.</span><br><span class="line">fatal: Could not resolve HEAD to a revision</span><br><span class="line">Warning: No available formula with the name &quot;wget&quot;.</span><br><span class="line">==&gt; Searching for similarly named formulae...</span><br><span class="line">Error: No similarly named formulae found.</span><br><span class="line">==&gt; Searching for a previously deleted formula (in the last month)...</span><br><span class="line">Error: No previously deleted formula found.</span><br><span class="line">==&gt; Searching taps on GitHub...</span><br><span class="line">Error: No formulae found in taps.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>导致的原因可能是brew的源没有正确的安装好，需要重置。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update-reset</span><br><span class="line">brew install wget</span><br></pre></td></tr></table></figure>
 
-<h2 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h2><p>安装成功以后无法找到brew命令，特别是使用了zshrc中筒靴，需要将brew的环境加入到zshrc的配置文件中。</p>
+<h2 id="3-安装后还是无法找到brew命令"><a href="#3-安装后还是无法找到brew命令" class="headerlink" title="3. 安装后还是无法找到brew命令"></a>3. 安装后还是无法找到brew命令</h2><p>安装成功以后无法找到brew命令，特别是使用了zshrc中筒靴，需要将brew的环境加入到zshrc的配置文件中。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//安装后找不到brew, 把这个添加到.zshrc中</span><br><span class="line">eval $(/opt/homebrew/bin/brew shellenv)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-pod-install-提示Ruby方面的错误描述"><a href="#4-pod-install-提示Ruby方面的错误描述" class="headerlink" title="4. pod install 提示Ruby方面的错误描述"></a>4. pod install 提示Ruby方面的错误描述</h2><p>在M1电脑上使用cocoapod可能会出现ruby之类的错误，可以通过更改pod改回使用x86架构来解决该问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Update all pods</span><br><span class="line">Updating local specs repositories</span><br><span class="line">/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi/library.rb:275: [BUG] Bus Error at 0x0000000105158000</span><br><span class="line">ruby 2.6.8p205 (2021-07-07 revision 67951) [universal.arm64e-darwin21]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo arch -x86_64 gem install ffi</span><br><span class="line">arch -x86_64 pod install</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/CocoaPods/CocoaPods/issues/10723">参考</a></p>
 
     </div>
 
@@ -360,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">1. 官方安装地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%80"><span class="nav-number">2.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BA%8C"><span class="nav-number">3.</span> <span class="nav-text">问题二</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">1. 官方安装地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-brew%E5%AE%89%E8%A3%85%E6%BA%90%E6%9C%89%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">2. brew安装源有问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E5%90%8E%E8%BF%98%E6%98%AF%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0brew%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">3. 安装后还是无法找到brew命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-pod-install-%E6%8F%90%E7%A4%BARuby%E6%96%B9%E9%9D%A2%E7%9A%84%E9%94%99%E8%AF%AF%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.</span> <span class="nav-text">4. pod install 提示Ruby方面的错误描述</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
