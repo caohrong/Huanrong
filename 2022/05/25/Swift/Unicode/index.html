@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.">
+  <meta name="description" content=".">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unicode">
 <meta property="og:url" content="https://blog.caohr.com/2022/05/25/Swift/Unicode/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content="最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.">
+<meta property="og:description" content=".">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-03T10:32:24.340Z">
 <meta property="article:author" content="HR">
 <meta name="twitter:card" content="summary">
 
@@ -222,6 +222,13 @@
 
               <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-11-03 18:32:24" itemprop="dateModified" datetime="2023-11-03T18:32:24+08:00">2023-11-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -257,9 +264,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.</p>
+        <p>.</p>
 <span id="more"></span>
 
+<p>最早计算机在设计时采用8个比特bit作为一个字节byte。所以一个字节最大的整数就是255。0~255被用来表示大小写英文字母，数字和一些符号，这些编码成为ASCII编码。例如大写字母A的编码就是25，小写z的编码就是122.</p>
 <p>Unicode为了解决各个国家的语言的问题，统一了所有文字的编码。Unicode通常用两个字节表示一个字符，原有的英文编码从单个字节变成双字节，只需要把高字节位全部填为0就可以。</p>
 <p>在文字处理方面，统一码为每一个字符而非字形定义唯一的代码（即一个整数）。换句话说，统一码以一种抽象的方式（即数字）来处理字符，并将视觉上的演绎工作（例如字体大小、外观形状、字体形态、文体等）留给其他软件来处理，例如网页浏览器或是文字处理器。</p>
 <p>Unicode将世界上所有的符号都纳入其中，给每个符号都赋予一个独一无二的编码，那么乱码的问题机会消失。</p>
