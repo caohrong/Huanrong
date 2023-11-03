@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -30,8 +30,8 @@
 <meta property="og:description" content="Variables that can store addresses are called pointers.  指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/001.png">
-<meta property="article:published_time" content="2022-05-25T05:19:04.244Z">
-<meta property="article:modified_time" content="2022-05-25T05:19:04.244Z">
+<meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T00:00:00.000Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,35 +267,35 @@
 <span id="more"></span>
 
 <p>类型名为<code>void</code>表示没有指定类型，所以void*类型的指针可以包含任意类型的数据项地址。类型<code>void*</code>常常用做参数类型，或以独立于类型的方式处理数据的函数的返回值类型。任意类型的指针都可以传送为<code>void*</code>类型的值，在使用它时，再将其转换为合适的类型。例如, int类型变量的地址可以存储在<code>void*</code>类型的指针变量中。要访问存储在<code>void*</code>指针所指地址中的整数值，必须先把指针转化为<code>int *</code>类型。</p>
-<h2 id="申明指针"><a href="#申明指针" class="headerlink" title="申明指针"></a>申明指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int *pnumber;</span><br><span class="line">int* pnumber;</span><br><span class="line">int *pnumber &#x3D; NULL;  &#x2F;&#x2F;指针变量可以和普通变量一起申明。</span><br><span class="line">double value, *pVal, fnum;   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="申明指针"><a href="#申明指针" class="headerlink" title="申明指针"></a>申明指针</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int *pnumber;</span><br><span class="line">int* pnumber;</span><br><span class="line">int *pnumber = NULL;  //指针变量可以和普通变量一起申明。</span><br><span class="line">double value, *pVal, fnum;   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>指针如果没有初始化比类型没有初始化更危险，因为有可能会覆盖该内存。<br><code>NULL</code>被定义在<code>stddef.h</code>,<code>stdlib.h</code>,<code>stdio.h</code>,<code>string.h</code>,<code>time.h</code>,<code>wchar.h</code>and<code>locale.h</code></p>
 <p><strong>给指针对象所指的变量赋值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int number &#x3D; 99;</span><br><span class="line">int *pnumber &#x3D; &amp;number;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int number = 99;</span><br><span class="line">int *pnumber = &amp;number;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="通过指针访问值"><a href="#通过指针访问值" class="headerlink" title="通过指针访问值"></a>通过指针访问值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int number &#x3D; 15;</span><br><span class="line">int *pointer &#x3D; &amp;number;</span><br><span class="line">int result &#x3D; 0;</span><br><span class="line">reuslt &#x3D; *pointer + 5;   &#x2F;&#x2F;访问指针所指的值，需要在指针前面加*，否则就变成了操作pointer的地址上+5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="通过指针访问值"><a href="#通过指针访问值" class="headerlink" title="通过指针访问值"></a>通过指针访问值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int number = 15;</span><br><span class="line">int *pointer = &amp;number;</span><br><span class="line">int result = 0;</span><br><span class="line">reuslt = *pointer + 5;   //访问指针所指的值，需要在指针前面加*，否则就变成了操作pointer的地址上+5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>示例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int number &#x3D; 0;</span><br><span class="line">int *pnumber &#x3D; NULL;</span><br><span class="line"></span><br><span class="line">number &#x3D; 10;</span><br><span class="line">printf(&quot;number&#39;s address: %p\n&quot;, &amp;number);</span><br><span class="line">printf(&quot;number&#39;s value: %d\n\n&quot;, number);</span><br><span class="line"></span><br><span class="line">pnumber &#x3D; &amp;number;</span><br><span class="line"></span><br><span class="line">printf(&quot;pnumber&#39;s address:%p\n&quot;, (void*)&amp;pnumber);</span><br><span class="line">printf(&quot;pnumber&#39;s size: %zd bytes\n&quot;, sizeof(pnumber));</span><br><span class="line">printf(&quot;pnumber&#39;s value: %p\n&quot;, pnumber);</span><br><span class="line">printf(&quot;value pointed to: %d\n&quot;, *pnumber);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int number = 0;</span><br><span class="line">int *pnumber = NULL;</span><br><span class="line"></span><br><span class="line">number = 10;</span><br><span class="line">printf(&quot;number&#x27;s address: %p\n&quot;, &amp;number);</span><br><span class="line">printf(&quot;number&#x27;s value: %d\n\n&quot;, number);</span><br><span class="line"></span><br><span class="line">pnumber = &amp;number;</span><br><span class="line"></span><br><span class="line">printf(&quot;pnumber&#x27;s address:%p\n&quot;, (void*)&amp;pnumber);</span><br><span class="line">printf(&quot;pnumber&#x27;s size: %zd bytes\n&quot;, sizeof(pnumber));</span><br><span class="line">printf(&quot;pnumber&#x27;s value: %p\n&quot;, pnumber);</span><br><span class="line">printf(&quot;value pointed to: %d\n&quot;, *pnumber);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">number&#39;s address: 0x7ffeefbff5c4          &#x2F;&#x2F;打印number的地址</span><br><span class="line">number&#39;s value: 10                                     &#x2F;&#x2F;打印number的值</span><br><span class="line"></span><br><span class="line">pnumber&#39;s address:0x7ffeefbff5b8         &#x2F;&#x2F;打印pnumber自己本身的地址</span><br><span class="line">pnumber&#39;s size: 8 bytes                             &#x2F;&#x2F;打印pnumber变量的大小，这里是8是因为用的64位的系统，每个byte是8位</span><br><span class="line">pnumber&#39;s value: 0x7ffeefbff5c4             &#x2F;&#x2F;打印pnumber村粗的值，因为pnumber指向number所以他存储的值就是number的地址。</span><br><span class="line">value pointed to: 10                                    &#x2F;&#x2F;打印pnumber所指参数的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">number&#x27;s address: 0x7ffeefbff5c4          //打印number的地址</span><br><span class="line">number&#x27;s value: 10                                     //打印number的值</span><br><span class="line"></span><br><span class="line">pnumber&#x27;s address:0x7ffeefbff5b8         //打印pnumber自己本身的地址</span><br><span class="line">pnumber&#x27;s size: 8 bytes                             //打印pnumber变量的大小，这里是8是因为用的64位的系统，每个byte是8位</span><br><span class="line">pnumber&#x27;s value: 0x7ffeefbff5c4             //打印pnumber村粗的值，因为pnumber指向number所以他存储的值就是number的地址。</span><br><span class="line">value pointed to: 10                                    //打印pnumber所指参数的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><code>pnumber</code> 访问是pnumber自己的参数，也就是pnumber所指的参数的地址。<br><code>*pnumber</code>访问pnumber所指地址参数的值<br><code>&amp;pnumber</code>访问pnumber自己的地址值。<br>The effect of the <code>*</code> operator is to access the data contained in the address stored at pnumber.<br>The <code>*</code>operator is called the <code>indirection operator</code> or sometimes the dereferencing operator.</p>
 <p>The cast to <strong>void</strong>* is to prevent a possible warning from the compiler.</p>
-<h2 id="使用指针"><a href="#使用指针" class="headerlink" title="使用指针"></a>使用指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">long num1 &#x3D; 0L;</span><br><span class="line">long num2 &#x3D; 0L;</span><br><span class="line">long *pnum &#x3D; NULL;</span><br><span class="line"></span><br><span class="line">pnum &#x3D; &amp;num1;                   </span><br><span class="line">*pnum &#x3D; 2L;         </span><br><span class="line">++num2;</span><br><span class="line">num2 +&#x3D; *pnum;</span><br><span class="line"></span><br><span class="line">pnum &#x3D; &amp;num2;</span><br><span class="line">++*pnum;</span><br><span class="line"></span><br><span class="line">printf(&quot;num1 &#x3D; %ld num2 &#x3D; %ld *pnum &#x3D; %ld *pnum + num2 &#x3D; %ld\n&quot;, num1, num2, *pnum, *pnum + num2);</span><br><span class="line">&#x2F;&#x2F;num1 &#x3D; 2 num2 &#x3D; 4 *pnum &#x3D; 4 *pnum + num2 &#x3D; 8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="使用指针"><a href="#使用指针" class="headerlink" title="使用指针"></a>使用指针</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">long num1 = 0L;</span><br><span class="line">long num2 = 0L;</span><br><span class="line">long *pnum = NULL;</span><br><span class="line"></span><br><span class="line">pnum = &amp;num1;                   </span><br><span class="line">*pnum = 2L;         </span><br><span class="line">++num2;</span><br><span class="line">num2 += *pnum;</span><br><span class="line"></span><br><span class="line">pnum = &amp;num2;</span><br><span class="line">++*pnum;</span><br><span class="line"></span><br><span class="line">printf(&quot;num1 = %ld num2 = %ld *pnum = %ld *pnum + num2 = %ld\n&quot;, num1, num2, *pnum, *pnum + num2);</span><br><span class="line">//num1 = 2 num2 = 4 *pnum = 4 *pnum + num2 = 8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>表达式<code>++*pnum</code>递增了<code>pnum</code>指向的值。但如果要使用后置的形式，必须写成<code>(*pnum)++</code>。括号很重要，它指定要递增的是数值，而不是地址。这是因为运算符<code>++</code>和一元运算符<code>&amp;</code>的优先级相同，且都是从左到右计算的。</p>
 </blockquote>
 <p><strong>测试NULL指针</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int *pvalue &#x3D; NULL;</span><br><span class="line">int *pvalue &#x3D; 0;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int *pvalue = NULL;</span><br><span class="line">int *pvalue = 0;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><code>NULL</code>在C语言中是一个特俗的常量，它相当于数字0的指针。<code>NULL</code>常量定义为<code>((void*))0</code>。给指针赋予0时，就等于它设为<code>NULL</code>。</p>
-<h2 id="指向常量的指针"><a href="#指向常量的指针" class="headerlink" title="指向常量的指针"></a>指向常量的指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">long value &#x3D; 99999L;</span><br><span class="line">const long *pvalue &#x3D; &amp;value;      &#x2F;&#x2F;定义的pvalue指针无法修改value的值，但是可以改变pvalue指向别的变量地址。通过value还是可以修改。只是不能通过value这个指针修改。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="指向常量的指针"><a href="#指向常量的指针" class="headerlink" title="指向常量的指针"></a>指向常量的指针</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">long value = 99999L;</span><br><span class="line">const long *pvalue = &amp;value;      //定义的pvalue指针无法修改value的值，但是可以改变pvalue指向别的变量地址。通过value还是可以修改。只是不能通过value这个指针修改。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="常量指针"><a href="#常量指针" class="headerlink" title="常量指针"></a>常量指针</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int count &#x3D; 43;</span><br><span class="line">int *const pcount &#x3D; &amp;count;    指针存储的地址不能改变，但是可以改变pcount所存储地址的变量的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="常量指针"><a href="#常量指针" class="headerlink" title="常量指针"></a>常量指针</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int count = 43;</span><br><span class="line">int *const pcount = &amp;count;    指针存储的地址不能改变，但是可以改变pcount所存储地址的变量的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const long *const kcount &#x3D; &amp;value:  &#x2F;&#x2F;定义的kcount指针既不能修改kcount指向的值，也不能修改指向的内存地址。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const long *const kcount = &amp;value:  //定义的kcount指针既不能修改kcount指向的值，也不能修改指向的内存地址。</span><br></pre></td></tr></table></figure>
 
 <p><strong>指针的命名</strong><br>因为在C中很那区分哪个是指针，哪个是变量。那么如果是指针的话，可以在前面加<code>p</code>作为针名的第一个字母。</p>
 
@@ -316,12 +316,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/C++/Enumerations/" rel="prev" title="enumerations">
-      <i class="fa fa-chevron-left"></i> enumerations
+    <a href="/2022/05/25/Computer%20System/Compiles%20Drivers/" rel="prev" title="编译过程">
+      <i class="fa fa-chevron-left"></i> 编译过程
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Daily/2019-06-06/" rel="next" title="叔本华">
-      叔本华 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/English/BrexitLaysAnEgg/" rel="next" title="Brexit lays an egg">
+      Brexit lays an egg <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -455,7 +455,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

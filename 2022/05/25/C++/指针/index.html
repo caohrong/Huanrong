@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,8 +29,8 @@
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="指针（pointer）是“指向（point to）”另外一种符合类型。与引用类似，指针也实现了对其他对象的间接访问。 指针与引用的区别：其一：指针本身就是一个对象，允许指针复制和拷贝，而在指针的生命周期内可以先后指向几个不同的对象。其二：指针无须在定义时初始值。 和其他内置的类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-25T05:19:04.244Z">
-<meta property="article:modified_time" content="2022-05-25T05:19:04.244Z">
+<meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T00:00:00.000Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -221,7 +221,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,7 +263,7 @@
 <p>和其他内置的类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。</p>
 <span id="more"></span>
 
-<h2 id="指针的定义"><a href="#指针的定义" class="headerlink" title="指针的定义"></a>指针的定义</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">int</span> *ip1， *ip2;</span><br><span class="line"><span class="keyword">double</span> dp, *dp2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获对象地址（取地址符&amp;）</span></span><br><span class="line"><span class="keyword">int</span> ival =<span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;ival;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用指针访问对象</span></span><br><span class="line"><span class="keyword">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;ival;</span><br><span class="line">count &lt;&lt; *p;</span><br></pre></td></tr></table></figure>
+<h2 id="指针的定义"><a href="#指针的定义" class="headerlink" title="指针的定义"></a>指针的定义</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="type">int</span> *ip1， *ip2;</span><br><span class="line"><span class="type">double</span> dp, *dp2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获对象地址（取地址符&amp;）</span></span><br><span class="line"><span class="type">int</span> ival =<span class="number">42</span>;</span><br><span class="line"><span class="type">int</span> *p = &amp;ival;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用指针访问对象</span></span><br><span class="line"><span class="type">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="type">int</span> *p = &amp;ival;</span><br><span class="line">count &lt;&lt; *p;</span><br></pre></td></tr></table></figure>
 
 <p>指针的四种状态</p>
 <ol>
@@ -284,10 +284,10 @@
 <h3 id="nullptr"><a href="#nullptr" class="headerlink" title="nullptr"></a><code>nullptr</code></h3><p>nullptr代表空指针, 使用<code>nullptr</code>使代码比替代方法更具有可读性，并避免函数重载以接受指针或整数时潜在混淆。<br>在nullptr引入之前，都是直接使用0来代表空指针。</p>
 <p>nullptr的优点是它没有整数类型。 说实话，它也没有指针类型，但您可以将其视为所有类型的指针。 nullptr的实际类型是std :: nullptr_t，并且在一个奇妙的循环定义中，std :: nullptr_t被定义为nullptr的类型。 类型std :: nullptr_t隐式转换为所有原始指针类型，这就是使得nullptr就像它是所有类型的指针一样的原因。</p>
 <h3 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a><code>NULL</code></h3><p><code>NULL</code>是一个宏，在不同的系统里面可能代表着不同的值。<br><code>NULL</code>可能是0或者是0L，在C语言里面是<code>(void*)0</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p1 = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">int</span> *p2 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> *p3 = <span class="literal">NULL</span>;   <span class="comment">//#include cstdlib</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p1 = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="type">int</span> *p2 = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> *p3 = <span class="literal">NULL</span>;   <span class="comment">//#include cstdlib</span></span><br></pre></td></tr></table></figure>
 <p>空指针最直接的办法就是用字面值<code>nullptr</code>来初始化。<br>NULL是一种定义在cstdlib的预处理变量来给指针赋值。</p>
 <h2 id="Pointer-into-Arrays"><a href="#Pointer-into-Arrays" class="headerlink" title="Pointer into Arrays"></a>Pointer into Arrays</h2><p>指针只能指向数组的第一个元素，所以程序员得自己维护数组的大小。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> v[] = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;; </span><br><span class="line"><span class="keyword">int</span>∗ p1 = v;             <span class="comment">// pointer to initial element (implicit conversion)</span></span><br><span class="line"><span class="keyword">int</span>∗ p2 = &amp;v[<span class="number">0</span>];      <span class="comment">// pointer to initial element</span></span><br><span class="line"><span class="keyword">int</span>∗ p3 = v+<span class="number">4</span>;        <span class="comment">// pointer to one-beyond-last element</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> v[] = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;; </span><br><span class="line"><span class="type">int</span>∗ p1 = v;             <span class="comment">// pointer to initial element (implicit conversion)</span></span><br><span class="line"><span class="type">int</span>∗ p2 = &amp;v[<span class="number">0</span>];      <span class="comment">// pointer to initial element</span></span><br><span class="line"><span class="type">int</span>∗ p3 = v+<span class="number">4</span>;        <span class="comment">// pointer to one-beyond-last element</span></span><br></pre></td></tr></table></figure>
 <p>有些算法在搜索元素位置的时候，如果没有找到，通常会把指针指向最后一个元素末尾一个不存在的位置。</p>
 <h2 id="Navigating-Arrays"><a href="#Navigating-Arrays" class="headerlink" title="Navigating Arrays"></a>Navigating Arrays</h2><p>For every built-in array a and integer j within the range of a, we have:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[j] == ∗(&amp;a[<span class="number">0</span>]+j) == ∗(a+j) == ∗(j+a) == j[a]</span><br></pre></td></tr></table></figure>
@@ -309,12 +309,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Computer%20System/Compiles%20Drivers/" rel="prev" title="编译过程">
-      <i class="fa fa-chevron-left"></i> 编译过程
+    <a href="/2022/05/25/C++/Enumerations/" rel="prev" title="enumerations">
+      <i class="fa fa-chevron-left"></i> enumerations
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/C++/Enumerations/" rel="next" title="enumerations">
-      enumerations <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Python/%E6%9E%81%E7%AE%80%E5%AE%89%E8%A3%85Conda/" rel="next" title="极简安装Conda">
+      极简安装Conda <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -448,7 +448,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

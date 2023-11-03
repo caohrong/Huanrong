@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -27,13 +27,13 @@
 <meta property="og:url" content="https://blog.caohr.com/2022/03/30/Tools/vi%E5%B8%B8%E7%94%A8%E6%98%8E%E4%BB%A4%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/2022/03/30/Tools/vi%E5%B8%B8%E7%94%A8%E6%98%8E%E4%BB%A4%E5%85%A5%E9%97%A8/vim.png">
+<meta property="og:image" content="https://blog.caohr.com/vim.png">
 <meta property="article:published_time" content="2022-03-30T12:48:56.000Z">
-<meta property="article:modified_time" content="2022-05-25T05:19:04.299Z">
+<meta property="article:modified_time" content="2022-05-25T00:00:00.000Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="vi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/2022/03/30/Tools/vi%E5%B8%B8%E7%94%A8%E6%98%8E%E4%BB%A4%E5%85%A5%E9%97%A8/vim.png">
+<meta name="twitter:image" content="https://blog.caohr.com/vim.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/03/30/Tools/vi%E5%B8%B8%E7%94%A8%E6%98%8E%E4%BB%A4%E5%85%A5%E9%97%A8/">
 
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-25 13:19:04" itemprop="dateModified" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+                <time title="Modified: 2022-05-25 08:00:00" itemprop="dateModified" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,17 +265,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="vim.png" alt="vim"></p>
+        <p><img src="/vim.png" alt="vim"></p>
 <span id="more"></span>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">:set number  &#x2F;&#x2F;code line number</span><br><span class="line">:qa!  &#x2F;&#x2F;quit allbutters force</span><br><span class="line">:w    &#x2F;&#x2F;save file</span><br><span class="line">:w anotherfile.txt  &#x2F;&#x2F;save to another file.</span><br><span class="line">:e   &#x2F;&#x2F;edit another file.</span><br><span class="line">contrl + g &#x2F;&#x2F; show the file name you are editing.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">:set number  //code line number</span><br><span class="line">:qa!  //quit allbutters force</span><br><span class="line">:w    //save file</span><br><span class="line">:w anotherfile.txt  //save to another file.</span><br><span class="line">:e   //edit another file.</span><br><span class="line">contrl + g // show the file name you are editing.</span><br></pre></td></tr></table></figure>
 
-<h2 id="Move"><a href="#Move" class="headerlink" title="Move"></a>Move</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">H(左) J(上) K(下) L(右)</span><br><span class="line">number + H/J/K/L //move line number</span><br><span class="line">w //move to next word of the begin</span><br><span class="line">e //move to next word of the end</span><br><span class="line">number + w //move to next number word</span><br><span class="line">( //move to previous sentence</span><br><span class="line">) //move to next sentence</span><br><span class="line">[ //move to previous paragraph</span><br><span class="line">] //move to next paragraph </span><br><span class="line"></span><br><span class="line">G //End of the file</span><br><span class="line">gg //begin of the file</span><br><span class="line">control + F //Move forward page</span><br><span class="line">control + B  // Move backward page</span><br><span class="line"></span><br><span class="line">:8 //go to the line 8</span><br><span class="line">number8 + gg //go to the line 8</span><br><span class="line">number8 + G  //</span><br><span class="line"><span class="meta">$</span><span class="bash"> //end of the line</span></span><br><span class="line">0 //begin of the lline</span><br><span class="line">vim filename.txt +8 //open the filename.txt line 8</span><br></pre></td></tr></table></figure>
-<h2 id="Seach"><a href="#Seach" class="headerlink" title="Seach"></a>Seach</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&lt;contact&gt;  &#x2F;&#x2F;seaching</span><br><span class="line">*  &#x2F;&#x2F;next word under cursor </span><br><span class="line"># &#x2F;&#x2F; previous word nuder cursor</span><br></pre></td></tr></table></figure>
+<h2 id="Move"><a href="#Move" class="headerlink" title="Move"></a>Move</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">H(左) J(上) K(下) L(右)</span><br><span class="line">number + H/J/K/L //move line number</span><br><span class="line">w //move to next word of the begin</span><br><span class="line">e //move to next word of the end</span><br><span class="line">number + w //move to next number word</span><br><span class="line">( //move to previous sentence</span><br><span class="line">) //move to next sentence</span><br><span class="line">[ //move to previous paragraph</span><br><span class="line">] //move to next paragraph </span><br><span class="line"></span><br><span class="line">G //End of the file</span><br><span class="line">gg //begin of the file</span><br><span class="line">control + F //Move forward page</span><br><span class="line">control + B  // Move backward page</span><br><span class="line"></span><br><span class="line">:8 //go to the line 8</span><br><span class="line">number8 + gg //go to the line 8</span><br><span class="line">number8 + G  //</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">//end of the line</span></span><br><span class="line">0 //begin of the lline</span><br><span class="line">vim filename.txt +8 //open the filename.txt line 8</span><br></pre></td></tr></table></figure>
+<h2 id="Seach"><a href="#Seach" class="headerlink" title="Seach"></a>Seach</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/&lt;contact&gt;  //seaching</span><br><span class="line">*  //next word under cursor </span><br><span class="line"># // previous word nuder cursor</span><br></pre></td></tr></table></figure>
 
-<h2 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d + w  &#x2F;&#x2F;first word delete</span><br><span class="line">u   &#x2F;&#x2F;undo</span><br><span class="line">d + ) &#x2F;&#x2F;  delete sentence</span><br><span class="line">dd &#x2F;&#x2F; delete a line</span><br><span class="line">d &#x2F;Genius &#x2F;&#x2F;delete everthing up to genius</span><br><span class="line">d + ) &#x2F;&#x2F;dedete the sentence </span><br></pre></td></tr></table></figure>
+<h2 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d + w  //first word delete</span><br><span class="line">u   //undo</span><br><span class="line">d + ) //  delete sentence</span><br><span class="line">dd // delete a line</span><br><span class="line">d /Genius //delete everthing up to genius</span><br><span class="line">d + ) //dedete the sentence </span><br></pre></td></tr></table></figure>
 
-<h2 id="copy-and-past"><a href="#copy-and-past" class="headerlink" title="copy and past"></a>copy and past</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y + w &#x2F;&#x2F;yank work.  copy</span><br><span class="line">p &#x2F;&#x2F;past after the cursor</span><br><span class="line">P &#x2F;&#x2F;past before the cursor</span><br><span class="line">yy &#x2F;&#x2F;copy the whole line</span><br><span class="line">x &#x2F;&#x2F;delete one character under the cursor</span><br></pre></td></tr></table></figure>
+<h2 id="copy-and-past"><a href="#copy-and-past" class="headerlink" title="copy and past"></a>copy and past</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y + w //yank work.  copy</span><br><span class="line">p //past after the cursor</span><br><span class="line">P //past before the cursor</span><br><span class="line">yy //copy the whole line</span><br><span class="line">x //delete one character under the cursor</span><br></pre></td></tr></table></figure>
 
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2>
     </div>
@@ -294,7 +294,10 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/02/Daily/2021-06-02/" rel="prev" title="2021年6月2日">
+      <i class="fa fa-chevron-left"></i> 2021年6月2日
+    </a></div>
       <div class="post-nav-item">
     <a href="/2022/03/31/Swift/Swift%E5%85%B3%E9%94%AE%E5%AD%97Some%EF%BC%9A%E6%B5%91%E6%B5%8A%E7%B1%BB%E5%9E%8B-Opaque-return-types-%E5%88%B0%E6%B8%85%E6%99%B0-Opaque-types-%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E5%8F%98/" rel="next" title="Swift关键字Some：浑浊类型(Opaque return types)到清晰(Opaque types)的类型的转变">
       Swift关键字Some：浑浊类型(Opaque return types)到清晰(Opaque types)的类型的转变 <i class="fa fa-chevron-right"></i>
@@ -431,7 +434,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

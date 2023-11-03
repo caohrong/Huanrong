@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="最近开始使用SwiftUI进行编程，我们总能看到body后面有个关键字some来修饰，那这个some到底是什么意思？ 123456789101112import SwiftUIstruct ContentView: View &amp;#123;     var body: some View &amp;#123;         Text(&quot;Hello, world!&quot;) .padding(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-31T03:09:30.000Z">
-<meta property="article:modified_time" content="2022-05-25T05:19:04.295Z">
+<meta property="article:modified_time" content="2022-03-31T00:00:00.000Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Swift5.1">
 <meta name="twitter:card" content="summary">
@@ -220,16 +220,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-03-31 11:09:30" itemprop="dateCreated datePublished" datetime="2022-03-31T11:09:30+08:00">2022-03-31</time>
+              <time title="Created: 2022-03-31 11:09:30 / Modified: 08:00:00" itemprop="dateCreated datePublished" datetime="2022-03-31T11:09:30+08:00">2022-03-31</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-25 13:19:04" itemprop="dateModified" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -266,23 +260,23 @@
 
       
         <p>最近开始使用SwiftUI进行编程，我们总能看到body后面有个关键字some来修饰，那这个some到底是什么意思？</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ContentView</span>: <span class="title">View</span> </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123; </span><br><span class="line">        <span class="type">Text</span>(<span class="string">&quot;Hello, world!&quot;</span>) .padding()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ContentView_Previews</span>: <span class="title">PreviewProvider</span> </span>&#123; </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> previews: <span class="keyword">some</span> <span class="type">View</span> &#123; <span class="type">ContentView</span>() </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SwiftUI</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ContentView</span>: <span class="title class_">View</span> &#123; </span><br><span class="line">    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> &#123; </span><br><span class="line">        <span class="type">Text</span>(<span class="string">&quot;Hello, world!&quot;</span>) .padding()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ContentView_Previews</span>: <span class="title class_">PreviewProvider</span> &#123; </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> previews: <span class="keyword">some</span> <span class="type">View</span> &#123; <span class="type">ContentView</span>() </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>主要介绍Swift新引入的浑浊类型和清晰类型，以及加入关键字some以后，将浑浊类型变成清晰类型。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeNumber</span>()</span> -&gt; <span class="type">Equatable</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> intA <span class="operator">=</span> makeNumber()</span><br><span class="line"><span class="keyword">let</span> intB <span class="operator">=</span> makeNumber()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> intA <span class="operator">==</span> intB &#123; <span class="comment">//❌Protocol &#x27;Equatable&#x27; can only be used as a generic constraint because it has Self or associated type requirements</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;equal&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">makeNumber</span>() -&gt; <span class="type">Equatable</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> intA <span class="operator">=</span> makeNumber()</span><br><span class="line"><span class="keyword">let</span> intB <span class="operator">=</span> makeNumber()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> intA <span class="operator">==</span> intB &#123; <span class="comment">//❌Protocol &#x27;Equatable&#x27; can only be used as a generic constraint because it has Self or associated type requirements</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;equal&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在上面的代码中，返回的<code>Equatable</code>是一个约束条件的浑浊类型，所以并不能在后面用==判断是否相等。因为<code>Equatable</code>这个协议，有可能stirng类型和int类型都遵守了，你也可以返回stirng或者是int，string和int并不能彼此比较。所以编译器并不能只通过这个<code>Equatable</code>协议就把它当作一个类型来使用，对于编译器来说里面返回的类型，其实是浑浊的，有可能是遵守了<code>Equatabl</code>不同的类型。</p>
-<h2 id="通过范型解决"><a href="#通过范型解决" class="headerlink" title="通过范型解决"></a>通过范型解决</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeNumber</span>&lt;<span class="type">T</span>: <span class="type">Equatable</span>&gt;()</span> -&gt; <span class="type">T</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">5</span> <span class="keyword">as!</span> <span class="type">T</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，返回的<code>Equatable</code>是一个约束条件的浑浊类型，所以并不能在后面用&#x3D;&#x3D;判断是否相等。因为<code>Equatable</code>这个协议，有可能stirng类型和int类型都遵守了，你也可以返回stirng或者是int，string和int并不能彼此比较。所以编译器并不能只通过这个<code>Equatable</code>协议就把它当作一个类型来使用，对于编译器来说里面返回的类型，其实是浑浊的，有可能是遵守了<code>Equatabl</code>不同的类型。</p>
+<h2 id="通过范型解决"><a href="#通过范型解决" class="headerlink" title="通过范型解决"></a>通过范型解决</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">makeNumber</span>&lt;<span class="type">T</span>: <span class="type">Equatable</span>&gt;() -&gt; <span class="type">T</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">5</span> <span class="keyword">as!</span> <span class="type">T</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们可以在这个方法的一开始就传入关联的范型类型，这样在编译器在变异期间就能看出返回的具体类型，编译器也就不会在报错了。</p>
 <h2 id="Swift5-1新特性-some-关键字"><a href="#Swift5-1新特性-some-关键字" class="headerlink" title="Swift5.1新特性 some 关键字"></a>Swift5.1新特性 some 关键字</h2><p>通过范型来解决的问题的思路还是不够完善，因为在很多情况下，返回的类型我们是可以确定的。我们就可以使用Swift 5.1的在协议前面加上some来将函数返回的浑浊类型(Opaque return types)变成清晰(Opaque types)的类型, 这样也就可以在不需要将函数改为范型来解决问题。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">someFunction</span>()</span> -&gt; <span class="keyword">some</span> <span class="type">Equatable</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">someFunction</span>() -&gt; <span class="keyword">some</span> <span class="type">Equatable</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>加上some这种浑浊转清晰的前提是编译器能推断出来，你即将返回的类型。如果你函数返回的Int和String随机返回的话，编译器还是会报错。</p>
 </blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">buySomething</span>()</span> -&gt; <span class="keyword">some</span> <span class="type">Equatable</span> &#123;  <span class="comment">//❌Function declares an opaque return type, but the return statements in its body do not have matching underlying types</span></span><br><span class="line">    <span class="keyword">if</span> <span class="type">Int</span>.random(in: <span class="number">1</span><span class="operator">...</span><span class="number">2</span>) <span class="operator">==</span> <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">buySomething</span>() -&gt; <span class="keyword">some</span> <span class="type">Equatable</span> &#123;  <span class="comment">//❌Function declares an opaque return type, but the return statements in its body do not have matching underlying types</span></span><br><span class="line">    <span class="keyword">if</span> <span class="type">Int</span>.random(in: <span class="number">1</span><span class="operator">...</span><span class="number">2</span>) <span class="operator">==</span> <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903862290104327">Swift 5.1 新特性：透明类型关键字 some</a></p>
 
@@ -307,8 +301,8 @@
       <i class="fa fa-chevron-left"></i> vi常用明令入门
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/" rel="next" title="ELF格式解析2-ELF Section Header Table">
-      ELF格式解析2-ELF Section Header Table <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Tools/LaTeX/" rel="next" title="测试数学格式支持">
+      测试数学格式支持 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -442,7 +436,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

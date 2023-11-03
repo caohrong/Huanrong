@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="动态库类型目标文件有三种格式：  可重定位目标文件包含二进制代码和数据，其形式可以在编译时与其他可重新定位的目标文件合并起来，创建一个可执行目标文件，自己本身没有办法独立运行。在iOS开发中，接触到.a的文件都属于这种类型的目标文件。可以直接打包进App中，不需要动态链接。  可执行目标文件包含二进制代码和数据，其形式可以直接复制到内存并执行。也就是我们最终使用的可执行文件，或者App本身。  共">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/media/16161643572232.png">
-<meta property="article:published_time" content="2022-05-25T05:19:04.244Z">
-<meta property="article:modified_time" content="2022-05-25T05:19:04.244Z">
+<meta property="og:image" content="https://blog.caohr.com/media/16161643572232.png">
+<meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T00:00:00.000Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Linking">
 <meta property="article:tag" content="ELF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/2022/05/25/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/media/16161643572232.png">
+<meta name="twitter:image" content="https://blog.caohr.com/media/16161643572232.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/05/25/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%901-Object%20Files/">
 
@@ -224,7 +224,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,7 +277,7 @@
 <span id="more"></span>
 
 <h2 id="动态库格式"><a href="#动态库格式" class="headerlink" title="动态库格式"></a>动态库格式</h2><p>Windows使用可移植（Portable Executable, PE）格式。<br>Mac OS使用Mach-O格式<br>Linux和Unix系统则使用（Executable and Linkable Format, ELF）<br>虽然各个平台的格式各不相同，但是基本概念是相似的。</p>
-<h2 id="ELF格式"><a href="#ELF格式" class="headerlink" title="ELF格式"></a>ELF格式</h2><p><img src="media/16161643572232.png"></p>
+<h2 id="ELF格式"><a href="#ELF格式" class="headerlink" title="ELF格式"></a>ELF格式</h2><p><img src="/media/16161643572232.png"></p>
 
     </div>
 
@@ -297,12 +297,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/" rel="prev" title="动态链接共享库">
-      <i class="fa fa-chevron-left"></i> 动态链接共享库
+    <a href="/2022/05/25/Computer%20System/ELF%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%902-ELF%20Section%20Header%20Table/" rel="prev" title="ELF格式解析2-ELF Section Header Table">
+      <i class="fa fa-chevron-left"></i> ELF格式解析2-ELF Section Header Table
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Computer%20System/Compiles%20Drivers/" rel="next" title="编译过程">
-      编译过程 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/" rel="next" title="动态链接共享库">
+      动态链接共享库 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -436,7 +436,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

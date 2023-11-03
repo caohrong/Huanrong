@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 5.4.2">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -30,8 +30,8 @@
 <meta property="og:description" content="CMake介绍CMake就是为了解决在不同的平台make，因为环境的差异需要编写不同的Makefile，而CMake就可以为跨平台的项目，提供一次编写Makefile而到处编译的目的。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://blog.caohr.com/ImagesFolder/CMake-logo.png">
-<meta property="article:published_time" content="2022-05-25T05:19:04.298Z">
-<meta property="article:modified_time" content="2022-05-25T05:19:04.298Z">
+<meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T00:00:00.000Z">
 <meta property="article:author" content="HR">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.caohr.com/ImagesFolder/CMake-logo.png">
@@ -222,7 +222,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2022-05-25 13:19:04" itemprop="dateCreated datePublished" datetime="2022-05-25T13:19:04+08:00">2022-05-25</time>
+              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,17 +264,17 @@
 
 
 <h2 id="CMake安装"><a href="#CMake安装" class="headerlink" title="CMake安装"></a>CMake安装</h2><p><a target="_blank" rel="noopener" href="https://gitlab.kitware.com/cmake/cmake">下载</a>最新的项目后，运行下面命令安装<code>CMake</code>在<code>Mac</code>上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;bootstrap &amp;&amp; make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bootstrap &amp;&amp; make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
 
 <h2 id="关于腾讯Mars用CMake编译"><a href="#关于腾讯Mars用CMake编译" class="headerlink" title="关于腾讯Mars用CMake编译"></a>关于腾讯<code>Mars</code>用<code>CMake</code>编译</h2><h3 id="运行Mars的示例程序"><a href="#运行Mars的示例程序" class="headerlink" title="运行Mars的示例程序"></a>运行<code>Mars</code>的示例程序</h3><p><code>Mars</code>示例程序iOS项目和Mac项目缺失<code>Mars</code>的<code>Framework</code>。需要自行下载最新的<code>Mars</code>利用<code>CMake</code>来编译，根据不同的平台，运行<code>Mars</code>底下相应的编译脚本。不导入<code>Mars</code>的<code>Framework</code>，会报一些头文件没找到，例如<code>mars/xlog/xlogger.h&#39; file not found</code>。如果没有安装<code>CMake</code>直接运行这些脚本会提示<code>CMake</code>命令缺失。</p>
 <p>Compile</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python build_ios.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python build_ios.py</span><br></pre></td></tr></table></figure>
 
 <p>or</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python build_osx.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python build_osx.py</span><br></pre></td></tr></table></figure>
 
 <p>编译完成后，在相应的位置找到<code>mars.framework</code>，导入到示例的项目中，即可运行示例项目：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;Output&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">cmake_build&#x2F;iOS&#x2F;Darwin.out&#x2F;mars.framework</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==================Output========================</span><br><span class="line">cmake_build/iOS/Darwin.out/mars.framework</span><br></pre></td></tr></table></figure>
 
 <h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p><a target="_blank" rel="noopener" href="https://cmake.org/">CMake官网</a><br><a target="_blank" rel="noopener" href="https://www.hahack.com/codes/cmake/">CMake 入门实战</a></p>
 
@@ -292,12 +292,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Tools/Hexo/" rel="prev" title="Hexo入门">
-      <i class="fa fa-chevron-left"></i> Hexo入门
+    <a href="/2022/05/25/Tools/Google%20Photos%20VS%20iCloud%20Photos/" rel="prev" title="Google Photos VS iCloud Photos">
+      <i class="fa fa-chevron-left"></i> Google Photos VS iCloud Photos
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/iOS/Weak%201.%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/" rel="next" title="Weak 1.原理解析">
-      Weak 1.原理解析 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/mplicitly%20unwrapped%20optionals/" rel="next" title="THE IMPLICITLY UNWRAPPED OPTIONAL & WHEN TO USE IT">
+      THE IMPLICITLY UNWRAPPED OPTIONAL & WHEN TO USE IT <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -431,7 +431,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
