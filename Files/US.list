@@ -3,3 +3,4 @@ DOMAIN-SUFFIX,chat.openai.com,PROXY
 DOMAIN-SUFFIX,dw.com,PROXY
 DOMAIN-SUFFIX,voachinese.com,PROXY
 DOMAIN-SUFFIX,rfi.fr,PROXY
+DOMAIN-SUFFIX,huggingface.co,PROXY
