@@ -1,0 +1,828 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="17129387431530.html">
+                
+                  <h1>场景文本识别算法-NRTR</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li><a href="#1">1. 算法简介</a></li>
+<li><a href="#2">2. 环境配置</a></li>
+<li><a href="#3">3. 模型训练、评估、预测</a>
+<ul>
+<li><a href="#3-1">3.1 训练</a></li>
+<li><a href="#3-2">3.2 评估</a></li>
+<li><a href="#3-3">3.3 预测</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 推理部署</a>
+<ul>
+<li><a href="#4-1">4.1 Python推理</a></li>
+<li><a href="#4-2">4.2 C++推理</a></li>
+<li><a href="#4-3">4.3 Serving服务化部署</a></li>
+<li><a href="#4-4">4.4 更多推理部署</a></li>
+</ul>
+</li>
+<li><a href="#5">5. FAQ</a></li>
+<li><a href="#6">6. 发行公告</a></li>
+</ul>
+<p><a name="1"></a></p>
+<h2><a id="1%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. 算法简介</h2>
+<p>论文信息：</p>
+<blockquote>
+<p><a href="https://arxiv.org/abs/1806.00926">NRTR: A No-Recurrence Sequence-to-Sequence Model For Scene Text Recognition</a><br />
+Fenfen Sheng and Zhineng Chen and Bo Xu<br />
+ICDAR, 2019</p>
+</blockquote>
+<p><a name="model"></a><br />
+<code>NRTR</code>使用MJSynth和SynthText两个文字识别数据集训练，在IIIT, SVT, IC03, IC13, IC15, SVTP, CUTE数据集上进行评估，算法复现效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>骨干网络</th>
+<th>配置文件</th>
+<th>Acc</th>
+<th>下载链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NRTR</td>
+<td>MTB</td>
+<td><a href="../../configs/rec/rec_mtb_nrtr.yml">rec_mtb_nrtr.yml</a></td>
+<td>84.21%</td>
+<td><a href="https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mtb_nrtr_train.tar">训练模型</a></td>
+</tr>
+</tbody>
+</table>
+<p><a name="2"></a></p>
+<h2><a id="2%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. 环境配置</h2>
+<p>请先参考<a href="media/17117697540963/environment.md">《运行环境准备》</a>配置PaddleOCR运行环境，参考<a href="media/17117697540963/clone.md">《项目克隆》</a>克隆项目代码。</p>
+<p><a name="3"></a></p>
+<h2><a id="3%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E3%80%81%E8%AF%84%E4%BC%B0%E3%80%81%E9%A2%84%E6%B5%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. 模型训练、评估、预测</h2>
+<p><a name="3-1"></a></p>
+<h3><a id="3-1%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 模型训练</h3>
+<p>请参考<a href="media/17117697540963/recognition.md">文本识别训练教程</a>。PaddleOCR对代码进行了模块化，训练<code>NRTR</code>识别模型时需要<strong>更换配置文件</strong>为<code>NRTR</code>的<a href="../../configs/rec/rec_mtb_nrtr.yml">配置文件</a>。</p>
+<h4><a id="%E5%90%AF%E5%8A%A8%E8%AE%AD%E7%BB%83" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>启动训练</h4>
+<p>具体地，在完成数据准备后，便可以启动训练，训练命令如下：</p>
+<pre class="line-numbers"><code class="language-shell">#单卡训练（训练周期长，不建议）
+python3 tools/train.py -c configs/rec/rec_mtb_nrtr.yml
+
+#多卡训练，通过--gpus参数指定卡号
+python3 -m paddle.distributed.launch --gpus '0,1,2,3'  tools/train.py -c configs/rec/rec_mtb_nrtr.yml
+</code></pre>
+<p><a name="3-2"></a></p>
+<h3><a id="3-2%E8%AF%84%E4%BC%B0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 评估</h3>
+<p>可下载已训练完成的<a href="#model">模型文件</a>，使用如下命令进行评估：</p>
+<pre class="line-numbers"><code class="language-shell"># 注意将pretrained_model的路径设置为本地路径。
+python3 -m paddle.distributed.launch --gpus '0' tools/eval.py -c configs/rec/rec_mtb_nrtr.yml -o Global.pretrained_model=./rec_mtb_nrtr_train/best_accuracy
+</code></pre>
+<p><a name="3-3"></a></p>
+<h3><a id="3-3%E9%A2%84%E6%B5%8B" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3 预测</h3>
+<p>使用如下命令进行单张图片预测：</p>
+<pre class="line-numbers"><code class="language-shell"># 注意将pretrained_model的路径设置为本地路径。
+python3 tools/infer_rec.py -c configs/rec/rec_mtb_nrtr.yml -o Global.infer_img='./doc/imgs_words_en/word_10.png' Global.pretrained_model=./rec_mtb_nrtr_train/best_accuracy
+# 预测文件夹下所有图像时，可修改infer_img为文件夹，如 Global.infer_img='./doc/imgs_words_en/'。
+</code></pre>
+<p><a name="4"></a></p>
+<h2><a id="4%E6%8E%A8%E7%90%86%E9%83%A8%E7%BD%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. 推理部署</h2>
+<p><a name="4-1"></a></p>
+<h3><a id="4-1-python%E6%8E%A8%E7%90%86" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 Python推理</h3>
+<p>首先将训练得到best模型，转换成inference model。这里以训练完成的模型为例（<a href="https://paddleocr.bj.bcebos.com/dygraph_v2.0/en/rec_mtb_nrtr_train.tar">模型下载地址</a> )，可以使用如下命令进行转换：</p>
+<pre class="line-numbers"><code class="language-shell"># 注意将pretrained_model的路径设置为本地路径。
+python3 tools/export_model.py -c configs/rec/rec_mtb_nrtr.yml -o Global.pretrained_model=./rec_mtb_nrtr_train/best_accuracy Global.save_inference_dir=./inference/rec_mtb_nrtr/
+</code></pre>
+<p><strong>注意：</strong></p>
+<ul>
+<li>如果您是在自己的数据集上训练的模型，并且调整了字典文件，请注意修改配置文件中的<code>character_dict_path</code>是否是所需要的字典文件。</li>
+<li>如果您修改了训练时的输入大小，请修改<code>tools/export_model.py</code>文件中的对应NRTR的<code>infer_shape</code>。</li>
+</ul>
+<p>转换成功后，在目录下有三个文件：</p>
+<pre class="line-numbers"><code class="language-plain_text">/inference/rec_mtb_nrtr/
+    ├── inference.pdiparams         # 识别inference模型的参数文件
+    ├── inference.pdiparams.info    # 识别inference模型的参数信息，可忽略
+    └── inference.pdmodel           # 识别inference模型的program文件
+</code></pre>
+<p>执行如下命令进行模型推理：</p>
+<pre class="line-numbers"><code class="language-shell">python3 tools/infer/predict_rec.py --image_dir='./doc/imgs_words_en/word_10.png' --rec_model_dir='./inference/rec_mtb_nrtr/' --rec_algorithm='NRTR' --rec_image_shape='1,32,100' --rec_char_dict_path='./ppocr/utils/EN_symbol_dict.txt'
+# 预测文件夹下所有图像时，可修改image_dir为文件夹，如 --image_dir='./doc/imgs_words_en/'。
+</code></pre>
+<p><img src="../imgs_words_en/word_10.png" alt="" /></p>
+<p>执行命令后，上面图像的预测结果（识别的文本和得分）会打印到屏幕上，示例如下：<br />
+结果如下：</p>
+<pre class="line-numbers"><code class="language-shell">Predicts of ./doc/imgs_words_en/word_10.png:('pain', 0.9465042352676392)
+</code></pre>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>训练上述模型采用的图像分辨率是[1，32，100]，需要通过参数<code>rec_image_shape</code>设置为您训练时的识别图像形状。</li>
+<li>在推理时需要设置参数<code>rec_char_dict_path</code>指定字典，如果您修改了字典，请修改该参数为您的字典文件。</li>
+<li>如果您修改了预处理方法，需修改<code>tools/infer/predict_rec.py</code>中NRTR的预处理为您的预处理方法。</li>
+</ul>
+<p><a name="4-2"></a></p>
+<h3><a id="4-2-c%E6%8E%A8%E7%90%86%E9%83%A8%E7%BD%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 C++推理部署</h3>
+<p>由于C++预处理后处理还未支持NRTR，所以暂未支持</p>
+<p><a name="4-3"></a></p>
+<h3><a id="4-3-serving%E6%9C%8D%E5%8A%A1%E5%8C%96%E9%83%A8%E7%BD%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.3 Serving服务化部署</h3>
+<p>暂不支持</p>
+<p><a name="4-4"></a></p>
+<h3><a id="4-4%E6%9B%B4%E5%A4%9A%E6%8E%A8%E7%90%86%E9%83%A8%E7%BD%B2" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.4 更多推理部署</h3>
+<p>暂不支持</p>
+<p><a name="5"></a></p>
+<h2><a id="5-faq" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. FAQ</h2>
+<ol>
+<li><code>NRTR</code>论文中使用Beam搜索进行解码字符，但是速度较慢，这里默认未使用Beam搜索，以贪婪搜索进行解码字符。</li>
+</ol>
+<p><a name="6"></a></p>
+<h2><a id="6%E5%8F%91%E8%A1%8C%E5%85%AC%E5%91%8A" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. 发行公告</h2>
+<ol>
+<li>release/2.6更新NRTR代码结构，新版NRTR可加载旧版(release/2.5及之前)模型参数，使用下面示例代码将旧版模型参数转换为新版模型参数：</li>
+</ol>
+<pre class="line-numbers"><code class="language-python">
+    params = paddle.load('path/' + '.pdparams') # 旧版本参数
+    state_dict = model.state_dict() # 新版模型参数
+    new_state_dict = {}
+
+    for k1, v1 in state_dict.items():
+
+        k = k1
+        if 'encoder' in k and 'self_attn' in k and 'qkv' in k and 'weight' in k:
+
+            k_para = k[:13] + 'layers.' + k[13:]
+            q = params[k_para.replace('qkv', 'conv1')].transpose((1, 0, 2, 3))
+            k = params[k_para.replace('qkv', 'conv2')].transpose((1, 0, 2, 3))
+            v = params[k_para.replace('qkv', 'conv3')].transpose((1, 0, 2, 3))
+
+            new_state_dict[k1] = np.concatenate([q[:, :, 0, 0], k[:, :, 0, 0], v[:, :, 0, 0]], -1)
+
+        elif 'encoder' in k and 'self_attn' in k and 'qkv' in k and 'bias' in k:
+
+            k_para = k[:13] + 'layers.' + k[13:]
+            q = params[k_para.replace('qkv', 'conv1')]
+            k = params[k_para.replace('qkv', 'conv2')]
+            v = params[k_para.replace('qkv', 'conv3')]
+
+            new_state_dict[k1] = np.concatenate([q, k, v], -1)
+
+        elif 'encoder' in k and 'self_attn' in k and 'out_proj' in k:
+
+            k_para = k[:13] + 'layers.' + k[13:]
+            new_state_dict[k1] = params[k_para]
+
+        elif 'encoder' in k and 'norm3' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            new_state_dict[k1] = params[k_para.replace('norm3', 'norm2')]
+
+        elif 'encoder' in k and 'norm1' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            new_state_dict[k1] = params[k_para]
+
+
+        elif 'decoder' in k and 'self_attn' in k and 'qkv' in k and 'weight' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            q = params[k_para.replace('qkv', 'conv1')].transpose((1, 0, 2, 3))
+            k = params[k_para.replace('qkv', 'conv2')].transpose((1, 0, 2, 3))
+            v = params[k_para.replace('qkv', 'conv3')].transpose((1, 0, 2, 3))
+            new_state_dict[k1] = np.concatenate([q[:, :, 0, 0], k[:, :, 0, 0], v[:, :, 0, 0]], -1)
+
+        elif 'decoder' in k and 'self_attn' in k and 'qkv' in k and 'bias' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            q = params[k_para.replace('qkv', 'conv1')]
+            k = params[k_para.replace('qkv', 'conv2')]
+            v = params[k_para.replace('qkv', 'conv3')]
+            new_state_dict[k1] = np.concatenate([q, k, v], -1)
+
+        elif 'decoder' in k and 'self_attn' in k and 'out_proj' in k:
+
+            k_para = k[:13] + 'layers.' + k[13:]
+            new_state_dict[k1] = params[k_para]
+
+        elif 'decoder' in k and 'cross_attn' in k and 'q' in k and 'weight' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            k_para = k_para.replace('cross_attn', 'multihead_attn')
+            q = params[k_para.replace('q', 'conv1')].transpose((1, 0, 2, 3))
+            new_state_dict[k1] = q[:, :, 0, 0]
+
+        elif 'decoder' in k and 'cross_attn' in k and 'q' in k and 'bias' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            k_para = k_para.replace('cross_attn', 'multihead_attn')
+            q = params[k_para.replace('q', 'conv1')]
+            new_state_dict[k1] = q
+
+        elif 'decoder' in k and 'cross_attn' in k and 'kv' in k and 'weight' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            k_para = k_para.replace('cross_attn', 'multihead_attn')
+            k = params[k_para.replace('kv', 'conv2')].transpose((1, 0, 2, 3))
+            v = params[k_para.replace('kv', 'conv3')].transpose((1, 0, 2, 3))
+            new_state_dict[k1] = np.concatenate([k[:, :, 0, 0], v[:, :, 0, 0]], -1)
+
+        elif 'decoder' in k and 'cross_attn' in k and 'kv' in k and 'bias' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            k_para = k_para.replace('cross_attn', 'multihead_attn')
+            k = params[k_para.replace('kv', 'conv2')]
+            v = params[k_para.replace('kv', 'conv3')]
+            new_state_dict[k1] = np.concatenate([k, v], -1)
+
+        elif 'decoder' in k and 'cross_attn' in k and 'out_proj' in k:
+
+            k_para = k[:13] + 'layers.' + k[13:]
+            k_para = k_para.replace('cross_attn', 'multihead_attn')
+            new_state_dict[k1] = params[k_para]
+        elif 'decoder' in k and 'norm' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            new_state_dict[k1] = params[k_para]
+        elif 'mlp' in k and 'weight' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            k_para = k_para.replace('fc', 'conv')
+            k_para = k_para.replace('mlp.', '')
+            w = params[k_para].transpose((1, 0, 2, 3))
+            new_state_dict[k1] = w[:, :, 0, 0]
+        elif 'mlp' in k and 'bias' in k:
+            k_para = k[:13] + 'layers.' + k[13:]
+            k_para = k_para.replace('fc', 'conv')
+            k_para = k_para.replace('mlp.', '')
+            w = params[k_para]
+            new_state_dict[k1] = w
+
+        else:
+            new_state_dict[k1] = params[k1]
+
+        if list(new_state_dict[k1].shape) != list(v1.shape):
+            print(k1)
+
+
+    for k, v1 in state_dict.items():
+        if k not in new_state_dict.keys():
+            print(1, k)
+        elif list(new_state_dict[k].shape) != list(v1.shape):
+            print(2, k)
+
+
+
+    model.set_state_dict(new_state_dict)
+    paddle.save(model.state_dict(), 'nrtrnew_from_old_params.pdparams')
+
+</code></pre>
+<ol start="2">
+<li>新版相比与旧版，代码结构简洁，推理速度有所提高。</li>
+</ol>
+<h2><a id="%E5%BC%95%E7%94%A8" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>引用</h2>
+<pre class="line-numbers"><code class="language-bibtex">@article{Sheng2019NRTR,
+  title     = {NRTR: A No-Recurrence Sequence-to-Sequence Model For Scene Text Recognition},
+  author    = {Fenfen Sheng and Zhineng Chen and Bo Xu},
+  booktitle = {ICDAR},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1806.00926},
+  pages     = {781-786}
+}
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2024/04/13</span>
+                    
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="17129380736062.html">
+                
+                  <h1>MWeb TestIMage</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2024/04/13</span>
+                    
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="17129387431530.html">场景文本识别算法-NRTR</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="17129380736062.html">MWeb TestIMage</a>
+			      </li>
+		     
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+<style>.mweb-charts{background:#fff;}
+body{ box-sizing: border-box;
+    margin: 0 auto;}
+@media print{
+    pre, code, pre code {
+     overflow: visible !important;
+     white-space: pre-wrap !important;       /* css-3 */
+     white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap !important;      /* Opera 4-6 */
+     white-space: -o-pre-wrap !important;    /* Opera 7 */
+     word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
+    }
+    html,body{margin:0;padding:4px;}
+}
+
+
+
+div.code-toolbar {
+  position: relative;
+}
+
+div.code-toolbar > .toolbar {
+  position: absolute;
+  z-index: 10;
+  top: .3em;
+  right: .2em;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+div.code-toolbar:hover > .toolbar {
+  opacity: 1;
+}
+
+/* Separate line b/c rules are thrown out if selector is invalid.
+   IE11 and old Edge versions don't support :focus-within. */
+div.code-toolbar:focus-within > .toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item {
+  display: inline-block;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a {
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a,
+div.code-toolbar > .toolbar > .toolbar-item > button,
+div.code-toolbar > .toolbar > .toolbar-item > span {
+  color: inherit;
+  font-size: .8em;
+  padding: 4px .5em;
+  background: #f5f2f0;
+  background: rgba(224, 224, 224, 0.4);
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+  border-radius: .5em;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a:hover,
+div.code-toolbar > .toolbar > .toolbar-item > a:focus,
+div.code-toolbar > .toolbar > .toolbar-item > button:hover,
+div.code-toolbar > .toolbar > .toolbar-item > button:focus,
+div.code-toolbar > .toolbar > .toolbar-item > span:hover,
+div.code-toolbar > .toolbar > .toolbar-item > span:focus {
+  color: inherit;
+  text-decoration: none;
+}
+</style><script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script><script>!function(){if("undefined"!=typeof Prism&&"undefined"!=typeof document){var e=[],t={},n=function(){};Prism.plugins.toolbar={};var a=Prism.plugins.toolbar.registerButton=function(n,a){var r;r="function"==typeof a?a:function(e){var t;return"function"==typeof a.onClick?((t=document.createElement("button")).type="button",t.addEventListener("click",(function(){a.onClick.call(this,e)}))):"string"==typeof a.url?(t=document.createElement("a")).href=a.url:t=document.createElement("span"),a.className&&t.classList.add(a.className),t.textContent=a.text,t},n in t?console.warn('There is a button with the key "'+n+'" registered already.'):e.push(t[n]=r)},r=Prism.plugins.toolbar.hook=function(a){var r=a.element.parentNode;var l=a.element.classList;if(l.contains('language-mermaid') || l.contains('language-echarts') || l.contains('language-plantuml')){return;} if(r&&/pre/i.test(r.nodeName)&&!r.parentNode.classList.contains("code-toolbar")){var o=document.createElement("div");o.classList.add("code-toolbar"),r.parentNode.insertBefore(o,r),o.appendChild(r);var i=document.createElement("div");i.classList.add("toolbar");var l=e,d=function(e){for(;e;){var t=e.getAttribute("data-toolbar-order");if(null!=t)return(t=t.trim()).length?t.split(/\s*,\s*/g):[];e=e.parentElement}}(a.element);d&&(l=d.map((function(e){return t[e]||n}))),l.forEach((function(e){var t=e(a);if(t){var n=document.createElement("div");n.classList.add("toolbar-item"),n.appendChild(t),i.appendChild(n)}})),o.appendChild(i)}};a("label",(function(e){var t=e.element.parentNode;if(t&&/pre/i.test(t.nodeName)&&t.hasAttribute("data-label")){var n,a,r=t.getAttribute("data-label");try{a=document.querySelector("template#"+r)}catch(e){}return a?n=a.content:(t.hasAttribute("data-url")?(n=document.createElement("a")).href=t.getAttribute("data-url"):n=document.createElement("span"),n.textContent=r),n}})),Prism.hooks.add("complete",r)}}();</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css"><script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script><style>div.code-toolbar > .toolbar > .toolbar-item > a, div.code-toolbar > .toolbar > .toolbar-item > button, div.code-toolbar > .toolbar > .toolbar-item > span {padding: 4px .5em; background: #f5f2f0; background: rgba(224, 224, 224, 0.4);}</style>
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+
+
+  </body>
+</html>
