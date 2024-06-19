@@ -406,6 +406,7 @@ DOMAIN-SUFFIX,twitpic.com,PROXY
 DOMAIN-SUFFIX,twitter.com,PROXY
 DOMAIN-SUFFIX,twitter.jp,PROXY
 DOMAIN-SUFFIX,vine.co,PROXY
+DOMAIN-SUFFIX,x.com,PROXY
 # > Wikimedia Foundation
 DOMAIN-SUFFIX,mediawiki.org,PROXY
 DOMAIN-SUFFIX,wikibooks.org,PROXY
