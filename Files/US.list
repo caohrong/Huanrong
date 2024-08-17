@@ -10,6 +10,6 @@ DOMAIN-SUFFIX,github.com,PROXY
 DOMAIN-SUFFIX,github.io,PROXY
 DOMAIN-SUFFIX,githubassets.com,PROXY
 DOMAIN-SUFFIX,githubusercontent.com,PROXY
-DOMAIN-SUFFIX,news.apple.com,PROXY
-DOMAIN-SUFFIX,apple.news,PROXY
-DOMAIN-SUFFIX,newsapi.apple.com,PROXY
+DOMAIN-SUFFIX,tiktok.com,PROXY
+DOMAIN-SUFFIX,tiktokv.com,PROXY
+DOMAIN-SUFFIX,tiktokcdn-us.com,PROXY
