@@ -441,6 +441,8 @@ DOMAIN-SUFFIX,go.dev,PROXY
 DOMAIN-SUFFIX,golang.org,PROXY
 # > Microsoft
 DOMAIN-SUFFIX,bing.com,PROXY
+DOMAIN-SUFFIX,outlook.com,PROXY
+DOMAIN-SUFFIX,live.com,PROXY
 DOMAIN-SUFFIX,linkedin.com,PROXY
 DOMAIN-SUFFIX,licdn.com,PROXY
 DOMAIN-SUFFIX,msn.com,PROXY
@@ -453,7 +455,6 @@ DOMAIN-SUFFIX,shazam.com,PROXY
 DOMAIN-SUFFIX,caohr.com,PROXY
 DOMAIN-SUFFIX,goo.gl,PROXY
 DOMAIN-SUFFIX,flightyapp.com
-DOMAIN-SUFFIX,apple-mapkit.com
 DOMAIN-SUFFIX,ytimg.com
 DOMAIN-SUFFIX,youtu.be
-DOMAIN-SUFFIX,brew.sh
+DOMAIN-SUFFIX,podcasts.apple.com
