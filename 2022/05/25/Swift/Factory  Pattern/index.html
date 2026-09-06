@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="原文地址 因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。 As a budding computer scientist, you no doubt have heard of design pat...">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/15300945892886.png">
+<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/swift_factory_pattern.png">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-06T01:14:04.369Z">
+<meta property="article:modified_time" content="2026-09-06T01:19:48.465Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Design Patterns">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/ImagesFolder/15300945892886.png">
+<meta name="twitter:image" content="https://blog.caohr.com/ImagesFolder/swift_factory_pattern.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/05/25/Swift/Factory%20%20Pattern/">
 
@@ -231,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-09-06 09:14:04" itemprop="dateModified" datetime="2026-09-06T09:14:04+08:00">2026-09-06</time>
+                <time title="Modified: 2026-09-06 09:19:48" itemprop="dateModified" datetime="2026-09-06T09:19:48+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -291,7 +291,7 @@
 <p>In our example, we can create several contacts that we want to reach out to with opportunities. We can then contact these prospects with our exposed interface and cutdown our processing time with automation!</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> contacts <span class="operator">=</span> [<span class="type">Contact</span>]()</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">&quot;J Rob&quot;</span>, email: <span class="string">&quot;jrob@example.com&quot;</span>, job: .iOS, desiredSal: <span class="number">135000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">&quot;K Rock&quot;</span>, email: <span class="string">&quot;krock@example.com&quot;</span>, job: .<span class="type">Android</span>, desiredSal: <span class="number">134000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">&quot;P Money&quot;</span>, email: <span class="string">&quot;pmoney@example.com&quot;</span>, job: .<span class="type">Web</span>, desiredSal: <span class="number">110000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">&quot;S Sham&quot;</span>, email: <span class="string">&quot;ssham@example.com&quot;</span>, job: .<span class="type">QA</span>, desiredSal: <span class="number">95000</span>))</span><br><span class="line">contacts.append(<span class="type">Contact</span>(name: <span class="string">&quot;L Roger&quot;</span>, email: <span class="string">&quot;lroger@example.com&quot;</span>, job: .<span class="type">Product_Owner</span>, desiredSal: <span class="number">165000</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> contact <span class="keyword">in</span> contacts&#123;</span><br><span class="line">    <span class="keyword">let</span> client <span class="operator">=</span> <span class="type">JobContacterFactory</span>.getJobSeeker(contact: contact)</span><br><span class="line">    print (client.sendRequestResumeEmail())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/ImagesFolder/15300945892886.png"></p>
+<p><img src="/ImagesFolder/swift_factory_pattern.png"></p>
 <p>That’s it! Our factory example is complete. We can now send customized emails to our contacts based on the type of job they are seeking. We could expand on our example as our needs change and not have to change code that our client uses as long as our interface doesn’t change. That means we could add new jobs and job seeker objects to send customized emails to new contact types with no change to the client that uses our <em>JobContactProtocol</em>. We could also change the logic for creating our template, since that would only encompass an implementation change.</p>
 <h4 id="Wrapping-Up"><a href="#Wrapping-Up" class="headerlink" title="Wrapping Up"></a>Wrapping Up</h4><p>The <em>factory</em> pattern makes it possible for us to hide the implementation details for creating objects by allowing our clients to rely solely on a common interface for interacting with our objects. This allows us to remove unnecessary complexities involved with creating objects that have similar behavioral needs. The <em>factory</em> pattern also promotes separation and abstraction which both lead to reusable code that is easier to maintain. You can find the playground file for this article <a target="_blank" rel="noopener" href="https://github.com/mrkeithelliott/FactoryPattern">here</a>.</p>
 <p>On a lighter note, I also wrote an article on why creating native apps is probably the best way to go in most of your mobile development endeavors. Read it and weigh in the discussion!</p>
@@ -325,12 +325,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/" rel="prev" title="Introducing Protocol-Oriented Programming in Swift 3">
-      <i class="fa fa-chevron-left"></i> Introducing Protocol-Oriented Programming in Swift 3
+    <a href="/2022/05/25/Swift/JSON/" rel="prev" title="JSON">
+      <i class="fa fa-chevron-left"></i> JSON
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Defer/" rel="next" title="Defer">
-      Defer <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/Mutating/" rel="next" title="Mutating">
+      Mutating <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

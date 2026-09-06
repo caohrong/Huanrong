@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。 类型名为表示没有指定类型，所以void类型的指针可以包含任意类型的数据项地址。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/001.png">
+<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/c_pointer_memory_layout.png">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-06T00:00:01.564Z">
+<meta property="article:modified_time" content="2026-09-06T01:23:29.678Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/ImagesFolder/001.png">
+<meta name="twitter:image" content="https://blog.caohr.com/ImagesFolder/c_pointer_memory_layout.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/05/25/C/%E6%8C%87%E9%92%88/">
 
@@ -231,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-09-06 08:00:01" itemprop="dateModified" datetime="2026-09-06T08:00:01+08:00">2026-09-06</time>
+                <time title="Modified: 2026-09-06 09:23:29" itemprop="dateModified" datetime="2026-09-06T09:23:29+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,7 +272,7 @@
         <blockquote>
 <p>Variables that can store addresses are called pointers.</p>
 </blockquote>
-<p>指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。<br><img src="/ImagesFolder/001.png" alt="001"></p>
+<p>指针一般指向的是这个数据的第一个字节，所以你还需要知道指针所指的类型，这样你才知道数据一共占用多少字节，例如char类型占用一个字节，long占用4个字节。<br><img src="/ImagesFolder/c_pointer_memory_layout.png" alt="指针内存布局"></p>
 <p>类型名为<code>void</code>表示没有指定类型，所以void*类型的指针可以包含任意类型的数据项地址。类型<code>void*</code>常常用做参数类型，或以独立于类型的方式处理数据的函数的返回值类型。任意类型的指针都可以传送为<code>void*</code>类型的值，在使用它时，再将其转换为合适的类型。例如, int类型变量的地址可以存储在<code>void*</code>类型的指针变量中。要访问存储在<code>void*</code>指针所指地址中的整数值，必须先把指针转化为<code>int *</code>类型。</p>
 <h2 id="申明指针"><a href="#申明指针" class="headerlink" title="申明指针"></a>申明指针</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int *pnumber;</span><br><span class="line">int* pnumber;</span><br><span class="line">int *pnumber = NULL;  //指针变量可以和普通变量一起申明。</span><br><span class="line">double value, *pVal, fnum;   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -335,12 +335,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/C++/Enumerations/" rel="prev" title="enumerations">
-      <i class="fa fa-chevron-left"></i> enumerations
+    <a href="/2022/05/25/Computer%20System/Dynamic%20Linking%20with%20Shared%20Libraries/" rel="prev" title="动态链接共享库">
+      <i class="fa fa-chevron-left"></i> 动态链接共享库
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/08/05/Tools/Mac%20M1%E5%AE%89%E8%A3%85brew%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" rel="next" title="Mac M1安装brew问题汇总">
-      Mac M1安装brew问题汇总 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Computer%20System/Compiles%20Drivers/" rel="next" title="编译过程">
+      编译过程 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
