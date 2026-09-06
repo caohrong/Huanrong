@@ -27,16 +27,16 @@
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="以下是阅读Ray Wenderlich的笔记。原文链接 这个简单的例子，完美把很多的知识点都说到了。Swift 的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Spell.create.png">
+<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/Spell.create.png">
 <meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/errorhandling-3-650x288.png">
-<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Expand-Debug-Area-1.gif">
+<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/Expand-Debug-Area-1.gif">
 <meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/errorhandling-4-650x248.png">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-05T23:52:08.939Z">
+<meta property="article:modified_time" content="2026-09-06T01:14:04.371Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Ray Wenderlich">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Spell.create.png">
+<meta name="twitter:image" content="https://blog.caohr.com/ImagesFolder/Spell.create.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/">
 
@@ -234,7 +234,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
+                <time title="Modified: 2026-09-06 09:14:04" itemprop="dateModified" datetime="2026-09-06T09:14:04+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -304,7 +304,7 @@
 
 <p>The above initializer tries to create a spell using the magic words provided, but if the words are not magical you return <code>nil</code> instead.</p>
 <p>Inspect the creation of the spells at the very bottom of this tutorial to see this behavior in action:</p>
-<p><img src="media/15295924164909/Spell.create.png" alt="Spell.create"></p>
+<p><img src="/ImagesFolder/Spell.create.png" alt="Spell.create"></p>
 <p>While <code>first</code> successfully creates a spell using the magic words <code>&quot;abracadabra&quot;</code>, <code>&quot;ascendio&quot;</code> doesn’t have the same effect, and the return value of <code>second</code> is <code>nil</code>. (Hey, witches can’t win <em>all</em> the time).</p>
 <p>Factory methods are an old-school programming style. There are better ways to achieve the same thing in Swift. You’ll update the <code>Spell</code> extension to use a failable initializer instead of a factory method.</p>
 <p>Delete <code>create(_words:)</code> and replace it with the following:<br><code>Swift</code>有类似的解决方案<code>failable initializer</code></p>
@@ -447,7 +447,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exampleOne()</span><br></pre></td></tr></table></figure>
 
 <p>Reveal the Debug console by clicking the up arrow icon in the bottom left hand corner of the Xcode workspace so you can see the output from your playground:</p>
-<p><img src="media/15295924164909/Expand-Debug-Area-1.gif" alt="Expand Debug Area"></p>
+<p><img src="/ImagesFolder/Expand-Debug-Area-1.gif" alt="Expand Debug Area"></p>
 <h3 id="Catching-Errors"><a href="#Catching-Errors" class="headerlink" title="Catching Errors"></a>Catching Errors</h3><p>Below is a brief discussion of each of language feature used in the above code snippet.</p>
 <p><em>catch</em></p>
 <p>You can use pattern matching in Swift to handle specific errors or group themes of error types together.</p>
@@ -548,8 +548,8 @@
       <i class="fa fa-chevron-left"></i> Mutating
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/" rel="next" title="Introducing Protocol-Oriented Programming in Swift 3">
-      Introducing Protocol-Oriented Programming in Swift 3 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/JSON/" rel="next" title="JSON">
+      JSON <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

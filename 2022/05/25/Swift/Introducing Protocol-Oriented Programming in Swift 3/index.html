@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="HR&#39;s Blog">
 <meta property="og:description" content="Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。 Swift中基本具备了的特性。允许继承、扩展等。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/protocols-extend-480x280.png">
-<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/secrets-480x178.png">
+<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/protocols-extend-480x280.png">
+<meta property="og:image" content="https://blog.caohr.com/ImagesFolder/secrets-480x178.png">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2026-09-05T23:52:08.937Z">
+<meta property="article:modified_time" content="2026-09-06T01:14:04.370Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Ray Wenderlich">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/protocols-extend-480x280.png">
+<meta name="twitter:image" content="https://blog.caohr.com/ImagesFolder/protocols-extend-480x280.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/">
 
@@ -232,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
+                <time title="Modified: 2026-09-06 09:14:04" itemprop="dateModified" datetime="2026-09-06T09:14:04+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -301,7 +301,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extension</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">  <span class="comment">// Flyable birds can fly!</span></span><br><span class="line">  <span class="keyword">var</span> canFly: <span class="type">Bool</span> &#123; <span class="keyword">return</span> <span class="keyword">self</span> <span class="keyword">is</span> <span class="type">Flyable</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>This defines an extension on <code>Bird</code> that sets the default behavior for <code>canFly</code> to return <code>true</code> whenever the type is also <code>Flyable</code>. In other words, any <code>Flyable</code> bird no longer needs to explicitly declare so!</p>
-<p><img src="media/15295785730512/protocols-extend-480x280.png" alt="protocols-extend"></p>
+<p><img src="/ImagesFolder/protocols-extend-480x280.png" alt="protocols-extend"></p>
 <p>Delete the <code>let canFly = ...</code> from <code>FlappyBird</code>, <code>SwiftBird</code> and <code>Penguin</code> struct declarations. You’ll see that the playground successfully builds since the protocol extension now handles that requirement for you.</p>
 <h2 id="Why-Not-Base-Classes"><a href="#Why-Not-Base-Classes" class="headerlink" title="Why Not Base Classes?"></a>Why Not Base Classes?</h2><p>Protocol extensions and default implementations may seem similar to using a base class or even <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Abstract_type">abstract classes</a> in other languages, but they offer a few key advantages in Swift:</p>
 <ul>
@@ -341,7 +341,7 @@
 
 
 <p>This should look pretty straightforward, and you might even be able to guess the answer that is printed. What might be surprising are the types involved. <code>slice</code>, for example, is not an <code>Array</code> of integers but an <code>ArraySlice&lt;Int&gt;</code>. This special <em>wrapper type</em> acts as a view into the original array and avoids costly memory allocations that can quickly add up. Similarly, <code>reversedSlice</code> is actually a <code>ReversedRandomAccessCollection&lt;ArraySlice&lt;Int&gt;&gt;</code> which is again just a wrapper type view into the original array.</p>
-<p><img src="media/15295785730512/secrets-480x178.png" alt="secrets"></p>
+<p><img src="/ImagesFolder/secrets-480x178.png" alt="secrets"></p>
 <p>Fortunately, the geniuses developing the standard library defined the <code>map</code> method as an extension to the <code>Sequence</code> protocol and all of the collection wrappers (of which there are dozens) to conform to this protocol. This makes it possible to call map on <code>Array</code> just as easily as it is <code>ReversedRandomAccessCollection</code>and not notice the difference. You will borrow this important design pattern shortly.</p>
 <h2 id="Off-to-the-Races"><a href="#Off-to-the-Races" class="headerlink" title="Off to the Races"></a>Off to the Races</h2><p>So far you defined several <code>Bird</code> conforming types. Now add something totally different to the end of your playground.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Motorcycle</span> &#123;</span><br><span class="line">      <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123;</span><br><span class="line">            <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">            speed <span class="operator">=</span> <span class="number">200</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">      <span class="keyword">var</span> speed: <span class="type">Double</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -427,12 +427,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/" rel="prev" title="Magical Error Handling in Swift">
-      <i class="fa fa-chevron-left"></i> Magical Error Handling in Swift
+    <a href="/2022/05/25/Swift/JSON/" rel="prev" title="JSON">
+      <i class="fa fa-chevron-left"></i> JSON
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/JSON/" rel="next" title="JSON">
-      JSON <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/Factory%20%20Pattern/" rel="next" title="Factory  Pattern">
+      Factory  Pattern <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
