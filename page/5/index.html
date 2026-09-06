@@ -290,7 +290,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/Weak%202.SideTable/">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -304,7 +304,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/05/25/iOS/Weak%202.SideTable/" class="post-title-link" itemprop="url">Weak 2.SideTable</a>
+            <a href="/2022/05/25/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Block系列3-block __block修饰符值捕获源码分析</a>
         </h2>
 
         <div class="post-meta">
@@ -342,8 +342,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/05/25/iOS/Weak%202.SideTable/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/Weak 2.SideTable/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/05/25/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/Block系列3-block __block修饰符值捕获源码分析/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -358,10 +358,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>iOS 内存管理底层探秘：深入剖析弱引用实现中的核心数据结构 Weak 2.SideTable。</p>
+          <p>在加上block以后，age的值被包装成了的对象，而且后续的访问也都是通过对象来访问里面的值 Block系列1-block的本质 Block系列2-block auto和static值捕获源码分析 Block系列3-block __block修饰符值捕获源码分析[当前]</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/05/25/iOS/Weak%202.SideTable/">
+              <a class="btn" href="/2022/05/25/iOS/Block%E7%B3%BB%E5%88%973-block%20__block%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%80%BC%E6%8D%95%E8%8E%B7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
                 Read more &raquo;
               </a>
             </div>
@@ -457,196 +457,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/25/iOS/Weak%203.SideTable%E7%9A%84Hash%E5%80%BC/">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">Weak 4.扩容和缩容的调取时机</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/Weak 4.weak_table_t扩容和缩容/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>添加和删除弱应用的指针是通过和来实现的。 初始容量为64，当容量达到3/4时对数组进行扩容，每次扩容为原来的2倍。。 调用重新对元素进行Hash值计算。 缩容规则当表大于1024但是只放了16分之一的数据的时候，就会缩容，缩小到原来的八分之一，调用重新对元素进行Hash...</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/dispatch_get_specific/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="HR">
-      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HR's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/25/iOS/dispatch_get_specific/" class="post-title-link" itemprop="url">dispatch_get_specific</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/05/25/iOS/dispatch_get_specific/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/dispatch_get_specific/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>和  用法就是用set方法在线程里设置一个key，通过get查找当前线程，是不是包含该key来判断代码是不是在特定的线程里执行。set则是给线程设置key值。 设置值。 两种方法查询线程里面包含的key值 ：查询当前线程的key值。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/25/iOS/dispatch_get_specific/">
                 Read more &raquo;
               </a>
             </div>
@@ -837,6 +647,196 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/25/iOS/Weak%205.out%20of%20line%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E5%AE%9A/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/" class="post-title-link" itemprop="url">Weak 4.扩容和缩容的调取时机</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/Weak 4.weak_table_t扩容和缩容/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>添加和删除弱应用的指针是通过和来实现的。 初始容量为64，当容量达到3/4时对数组进行扩容，每次扩容为原来的2倍。。 调用重新对元素进行Hash值计算。 缩容规则当表大于1024但是只放了16分之一的数据的时候，就会缩容，缩小到原来的八分之一，调用重新对元素进行Hash...</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/25/iOS/Weak%204.weak_table_t%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.caohr.com/2022/05/25/iOS/dispatch_get_specific/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="HR">
+      <meta itemprop="description" content="Swimming 🏊 in the sea🌊of code!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HR's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/25/iOS/dispatch_get_specific/" class="post-title-link" itemprop="url">dispatch_get_specific</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-05-25 08:00:00" itemprop="dateCreated datePublished" datetime="2022-05-25T08:00:00+08:00">2022-05-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index"><span itemprop="name">Objective-C</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/05/25/iOS/dispatch_get_specific/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/25/iOS/dispatch_get_specific/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>和  用法就是用set方法在线程里设置一个key，通过get查找当前线程，是不是包含该key来判断代码是不是在特定的线程里执行。set则是给线程设置key值。 设置值。 两种方法查询线程里面包含的key值 ：查询当前线程的key值。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/25/iOS/dispatch_get_specific/">
                 Read more &raquo;
               </a>
             </div>

@@ -1226,7 +1226,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #9d38ff;
+  background: #2e06ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2653,4 +2653,13 @@ body {
   .post-body p {
     color: #a0aec0;
   }
+}
+.google-adsense-container ins[data-ad-status="unfilled"],
+.google-adsense-container ins:empty {
+  display: none !important;
+  height: 0 !important;
+}
+ins.adsbygoogle {
+  border-radius: 8px !important;
+  overflow: hidden !important;
 }
