@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="/js/src/photoswipe.min.js?v="></script>
-<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -22,15 +20,15 @@
     var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content=".">
+  <meta name="description" content="因为的协议可以被，和来实现，对于和如果协议定义的方法需要修改本身的参数，则需要加上，但是class就没有这种限制。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mutating">
 <meta property="og:url" content="https://blog.caohr.com/2022/05/25/Swift/Mutating/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content=".">
+<meta property="og:description" content="因为的协议可以被，和来实现，对于和如果协议定义的方法需要修改本身的参数，则需要加上，但是class就没有这种限制。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-03T10:31:16.262Z">
+<meta property="article:modified_time" content="2026-09-05T23:52:08.940Z">
 <meta property="article:author" content="HR">
 <meta name="twitter:card" content="summary">
 
@@ -46,6 +44,9 @@
     lang   : 'en'
   };
 </script>
+
+<meta name="google-adsense-account" content="ca-pub-9602249344531494">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9602249344531494" crossorigin="anonymous"></script>
 
   <title>Mutating | HR's Blog</title>
   
@@ -227,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-11-03 18:31:16" itemprop="dateModified" datetime="2023-11-03T18:31:16+08:00">2023-11-03</time>
+                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,6 +255,7 @@
   </span>
   
   
+            <div class="post-description">因为的协议可以被，和来实现，对于和如果协议定义的方法需要修改本身的参数，则需要加上，但是class就没有这种限制。</div>
 
         </div>
       </header>
@@ -264,10 +266,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>.</p>
-<span id="more"></span>
-
-<p>因为<code>Swift</code>的协议<code>protocol</code>可以被<code>class</code>，<code>struct</code>和<code>enum</code>来实现，对于<code>struct</code>和<code>enum</code>如果协议定义的方法需要修改本身的参数，则需要加上<code>mutating</code>，但是class就没有这种限制。</p>
+        <p>因为<code>Swift</code>的协议<code>protocol</code>可以被<code>class</code>，<code>struct</code>和<code>enum</code>来实现，对于<code>struct</code>和<code>enum</code>如果协议定义的方法需要修改本身的参数，则需要加上<code>mutating</code>，但是class就没有这种限制。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protocol</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> numberOfWheels: <span class="type">Int</span> &#123;<span class="keyword">get</span>&#125;</span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">changeColor</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyCar</span>: <span class="title class_">Vehicle</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> numberOfWheels <span class="operator">=</span> <span class="number">4</span></span><br><span class="line">    <span class="keyword">var</span> color <span class="operator">=</span> <span class="type">UIColor</span>.blueColor()</span><br><span class="line">    <span class="keyword">mutating</span> <span class="keyword">func</span> <span class="title function_">changeColor</span>() &#123;</span><br><span class="line">        color <span class="operator">=</span> <span class="type">UIColor</span>.redColor()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -276,6 +275,22 @@
     
     
     
+<div class="google-adsense-container" style="margin: 36px 0 20px; padding: 18px 12px; background: rgba(248, 250, 252, 0.6); border: 1px dashed #cbd5e1; border-radius: 12px; text-align: center; box-sizing: border-box;">
+  <div style="font-size: 11px; color: #94a3b8; margin-bottom: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">
+    ADVERTISEMENT / 赞助商广告
+  </div>
+
+  <!-- Google AdSense 文章末尾自适应广告单元 -->
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-9602249344531494"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
 
       <footer class="post-footer">
 
@@ -289,8 +304,8 @@
       <i class="fa fa-chevron-left"></i> Pattern Matching in Swift
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/" rel="next" title="Magical Error Handling in Swift">
-      Magical Error Handling in Swift <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/" rel="next" title="Introducing Protocol-Oriented Programming in Swift 3">
+      Introducing Protocol-Oriented Programming in Swift 3 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -385,7 +400,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -423,7 +438,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

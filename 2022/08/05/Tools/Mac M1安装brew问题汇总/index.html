@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="/js/src/photoswipe.min.js?v="></script>
-<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -22,17 +20,25 @@
     var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content=".">
+  <meta name="description" content="Mac M1&#x2F;M2&#x2F;M3&#x2F;M4 (Apple Silicon) 安装与使用 Homebrew 完整踩坑指南：全面解决 command not found、国内 443 超时、Formula 找不到、更新报错及 CocoaPods ffi Bus Error，附国内极速镜像一键脚本与原生 arm64 架构最佳实践。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac M1安装brew问题汇总">
 <meta property="og:url" content="https://blog.caohr.com/2022/08/05/Tools/Mac%20M1%E5%AE%89%E8%A3%85brew%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content=".">
+<meta property="og:description" content="Mac M1&#x2F;M2&#x2F;M3&#x2F;M4 (Apple Silicon) 安装与使用 Homebrew 完整踩坑指南：全面解决 command not found、国内 443 超时、Formula 找不到、更新报错及 CocoaPods ffi Bus Error，附国内极速镜像一键脚本与原生 arm64 架构最佳实践。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-05T11:59:56.000Z">
-<meta property="article:modified_time" content="2023-11-03T10:32:48.053Z">
+<meta property="article:modified_time" content="2026-09-06T00:05:36.401Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="brew">
+<meta property="article:tag" content="Homebrew">
+<meta property="article:tag" content="Apple Silicon">
+<meta property="article:tag" content="M1">
+<meta property="article:tag" content="M2">
+<meta property="article:tag" content="M3">
+<meta property="article:tag" content="M4">
+<meta property="article:tag" content="CocoaPods">
+<meta property="article:tag" content="踩坑汇总">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/08/05/Tools/Mac%20M1%E5%AE%89%E8%A3%85brew%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
@@ -47,6 +53,9 @@
     lang   : 'en'
   };
 </script>
+
+<meta name="google-adsense-account" content="ca-pub-9602249344531494">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9602249344531494" crossorigin="anonymous"></script>
 
   <title>Mac M1安装brew问题汇总 | HR's Blog</title>
   
@@ -228,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-11-03 18:32:48" itemprop="dateModified" datetime="2023-11-03T18:32:48+08:00">2023-11-03</time>
+                <time title="Modified: 2026-09-06 08:05:36" itemprop="dateModified" datetime="2026-09-06T08:05:36+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,6 +264,7 @@
   </span>
   
   
+            <div class="post-description">Mac M1/M2/M3/M4 (Apple Silicon) 安装与使用 Homebrew 完整踩坑指南：全面解决 command not found、国内 443 超时、Formula 找不到、更新报错及 CocoaPods ffi Bus Error，附国内极速镜像一键脚本与原生 arm64 架构最佳实践。</div>
 
         </div>
       </header>
@@ -265,38 +275,183 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>.</p>
-<span id="more"></span>
+        <h1 id="Mac-M1-M2-M3-M4-Apple-Silicon-安装与使用-Homebrew-常见踩坑与报错解决方案全汇总"><a href="#Mac-M1-M2-M3-M4-Apple-Silicon-安装与使用-Homebrew-常见踩坑与报错解决方案全汇总" class="headerlink" title="Mac M1/M2/M3/M4 (Apple Silicon) 安装与使用 Homebrew 常见踩坑与报错解决方案全汇总"></a>Mac M1/M2/M3/M4 (Apple Silicon) 安装与使用 Homebrew 常见踩坑与报错解决方案全汇总</h1><p>在搭载 Apple Silicon（M1、M2、M3、M4 及 Pro/Max/Ultra 芯片）的 Mac 电脑上，由于底层 CPU 架构从传统的 <code>x86_64</code> 全面切换至 <code>arm64</code>，Homebrew 的安装路径、编译逻辑以及依赖生态发生了根本性变化。</p>
+<p>很多同学在换上新 Mac 搭建开发环境时，常常会遇到 <strong>“官网脚本连不上”、“安装后找不到 brew 命令”、“软件源找不到常见包”、“CocoaPods 运行报 Ruby Bus Error”</strong> 等一系列棘手问题。</p>
+<p>本文将这些高频报错与踩坑点进行系统性归纳，不仅提供 <strong>开箱即用的一键修复命令</strong>，还会从<strong>底层架构原理</strong>上剖析为什么会报错，帮助大家彻底扫清 Apple Silicon 终端开发障碍。</p>
+<hr>
+<h2 id="📌-30-秒快速排错索引-TL-DR"><a href="#📌-30-秒快速排错索引-TL-DR" class="headerlink" title="📌 30 秒快速排错索引 (TL;DR)"></a>📌 30 秒快速排错索引 (TL;DR)</h2><p>遇到问题不用通读全文，根据你的报错现象直接跳转对应方案：</p>
+<table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">常见报错现象 / 需求</th>
+<th align="left">根因分类</th>
+<th align="left">快速跳转</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>01</strong></td>
+<td align="left"><code>curl: (7) Failed to connect to raw.githubusercontent.com</code></td>
+<td align="left">国内 GitHub DNS 污染 / 连接超时</td>
+<td align="left"><a href="#1-homebrew-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9B%BD%E5%86%85%E6%9E%81%E9%80%9F%E9%95%9C%E5%83%8F">👉 方案一：官方脚本与国内镜像一键安装</a></td>
+</tr>
+<tr>
+<td align="left"><strong>02</strong></td>
+<td align="left"><code>zsh: command not found: brew</code></td>
+<td align="left">M 芯片默认路径改变，环境变量未加载</td>
+<td align="left"><a href="#2-%E5%AE%89%E8%A3%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0-brew-%E5%91%BD%E4%BB%A4-command-not-found">👉 方案二：环境变量正确配置姿势</a></td>
+</tr>
+<tr>
+<td align="left"><strong>03</strong></td>
+<td align="left"><code>Error: No similarly named formulae found</code> / <code>fatal: Could not resolve HEAD</code></td>
+<td align="left">Git 浅克隆损坏 / 默认源同步中断</td>
+<td align="left"><a href="#3-brew-%E5%AE%89%E8%A3%85%E6%BA%90%E6%8D%9F%E5%9D%8F%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%89%BE%E4%B8%8D%E5%88%B0-formula-not-found">👉 方案三：重置与配置国内镜像加速</a></td>
+</tr>
+<tr>
+<td align="left"><strong>04</strong></td>
+<td align="left"><code>ffi/library.rb: [BUG] Bus Error</code> / CocoaPods 崩溃</td>
+<td align="left">旧版 Ruby ffi 架构不兼容与 Rosetta 混淆</td>
+<td align="left"><a href="#4-pod-install-%E6%8A%A5%E9%94%99-ruby-ffi-bus-error-%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%86%B2%E7%AA%81">👉 方案四：CocoaPods 原生 arm64 最佳实践</a></td>
+</tr>
+<tr>
+<td align="left"><strong>05</strong></td>
+<td align="left">环境混乱，想要重头再来</td>
+<td align="left">残留缓存冲突与多架构混乱</td>
+<td align="left"><a href="#5-%E5%BD%BB%E5%BA%95%E5%8D%B8%E8%BD%BD%E4%B8%8E%E9%87%8D%E7%BD%AE-homebrew">👉 方案五：彻底卸载与干净重装指南</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🍎-底层原理：Apple-Silicon-与-Intel-架构差异"><a href="#🍎-底层原理：Apple-Silicon-与-Intel-架构差异" class="headerlink" title="🍎 底层原理：Apple Silicon 与 Intel 架构差异"></a>🍎 底层原理：Apple Silicon 与 Intel 架构差异</h2><p>在开始解决具体问题前，必须了解 Homebrew 在 Apple Silicon 上的核心设计差异：</p>
+<ul>
+<li>**Intel 架构 Mac (x86_64)**：默认安装路径为 <code>/usr/local</code>。该路径默认就在系统的 <code>$PATH</code> 搜索列表中，因此装完即可直接识别 <code>brew</code> 命令。</li>
+<li>**Apple Silicon Mac (arm64)**：默认安装路径被官方改为 <code>/opt/homebrew</code>。<ul>
+<li><strong>为什么改路径？</strong> 为了与 macOS 的 Rosetta 2 转译环境共存！如果继续装在 <code>/usr/local</code>，原生 arm64 编译的二进制文件与 x86_64 转译文件会发生严重冲突。</li>
+<li><strong>产生的影响</strong>：<code>/opt/homebrew/bin</code> <strong>默认不在</strong> macOS 的原始 <code>$PATH</code> 中，因此首次安装完成后必须显式将环境变量注入 Shell 配置，否则终端必然报错 <code>command not found: brew</code>。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intel Mac:        /usr/local/bin/brew       (已在默认 PATH)</span><br><span class="line">Apple Silicon:    /opt/homebrew/bin/brew    (需手动添加到 PATH)</span><br></pre></td></tr></table></figure>
 
-<p>以下是Brew在M1电脑中遇到的问题汇总</p>
-<h2 id="1-官方安装地址"><a href="#1-官方安装地址" class="headerlink" title="1. 官方安装地址"></a>1. 官方安装地址</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="1-Homebrew-安装与国内极速镜像"><a href="#1-Homebrew-安装与国内极速镜像" class="headerlink" title="1. Homebrew 安装与国内极速镜像"></a>1. Homebrew 安装与国内极速镜像</h2><h3 id="官方安装地址"><a href="#官方安装地址" class="headerlink" title="官方安装地址"></a>官方安装地址</h3><p>官方给出的标准安装命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://brew.sh/">传送门</a></p>
-<h2 id="2-brew安装源有问题"><a href="#2-brew安装源有问题" class="headerlink" title="2. brew安装源有问题"></a>2. brew安装源有问题</h2><p>无法找到wget之类的安装包，在安装的过程中，即使常见的软件都无法找到例如wget，报错信息如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Warning: No available formula with the name &quot;ca-certificates&quot;.</span><br><span class="line">==&gt; Searching for similarly named formulae...</span><br><span class="line">Error: No similarly named formulae found.</span><br><span class="line">==&gt; Searching for a previously deleted formula (in the last month)...</span><br><span class="line">Error: No previously deleted formula found.</span><br><span class="line">==&gt; Searching taps on GitHub...</span><br><span class="line">Running `brew update --preinstall`...</span><br><span class="line">Error: No formulae found in taps.</span><br><span class="line">fatal: Could not resolve HEAD to a revision</span><br><span class="line">Warning: No available formula with the name &quot;wget&quot;.</span><br><span class="line">==&gt; Searching for similarly named formulae...</span><br><span class="line">Error: No similarly named formulae found.</span><br><span class="line">==&gt; Searching for a previously deleted formula (in the last month)...</span><br><span class="line">Error: No previously deleted formula found.</span><br><span class="line">==&gt; Searching taps on GitHub...</span><br><span class="line">Error: No formulae found in taps.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>🔗 <a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew 官方网站</a></p>
+</blockquote>
+<h3 id="踩坑一：国内网络-443-超时与连接失败"><a href="#踩坑一：国内网络-443-超时与连接失败" class="headerlink" title="踩坑一：国内网络 443 超时与连接失败"></a>踩坑一：国内网络 443 超时与连接失败</h3><p>在没有系统级国际代理的环境下，执行上述脚本通常会遇到如下报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused</span><br></pre></td></tr></table></figure>
 
-<p>导致的原因可能是brew的源没有正确的安装好，需要重置。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update-reset</span><br><span class="line">brew install wget</span><br></pre></td></tr></table></figure>
+<h3 id="💡-极速解决方案：国内一键全自动安装脚本"><a href="#💡-极速解决方案：国内一键全自动安装脚本" class="headerlink" title="💡 极速解决方案：国内一键全自动安装脚本"></a>💡 极速解决方案：国内一键全自动安装脚本</h3><p>推荐使用国内开发者广泛维护、内置清华/中科大/阿里云镜像的自动化脚本，不仅免去 GitHub 网络困扰，还会自动提示配置好环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="3-安装后还是无法找到brew命令"><a href="#3-安装后还是无法找到brew命令" class="headerlink" title="3. 安装后还是无法找到brew命令"></a>3. 安装后还是无法找到brew命令</h2><p>安装成功以后无法找到brew命令，特别是使用了zshrc中同学，需要将brew的环境加入到zshrc的配置文件中。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//安装后找不到brew, 把这个添加到.zshrc中</span><br><span class="line">eval $(/opt/homebrew/bin/brew shellenv)</span><br></pre></td></tr></table></figure>
+<p><strong>运行过程</strong>：</p>
+<ol>
+<li>终端会弹出提示选择源：推荐输入 <code>1</code> 选择 <strong>中科大源</strong> 或 <code>2</code> 选择 <strong>清华大学源</strong>；</li>
+<li>脚本会自动检测系统是否安装了 Xcode Command Line Tools，若未安装会自动触发安装；</li>
+<li>全程自动跑完并提示配置环境变量，省时省力。</li>
+</ol>
+<hr>
+<h2 id="2-安装后无法找到-brew-命令-command-not-found"><a href="#2-安装后无法找到-brew-命令-command-not-found" class="headerlink" title="2. 安装后无法找到 brew 命令 (command not found)"></a>2. 安装后无法找到 brew 命令 (command not found)</h2><h3 id="踩坑二：安装成功但提示找不到命令"><a href="#踩坑二：安装成功但提示找不到命令" class="headerlink" title="踩坑二：安装成功但提示找不到命令"></a>踩坑二：安装成功但提示找不到命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zsh: command not found: brew</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-pod-install-提示Ruby方面的错误描述"><a href="#4-pod-install-提示Ruby方面的错误描述" class="headerlink" title="4. pod install 提示Ruby方面的错误描述"></a>4. pod install 提示Ruby方面的错误描述</h2><p>在M1电脑上使用cocoapod可能会出现ruby之类的错误，可以通过更改pod改回使用x86架构来解决该问题。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Update all pods</span><br><span class="line">Updating local specs repositories</span><br><span class="line">/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi/library.rb:275: [BUG] Bus Error at 0x0000000105158000</span><br><span class="line">ruby 2.6.8p205 (2021-07-07 revision 67951) [universal.arm64e-darwin21]</span><br></pre></td></tr></table></figure>
+<h3 id="💡-解决方案：将-opt-homebrew-注入环境变量"><a href="#💡-解决方案：将-opt-homebrew-注入环境变量" class="headerlink" title="💡 解决方案：将 /opt/homebrew 注入环境变量"></a>💡 解决方案：将 /opt/homebrew 注入环境变量</h3><p>正如前文所述，Apple Silicon 的默认路径是 <code>/opt/homebrew</code>。</p>
+<p>请直接在终端中复制并执行以下两条命令（自动写入当前用户的 <code>.zprofile</code> 并立即生效）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 将环境变量写入登录 shell 配置文件</span></span><br><span class="line">(<span class="built_in">echo</span>; <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27;</span>) &gt;&gt; ~/.zprofile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 让当前终端窗口立即生效</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(/opt/homebrew/bin/brew shellenv)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo arch -x86_64 gem install ffi</span><br><span class="line">arch -x86_64 pod install</span><br></pre></td></tr></table></figure>
+<p>执行后验证是否生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> brew</span><br><span class="line"><span class="comment"># 正确输出应为：/opt/homebrew/bin/brew</span></span><br><span class="line"></span><br><span class="line">brew --version</span><br><span class="line"><span class="comment"># 输出当前已安装的 Homebrew 版本号</span></span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://github.com/CocoaPods/CocoaPods/issues/10723">参考</a></p>
+<blockquote>
+<p><strong>小贴士</strong>：如果你使用的是 Bash 终端而非 macOS 默认的 Zsh，请将上面命令中的 <code>~/.zprofile</code> 替换为 <code>~/.bash_profile</code>。</p>
+</blockquote>
+<hr>
+<h2 id="3-brew-安装源损坏与软件包找不到-Formula-not-found"><a href="#3-brew-安装源损坏与软件包找不到-Formula-not-found" class="headerlink" title="3. brew 安装源损坏与软件包找不到 (Formula not found)"></a>3. brew 安装源损坏与软件包找不到 (Formula not found)</h2><h3 id="踩坑三：常见常用包都无法搜索或安装"><a href="#踩坑三：常见常用包都无法搜索或安装" class="headerlink" title="踩坑三：常见常用包都无法搜索或安装"></a>踩坑三：常见常用包都无法搜索或安装</h3><p>在使用 <code>brew install wget</code>、<code>ca-certificates</code> 等基础工具时，抛出如下错误：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Warning: No available formula with the name &quot;ca-certificates&quot;.</span><br><span class="line">==&gt; Searching for similarly named formulae...</span><br><span class="line">Error: No similarly named formulae found.</span><br><span class="line">==&gt; Searching taps on GitHub...</span><br><span class="line">Running `brew update --preinstall`...</span><br><span class="line">Error: No formulae found in taps.</span><br><span class="line">fatal: Could not resolve HEAD to a revision</span><br><span class="line">Warning: No available formula with the name &quot;wget&quot;.</span><br><span class="line">==&gt; Searching for similarly named formulae...</span><br><span class="line">Error: No similarly named formulae found.</span><br></pre></td></tr></table></figure>
+
+<h3 id="产生根因"><a href="#产生根因" class="headerlink" title="产生根因"></a>产生根因</h3><ol>
+<li>安装过程中 git clone 中途断连，导致本地 tap 仓库处于残缺或 <code>fatal: Could not resolve HEAD</code> 状态；</li>
+<li>Homebrew 4.x 默认采用了 API 检索模式（<code>HOMEBREW_INSTALL_FROM_API=1</code>），国内网络访问 GitHub 静态 API 出现阻断。</li>
+</ol>
+<h3 id="💡-解决方案：重置并切换国内-API-镜像源"><a href="#💡-解决方案：重置并切换国内-API-镜像源" class="headerlink" title="💡 解决方案：重置并切换国内 API 镜像源"></a>💡 解决方案：重置并切换国内 API 镜像源</h3><h4 id="步骤-1：重置仓库并强制恢复"><a href="#步骤-1：重置仓库并强制恢复" class="headerlink" title="步骤 1：重置仓库并强制恢复"></a>步骤 1：重置仓库并强制恢复</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重置 Homebrew 核心仓库至最新状态</span></span><br><span class="line">brew update-reset</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-2：配置国内-API-与-Bottle-镜像加速"><a href="#步骤-2：配置国内-API-与-Bottle-镜像加速" class="headerlink" title="步骤 2：配置国内 API 与 Bottle 镜像加速"></a>步骤 2：配置国内 API 与 Bottle 镜像加速</h4><p>将以下配置写入 <code>~/.zprofile</code>，实现全量走国内中科大 / 清华源镜像加速：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt; <span class="string">&#x27;EOF&#x27;</span> &gt;&gt; ~/.zprofile</span><br><span class="line"></span><br><span class="line"><span class="comment"># Homebrew 国内镜像加速 (中科大源)</span></span><br><span class="line"><span class="built_in">export</span> HOMEBREW_BREW_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/brew.git&quot;</span></span><br><span class="line"><span class="built_in">export</span> HOMEBREW_CORE_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;</span></span><br><span class="line"><span class="built_in">export</span> HOMEBREW_BOTTLE_DOMAIN=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-bottles&quot;</span></span><br><span class="line"><span class="built_in">export</span> HOMEBREW_API_DOMAIN=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-bottles/api&quot;</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="comment"># 立即刷新当前终端</span></span><br><span class="line"><span class="built_in">source</span> ~/.zprofile</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-3：再次尝试安装"><a href="#步骤-3：再次尝试安装" class="headerlink" title="步骤 3：再次尝试安装"></a>步骤 3：再次尝试安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install wget</span><br></pre></td></tr></table></figure>
+
+<p>此时即可飞速下载并完成安装。</p>
+<hr>
+<h2 id="4-pod-install-报错-Ruby-ffi-Bus-Error-与架构冲突"><a href="#4-pod-install-报错-Ruby-ffi-Bus-Error-与架构冲突" class="headerlink" title="4. pod install 报错 Ruby ffi Bus Error 与架构冲突"></a>4. pod install 报错 Ruby ffi Bus Error 与架构冲突</h2><h3 id="踩坑四：iOS-开发者使用-CocoaPods-发生崩溃"><a href="#踩坑四：iOS-开发者使用-CocoaPods-发生崩溃" class="headerlink" title="踩坑四：iOS 开发者使用 CocoaPods 发生崩溃"></a>踩坑四：iOS 开发者使用 CocoaPods 发生崩溃</h3><p>在 M1/M2/M3 电脑上执行 <code>pod install</code> 或 <code>gem install</code> 时，经常抛出 Ruby 底层内存总线错误：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Update all pods</span><br><span class="line">Updating local specs repositories</span><br><span class="line">/Library/Ruby/Gems/2.6.0/gems/ffi-1.15.5/lib/ffi/library.rb:275: [BUG] Bus Error at 0x0000000105158000</span><br><span class="line">ruby 2.6.8p205 (2021-07-07 revision 67951) [universal.arm64e-darwin21]</span><br><span class="line">...</span><br><span class="line">Abort trap: 6</span><br></pre></td></tr></table></figure>
+
+<h3 id="产生根因-1"><a href="#产生根因-1" class="headerlink" title="产生根因"></a>产生根因</h3><p>这是早期 macOS 系统自带的老旧 Ruby 2.6（以及系统预装的 ffi 动态链接库）在 arm64 指令集下的兼容性缺陷。</p>
+<h3 id="💡-终极推荐解法：通过-Homebrew-原生安装-CocoaPods（无痛推荐）"><a href="#💡-终极推荐解法：通过-Homebrew-原生安装-CocoaPods（无痛推荐）" class="headerlink" title="💡 终极推荐解法：通过 Homebrew 原生安装 CocoaPods（无痛推荐）"></a>💡 终极推荐解法：通过 Homebrew 原生安装 CocoaPods（无痛推荐）</h3><p>不要再折腾系统废弃的 System Ruby！现代 macOS 最稳妥、最高效的做法是直接通过 Homebrew 安装独立且原生支持 arm64 的 CocoaPods：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过 Homebrew 直接安装包含完整 arm64 独立环境的 CocoaPods</span></span><br><span class="line">brew install cocoapods</span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么推荐这个方案？</strong></p>
+<ul>
+<li>独立沙箱，完全不需要 <code>sudo</code>；</li>
+<li>100% 运行在 Apple Silicon 原生 arm64 模式下，速度比转译快 3 倍以上；</li>
+<li>彻底告别系统的 Ruby 版本冲突与权限地狱。</li>
+</ul>
+<hr>
+<h3 id="备用传统方案：Rosetta-2-x86-64-转译兼容模式"><a href="#备用传统方案：Rosetta-2-x86-64-转译兼容模式" class="headerlink" title="备用传统方案：Rosetta 2 x86_64 转译兼容模式"></a>备用传统方案：Rosetta 2 x86_64 转译兼容模式</h3><p>如果你因为团队老项目特殊插件必须依赖系统的 <code>gem</code>，可以使用 Rosetta 强制以 x86 模式运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装 Rosetta 2（若尚未安装）</span></span><br><span class="line">softwareupdate --install-rosetta --agree-to-license</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 强制使用 x86_64 架构重新编译安装 ffi</span></span><br><span class="line">sudo <span class="built_in">arch</span> -x86_64 gem install ffi</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 在工程目录下以 x86_64 架构执行 pod install</span></span><br><span class="line"><span class="built_in">arch</span> -x86_64 pod install</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ <strong>注意</strong>：使用 <code>arch -x86_64 pod install</code> 会导致某些带二进制 framework 的 pod 库只下载 x86_64 切片，后续在 Xcode 的 Apple Silicon 模拟器（arm64）上运行时可能会引发架构不匹配报错，因此**强烈建议优先使用原生 <code>brew install cocoapods</code>**。</p>
+</blockquote>
+<hr>
+<h2 id="5-彻底卸载与重置-Homebrew"><a href="#5-彻底卸载与重置-Homebrew" class="headerlink" title="5. 彻底卸载与重置 Homebrew"></a>5. 彻底卸载与重置 Homebrew</h2><p>如果你的本地环境已经被各种不同版本的软链接、权限报错或 Rosetta 混乱搞崩，最彻底的解决办法是“一键干净卸载并重新安装”。</p>
+<h3 id="官方完整卸载脚本"><a href="#官方完整卸载脚本" class="headerlink" title="官方完整卸载脚本"></a>官方完整卸载脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="国内快速卸载脚本（无需科学上网）"><a href="#国内快速卸载脚本（无需科学上网）" class="headerlink" title="国内快速卸载脚本（无需科学上网）"></a>国内快速卸载脚本（无需科学上网）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>卸载完成后，手动检查清理残留目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> -rf /opt/homebrew</span><br></pre></td></tr></table></figure>
+
+<p>清理干净后，重新参照本文 <strong>第 1 节与第 2 节</strong> 进行安装配置，5 分钟即可拥有一套清爽高效的原生 Homebrew 开发环境！</p>
+<hr>
+<h2 id="6-常用体检与诊断命令"><a href="#6-常用体检与诊断命令" class="headerlink" title="6. 常用体检与诊断命令"></a>6. 常用体检与诊断命令</h2><p>日常遇到任何异常，可以使用 Homebrew 自带的体检命令进行诊断：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自动诊断当前环境中的潜在冲突与问题，并给出修复建议</span></span><br><span class="line">brew doctor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 brew 配置详情（安装路径、源地址、系统版本）</span></span><br><span class="line">brew config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清理过期的历史缓存与旧版本安装包，释放磁盘空间</span></span><br><span class="line">brew cleanup -s</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Apple Silicon 带来的极致能效比给日常开发体验带来了巨大提升，但在环境迁移初期难免会遇到架构切换的“阵痛”。只要理清了 <code>/opt/homebrew</code> 路径隔离与 arm64 原生运行的机制，配合国内优质镜像源，无论是日常工具安装还是 iOS / Android / 后端开发环境搭建，都能如丝般顺滑。</p>
+<p>如果你在安装过程中遇到了其他冷门报错，欢迎在文末留言交流！</p>
 
     </div>
 
     
     
     
+<div class="google-adsense-container" style="margin: 36px 0 20px; padding: 18px 12px; background: rgba(248, 250, 252, 0.6); border: 1px dashed #cbd5e1; border-radius: 12px; text-align: center; box-sizing: border-box;">
+  <div style="font-size: 11px; color: #94a3b8; margin-bottom: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">
+    ADVERTISEMENT / 赞助商广告
+  </div>
+
+  <!-- Google AdSense 文章末尾自适应广告单元 -->
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-9602249344531494"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/brew/" rel="tag"># brew</a>
+              <a href="/tags/Homebrew/" rel="tag"># Homebrew</a>
+              <a href="/tags/Apple-Silicon/" rel="tag"># Apple Silicon</a>
+              <a href="/tags/M1/" rel="tag"># M1</a>
+              <a href="/tags/M2/" rel="tag"># M2</a>
+              <a href="/tags/M3/" rel="tag"># M3</a>
+              <a href="/tags/M4/" rel="tag"># M4</a>
+              <a href="/tags/CocoaPods/" rel="tag"># CocoaPods</a>
+              <a href="/tags/%E8%B8%A9%E5%9D%91%E6%B1%87%E6%80%BB/" rel="tag"># 踩坑汇总</a>
           </div>
 
         
@@ -305,8 +460,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/English/BrexitLaysAnEgg/" rel="prev" title="Brexit lays an egg">
-      <i class="fa fa-chevron-left"></i> Brexit lays an egg
+    <a href="/2022/05/25/C/%E6%8C%87%E9%92%88/" rel="prev" title="指针">
+      <i class="fa fa-chevron-left"></i> 指针
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -374,7 +529,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">1. 官方安装地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-brew%E5%AE%89%E8%A3%85%E6%BA%90%E6%9C%89%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">2. brew安装源有问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E5%90%8E%E8%BF%98%E6%98%AF%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0brew%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">3. 安装后还是无法找到brew命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-pod-install-%E6%8F%90%E7%A4%BARuby%E6%96%B9%E9%9D%A2%E7%9A%84%E9%94%99%E8%AF%AF%E6%8F%8F%E8%BF%B0"><span class="nav-number">4.</span> <span class="nav-text">4. pod install 提示Ruby方面的错误描述</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac-M1-M2-M3-M4-Apple-Silicon-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8-Homebrew-%E5%B8%B8%E8%A7%81%E8%B8%A9%E5%9D%91%E4%B8%8E%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%85%A8%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">Mac M1&#x2F;M2&#x2F;M3&#x2F;M4 (Apple Silicon) 安装与使用 Homebrew 常见踩坑与报错解决方案全汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%8C-30-%E7%A7%92%E5%BF%AB%E9%80%9F%E6%8E%92%E9%94%99%E7%B4%A2%E5%BC%95-TL-DR"><span class="nav-number">1.1.</span> <span class="nav-text">📌 30 秒快速排错索引 (TL;DR)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8D%8E-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%EF%BC%9AApple-Silicon-%E4%B8%8E-Intel-%E6%9E%B6%E6%9E%84%E5%B7%AE%E5%BC%82"><span class="nav-number">1.2.</span> <span class="nav-text">🍎 底层原理：Apple Silicon 与 Intel 架构差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Homebrew-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%9B%BD%E5%86%85%E6%9E%81%E9%80%9F%E9%95%9C%E5%83%8F"><span class="nav-number">1.3.</span> <span class="nav-text">1. Homebrew 安装与国内极速镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E5%9C%B0%E5%9D%80"><span class="nav-number">1.3.1.</span> <span class="nav-text">官方安装地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E4%B8%80%EF%BC%9A%E5%9B%BD%E5%86%85%E7%BD%91%E7%BB%9C-443-%E8%B6%85%E6%97%B6%E4%B8%8E%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">踩坑一：国内网络 443 超时与连接失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E6%9E%81%E9%80%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%9B%BD%E5%86%85%E4%B8%80%E9%94%AE%E5%85%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC"><span class="nav-number">1.3.3.</span> <span class="nav-text">💡 极速解决方案：国内一键全自动安装脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0-brew-%E5%91%BD%E4%BB%A4-command-not-found"><span class="nav-number">1.4.</span> <span class="nav-text">2. 安装后无法找到 brew 命令 (command not found)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E4%BA%8C%EF%BC%9A%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F%E4%BD%86%E6%8F%90%E7%A4%BA%E6%89%BE%E4%B8%8D%E5%88%B0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.1.</span> <span class="nav-text">踩坑二：安装成功但提示找不到命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%B0%86-opt-homebrew-%E6%B3%A8%E5%85%A5%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.4.2.</span> <span class="nav-text">💡 解决方案：将 &#x2F;opt&#x2F;homebrew 注入环境变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-brew-%E5%AE%89%E8%A3%85%E6%BA%90%E6%8D%9F%E5%9D%8F%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%89%BE%E4%B8%8D%E5%88%B0-Formula-not-found"><span class="nav-number">1.5.</span> <span class="nav-text">3. brew 安装源损坏与软件包找不到 (Formula not found)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E4%B8%89%EF%BC%9A%E5%B8%B8%E8%A7%81%E5%B8%B8%E7%94%A8%E5%8C%85%E9%83%BD%E6%97%A0%E6%B3%95%E6%90%9C%E7%B4%A2%E6%88%96%E5%AE%89%E8%A3%85"><span class="nav-number">1.5.1.</span> <span class="nav-text">踩坑三：常见常用包都无法搜索或安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E6%A0%B9%E5%9B%A0"><span class="nav-number">1.5.2.</span> <span class="nav-text">产生根因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E9%87%8D%E7%BD%AE%E5%B9%B6%E5%88%87%E6%8D%A2%E5%9B%BD%E5%86%85-API-%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">1.5.3.</span> <span class="nav-text">💡 解决方案：重置并切换国内 API 镜像源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E9%87%8D%E7%BD%AE%E4%BB%93%E5%BA%93%E5%B9%B6%E5%BC%BA%E5%88%B6%E6%81%A2%E5%A4%8D"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">步骤 1：重置仓库并强制恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85-API-%E4%B8%8E-Bottle-%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">步骤 2：配置国内 API 与 Bottle 镜像加速</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E5%86%8D%E6%AC%A1%E5%B0%9D%E8%AF%95%E5%AE%89%E8%A3%85"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">步骤 3：再次尝试安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-pod-install-%E6%8A%A5%E9%94%99-Ruby-ffi-Bus-Error-%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%86%B2%E7%AA%81"><span class="nav-number">1.6.</span> <span class="nav-text">4. pod install 报错 Ruby ffi Bus Error 与架构冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E5%9B%9B%EF%BC%9AiOS-%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%BF%E7%94%A8-CocoaPods-%E5%8F%91%E7%94%9F%E5%B4%A9%E6%BA%83"><span class="nav-number">1.6.1.</span> <span class="nav-text">踩坑四：iOS 开发者使用 CocoaPods 发生崩溃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E6%A0%B9%E5%9B%A0-1"><span class="nav-number">1.6.2.</span> <span class="nav-text">产生根因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%A1-%E7%BB%88%E6%9E%81%E6%8E%A8%E8%8D%90%E8%A7%A3%E6%B3%95%EF%BC%9A%E9%80%9A%E8%BF%87-Homebrew-%E5%8E%9F%E7%94%9F%E5%AE%89%E8%A3%85-CocoaPods%EF%BC%88%E6%97%A0%E7%97%9B%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">1.6.3.</span> <span class="nav-text">💡 终极推荐解法：通过 Homebrew 原生安装 CocoaPods（无痛推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E7%94%A8%E4%BC%A0%E7%BB%9F%E6%96%B9%E6%A1%88%EF%BC%9ARosetta-2-x86-64-%E8%BD%AC%E8%AF%91%E5%85%BC%E5%AE%B9%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.6.4.</span> <span class="nav-text">备用传统方案：Rosetta 2 x86_64 转译兼容模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%BD%BB%E5%BA%95%E5%8D%B8%E8%BD%BD%E4%B8%8E%E9%87%8D%E7%BD%AE-Homebrew"><span class="nav-number">1.7.</span> <span class="nav-text">5. 彻底卸载与重置 Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E5%AE%8C%E6%95%B4%E5%8D%B8%E8%BD%BD%E8%84%9A%E6%9C%AC"><span class="nav-number">1.7.1.</span> <span class="nav-text">官方完整卸载脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BD%E5%86%85%E5%BF%AB%E9%80%9F%E5%8D%B8%E8%BD%BD%E8%84%9A%E6%9C%AC%EF%BC%88%E6%97%A0%E9%9C%80%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89"><span class="nav-number">1.7.2.</span> <span class="nav-text">国内快速卸载脚本（无需科学上网）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%B8%B8%E7%94%A8%E4%BD%93%E6%A3%80%E4%B8%8E%E8%AF%8A%E6%96%AD%E5%91%BD%E4%BB%A4"><span class="nav-number">1.8.</span> <span class="nav-text">6. 常用体检与诊断命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.9.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -403,7 +558,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -441,7 +596,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

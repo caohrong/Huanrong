@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="/js/src/photoswipe.min.js?v="></script>
-<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -22,23 +20,23 @@
     var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content=".">
+  <meta name="description" content="以下是阅读Ray Wenderlich的笔记。原文链接 这个简单的例子，完美把很多的知识点都说到了。Swift 的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Magical Error Handling in Swift">
 <meta property="og:url" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content=".">
+<meta property="og:description" content="以下是阅读Ray Wenderlich的笔记。原文链接 这个简单的例子，完美把很多的知识点都说到了。Swift 的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/media/15295924164909/Spell.create.png">
-<meta property="og:image" content="https://blog.caohr.com/media/15295924164909/errorhandling-3-650x288.png">
-<meta property="og:image" content="https://blog.caohr.com/media/15295924164909/Expand-Debug-Area-1.gif">
-<meta property="og:image" content="https://blog.caohr.com/media/15295924164909/errorhandling-4-650x248.png">
+<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Spell.create.png">
+<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/errorhandling-3-650x288.png">
+<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Expand-Debug-Area-1.gif">
+<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/errorhandling-4-650x248.png">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-03T10:31:09.622Z">
+<meta property="article:modified_time" content="2026-09-05T23:52:08.939Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Ray Wenderlich">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/media/15295924164909/Spell.create.png">
+<meta name="twitter:image" content="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/media/15295924164909/Spell.create.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/05/25/Swift/Magical%20Error%20Handling%20in%20Swift/">
 
@@ -52,6 +50,9 @@
     lang   : 'en'
   };
 </script>
+
+<meta name="google-adsense-account" content="ca-pub-9602249344531494">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9602249344531494" crossorigin="anonymous"></script>
 
   <title>Magical Error Handling in Swift | HR's Blog</title>
   
@@ -233,7 +234,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-11-03 18:31:09" itemprop="dateModified" datetime="2023-11-03T18:31:09+08:00">2023-11-03</time>
+                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,6 +261,7 @@
   </span>
   
   
+            <div class="post-description">以下是阅读Ray Wenderlich的笔记。原文链接 这个简单的例子，完美把很多的知识点都说到了。Swift 的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。</div>
 
         </div>
       </header>
@@ -270,10 +272,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>.</p>
-<span id="more"></span>
-
-<p>以下是阅读Ray Wenderlich的笔记。<a target="_blank" rel="noopener" href="https://www.raywenderlich.com/130197/magical-error-handling-swift">原文链接</a><br>这个简单的例子，完美把<code>Swift</code>很多的知识点都说到了。Swift <code>guard</code>的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。</p>
+        <p>以下是阅读Ray Wenderlich的笔记。<a target="_blank" rel="noopener" href="https://www.raywenderlich.com/130197/magical-error-handling-swift">原文链接</a><br>这个简单的例子，完美把<code>Swift</code>很多的知识点都说到了。Swift <code>guard</code>的引入可以让我们不再写类似金字塔的错误处理逻辑，更方便调试。</p>
 <p>Error handling in Swift has come a long way since the patterns in Swift 1 that were inspired by Objective-C. Major improvements in Swift 2 made the experience of handling unexpected states and conditions in your application more straightforward. These benefits continue in Swift 3, but there are no significant updates to error handling made in the latest version of the language. (Phew!)</p>
 <p>Just like other common programming languages, preferred error handling techniques in Swift can vary, depending upon the type of error encountered, and the overall architecture of your app.</p>
 <p>This tutorial will take you through a magical example involving wizards, witches, bats and toads to illustrate how best to deal with common failure scenarios. You’ll also look at how to upgrade error handling from projects written in earlier versions of the language and, finally, gaze into your crystal ball at the possible future of error handling in Swift!</p>
@@ -305,7 +304,7 @@
 
 <p>The above initializer tries to create a spell using the magic words provided, but if the words are not magical you return <code>nil</code> instead.</p>
 <p>Inspect the creation of the spells at the very bottom of this tutorial to see this behavior in action:</p>
-<p><img src="/media/15295924164909/Spell.create.png" alt="Spell.create"></p>
+<p><img src="media/15295924164909/Spell.create.png" alt="Spell.create"></p>
 <p>While <code>first</code> successfully creates a spell using the magic words <code>&quot;abracadabra&quot;</code>, <code>&quot;ascendio&quot;</code> doesn’t have the same effect, and the return value of <code>second</code> is <code>nil</code>. (Hey, witches can’t win <em>all</em> the time).</p>
 <p>Factory methods are an old-school programming style. There are better ways to achieve the same thing in Swift. You’ll update the <code>Spell</code> extension to use a failable initializer instead of a factory method.</p>
 <p>Delete <code>create(_words:)</code> and replace it with the following:<br><code>Swift</code>有类似的解决方案<code>failable initializer</code></p>
@@ -349,7 +348,7 @@
 <h3 id="Refactoring-to-Use-Swift-Errors"><a href="#Refactoring-to-Use-Swift-Errors" class="headerlink" title="Refactoring to Use Swift Errors"></a>Refactoring to Use Swift Errors</h3><p><em>“Swift provides first-class support for throwing, catching, propagating, and manipulating<br>recoverable errors at runtime.”</em></p>
 <p>– <a target="_blank" rel="noopener" href="https://itunes.apple.com/us/book/swift-programming-language/id881256329?mt=11">The Swift Programming Language (Swift 3)</a></p>
 <p>Not to be confused with the Temple of Doom, the <em>Pyramid of Doom</em> is an anti-pattern found in Swift and other languages that can require many levels of nested statements for control flow. It can be seen in <code>turnFamiliarIntoToad()</code> above – note the <em>six</em> closing parentheses required to close out all the statements, trailing down on a diagonal. Reading code nested in this way requires excessive cognitive effort.</p>
-<p><img src="/media/15295924164909/errorhandling-3-650x288.png" alt="Pyramid of Doom"></p>
+<p><img src="media/15295924164909/errorhandling-3-650x288.png" alt="Pyramid of Doom"></p>
 <p>Guard statements, as you’ve seen earlier, and <a target="_blank" rel="noopener" href="http://nshipster.com/swift-1.2/">multiple simultaneous optional bindings</a> can assist with the cleanup of pyramid-like code. The use of a <code>do-catch</code> mechanism, however, eliminates the problem altogether by decoupling control flow from error state handling.</p>
 <p><code>do-catch</code> mechanisms are often found near the following, related, keywords:</p>
 <ul>
@@ -366,8 +365,8 @@
 
 <p>Note two things about <code>ChangoSpellError</code>:</p>
 <ul>
-<li>It conforms to the <code>Error</code> protocol, a requirement for defining errors in Swift.&#x2F;&#x2F;继承Error</li>
-<li>In the <code>spellFailed</code> case, you can handily specify a custom reason for the spell failure with an associated value.&#x2F;&#x2F;<code>spellFailed</code>可以传递原因</li>
+<li>It conforms to the <code>Error</code> protocol, a requirement for defining errors in Swift.//继承Error</li>
+<li>In the <code>spellFailed</code> case, you can handily specify a custom reason for the spell failure with an associated value.//<code>spellFailed</code>可以传递原因</li>
 </ul>
 <p><em>Note:</em> The <code>ChangoSpellError</code> is named after the magical utterance of <em>“Presto Chango!”</em> – frequently used by a <code>Witch</code> when attempting to change a familiar into a <code>Toad</code>).</p>
 <p>OK, ready to make some magic, my pretties? Excellent. Add <code>throws</code> to the method signature, to indicate that errors may occur as a result of calling this method:</p>
@@ -448,7 +447,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exampleOne()</span><br></pre></td></tr></table></figure>
 
 <p>Reveal the Debug console by clicking the up arrow icon in the bottom left hand corner of the Xcode workspace so you can see the output from your playground:</p>
-<p><img src="/media/15295924164909/Expand-Debug-Area-1.gif" alt="Expand Debug Area"></p>
+<p><img src="media/15295924164909/Expand-Debug-Area-1.gif" alt="Expand Debug Area"></p>
 <h3 id="Catching-Errors"><a href="#Catching-Errors" class="headerlink" title="Catching Errors"></a>Catching Errors</h3><p>Below is a brief discussion of each of language feature used in the above code snippet.</p>
 <p><em>catch</em></p>
 <p>You can use pattern matching in Swift to handle specific errors or group themes of error types together.</p>
@@ -504,7 +503,7 @@
 <p><em>“…we believe that we can extend our current model to support untyped propagation for universal errors. Doing this well, and in particular doing it without completely sacrificing code size and performance, will take a significant amount of planning and insight.”</em></p>
 <p>– from <a target="_blank" rel="noopener" href="http://apple-swift.readthedocs.org/en/latest/ErrorHandling.html">Swift 2.x Error Handling</a></p>
 <p>Whether you enjoy the idea of a major error handling change in a future version of Swift, or are happy with where things are today, it’s nice to know that clean error handling is being actively discussed and improved as the language develops.</p>
-<p><img src="/media/15295924164909/errorhandling-4-650x248.png" alt="Excellent"></p>
+<p><img src="media/15295924164909/errorhandling-4-650x248.png" alt="Excellent"></p>
 <h2 id="Where-To-Go-From-Here"><a href="#Where-To-Go-From-Here" class="headerlink" title="Where To Go From Here?"></a>Where To Go From Here?</h2><p>You can download the <a target="_blank" rel="noopener" href="https://koenig-media.raywenderlich.com/uploads/2016/07/Magical-Error-Handling-In-Swift-Swift-3-Secondary-Update.zip">finished set of playgrounds here</a> for this tutorial.</p>
 <p>For further reading, I recommend the following articles, some of which have already been referenced throughout this tutorial:</p>
 <ul>
@@ -521,6 +520,22 @@
     
     
     
+<div class="google-adsense-container" style="margin: 36px 0 20px; padding: 18px 12px; background: rgba(248, 250, 252, 0.6); border: 1px dashed #cbd5e1; border-radius: 12px; text-align: center; box-sizing: border-box;">
+  <div style="font-size: 11px; color: #94a3b8; margin-bottom: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">
+    ADVERTISEMENT / 赞助商广告
+  </div>
+
+  <!-- Google AdSense 文章末尾自适应广告单元 -->
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-9602249344531494"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -533,12 +548,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Mutating/" rel="prev" title="Mutating">
-      <i class="fa fa-chevron-left"></i> Mutating
+    <a href="/2022/05/25/Swift/StackView/" rel="prev" title="UIStackView Tutorial Introducing Stack Views">
+      <i class="fa fa-chevron-left"></i> UIStackView Tutorial Introducing Stack Views
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/JSON/" rel="next" title="JSON">
-      JSON <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/Swift%20Tip%20Notifications/" rel="next" title="Swift Tip: Notifications">
+      Swift Tip: Notifications <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -634,7 +649,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -672,7 +687,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

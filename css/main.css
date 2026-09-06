@@ -1192,6 +1192,13 @@ pre .javascript .function {
   margin: 0 auto;
   max-width: 120px;
   padding: 2px;
+  border-radius: 50%;
+}
+.site-author-image {
+  transition: transform 1s ease-out;
+}
+.site-author-image:hover {
+  transform: rotateZ(360deg);
 }
 .site-author-name {
   color: var(--text-color);
@@ -1219,7 +1226,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #6ad7ff;
+  background: #9d38ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2503,4 +2510,147 @@ mjx-container + br {
 }
 .links-of-blogroll-item {
   padding: 0;
+}
+:root {
+  --body-bg-color: #fff !important;
+}
+body {
+  background: #fff !important;
+}
+.sidebar {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.content-wrap {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 10px 24px 40px !important;
+}
+.posts-expand .post-block {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid #edf2f7 !important;
+  border-radius: 0 !important;
+  padding: 24px 0 36px 0 !important;
+  margin-bottom: 24px !important;
+  transition: transform 0.2s ease-in-out;
+}
+.posts-expand .post-block:last-child {
+  border-bottom: none !important;
+}
+.post-eof {
+  display: none !important;
+}
+.header-inner,
+.sidebar-inner {
+  background: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.04) !important;
+  border: 1px solid #edf2f7 !important;
+  overflow: hidden;
+}
+.menu .menu-item a {
+  font-size: 15.5px !important;
+  font-weight: 500 !important;
+  padding: 9px 18px !important;
+  border-radius: 8px !important;
+  color: #334155 !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.menu .menu-item a:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  transform: translateX(3px) !important;
+}
+.menu .menu-item a i,
+.menu .menu-item a .fa {
+  font-size: 16px !important;
+  margin-right: 10px !important;
+  width: 18px !important;
+  text-align: center !important;
+}
+.site-author-image {
+  border-radius: 50% !important;
+  border: 2px solid #f7fafc !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+.site-author-image:hover {
+  transform: rotate(360deg) scale(1.05) !important;
+}
+.posts-expand .post-title-link {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: #2d3748;
+  transition: color 0.2s ease-in-out;
+}
+.posts-expand .post-title-link:hover {
+  color: #fc6423;
+}
+.post-meta {
+  margin: 6px 0 16px 0 !important;
+  color: #a0aec0;
+  font-size: 13px;
+}
+.post-body p {
+  color: #4a5568;
+  font-size: 15.5px;
+  line-height: 1.85;
+  letter-spacing: 0.15px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+.post-button {
+  display: none !important;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg-color: #1a1d24 !important;
+  }
+  body {
+    background: #1a1d24 !important;
+  }
+  .sidebar {
+    background: transparent !important;
+  }
+  .content-wrap {
+    background: transparent !important;
+  }
+  .posts-expand .post-block {
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  }
+  .posts-expand .post-title-link {
+    color: #e2e8f0;
+  }
+  .posts-expand .post-title-link:hover {
+    color: #ff8547;
+  }
+  .post-meta {
+    color: #718096;
+  }
+  .header-inner,
+  .sidebar-inner {
+    background: #21252b !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  }
+  .menu .menu-item a {
+    color: #cbd5e1 !important;
+  }
+  .menu .menu-item a:hover {
+    background: rgba(255,255,255,0.08) !important;
+    color: #fff !important;
+  }
+  .site-author-image {
+    border-color: #2c313a !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+  }
+  .post-body p {
+    color: #a0aec0;
+  }
 }

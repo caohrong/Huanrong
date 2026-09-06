@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="/js/src/photoswipe.min.js?v="></script>
-<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -22,16 +20,16 @@
     var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content=".">
+  <meta name="description" content="原文地址 因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。 As a budding computer scientist, you no doubt have heard of design pat...">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Factory  Pattern">
 <meta property="og:url" content="https://blog.caohr.com/2022/05/25/Swift/Factory%20%20Pattern/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content=".">
+<meta property="og:description" content="原文地址 因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。 As a budding computer scientist, you no doubt have heard of design pat...">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://o95nbyrid.bkt.clouddn.com/15300945892886.png">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-03T10:30:48.566Z">
+<meta property="article:modified_time" content="2026-09-05T23:52:08.936Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Design Patterns">
 <meta name="twitter:card" content="summary">
@@ -49,6 +47,9 @@
     lang   : 'en'
   };
 </script>
+
+<meta name="google-adsense-account" content="ca-pub-9602249344531494">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9602249344531494" crossorigin="anonymous"></script>
 
   <title>Factory  Pattern | HR's Blog</title>
   
@@ -230,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-11-03 18:30:48" itemprop="dateModified" datetime="2023-11-03T18:30:48+08:00">2023-11-03</time>
+                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,6 +258,7 @@
   </span>
   
   
+            <div class="post-description">原文地址 因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。 As a budding computer scientist, you no doubt have heard of design pat...</div>
 
         </div>
       </header>
@@ -267,10 +269,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>.</p>
-<span id="more"></span>
-
-<p><a target="_blank" rel="noopener" href="https://medium.com/swift-programming/design-patterns-creational-patterns-factory-pattern-in-swift-d049af54235b">原文地址</a><br>因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。</p>
+        <p><a target="_blank" rel="noopener" href="https://medium.com/swift-programming/design-patterns-creational-patterns-factory-pattern-in-swift-d049af54235b">原文地址</a><br>因为很多第三方的框架基本上都运用了工厂模式，该文利用猎头来归类目标客户信息，通过联系人基本类来批量生成不同职位的对象。</p>
 <h1 id="Design-Patterns-—-Creational-Patterns-—-Factory-Pattern-in-Swift"><a href="#Design-Patterns-—-Creational-Patterns-—-Factory-Pattern-in-Swift" class="headerlink" title="Design Patterns — Creational Patterns — Factory Pattern in Swift"></a>Design Patterns — Creational Patterns — Factory Pattern in Swift</h1><p>As a budding computer scientist, you no doubt have heard of design patterns in your classes and learning paths. Design patterns are blueprints which outline the best practices that create re-usable object oriented code, solving common software problems. To avoid giving you a long history lesson, I will describe the origin of design patterns as dating back to the 1970s but gaining wide acceptance with the release of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns: Elements of Reusable Object-Oriented Software</a>, published in 1994 and authored by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, collectively referred to as the **Gang of Four **(GoF). The book was wildly successful due to its description of 23 classic software design patterns. 【Design patterns are extremely useful for helping you break down complex systems into components that very often】, fit into one of the design patterns described by the <em>GoF</em>. Because I know, as developers, we love to learn and sometimes need quick references to do our jobs better, I’m dedicating time to write a series of articles, of which this is the first, to show how to use each GoF design pattern in Swift.</p>
 <p>It’s common to group the design patterns we will cover into several related categories: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Software_design_pattern">creational patterns, structural patterns, and behavioral patterns</a>. For the remainder of this article, we are going to focus on the <em>Creational patterns</em> and cover our first pattern: the <em>Factory</em> pattern.</p>
 <h4 id="Creational-Pattern-Factory-Pattern"><a href="#Creational-Pattern-Factory-Pattern" class="headerlink" title="Creational Pattern: Factory Pattern"></a>Creational Pattern: Factory Pattern</h4><p>创造型模式都是关于如何消除创建对象所涉及的复杂性的方法。 * factory *模式是封装创建对象的实现细节的一种方式，它遵循公共的基类或接口。 * factory *模式允许接收创建对象的客户端通过公共接口使用对象返回，而不关心实际创建的具体对象的类型。Creational patterns are all about ways to remove the complexities involved with creating objects. The <em>factory</em> pattern is a way to encapsulate the implementation details of creating objects, which adheres to a common base class or interface. The <em>factory</em> pattern allows the client that receives the created object to use the object return via the common interface without caring about the type of concrete object that is actually created.</p>
@@ -282,7 +281,7 @@
 
 <p>Let’s also add a struct for the <em>Contact</em> object.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Contact</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">        <span class="keyword">var</span> email: <span class="type">String</span></span><br><span class="line">        <span class="keyword">var</span> job: <span class="type">Job</span></span><br><span class="line">        <span class="keyword">var</span> desiredSal: <span class="type">Double</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">enum</span> <span class="title class_">Job</span> &#123;</span><br><span class="line">                <span class="keyword">case</span> iOS</span><br><span class="line">                <span class="keyword">case</span> <span class="type">Android</span></span><br><span class="line">                <span class="keyword">case</span> <span class="type">Web</span></span><br><span class="line">                <span class="keyword">case</span> <span class="type">QA</span></span><br><span class="line">                <span class="keyword">case</span> <span class="type">Product_Owner</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Next, we will create several template objects that adhere to the <em>JobContacterProtocol</em>. We need templates to send to mobile developers, web developers, QA&#x2F; Testing, and product owners. We want to hide the details of these objects from clients and only expose the interface for use. What makes this pattern really useful is that each class is in charge of its implementation and can do anything as long as it adheres to the protocol. It can be used in a generic way by a client that only knows about the protocol.</p>
+<p>Next, we will create several template objects that adhere to the <em>JobContacterProtocol</em>. We need templates to send to mobile developers, web developers, QA/ Testing, and product owners. We want to hide the details of these objects from clients and only expose the interface for use. What makes this pattern really useful is that each class is in charge of its implementation and can do anything as long as it adheres to the protocol. It can be used in a generic way by a client that only knows about the protocol.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">iOSDeveloperJobSeeker</span>: <span class="title class_">JobContactProtocol</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(<span class="params">contact</span>: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact <span class="operator">=</span> contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">func</span> <span class="title function_">sendRequestResumeEmail</span>()-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Dear <span class="subst">\(contact.name)</span>, this is the best time to be an iOS developer! Send me you&#x27;re resume today! I have job opportunities that pay <span class="subst">\(contact.desiredSal)</span>.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">AndroidDeveloperJobSeeker</span>: <span class="title class_">JobContactProtocol</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(<span class="params">contact</span>: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact <span class="operator">=</span> contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">func</span> <span class="title function_">sendRequestResumeEmail</span>()-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Dear <span class="subst">\(contact.name)</span>, this is as decent time to be an Android developer! Send me you&#x27;re resume today! I have job opportunities that pay close to the <span class="subst">\(contact.desiredSal)</span> you are looking for&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">WebDeveloperJobSeeker</span>: <span class="title class_">JobContactProtocol</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(<span class="params">contact</span>: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact <span class="operator">=</span> contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">func</span> <span class="title function_">sendRequestResumeEmail</span>()-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Dear <span class="subst">\(contact.name)</span>, Send me you&#x27;re resume today! I have job opportunities for you.&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">QADeveloperJobSeeker</span>: <span class="title class_">JobContactProtocol</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(<span class="params">contact</span>: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact <span class="operator">=</span> contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">func</span> <span class="title function_">sendRequestResumeEmail</span>()-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Dear <span class="subst">\(contact.name)</span>, The market is tough but the code is still buggy!  Good news for you because I know the best companies for buggy code and they need you!&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ProductOwnerDeveloperJobSeeker</span>: <span class="title class_">JobContactProtocol</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> contact: <span class="type">Contact</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">init</span>(<span class="params">contact</span>: <span class="type">Contact</span>)&#123;</span><br><span class="line">                <span class="keyword">self</span>.contact <span class="operator">=</span> contact</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">func</span> <span class="title function_">sendRequestResumeEmail</span>()-&gt;<span class="type">String</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Dear <span class="subst">\(contact.name)</span>, Times are still good to be in development.  Maybe you should consider learning to code or going back to code. If we can cut your desired salary of <span class="subst">\(contact.desiredSal)</span> in half, I should be able to place you as a contract to hire. Send me your resume!&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Our next step is to create the actual factory that our client will use to get a concrete object that adheres to our protocol. The factory object in our case has just one method to return the job seeker object that adheres to the <em>JobContacterProtocol</em> based on a <em>contact</em> object that is passed in as a parameter to the function.</p>
@@ -302,6 +301,22 @@
     
     
     
+<div class="google-adsense-container" style="margin: 36px 0 20px; padding: 18px 12px; background: rgba(248, 250, 252, 0.6); border: 1px dashed #cbd5e1; border-radius: 12px; text-align: center; box-sizing: border-box;">
+  <div style="font-size: 11px; color: #94a3b8; margin-bottom: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">
+    ADVERTISEMENT / 赞助商广告
+  </div>
+
+  <!-- Google AdSense 文章末尾自适应广告单元 -->
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-9602249344531494"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -314,12 +329,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/" rel="prev" title="Introducing Protocol-Oriented Programming in Swift 3">
-      <i class="fa fa-chevron-left"></i> Introducing Protocol-Oriented Programming in Swift 3
+    <a href="/2022/05/25/Swift/JSON/" rel="prev" title="JSON">
+      <i class="fa fa-chevron-left"></i> JSON
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Defer/" rel="next" title="Defer">
-      Defer <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/Access%20Control/" rel="next" title="Access Control">
+      Access Control <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -415,7 +430,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -453,7 +468,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

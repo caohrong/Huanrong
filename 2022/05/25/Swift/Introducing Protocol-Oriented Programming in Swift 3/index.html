@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="/js/src/photoswipe.min.js?v="></script>
-<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -22,21 +20,21 @@
     var CONFIG = {"hostname":"blog.caohr.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content=".">
+  <meta name="description" content="Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。 Swift中基本具备了的特性。允许继承、扩展等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introducing Protocol-Oriented Programming in Swift 3">
 <meta property="og:url" content="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/index.html">
 <meta property="og:site_name" content="HR&#39;s Blog">
-<meta property="og:description" content=".">
+<meta property="og:description" content="Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。 Swift中基本具备了的特性。允许继承、扩展等。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.caohr.com/media/15295785730512/protocols-extend-480x280.png">
-<meta property="og:image" content="https://blog.caohr.com/media/15295785730512/secrets-480x178.png">
+<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/protocols-extend-480x280.png">
+<meta property="og:image" content="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/secrets-480x178.png">
 <meta property="article:published_time" content="2022-05-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-03T10:30:57.427Z">
+<meta property="article:modified_time" content="2026-09-05T23:52:08.937Z">
 <meta property="article:author" content="HR">
 <meta property="article:tag" content="Ray Wenderlich">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.caohr.com/media/15295785730512/protocols-extend-480x280.png">
+<meta name="twitter:image" content="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/media/15295785730512/protocols-extend-480x280.png">
 
 <link rel="canonical" href="https://blog.caohr.com/2022/05/25/Swift/Introducing%20Protocol-Oriented%20Programming%20in%20Swift%203/">
 
@@ -50,6 +48,9 @@
     lang   : 'en'
   };
 </script>
+
+<meta name="google-adsense-account" content="ca-pub-9602249344531494">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9602249344531494" crossorigin="anonymous"></script>
 
   <title>Introducing Protocol-Oriented Programming in Swift 3 | HR's Blog</title>
   
@@ -231,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-11-03 18:30:57" itemprop="dateModified" datetime="2023-11-03T18:30:57+08:00">2023-11-03</time>
+                <time title="Modified: 2026-09-06 07:52:08" itemprop="dateModified" datetime="2026-09-06T07:52:08+08:00">2026-09-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -258,6 +259,7 @@
   </span>
   
   
+            <div class="post-description">Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。 Swift中基本具备了的特性。允许继承、扩展等。</div>
 
         </div>
       </header>
@@ -268,10 +270,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>.</p>
-<span id="more"></span>
-
-<p>Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。<br>Swift中<code>Protocol</code>基本具备了<code>calss</code>的特性。允许继承、扩展等。<a target="_blank" rel="noopener" href="https://www.raywenderlich.com/148448/introducing-protocol-oriented-programming">原文链接</a></p>
+        <p>Ray Wenderlich原文加笔记，该文讲述了Swift协议的继承，协议的默认实现，默认方法的重写，协议的扩展等新的属性。<br>Swift中<code>Protocol</code>基本具备了<code>calss</code>的特性。允许继承、扩展等。<a target="_blank" rel="noopener" href="https://www.raywenderlich.com/148448/introducing-protocol-oriented-programming">原文链接</a></p>
 <p>Protocol-Oriented Programming will help you fly!</p>
 <p><em>Update Note:</em> This tutorial has been updated to Swift 3.0 by Niv Yahel. The original tutorial was written by <a target="_blank" rel="noopener" href="https://www.raywenderlich.com/u/kerber">Erik Kerber</a>.</p>
 <p>Imagine you’re developing a racing game. You can drive a car, ride a motorcycle, or even fly a plane. A common approach to creating this type of application is by using <a target="_blank" rel="noopener" href="https://www.raywenderlich.com/81952/intro-object-oriented-design-swift-part-1">object oriented design</a>, encapsulating all of the logic inside of an object that gets inherited to all of those that share similarity.</p>
@@ -302,7 +301,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extension</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">  <span class="comment">// Flyable birds can fly!</span></span><br><span class="line">  <span class="keyword">var</span> canFly: <span class="type">Bool</span> &#123; <span class="keyword">return</span> <span class="keyword">self</span> <span class="keyword">is</span> <span class="type">Flyable</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>This defines an extension on <code>Bird</code> that sets the default behavior for <code>canFly</code> to return <code>true</code> whenever the type is also <code>Flyable</code>. In other words, any <code>Flyable</code> bird no longer needs to explicitly declare so!</p>
-<p><img src="/media/15295785730512/protocols-extend-480x280.png" alt="protocols-extend"></p>
+<p><img src="media/15295785730512/protocols-extend-480x280.png" alt="protocols-extend"></p>
 <p>Delete the <code>let canFly = ...</code> from <code>FlappyBird</code>, <code>SwiftBird</code> and <code>Penguin</code> struct declarations. You’ll see that the playground successfully builds since the protocol extension now handles that requirement for you.</p>
 <h2 id="Why-Not-Base-Classes"><a href="#Why-Not-Base-Classes" class="headerlink" title="Why Not Base Classes?"></a>Why Not Base Classes?</h2><p>Protocol extensions and default implementations may seem similar to using a base class or even <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Abstract_type">abstract classes</a> in other languages, but they offer a few key advantages in Swift:</p>
 <ul>
@@ -342,7 +341,7 @@
 
 
 <p>This should look pretty straightforward, and you might even be able to guess the answer that is printed. What might be surprising are the types involved. <code>slice</code>, for example, is not an <code>Array</code> of integers but an <code>ArraySlice&lt;Int&gt;</code>. This special <em>wrapper type</em> acts as a view into the original array and avoids costly memory allocations that can quickly add up. Similarly, <code>reversedSlice</code> is actually a <code>ReversedRandomAccessCollection&lt;ArraySlice&lt;Int&gt;&gt;</code> which is again just a wrapper type view into the original array.</p>
-<p><img src="/media/15295785730512/secrets-480x178.png" alt="secrets"></p>
+<p><img src="media/15295785730512/secrets-480x178.png" alt="secrets"></p>
 <p>Fortunately, the geniuses developing the standard library defined the <code>map</code> method as an extension to the <code>Sequence</code> protocol and all of the collection wrappers (of which there are dozens) to conform to this protocol. This makes it possible to call map on <code>Array</code> just as easily as it is <code>ReversedRandomAccessCollection</code>and not notice the difference. You will borrow this important design pattern shortly.</p>
 <h2 id="Off-to-the-Races"><a href="#Off-to-the-Races" class="headerlink" title="Off to the Races"></a>Off to the Races</h2><p>So far you defined several <code>Bird</code> conforming types. Now add something totally different to the end of your playground.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Motorcycle</span> &#123;</span><br><span class="line">      <span class="keyword">init</span>(<span class="params">name</span>: <span class="type">String</span>) &#123;</span><br><span class="line">            <span class="keyword">self</span>.name <span class="operator">=</span> name</span><br><span class="line">            speed <span class="operator">=</span> <span class="number">200</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">var</span> name: <span class="type">String</span></span><br><span class="line">      <span class="keyword">var</span> speed: <span class="type">Double</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -389,7 +388,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protocol</span> <span class="title class_">Score</span>: <span class="title class_">Equatable</span>, <span class="title class_">Comparable</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> value: <span class="type">Int</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">RacingScore</span>: <span class="title class_">Score</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> value: <span class="type">Int</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">static</span> <span class="keyword">func</span> <span class="title function_">==</span>(<span class="params">lhs</span>: <span class="type">RacingScore</span>, <span class="params">rhs</span>: <span class="type">RacingScore</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> lhs.value <span class="operator">==</span> rhs.value</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">      <span class="keyword">static</span> <span class="keyword">func</span>  <span class="title function_">Bool</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> lhs.value</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>You just encapsulated all of the logic for <code>RacingScore</code> in one place. Now you can compare scores, and, with the magic of protocol extension default implementations, even use operators such as greater-than-or-equal-to that you never explicitly defined.</p>
-<p>RacingScore(value: 150) &gt;&#x3D; RacingScore(value: 130)  &#x2F;&#x2F; true</p>
+<p>RacingScore(value: 150) &gt;= RacingScore(value: 130)  // true</p>
 <h2 id="Where-To-Go-From-Here"><a href="#Where-To-Go-From-Here" class="headerlink" title="Where To Go From Here?"></a>Where To Go From Here?</h2><p>You can download the complete playground with all the code in this tutorial<br><a target="_blank" rel="noopener" href="https://koenig-media.raywenderlich.com/uploads/2016/11/SwiftProtocols.playground-1.zip">here</a>.</p>
 <p>You’ve seen the power of protocol-oriented programming by creating your own simple protocols and extending them using protocol extensions. With default implementations, you can give existing protocols common and automatic behavior, much like a base class but better since it can apply to structs and enums too.</p>
 <p>In addition, protocol extensions can not only be used to extend your own protocols, but can extend and provide default behavior to protocols in the Swift standard library, Cocoa, Cocoa Touch, or any third party library.</p>
@@ -404,6 +403,22 @@
     
     
     
+<div class="google-adsense-container" style="margin: 36px 0 20px; padding: 18px 12px; background: rgba(248, 250, 252, 0.6); border: 1px dashed #cbd5e1; border-radius: 12px; text-align: center; box-sizing: border-box;">
+  <div style="font-size: 11px; color: #94a3b8; margin-bottom: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;">
+    ADVERTISEMENT / 赞助商广告
+  </div>
+
+  <!-- Google AdSense 文章末尾自适应广告单元 -->
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-9602249344531494"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -416,12 +431,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/JSON/" rel="prev" title="JSON">
-      <i class="fa fa-chevron-left"></i> JSON
+    <a href="/2022/05/25/Swift/Mutating/" rel="prev" title="Mutating">
+      <i class="fa fa-chevron-left"></i> Mutating
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/Swift/Factory%20%20Pattern/" rel="next" title="Factory  Pattern">
-      Factory  Pattern <i class="fa fa-chevron-right"></i>
+    <a href="/2022/05/25/Swift/JSON/" rel="next" title="JSON">
+      JSON <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -517,7 +532,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -555,7 +570,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
